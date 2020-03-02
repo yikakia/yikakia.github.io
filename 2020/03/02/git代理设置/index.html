@@ -16,7 +16,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
-  <title>标签 - git ~ Yika`s Blog</title>
+  <title>git代理设置 ~ Yika`s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,8 +106,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/tag.jpg')no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/post.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -116,6 +116,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 三月 2日 2020, 9:54 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    391 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -127,45 +162,99 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>用git时有时会比较慢，很烦，所以找了下，发现git还真能走代理。这下速度真是起飞，舒服了。<br />
+于是就记录一下，方便自己以后来查。</p>
+<h1 id="代理设置"><a class="markdownIt-Anchor" href="#代理设置"></a> 代理设置</h1>
+<h2 id="查看当前代理设置"><a class="markdownIt-Anchor" href="#查看当前代理设置"></a> 查看当前代理设置</h2>
+<pre class="highlight"><code class="bash">git config --global http.proxy
+git config --global https.proxy
+</code></pre>
+<h2 id="设置当前代理"><a class="markdownIt-Anchor" href="#设置当前代理"></a> 设置当前代理</h2>
+<p>这里是把代理设置成http://127.0.0.1:1080 或 socket5://127.0.0.1:1080。</p>
+<p>根据自己的实际情况改吧。</p>
+<pre class="highlight"><code class="bash"><span class="hljs-comment">#http和https走socks5协议，1080端口修改成自己的本地代理端口</span>
+git config --global http.proxy <span class="hljs-string">'socks5://127.0.0.1:1080'</span>
+git config --global https.proxy <span class="hljs-string">'socks5://127.0.0.1:1080'</span>
+<span class="hljs-comment">#http和https走http协议的代理，1081端口修改成自己的本地代理端口</span>
+git config --global http.proxy <span class="hljs-string">'http://127.0.0.1:1081'</span>
+git config --global https.proxy <span class="hljs-string">'http://127.0.0.1:1081'</span>
+</code></pre>
+<h2 id="删除-proxy"><a class="markdownIt-Anchor" href="#删除-proxy"></a> 删除 proxy</h2>
+<pre class="highlight"><code class="bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy
+git config --global --<span class="hljs-built_in">unset</span> https.proxy
+</code></pre>
+<p>当然了，以上的配置是对所有的git都走代理，有些时候我们只想让github走代理的时候该怎么办呢？</p>
+<h2 id="只让github走代理"><a class="markdownIt-Anchor" href="#只让github走代理"></a> 只让github走代理</h2>
+<pre class="highlight"><code class="bash"><span class="hljs-comment"># http和https走socks5协议，1080端口修改成自己的本地代理端口</span>
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
+
+<span class="hljs-comment"># http和https走http协议，1081端口修改成自己的本地代理端口</span>
+git config --global http.https://github.com.proxy https://127.0.0.1:1081
+git config --global https.https://github.com.proxy https://127.0.0.1:1081
+</code></pre>
+<h2 id="其他相关命令"><a class="markdownIt-Anchor" href="#其他相关命令"></a> 其他相关命令</h2>
+<pre class="highlight"><code class="bash"><span class="hljs-comment"># 查看所有配置</span>
+git config -l
+<span class="hljs-comment"># 显示当前的Git配置</span>
+$ git config --list
+</code></pre>
+<h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1>
+<p><a href="https://juejin.im/post/5cfe66406fb9a07edb393c56" target="_blank" rel="noopener">一招 git clone 加速</a></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
                 
-
-<div class="list-group">
-<!--  <p class="h4">共计 2 篇文章</p>-->
-  <hr>
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/02/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">git代理设置</span>
-      <span style="float: right;">03-02</span>
-    </a>
-  
-    
-      
-      <p class="h5">2019</p>
-    
-    <a href="/2019/07/19/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">建站心得</span>
-      <span style="float: right;">07-19</span>
-    </a>
-  
-</div>
-
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/tags/git">git</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -244,6 +333,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -284,7 +378,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - git&nbsp;",
+        "git代理设置&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 180,
