@@ -175,20 +175,20 @@
 <p>Hexo 是一个基于 Node.js 的开源静态博客平台，可以在数秒内渲染上千个页面，并且一键部署到 GitHub 等平台。</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>一直想自己建一个博客，摸鱼摸到现在总算是简单的搭起来了。搞了两天是终于搞出来了个模样。但是因为相关的知识缺乏，所以基本上把大部分的坑都踩了一遍。写在这里就是来纪念一下第一次建站以及为其他人提前踩雷，好避免也走到弯路。</p>
 <p>我这次建站的流程是本地 Windows 配置 hexo，利用 hexo 自带的推送功能推送到远程的 vps 上的 hexo.git 仓库。而 vps 上的 hexo.git 仓库配置了 githook 用于在推送到来时自动重新部署在 vps 上。</p>
-<p>基本流程就是这样，那么就开始吧～</p>
-<h1 id="准备环境"><a class="markdownIt-Anchor" href="#准备环境"></a> 准备环境</h1>
+<p>基本流程就是这样，那么就开始吧~</p>
+<h1 id="准备环境"><a class="markdownIt-Anchor" href="# 准备环境"></a> 准备环境</h1>
 <p>下面分为两个部分来说，一个是本地的 windows 环境，一个是 vps 上的 linux 环境。<br />
 我用的是 windows10 和 debian9。其他的系统也大同小异。</p>
-<h2 id="windows-环境"><a class="markdownIt-Anchor" href="#windows-环境"></a> Windows 环境</h2>
+<h2 id="windows- 环境"><a class="markdownIt-Anchor" href="#windows- 环境"></a> Windows 环境</h2>
 <h3 id="git"><a class="markdownIt-Anchor" href="#git"></a> git</h3>
-<h4 id="git-的下载"><a class="markdownIt-Anchor" href="#git-的下载"></a> git 的下载</h4>
-<p>你可以从 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">这个页面</a> 下载 git，并且安装。</p>
-<p>安装完成后，你如果想从 cmd 直接运行的 git 的话需要重启系统，因为 windows10 的环境变量不是实时更新的。更多相关资料可以点 <a href="https://blog.csdn.net/liufangbaishi2014/article/details/75330766" target="_blank" rel="noopener"><code>这里</code></a></p>
+<h4 id="git 的下载"><a class="markdownIt-Anchor" href="#git 的下载"></a> git 的下载</h4>
+<p>你可以从 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener"> 这个页面 </a> 下载 git，并且安装。</p>
+<p>安装完成后，你如果想从 cmd 直接运行的 git 的话需要重启系统，因为 windows10 的环境变量不是实时更新的。更多相关资料可以点 <a href="https://blog.csdn.net/liufangbaishi2014/article/details/75330766" target="_blank" rel="noopener"><code> 这里</code></a></p>
 <p>当然，不需要直接运行的话也可以按照下面的步骤来</p>
-<h4 id="git-的配置"><a class="markdownIt-Anchor" href="#git-的配置"></a> git 的配置</h4>
+<h4 id="git 的配置"><a class="markdownIt-Anchor" href="#git 的配置"></a> git 的配置</h4>
 <p>安装完成后，你可以在桌面右键，选择 Git Bash Here<br />
 <img src="https://i.loli.net/2019/07/19/5d31db111dafd66201.png" srcset="/img/loading.gif" alt="Git Bash Here" /></p>
 <p>然后输入下面两行代码</p>
@@ -197,12 +197,12 @@ git config --global user.email johndoe@example.com
 </code></pre>
 <p>注意，在这里的 John Doe 是你的名字，johndoe@example.com 是你的邮箱。</p>
 <p>这两行表示你新建了一个用户名叫 John Doe 邮箱是 <a href="mailto:johndoe@example.com">johndoe@example.com</a> 的 git 账户。输错了不要急，可以修改的，具体怎么修改可以自行搜索。</p>
-<h4 id="生成-ssh-公钥和密钥"><a class="markdownIt-Anchor" href="#生成-ssh-公钥和密钥"></a> 生成 ssh 公钥和密钥</h4>
+<h4 id="生成 ssh 公钥和密钥"><a class="markdownIt-Anchor" href="# 生成 ssh 公钥和密钥"></a> 生成 ssh 公钥和密钥</h4>
 <p>输入</p>
 <pre><code>ssh-keygen -t rsa -C &quot;johndoe@example.com&quot;
 </code></pre>
 <p>然后一路按回车生成你的公钥和密钥</p>
-<p>在这里的 <a href="mailto:johndoe@example.com">johndoe@example.com</a> 是你刚刚输入的邮箱，用了这条命令，你的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中会生成两个文件 <code>id_rsa</code> 和 <code>id_rsa.pub</code>。其中 <code>id_rsa.pub</code> 这个文件中就存放着我们的公钥。</p>
+<p>在这里的 <a href="mailto:johndoe@example.com">johndoe@example.com</a> 是你刚刚输入的邮箱，用了这条命令，你的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中会生成两个文件 <code>id_rsa</code> 和<code>id_rsa.pub</code>。其中 <code>id_rsa.pub</code> 这个文件中就存放着我们的公钥。</p>
 <p>现在 Windows 端的 git 基本配置好了。</p>
 <h3 id="nodejs"><a class="markdownIt-Anchor" href="#nodejs"></a> Node.js</h3>
 <p>在 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener"><code>Node.js 官网</code></a> 下载最新版本并安装。一路 next 默认安装即可。</p>
@@ -218,32 +218,32 @@ hexo s
 </code></pre>
 <p>在这里 第二行的 <code>hexo init</code> 这个地方可能会等很久，因为众所周知的原因，国内对外网的支持并不好，所以耐心等待即可。</p>
 <p>当你看到界面上弹出 <code>INFO Start blogging with Hexo!</code> 的字样时，说明 hexo 已经在这个文件夹里拷贝了一份基础的框架，这个时候就可以输第三行代码 <code>npm install</code> 了。</p>
-<p>现在基本的框架都搭好了，输入第四行代码 <code>hexo s</code> 等到提示</p>
+<p>现在基本的框架都搭好了，输入第四行代码<code>hexo s</code> 等到提示</p>
 <pre class="highlight"><code class="">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.
 </code></pre>
 <p>的时候，你就可以打开浏览器，输入 <code>http://localhost:4000</code> 来看你的博客的雏形了。大概长这样👇</p>
 <p><img src="https://i.loli.net/2019/07/20/5d32f1cbe97fa10567.png" srcset="/img/loading.gif" alt="大概长这样" /></p>
 <p>那么到了现在，Windows 端的基础的都搭好了，现在开始下一步吧。</p>
-<h2 id="linux-环境"><a class="markdownIt-Anchor" href="#linux-环境"></a> Linux 环境</h2>
+<h2 id="linux- 环境"><a class="markdownIt-Anchor" href="#linux- 环境"></a> Linux 环境</h2>
 <p>首先链接到你的 vps，我用的是 xshell。</p>
 <p>登录之后更新软件源</p>
 <pre class="highlight"><code class="">sudo apt-get update
 </code></pre>
-<h3 id="git-安装"><a class="markdownIt-Anchor" href="#git-安装"></a> git 安装</h3>
+<h3 id="git- 安装"><a class="markdownIt-Anchor" href="#git- 安装"></a> git 安装</h3>
 <pre class="highlight"><code class="bash">sudo apt-get install git-core
 </code></pre>
 <p>安装好了之后可以用 git --version 查看是否安装成功。</p>
-<h3 id="nginx-安装"><a class="markdownIt-Anchor" href="#nginx-安装"></a> nginx 安装</h3>
+<h3 id="nginx- 安装"><a class="markdownIt-Anchor" href="#nginx- 安装"></a> nginx 安装</h3>
 <p>我在直接用</p>
 <pre class="highlight"><code class="bash">sudo apt-get install nginx
 </code></pre>
 <p>的时候发现我的搬瓦工的 debain9 不能安装上，最后是按官方的教程走的。</p>
-<p>官方的页面在 <a href="http://nginx.org/en/linux_packages.html#Debian" target="_blank" rel="noopener">这里</a></p>
+<p>官方的页面在 <a href="http://nginx.org/en/linux_packages.html#Debian" target="_blank" rel="noopener"> 这里</a></p>
 <p>安装好后可以通过</p>
 <pre class="highlight"><code class="">nginx -v
 </code></pre>
 <p>来查看是否安装成功。</p>
-<h3 id="新增-git-用户并添加-sudo-权限"><a class="markdownIt-Anchor" href="#新增-git-用户并添加-sudo-权限"></a> 新增 git 用户并添加 sudo 权限</h3>
+<h3 id="新增 -git- 用户并添加 sudo 权限"><a class="markdownIt-Anchor" href="# 新增 -git- 用户并添加 sudo 权限"></a> 新增 git 用户并添加 sudo 权限</h3>
 <pre class="highlight"><code class="">adduser git
 chmod 740 /etc/sudoers
 nano /etc/sudoers
@@ -261,7 +261,7 @@ root    ALL=(ALL)     ALL
 <pre class="highlight"><code class="">chmod 440 /etc/sudoers
 </code></pre>
 <p>恢复初始权限</p>
-<h3 id="创建-git-仓库并配置-ssh-登录"><a class="markdownIt-Anchor" href="#创建-git-仓库并配置-ssh-登录"></a> 创建 git 仓库，并配置 ssh 登录</h3>
+<h3 id="创建 -git- 仓库并配置 -ssh- 登录"><a class="markdownIt-Anchor" href="# 创建 -git- 仓库并配置 -ssh- 登录"></a> 创建 git 仓库，并配置 ssh 登录</h3>
 <pre class="highlight"><code class="">su git
 cd ~
 mkdir .ssh &amp;&amp; cd .ssh
@@ -275,22 +275,22 @@ nano authorized_keys
 <p>能够远程登录的话，则表示设置成功了。</p>
 <p>如果在这里，你的 vps 的 ssh 端口不是默认的 22 端口的话，则需要加入参数 -p 你的 vps 的 ssh 端口号，如下面这样</p>
 <pre class="highlight"><code class="">ssh git@vps 的 ip 地址 -p 你的 vps 的端口号
-# 下面举个例说明
+#下面举个例说明
 ssh git@123.234.123.234 -p 12345
 </code></pre>
 <p>为了避免以后麻烦需要添加配置文件方便登录。</p>
-<p>到你的电脑的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中，新建一个叫 <code>config</code> 的文件。** 没有后缀名 **。打开它，输入</p>
+<p>到你的电脑的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中，新建一个叫 <code>config</code> 的文件。<strong>没有后缀名</strong>。打开它，输入</p>
 <pre class="highlight"><code class="">Host 你的 vps 的 ip 地址
 User git
 Port 你的 vps 的 ssh 端口
 IdentityFile ~/.ssh/id_rsa
-# 下面举个例子说明
+#下面举个例子说明
 Host 123.234.123.234
 User git
 Port 12345
 IdentityFile ~/.ssh/id_rsa
 </code></pre>
-<p>这里遇到了小坑。就是第四行的那个 IdentityFile 有些人的教程上写的是 IdentifyFile，这个简单的错误导致我查了半天错都没搞出来。英语真的很重要。</p>
+<p>这里遇到了小坑. 就是第四行的那个 IdentityFile 有些人的教程上写的是 IdentifyFile，这个简单的错误导致我查了半天错都没搞出来。英语真的很重要。</p>
 <p>现在我们通过 git bash ，利用公钥文件登陆到了 vps。</p>
 <p>下面我们进行仓库的创建</p>
 <pre class="highlight"><code class="">cd ~ 
@@ -298,12 +298,12 @@ mkdir hexo.git &amp;&amp; cd hexo.git
 git init --bare
 </code></pre>
 <p>这就创建好了一个裸的仓库。之后我们的博客就上传到这个目录里面。</p>
-<h3 id="创建网站目录并赋予-git-用户对此目录的所有权"><a class="markdownIt-Anchor" href="#创建网站目录并赋予-git-用户对此目录的所有权"></a> 创建网站目录，并赋予 git 用户对此目录的所有权</h3>
-<pre class="highlight"><code class="bash"><span class="hljs-built_in">cd</span> /var/www  <span class="hljs-comment">#这里的目录可以随意。不过后续的 nginx 的配置也要跟着变。</span>
+<h3 id="创建网站目录并赋予 -git- 用户对此目录的所有权"><a class="markdownIt-Anchor" href="# 创建网站目录并赋予 -git- 用户对此目录的所有权"></a> 创建网站目录，并赋予 git 用户对此目录的所有权</h3>
+<pre class="highlight"><code class="bash"><span class="hljs-built_in">cd</span> /var/www  <span class="hljs-comment"># 这里的目录可以随意。不过后续的 nginx 的配置也要跟着变。</span>
 mkdir hexo
 chown git:git -R /var/www/hexo
 </code></pre>
-<h3 id="配置-git-hooks"><a class="markdownIt-Anchor" href="#配置-git-hooks"></a> 配置 git hooks</h3>
+<h3 id="配置 -git-hooks"><a class="markdownIt-Anchor" href="# 配置 -git-hooks"></a> 配置 git hooks</h3>
 <p>先简单的解释下什么是 git hooks 吧。</p>
 <blockquote>
 <p>Git Hooks 就是那些在 Git 执行特定事件（如 commit、push、receive 等）后触发运行的脚本。</p>
@@ -327,7 +327,7 @@ cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}
 <p>然后给这个脚本赋予执行权限</p>
 <pre class="highlight"><code class="">chmod +x post-receive
 </code></pre>
-<h3 id="配置-nginx"><a class="markdownIt-Anchor" href="#配置-nginx"></a> 配置 nginx</h3>
+<h3 id="配置 -nginx"><a class="markdownIt-Anchor" href="# 配置 -nginx"></a> 配置 nginx</h3>
 <p>我们利用 nginx 来做到当监听端口收到消息后，把服务器上的资源发给浏览器。</p>
 <pre class="highlight"><code class="">nano /etc/nginx/conf.d/hexo.conf
 </code></pre>
@@ -350,8 +350,7 @@ cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}
     }
     location / {
         root /var/www/hexo;
-        if (-f $request_filename) {
-            rewrite ^/(.*)$  /$1 break;
+        if (-f $request_filename) {rewrite ^/(.*)$  /$1 break;
         }
     }
 }
@@ -360,33 +359,33 @@ cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}
 <p>重启 nginx</p>
 <pre class="highlight"><code class="">nginx -s reload
 </code></pre>
-<h2 id="本机的最后配置"><a class="markdownIt-Anchor" href="#本机的最后配置"></a> 本机的最后配置</h2>
-<h3 id="配置-hexo-配置文件"><a class="markdownIt-Anchor" href="#配置-hexo-配置文件"></a> 配置 hexo 配置文件</h3>
-<p>打开本机的 <code>D:\hexo</code> 文件夹，编辑 <code>_config.yml</code> 文件，找到 `deploy’ 项，并且修改成下面这个样子</p>
+<h2 id="本机的最后配置"><a class="markdownIt-Anchor" href="# 本机的最后配置"></a> 本机的最后配置</h2>
+<h3 id="配置 -hexo- 配置文件"><a class="markdownIt-Anchor" href="# 配置 -hexo- 配置文件"></a> 配置 hexo 配置文件</h3>
+<p>打开本机的 <code>D:\hexo</code> 文件夹，编辑 <code>_config.yml</code> 文件，找到 `deploy’项，并且修改成下面这个样子</p>
 <pre class="highlight"><code class="">deploy:
   type: git
   repo: git@123.234.123.234:hexo.git 
 </code></pre>
 <p><code>type</code> 是 <code>git</code> 不能变。能变的是第二行的。<br />
 <code>repo: A@B:C</code> 这个结构里面， <code>A</code> 是你新建好的 git 用户的用户名，<code>B</code> 是你的 vps 的地址， <code>C</code> 是你的仓库的地址。</p>
-<h3 id="推送到-vps"><a class="markdownIt-Anchor" href="#推送到-vps"></a> 推送到 <code>vps</code></h3>
+<h3 id="推送到 -vps"><a class="markdownIt-Anchor" href="# 推送到 -vps"></a> 推送到 <code>vps</code></h3>
 <p>打开本机的 <code>D:\hexo</code> 文件夹，右键选择 <code>git bash here</code> 然后运行</p>
 <pre class="highlight"><code class="">hexo clean 
 hexo g
 hexo d
 </code></pre>
 <p>现在，我们的 vps 上的仓库就有了我们的文件。它收到了 post 后就会启动 <code>post-receive</code> 脚本，把我们的网站放到指定的目录里面。现在，你就可以通过 直接访问你的 vps 的地址来查看你的博客了。</p>
-<h1 id="hexo-相关"><a class="markdownIt-Anchor" href="#hexo-相关"></a> hexo 相关</h1>
-<h2 id="更新博客"><a class="markdownIt-Anchor" href="#更新博客"></a> 更新博客</h2>
-<p>hexo 是通过你的 <code>~\source\_posts</code> 文件夹里面的 <code>.md</code> 文件来生成页面的。所以要会 markdown 语法。可以看 <a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener">这个网页</a> 来学习基本的 markdown 语法。</p>
-<p>每篇文章抬头都要有这篇文章的基本信息 ，注意在 冒号 <code>:</code> 后面要有一个空格隔开。</p>
+<h1 id="hexo- 相关"><a class="markdownIt-Anchor" href="#hexo- 相关"></a> hexo 相关</h1>
+<h2 id="更新博客"><a class="markdownIt-Anchor" href="# 更新博客"></a> 更新博客</h2>
+<p>hexo 是通过你的 <code>~\source\_posts</code> 文件夹里面的 <code>.md</code> 文件来生成页面的。所以要会 markdown 语法。可以看 <a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener"> 这个网页</a> 来学习基本的 markdown 语法。</p>
+<p>每篇文章抬头都要有这篇文章的基本信息 ，注意在 冒号<code>:</code> 后面要有一个空格隔开。</p>
 <pre class="highlight"><code class="">title: title
 date: yyyy-mm-dd
 categories: category  
 tags: tag
-# 多标签请这样写：  
+#多标签请这样写：  
 #tags: [tag1,tag2,tag3]
-# 或者这样写： 
+#或者这样写： 
 #tags:
 #- tag1 
 #- tag2  
@@ -404,7 +403,7 @@ hexo d
 <pre class="highlight"><code class="">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
 </code></pre>
 <p>这样就能每次双击运行 <code>post.bat</code> 文件来达到推送的目的。</p>
-<h2 id="修改主题"><a class="markdownIt-Anchor" href="#修改主题"></a> 修改主题</h2>
+<h2 id="修改主题"><a class="markdownIt-Anchor" href="# 修改主题"></a> 修改主题</h2>
 <p>把你在 github 上下载的 文件夹放到 <code>D:\hexo\themes</code> 文件夹里面，然后修改 <code>D:\hexo</code> 文件夹里面的 <code>_config.yml</code> 文件里面的</p>
 <pre class="highlight"><code class=""># Extensions
 ## Plugins: https://hexo.io/plugins/
@@ -416,13 +415,13 @@ theme: Material-T
 hexo s
 </code></pre>
 <p>就能看你的新主题了。</p>
-<p>对于主题的配置，我们需要看官方文档，因为可能有很多需要修改的地方。可以看看 <a href="https://easyhexo.com/" target="_blank" rel="noopener">这个网站</a>，来找到你喜欢的主题并且配置到本地。</p>
-<h1 id="尾巴"><a class="markdownIt-Anchor" href="#尾巴"></a> 尾巴</h1>
+<p>对于主题的配置，我们需要看官方文档，因为可能有很多需要修改的地方。可以看看 <a href="https://easyhexo.com/" target="_blank" rel="noopener"> 这个网站</a>，来找到你喜欢的主题并且配置到本地。</p>
+<h1 id="尾巴"><a class="markdownIt-Anchor" href="# 尾巴"></a> 尾巴</h1>
 <p>这次建站主要是没有相关的知识，所以两眼一抹瞎，只能走一步看一步，走一步学一步。遇到了问题就上网查，最关键的是找官方的文档来看，就比如我写的下载 nginx 的那个，最开始我直接用的 <code>apt-get</code> 下载的，根本没办法用，用 <code>nginx -v</code> 一点反应都没有。没办法只能去官方网站看看。所幸跟它一步步走了之后的确安装好了 nginx 。不过背后有什么问题还是不清楚。</p>
-<h1 id="参考链接"><a class="markdownIt-Anchor" href="#参考链接"></a> 参考链接</h1>
+<h1 id="参考链接"><a class="markdownIt-Anchor" href="# 参考链接"></a> 参考链接</h1>
 <p>能建好网站，能写出这篇文章，离不开这些文章的指导。</p>
 <p><a href="https://leihungjyu.com/post/hexo-blog-git-to-vps.html" target="_blank" rel="noopener">https://leihungjyu.com/post/hexo-blog-git-to-vps.html</a></p>
-<p><a href="https://mystery0.vip/2017/01/11/%25" target="_blank" rel="noopener">https://mystery0.vip/2017/01/11/%</a> E4% B8% AA% E4% BA% BA% E6%9C%8D% E5%8A% A1% E5%99% A8% E6%90% AD% E5% BB% BAHexo% E5%8D%9A% E5% AE% A2% EF% BC%88Windows% E7% AF%87% EF% BC%89/</p>
+<p><a href="https://mystery0.vip/2017/01/11/%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%E7%AF%87%EF%BC%89/" target="_blank" rel="noopener">https://mystery0.vip/2017/01/11/ 个人服务器搭建 Hexo 博客（Windows 篇）/</a></p>
 <p><a href="https://tiktoking.github.io/2016/01/26/hexo/" target="_blank" rel="noopener">https://tiktoking.github.io/2016/01/26/hexo/</a></p>
 <p><a href="https://segmentfault.com/a/1190000006745478" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006745478</a></p>
 <p>还有很多的文章没在收藏夹里，所以找不到了。再次对所有参考过的教程表示感谢！</p>

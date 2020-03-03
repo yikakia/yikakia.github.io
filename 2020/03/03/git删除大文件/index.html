@@ -175,14 +175,14 @@
 <p>谁掌控了过去谁就掌控了未来</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>在折腾博客的头图的时候，不小心将很大的，而且用不上的图片放在了 git 的提交历史里面。昨天还没想到有啥问题，虽然出现了问题的征兆，就是上传到服务器的时候速度很慢。不过我硬是靠设置 <code>git</code> 的 <code>postBuffer</code> 为 500M 而强行解决了问题。但今天突然想起这个问题，仔细思考了一下，不对啊，git 的特性决定了你提交了什么东西，他就会永远留在 git 仓库里面呀，那这个样子岂不是很不妙？</p>
-<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了 [官方的文档](<a href="https://git-scm.com/book/zh/v2/Git" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git</a> - 工具 - 重写历史) 也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener">相关网页</a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
-<h1 id="bfg-的使用"><a class="markdownIt-Anchor" href="#bfg-的使用"></a> BFG 的使用</h1>
+<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener"> 官方的文档 </a> 也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener"> 相关网页 </a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
+<h1 id="bfg 的使用"><a class="markdownIt-Anchor" href="#bfg 的使用"></a> BFG 的使用</h1>
 <p>就先把 BFG 的官方网站放出来吧，<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">点这里</a>。</p>
-<p>需要注意的是，该工具是.jar 格式的，也就是说你得安装一个 java 才能运行。虽然我学了 java，但对这个一窍不通，所以也没啥好说的，去官网下一个就行了。不过因为 Windows 的原因，所以得注销一下 java 才写进环境变量，具体的我在 <code>建站心得</code> 里面说过有兴趣的可以去看看。</p>
+<p>需要注意的是，该工具是.jar 格式的，也就是说你得安装一个 java 才能运行。虽然我学了 java，但对这个一窍不通，所以也没啥好说的，去官网下一个就行了。不过因为 Windows 的原因，所以得注销一下 java 才写进环境变量，具体的我在 <code> 建站心得 </code> 里面说过有兴趣的可以去看看。</p>
 <p>那么开始正文吧</p>
-<h2 id="删除大于-10m-的文件"><a class="markdownIt-Anchor" href="#删除大于-10m-的文件"></a> 删除大于 10M 的文件</h2>
+<h2 id="删除大于 10m 的文件"><a class="markdownIt-Anchor" href="# 删除大于 10m 的文件"></a> 删除大于 10M 的文件</h2>
 <p>我们现在假设 <code>~</code> 代表你的 hexo 博客的主目录，那么我们到 <code>~\.deploy_git</code> 里，把你在官方网站下的 <code>bfg-1.13.0.jar</code> 之类格式的文件拖到这个里面，打开终端输入命令</p>
 <pre class="highlight"><code class="bash">java -jar .\bfg-1.13.0.jar --strip-blobs-bigger-than 10M 
 </code></pre>
@@ -195,8 +195,8 @@ git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal"
 </code></pre>
 <p>现在就好了，彻底删除了大于 10M 文件，改写了提交的历史。现在你可以看看 <code>.deploy_git</code> 这个文件夹是不是比之前小了很多啊。<br />
 举一反三一下，把之前命令的 <code>10M</code> 换成 <code>50M</code> 也是可以的。</p>
-<p>不过每次都输 <code>.\bfg-1.13.0.jar</code> 也太麻烦了，就算按 Tab 自动补全也是，还是把 <code>bfg-1.13.0.jar</code> 的名字改成 <code>bfg.jar</code> 吧。</p>
-<h2 id="删除指定名字的文件"><a class="markdownIt-Anchor" href="#删除指定名字的文件"></a> 删除指定名字的文件</h2>
+<p>不过每次都输 <code>.\bfg-1.13.0.jar</code>也太麻烦了，就算按 Tab 自动补全也是，还是把 <code>bfg-1.13.0.jar</code> 的名字改成 <code>bfg.jar</code> 吧。</p>
+<h2 id="删除指定名字的文件"><a class="markdownIt-Anchor" href="# 删除指定名字的文件"></a> 删除指定名字的文件</h2>
 <p>BFG 还有一个用法就是删除指定名字的文件</p>
 <pre class="highlight"><code class="powershell">java <span class="hljs-literal">-jar</span> .\bfg.jar -<span class="hljs-literal">-delete</span><span class="hljs-literal">-files</span> YOUR FILE NAME 
 </code></pre>
@@ -207,21 +207,21 @@ git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal"
 <pre class="highlight"><code class="powershell">git reflog expire -<span class="hljs-literal">-expire</span>=now -<span class="hljs-literal">-all</span>
 git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span>
 </code></pre>
-<h2 id="其他我没用过的指令"><a class="markdownIt-Anchor" href="#其他我没用过的指令"></a> 其他我没用过的指令</h2>
+<h2 id="其他我没用过的指令"><a class="markdownIt-Anchor" href="# 其他我没用过的指令"></a> 其他我没用过的指令</h2>
 <p>看官方网站的 Usage 的话会发现其实还有些其他用法，不过我没用过，就在这里也一并列出来吧</p>
-<h3 id="替换指定文件的所有内容"><a class="markdownIt-Anchor" href="#替换指定文件的所有内容"></a> 替换指定文件的所有内容</h3>
-<p>替换你的仓库里出现的文件中列出的所有密码（如果需要，请在前缀行 ‘regex：’ 或 ‘glob：’）处替换为  <em><strong>REMOVED</strong></em><br />
+<h3 id="替换指定文件的所有内容"><a class="markdownIt-Anchor" href="# 替换指定文件的所有内容"></a> 替换指定文件的所有内容</h3>
+<p>替换你的仓库里出现的文件中列出的所有密码（如果需要，请在前缀行’regex：‘或’glob：’）处替换为  <em><strong>REMOVED</strong></em><br />
 Replace all passwords listed in a file (prefix lines ‘regex:’ or ‘glob:’ if required) with <em><strong>REMOVED</strong></em> wherever they occur in your repository :</p>
 <pre class="highlight"><code class="">$ bfg --replace-text passwords.txt  my-repo.git
 </code></pre>
-<h3 id="删除所有名为-git-的文件夹"><a class="markdownIt-Anchor" href="#删除所有名为-git-的文件夹"></a> 删除所有名为 <code>.git</code> 的文件夹</h3>
-<p>删除所有名为 “ .git” 的文件夹或文件 - Git 中的保留文件名。 当从 Mercurial 等其他源代码控制系统迁移到 Git 时，这些通常会成为问题：<br />
+<h3 id="删除所有名为 git 的文件夹"><a class="markdownIt-Anchor" href="# 删除所有名为 git 的文件夹"></a> 删除所有名为 <code>.git</code> 的文件夹</h3>
+<p>删除所有名为“ .git”的文件夹或文件 -Git 中的保留文件名。 当从 Mercurial 等其他源代码控制系统迁移到 Git 时，这些通常会成为问题：<br />
 Remove all folders or files named ‘.git’ - a reserved filename in Git. These often become a problem when migrating to Git from other source-control systems like Mercurial :</p>
 <pre class="highlight"><code class="">$ bfg --delete-folders .git --delete-files .git  --no-blob-protection  my-repo.git
 </code></pre>
 <p>用了谷歌娘机翻，也润色了一点，实际的使用的话还是去网上找实例看看吧。<br />
-顺便上面的那个 <code>bfg</code> 就替换成 <code>java -jar .\bfg.jar</code> 吧，Windows 平台的话。</p>
-<h1 id="有趣的事"><a class="markdownIt-Anchor" href="#有趣的事"></a> 有趣的事</h1>
+顺便上面的那个 <code>bfg</code>就替换成 <code>java -jar .\bfg.jar</code> 吧，Windows 平台的话。</p>
+<h1 id="有趣的事"><a class="markdownIt-Anchor" href="# 有趣的事"></a> 有趣的事</h1>
 <p>现在是 2020/3/3 可能美国正在进行大选或者川普现在有啥丑闻？<br />
 总之我清理完了后 <code>bfg</code> 会弹出这么一个提示</p>
 <pre class="highlight"><code class="">--
@@ -232,9 +232,9 @@ being told the truth. Don't give up: https://www.rescue.org/topic/refugees-ameri
 
 </code></pre>
 <p>不知道你用的时候会有这个提示么？</p>
-<h1 id="参考文章"><a class="markdownIt-Anchor" href="#参考文章"></a> 参考文章</h1>
+<h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
 <p><a href="http://openfibers.github.io/blog/2015/03/04/use-bfg-to-clean-big-blog-in-git/" target="_blank" rel="noopener">使用 BFG Repo-Cleaner 清除 git 的历史错误提交</a><br />
-[Git 工具 - 重写历史](<a href="https://git-scm.com/book/zh/v2/Git-%25" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-%</a> E5% B7% A5% E5%85% B7-% E9%87%8D% E5%86%99% E5%8E%86% E5%8F% B2)<br />
+<a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener">Git 工具 - 重写历史</a><br />
 <a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">an alternative to git-filter-branch</a></p>
 
             <hr>
