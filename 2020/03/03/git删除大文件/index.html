@@ -16,7 +16,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
-  <title>git 代理设置 ~ Yika`s Blog</title>
+  <title>git 删除大文件怎么办？BFG 帮你忙 ~ Yika`s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -121,7 +121,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 三月 2日 2020, 9:54 晚上
+                  星期二, 三月 3日 2020, 5:37 下午
                 </p>
               
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    403 字
+                    1.2k 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -171,46 +171,67 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>用 git 时有时会比较慢，很烦，所以找了下，发现 git 还真能走代理。这下速度真是起飞，舒服了。<br />
-于是就记录一下，方便自己以后来查。</p>
-<h1 id="代理设置"><a class="markdownIt-Anchor" href="#代理设置"></a> 代理设置</h1>
-<h2 id="查看当前代理设置"><a class="markdownIt-Anchor" href="#查看当前代理设置"></a> 查看当前代理设置</h2>
-<pre class="highlight"><code class="bash">git config --global http.proxy
-git config --global https.proxy
+            <blockquote>
+<p>谁掌控了过去谁就掌控了未来</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>在折腾博客的头图的时候，不小心将很大的，而且用不上的图片放在了 git 的提交历史里面。昨天还没想到有啥问题，虽然出现了问题的征兆，就是上传到服务器的时候速度很慢。不过我硬是靠设置 <code>git</code> 的 <code>postBuffer</code> 为 500M 而强行解决了问题。但今天突然想起这个问题，仔细思考了一下，不对啊，git 的特性决定了你提交了什么东西，他就会永远留在 git 仓库里面呀，那这个样子岂不是很不妙？</p>
+<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了官方的文档也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener">相关网页</a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
+<h1 id="bfg-的使用"><a class="markdownIt-Anchor" href="#bfg-的使用"></a> BFG 的使用</h1>
+<p>就先把 BFG 的官方网站放出来吧，<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">点这里</a>。</p>
+<p>需要注意的是，该工具是.jar 格式的，也就是说你得安装一个 java 才能运行。虽然我学了 java，但对这个一窍不通，所以也没啥好说的，去官网下一个就行了。不过因为 Windows 的原因，所以得注销一下 java 才写进环境变量，具体的我在 <code>建站心得</code> 里面说过有兴趣的可以去看看。</p>
+<p>那么开始正文吧</p>
+<h2 id="删除大于-10m-的文件"><a class="markdownIt-Anchor" href="#删除大于-10m-的文件"></a> 删除大于 10M 的文件</h2>
+<p>我们现在假设 <code>~</code> 代表你的 hexo 博客的主目录，那么我们到 <code>~\.deploy_git</code> 里，把你在官方网站下的 <code>bfg-1.13.0.jar</code> 之类格式的文件拖到这个里面，打开终端输入命令</p>
+<pre class="highlight"><code class="powershell">java <span class="hljs-literal">-jar</span> .\bfg<span class="hljs-literal">-1</span>.<span class="hljs-number">13.0</span>.jar -<span class="hljs-literal">-strip</span><span class="hljs-literal">-blobs</span><span class="hljs-literal">-bigger</span><span class="hljs-literal">-than</span> <span class="hljs-number">10</span>M 
 </code></pre>
-<h2 id="设置当前代理"><a class="markdownIt-Anchor" href="#设置当前代理"></a> 设置当前代理</h2>
-<p>这里是把代理设置成 <a href="http://127.0.0.1:1080" target="_blank" rel="noopener">http://127.0.0.1:1080</a> 或 socket5://127.0.0.1:1080。</p>
-<p>根据自己的实际情况改吧。</p>
-<pre class="highlight"><code class="bash"><span class="hljs-comment">#http 和 https 走 socks5 协议，1080 端口修改成自己的本地代理端口</span>
-git config --global http.proxy<span class="hljs-string">'socks5://127.0.0.1:1080'</span>
-git config --global https.proxy<span class="hljs-string">'socks5://127.0.0.1:1080'</span>
-<span class="hljs-comment">#http 和 https 走 http 协议的代理，1081 端口修改成自己的本地代理端口</span>
-git config --global http.proxy <span class="hljs-string">'http://127.0.0.1:1081'</span>
-git config --global https.proxy <span class="hljs-string">'http://127.0.0.1:1081'</span>
+<p>这个的意思是删除大于 git 仓库中大于 10M 的文件。当你看到如下的提示的时候，就说明成功了。</p>
+<pre class="highlight"><code class="">BFG run is complete! When ready, run: git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
 </code></pre>
-<h2 id="删除-proxy"><a class="markdownIt-Anchor" href="#删除-proxy"></a> 删除 proxy</h2>
-<pre class="highlight"><code class="bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy
-git config --global --<span class="hljs-built_in">unset</span> https.proxy
+<p>不过就像他所提示的那样，还要再做点动作才能正式删除那就跟着他做呗。不过 Windows 下的命令貌似不支持用 &amp;&amp; 连接两条，所以就分开做吧。</p>
+<pre class="highlight"><code class="powershell">git reflog expire -<span class="hljs-literal">-expire</span>=now -<span class="hljs-literal">-all</span>
+git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span>
 </code></pre>
-<p>当然了，以上的配置是对所有的 git 都走代理，有些时候我们只想让 github 走代理的时候该怎么办呢？</p>
-<h2 id="只让-github-走代理"><a class="markdownIt-Anchor" href="#只让-github-走代理"></a> 只让 github 走代理</h2>
-<pre class="highlight"><code class="bash"><span class="hljs-comment"># http 和 https 走 socks5 协议，1080 端口修改成自己的本地代理端口</span>
-git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
+<p>现在就好了，彻底删除了大于 10M 文件，改写了提交的历史。现在你可以看看 <code>.deploy_git</code> 这个文件夹是不是比之前小了很多啊。<br />
+举一反三一下，把之前命令的 <code>10M</code> 换成 <code>50M</code> 也是可以的。</p>
+<p>不过每次都输 <code>.\bfg-1.13.0.jar</code> 也太麻烦了，就算按 Tab 自动补全也是，还是把 <code>bfg-1.13.0.jar</code> 的名字改成 <code>bfg.jar</code> 吧。</p>
+<h2 id="删除指定名字的文件"><a class="markdownIt-Anchor" href="#删除指定名字的文件"></a> 删除指定名字的文件</h2>
+<p>BFG 还有一个用法就是删除指定名字的文件</p>
+<pre class="highlight"><code class="powershell">java <span class="hljs-literal">-jar</span> .\bfg.jar -<span class="hljs-literal">-delete</span><span class="hljs-literal">-files</span> YOUR FILE NAME 
+</code></pre>
+<p>这里把你要删的文件名替换那个 <code>YOUR FILE NAME</code> 就好了，当你和上面一样看到</p>
+<pre class="highlight"><code class="">BFG run is complete! When ready, run: git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
+</code></pre>
+<p>这样的提示的时候，说明就工作完成了，和之前一样输入两行命令删除掉他吧。</p>
+<pre class="highlight"><code class="powershell">git reflog expire -<span class="hljs-literal">-expire</span>=now -<span class="hljs-literal">-all</span>
+git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span>
+</code></pre>
+<h2 id="其他我没用过的指令"><a class="markdownIt-Anchor" href="#其他我没用过的指令"></a> 其他我没用过的指令</h2>
+<p>看官方网站的 Usage 的话会发现其实还有些其他用法，不过我没用过，就在这里也一并列出来吧</p>
+<h3 id="替换指定文件的所有内容"><a class="markdownIt-Anchor" href="#替换指定文件的所有内容"></a> 替换指定文件的所有内容</h3>
+<p>替换你的仓库里出现的文件中列出的所有密码（如果需要，请在前缀行 ‘regex：’ 或 ‘glob：’）处替换为  <em><strong>REMOVED</strong></em><br />
+Replace all passwords listed in a file (prefix lines ‘regex:’ or ‘glob:’ if required) with <em><strong>REMOVED</strong></em> wherever they occur in your repository :</p>
+<pre class="highlight"><code class="">$ bfg --replace-text passwords.txt  my-repo.git
+</code></pre>
+<h3 id="删除所有名为-git-的文件夹"><a class="markdownIt-Anchor" href="#删除所有名为-git-的文件夹"></a> 删除所有名为 <code>.git</code> 的文件夹</h3>
+<p>删除所有名为 “ .git” 的文件夹或文件 - Git 中的保留文件名。 当从 Mercurial 等其他源代码控制系统迁移到 Git 时，这些通常会成为问题：<br />
+Remove all folders or files named ‘.git’ - a reserved filename in Git. These often become a problem when migrating to Git from other source-control systems like Mercurial :</p>
+<pre class="highlight"><code class="">$ bfg --delete-folders .git --delete-files .git  --no-blob-protection  my-repo.git
+</code></pre>
+<p>用了谷歌娘机翻，也润色了一点，实际的使用的话还是去网上找实例看看吧。<br />
+顺便上面的那个 <code>bfg</code> 就替换成 <code>java -jar .\bfg.jar</code> 吧，Windows 平台的话。</p>
+<h1 id="有趣的事"><a class="markdownIt-Anchor" href="#有趣的事"></a> 有趣的事</h1>
+<p>现在是 2020/3/3 可能美国正在进行大选或者川普现在有啥丑闻？<br />
+总之我清理完了后 <code>bfg</code> 会弹出这么一个提示</p>
+<pre class="highlight"><code class="">--
+You can rewrite history in Git - don't let Trump do it for real!
+Trump's administration has lied consistently, to make people give up on ever
+being told the truth. Don't give up: https://www.rescue.org/topic/refugees-america
+--
 
-<span class="hljs-comment"># http 和 https 走 http 协议，1081 端口修改成自己的本地代理端口</span>
-git config --global http.https://github.com.proxy https://127.0.0.1:1081
-git config --global https.https://github.com.proxy https://127.0.0.1:1081
 </code></pre>
-<h2 id="其他相关命令"><a class="markdownIt-Anchor" href="#其他相关命令"></a> 其他相关命令</h2>
-<pre class="highlight"><code class="bash"><span class="hljs-comment"># 查看所有配置</span>
-git config -l
-<span class="hljs-comment"># 该命令和下面这个方式等价</span>
-git config --list
-</code></pre>
-<h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1>
-<p><a href="https://juejin.im/post/5cfe66406fb9a07edb393c56" target="_blank" rel="noopener">一招 git clone 加速</a></p>
+<p>不知道你用的时候会有这个提示么？</p>
 
             <hr>
           </div>
@@ -231,8 +252,6 @@ git config --list
                 <i class="iconfont icon-tag"></i>
                 
                   <a class="hover-with-bg" href="/tags/git">git</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%90%86">代理</a>
                 
               </span>
             
@@ -388,7 +407,7 @@ git config --list
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "git 代理设置&nbsp;",
+        "git 删除大文件怎么办？BFG 帮你忙&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 47,
