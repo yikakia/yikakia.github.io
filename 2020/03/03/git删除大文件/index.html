@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.2k 字
+                    1.3k 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      5 分钟
                   </span>&nbsp;
                 
 
@@ -177,14 +177,14 @@
 <a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
 <p>在折腾博客的头图的时候，不小心将很大的，而且用不上的图片放在了 git 的提交历史里面。昨天还没想到有啥问题，虽然出现了问题的征兆，就是上传到服务器的时候速度很慢。不过我硬是靠设置 <code>git</code> 的 <code>postBuffer</code> 为 500M 而强行解决了问题。但今天突然想起这个问题，仔细思考了一下，不对啊，git 的特性决定了你提交了什么东西，他就会永远留在 git 仓库里面呀，那这个样子岂不是很不妙？</p>
-<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了官方的文档也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener">相关网页</a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
+<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了 [官方的文档](<a href="https://git-scm.com/book/zh/v2/Git" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git</a> - 工具 - 重写历史) 也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener">相关网页</a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
 <h1 id="bfg-的使用"><a class="markdownIt-Anchor" href="#bfg-的使用"></a> BFG 的使用</h1>
 <p>就先把 BFG 的官方网站放出来吧，<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">点这里</a>。</p>
 <p>需要注意的是，该工具是.jar 格式的，也就是说你得安装一个 java 才能运行。虽然我学了 java，但对这个一窍不通，所以也没啥好说的，去官网下一个就行了。不过因为 Windows 的原因，所以得注销一下 java 才写进环境变量，具体的我在 <code>建站心得</code> 里面说过有兴趣的可以去看看。</p>
 <p>那么开始正文吧</p>
 <h2 id="删除大于-10m-的文件"><a class="markdownIt-Anchor" href="#删除大于-10m-的文件"></a> 删除大于 10M 的文件</h2>
 <p>我们现在假设 <code>~</code> 代表你的 hexo 博客的主目录，那么我们到 <code>~\.deploy_git</code> 里，把你在官方网站下的 <code>bfg-1.13.0.jar</code> 之类格式的文件拖到这个里面，打开终端输入命令</p>
-<pre class="highlight"><code class="powershell">java <span class="hljs-literal">-jar</span> .\bfg<span class="hljs-literal">-1</span>.<span class="hljs-number">13.0</span>.jar -<span class="hljs-literal">-strip</span><span class="hljs-literal">-blobs</span><span class="hljs-literal">-bigger</span><span class="hljs-literal">-than</span> <span class="hljs-number">10</span>M 
+<pre class="highlight"><code class="bash">java -jar .\bfg-1.13.0.jar --strip-blobs-bigger-than 10M 
 </code></pre>
 <p>这个的意思是删除大于 git 仓库中大于 10M 的文件。当你看到如下的提示的时候，就说明成功了。</p>
 <pre class="highlight"><code class="">BFG run is complete! When ready, run: git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
@@ -232,6 +232,10 @@ being told the truth. Don't give up: https://www.rescue.org/topic/refugees-ameri
 
 </code></pre>
 <p>不知道你用的时候会有这个提示么？</p>
+<h1 id="参考文章"><a class="markdownIt-Anchor" href="#参考文章"></a> 参考文章</h1>
+<p><a href="http://openfibers.github.io/blog/2015/03/04/use-bfg-to-clean-big-blog-in-git/" target="_blank" rel="noopener">使用 BFG Repo-Cleaner 清除 git 的历史错误提交</a><br />
+[Git 工具 - 重写历史](<a href="https://git-scm.com/book/zh/v2/Git-%25" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-%</a> E5% B7% A5% E5%85% B7-% E9%87%8D% E5%86%99% E5%8E%86% E5%8F% B2)<br />
+<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">an alternative to git-filter-branch</a></p>
 
             <hr>
           </div>
