@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>给你博客的中英文之间加空格~</title>
+    <link href="/2020/03/03/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/"/>
+    <url>/2020/03/03/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/</url>
+    
+    <content type="html"><![CDATA[<p>引用作者的话：</p><blockquote><p><strong>為什麼你們就是不能加個空格呢？</strong><br />如果你跟我一樣，每次看到網頁上的中文字和英文、數字、符號擠在一塊，就會坐立難安，忍不住想在它們之間加個空格。這個外掛（支援 Chrome 和 Firefox）正是你在網路世界走跳所需要的東西，它會自動替你在網頁中所有的中文字和半形的英文、數字、符號之間插入空白。</p><p>漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。另有研究顯示，打字的時候不喜歡在中文和英文之間加空格的人，感情路都走得很辛苦，有七成的比例會在 34 歲的時候跟自己不愛的人結婚，而其餘三成的人最後只能把遺產留給自己的貓。畢竟愛情跟書寫都需要適時地留白。</p><p>與大家共勉之。</p></blockquote><p><a href="https://github.com/vinta/pangu.js" target="_blank" rel="noopener">作者的页面</a></p><p>很有趣，那试试呗，不过这是 js 的实现，幸好有人做好了 hexo 的插件，叫 <code>hexo-filter-auto-spacing</code> 像我这种懒人就直接用别人做好的吧。</p><p>打开终端，输入如下的代码</p><pre class="highlight"><code class="bash">npm install hexo-filter-auto-spacing --save</code></pre><p>即可安装好。</p><p>之后在你的博客的根目录运行</p><pre class="highlight"><code class="">hexo cleanhexo ghexo s</code></pre><p>来预览下效果吧。</p><p>需要说一下，另外一个插件 <code>hexo-pangu-spacing</code> 是有 BUG 的，比如你引用文章的时候的文章的网址里面有中文和英文，这个时候它也会把它给隔开。所以就用 <code>hexo-filter-auto-spacing</code> 吧。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>自定义微软拼音的快速时间输入</title>
     <link href="/2020/03/03/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/"/>
     <url>/2020/03/03/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/</url>
