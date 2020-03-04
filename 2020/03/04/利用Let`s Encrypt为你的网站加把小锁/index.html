@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    958 字
+                    999 字
                   </span>&nbsp;
                 
 
@@ -262,13 +262,22 @@ server {
 <p>来重启 nginx 的服务。<br />
 这时候你再去看看你的博客，网址的左边是不是加了把小锁？<br />
 现在进行访问的时候我们都是强制走你的 https 协议了，不会被有心人劫持掉链接。挺好的不是么？</p>
+<h1 id="配置自动续期"><a class="markdownIt-Anchor" href="# 配置自动续期"></a> 配置自动续期</h1>
+<p>输入</p>
+<pre class="highlight"><code class="bash">crontab -e
+<span class="hljs-comment"># 选择用你熟悉的编辑器编辑</span>
+<span class="hljs-comment"># 然后在后面添加</span>
+0 3 1 * * /root/cerbot/certbot-auto renew --renew-hook <span class="hljs-string">"sudo nginx -s reload"</span>
+<span class="hljs-comment"># 现在保存了就可以了</span>
+</code></pre>
+<p>这样你就可以高枕无忧了，自动化程序可以帮你搞定自动续期的问题。</p>
 <h1 id="尾巴"><a class="markdownIt-Anchor" href="# 尾巴"></a> 尾巴</h1>
-<p>什么时候写下 HTTPS 和 RSA 的算法，来总结一下吧。爱丽丝和鲍勃以及伊娃的爱恨情仇~<br />
-还有折腾一下自动续期，毕竟这个证书也不是永久的，每隔两个月就得重新申请，还是有个自动化的脚本来搞这个事情方便。</p>
+<p>什么时候写下 HTTPS 和 RSA 的算法，来总结一下吧。爱丽丝和鲍勃以及伊娃的爱恨情仇~</p>
 <h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
 <p><a href="https://xiaozhou.net/be-quick-to-enable-ssl-for-your-blog-2016-07-13.html" target="_blank" rel="noopener">为你的 Blog 快速开启 https 支持</a><br />
 <a href="https://www.jianshu.com/p/509d2a240b7d" target="_blank" rel="noopener">Hexo 启用 https 加密连接</a><br />
-<a href="https://www.jianshu.com/p/6ea81a7b768f" target="_blank" rel="noopener">Certbot 自动化生成 https 证书</a></p>
+<a href="https://www.jianshu.com/p/6ea81a7b768f" target="_blank" rel="noopener">Certbot 自动化生成 https 证书</a><br />
+<a href="https://zhuanlan.zhihu.com/p/53407930" target="_blank" rel="noopener">certbot-auto 申请 https 证书，自动续期</a></p>
 
             <hr>
           </div>
