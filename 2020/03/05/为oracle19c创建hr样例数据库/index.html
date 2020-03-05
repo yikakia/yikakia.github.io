@@ -16,7 +16,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
-  <title>分类 ~ Yika`s Blog</title>
+  <title>为 oracle19c 创建 hr 样例数据库 ~ Yika`s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,8 +106,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/categories.jpg')no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/post.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -116,6 +116,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 三月 5日 2020, 9:38 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -127,22 +162,154 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>报了 ORA-20000: Schema “HR” does not exist or insufficient privileges 错找了半天才找到解决方法。</p>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
+<p>这学期开了大型数据库的课，要用 Oracle 的数据库。但老师的实验是用 Oracle 的样例数据库。而我看了看，我没有这个啊。</p>
+<p>怎么办呢？查了一下，原来是这个数据库要自己安装。于是跟着教程走了一遍，不过出了点问题，但搜了一下还是解决了。</p>
+<p>于是记录一下，方便自己以后用以及和我遇到了一样的问题的人。</p>
+<h1 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h1>
+<ol>
+<li>Windows10 1909</li>
+<li>Oracle Database 19c 19.3</li>
+<li>Oracle Database 19c Client (19.3)</li>
+</ol>
+<h1 id="安装步骤"><a class="markdownIt-Anchor" href="# 安装步骤"></a> 安装步骤</h1>
+<p>不知道你是安的 <code>client</code> 还是 <code>db</code>。最开始我安的<code>db</code>，但老师又安了<code>client</code>，所以我也跟着安装，结果这东西好像<code>client</code> 的覆盖了 <code>db</code> 的路径。莫名其妙的。也不知道 <code>db</code> 安装了到底有啥用。</p>
+<p>总之我发现现在的环境变量是 <code>client</code> 的而不是 <code>db</code> 的。而我们要安装这个样例数据库的话，可以用 Oracle 官方的脚本，但这个脚本是包含在 <code>db</code> 的而不是 <code>client</code> 里的。所以要用的话可以从 <code>db</code> 的文件夹里复制脚本到 <code>client</code> 的文件夹里。</p>
+<h2 id="找到脚本"><a class="markdownIt-Anchor" href="# 找到脚本"></a> 找到脚本</h2>
+<h3 id="从 db 里复制"><a class="markdownIt-Anchor" href="# 从 db 里复制"></a> 从 <code>db</code> 里复制</h3>
+<p>去你下的那个安装包解压的地方，比如 <code>\WINDOWS.X64_193000_db_home</code> 这样的。</p>
+<p>然后复制这个文件夹下的 <code>demo</code> 文件夹到 <code>\WINDOWS.X64_193000_client_home</code> 这个文件夹里。</p>
+<p>用这个方法的是和我一样先装了 <code>db</code> 后装了 <code>client</code> 的。如果你只装了 <code>db</code> 或者先装了 <code>client</code> 后装了 <code>db</code> 的那就无所谓了，因为默认的环境变量的下面就有这个。</p>
+<h3 id="从 github 上下载"><a class="markdownIt-Anchor" href="# 从 github 上下载"></a> 从 github 上下载</h3>
+<p>Oracle 官方在 github 上放了脚本来安装样例数据库，可以 <a href="https://github.com/oracle/db-sample-schemas/releases" target="_blank" rel="noopener"> 点这里 </a> 去下载最新的脚本。</p>
+<p>下载完了后，把里面的文件夹都拷出来，放的位置是<code>\WINDOWS.X64_193000_client_home\demo\schema</code>。没有这个文件夹的可以自己创建。</p>
+<h2 id="安装"><a class="markdownIt-Anchor" href="# 安装"></a> 安装</h2>
+<p>总之现在把脚本放在了指定的地方，其实也可以不放在这里，但我主要是为了方便用环境变量做解释。<br />
+现在连接 sqlplus, 用 sys 账号，以 sysdba 的身份登录<br />
+然后输入如下的命令</p>
+<pre class="highlight"><code class="sql">sql&gt;@?/demo/schema/human_resources/hr_main.sql;
+</code></pre>
+<p>现在就是正式创建了，输入之前的命令后会出现下面这样的字样。<br />
+我一步步翻译解释一下吧。</p>
+<ul>
+<li>输入 HR 的密码</li>
+</ul>
+<p>这里我输入的是 hr 作为密码</p>
+<pre class="highlight"><code class="">specify password for HR as parameter 1:
+Enter value for 1: hr
+
+</code></pre>
+<ul>
+<li>输入 HR 的默认表空间</li>
+</ul>
+<p>这里我把 <code>user</code> 作为默认表空间</p>
+<pre class="highlight"><code class="">specify default tablespeace for HR as parameter 2:
+Enter value for 2: user
+
+</code></pre>
+<ul>
+<li>输入 HR 的临时表空间</li>
+</ul>
+<p>这里我把 <code>temp</code> 作为临时表空间</p>
+<pre class="highlight"><code class="">specify temporary tablespace for HR as parameter 3:
+Enter value for 3: temp
+
+</code></pre>
+<ul>
+<li>输入 log 存放的地址</li>
+</ul>
+<p>这里我把直接把它放在了数据库程序的 <code>~/demo/schema/log/</code>这个文件夹里面</p>
+<pre class="highlight"><code class="">specify log path as parameter 4:
+Enter value for 4:  $ORACLE_HOME/demo/schema/log/
+</code></pre>
+<p>这个时候有些人会报错，像下面这样</p>
+<pre class="highlight"><code class="">Comment created.
+
+
+Commit complete.
+
+BEGIN dbms_stats.gather_schema_stats('HR'                            ,                granularity =&gt; 'ALL'            ,                cascade =&gt; TRUE                 ,                block_sample =&gt; TRUE); END;
+
+*
+ERROR at line 1:
+ORA-20000: Schema &quot;HR&quot; does not exist or insufficient privileges
+ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 3701
+ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24470
+ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24435
+ORA-06512: at line 1
+</code></pre>
+<h2 id="报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"><a class="markdownIt-Anchor" href="# 报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"></a> 报错 ORA-20000: Schema “HR” does not exist or insufficient privileges</h2>
+<p>这是因为 HR 用户之前没有被创建，而脚本自己好像又建不了。而 Oracle 19c 要求自建用户的用户名的格式是 <code>c##hr</code> 而不是<code>hr</code> 这样的。但我们要求用的用户名是<code>hr</code>。所以就得输入下面的命令来改变一下。</p>
+<pre class="highlight"><code class="">SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;=true;
+</code></pre>
+<p>然后我们就可以再运行上面的脚本来搞定了。</p>
+<p>现在我们打开新的终端或者 sql devoloper 来连接试试吧。</p>
+<h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
+<p><a href="https://blog.csdn.net/gsforget321/article/details/102918518" target="_blank" rel="noopener">oracle 19c 创建 sample schema-HR,OE,SH 等等</a><br />
+<a href="http://susantotech.blogspot.com/2019/10/ora-20000-schema-hr-does-not-exist-or.html" target="_blank" rel="noopener">ORA-20000: Schema “HR” does not exist or insufficient privileges in Oracle Database 19C</a>(主要参考的这篇文章)</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
                 
-
-<ul class="category-tree-list"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><span class="category-tree-list-count">6</span><ul class="category-tree-list-child"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a><span class="category-tree-list-count">1</span></li></ul></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><span class="category-tree-list-count">3</span></li></ul>
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/oracle">oracle</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -221,6 +388,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -261,7 +433,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "分类&nbsp;",
+        "为 oracle19c 创建 hr 样例数据库&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 47,
