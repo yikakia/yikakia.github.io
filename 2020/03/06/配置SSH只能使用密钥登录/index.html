@@ -16,7 +16,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
-  <title>归档 ~ Yika`s Blog</title>
+  <title>配置 SSH 只能使用密钥登录 ~ Yika`s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,8 +106,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png')no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/post.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -116,6 +116,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 三月 6日 2020, 5:40 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -127,35 +162,152 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 9 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/07/19/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">建站心得</span>
-      <span style="float: right;">07-19</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>为了避免被暴躁老哥用暴力穷举出密码。</p>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
+<p>一般来说，我们都是走 SSH，通过密码去登录服务器的。这个时候如果没有做好保护的话，那么就会有安全问题。</p>
+<p>比如说，如果设置 SSH 端口是默认的 22 的，而且是通过密码登录服务器的话，那么有心人就有 <strong> 可能 </strong> 通过暴力穷举的方式去破解掉我们的账户密码，甚至是 root 账户的密码。这样我们的服务器安全岂不是根本得不到保障么？</p>
+<p>并不是这样，我们可以通过设置 SSH 的端口为其他端口，并且通过交换密钥的方式实现免密登录，同时也能提高我们的安全性。</p>
+<h1 id="配置的环境"><a class="markdownIt-Anchor" href="# 配置的环境"></a> 配置的环境</h1>
+<ul>
+<li>本地环境 Windows10 1909</li>
+<li>服务器环境 debian10</li>
+</ul>
+<h1 id="简单的说下密钥的工作机制"><a class="markdownIt-Anchor" href="# 简单的说下密钥的工作机制"></a> 简单的说下密钥的工作机制</h1>
+<p>密钥的工作机制是通过生成一对私钥和公钥，将自己的私钥自己保存，将自己的公钥交给别人。每次进行通信的时候都将通信的内容用密钥进行加密。</p>
+<p>当我发给服务器数据时，我将这些数据用私钥进行加密，同时保证只能由公钥进行解密。而服务器发给我数据的时候，它就可以用我交给它的公钥进行加密，而这个加密的内容只能通过我的私钥进行解密。这样一来我与服务器的通信就可以说是比较安全的了，因为一般常用的密钥生成算法都会保证我们的这个密钥的破解时长是一般人难以接受的，比如说十年二十年这样。那么我只要妥善保管好我的私钥，就可以实现安全的数据交互。</p>
+<h1 id="制作密钥对"><a class="markdownIt-Anchor" href="# 制作密钥对"></a> 制作密钥对</h1>
+<p>在你的电脑打开 cmd 或者 powershell，输入如下命令</p>
+<pre class="highlight"><code class="">❯ ssh-keygen
+</code></pre>
+<p>然后就会出现下面这样的提示，跟着做就行。</p>
+<pre class="highlight"><code class="">Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\YOUR USER NAME/.ssh/id_rsa): 
+</code></pre>
+<p>这个地方是说选择在哪里保存你的私钥，默认的是在你的用户的根目录下的 /.ssh/ 文件夹里面的 id_rsa 里面保存。一般都不需要更改。直接按回车就行。</p>
+<pre class="highlight"><code class="">Enter passphrase (empty for no passphrase): 
+</code></pre>
+<p>这里是说让你输入一个密码用于加密你的私钥. 一般来说都不需要直接按空格就好了。</p>
+<pre class="highlight"><code class="">Enter same passphrase again: 
+</code></pre>
+<p>再次输入密码以确认。</p>
+<p>然后就会出现下面这样的提示</p>
+<pre class="highlight"><code class="">Your identification has been saved in C:\Users\YOUR USER NAME/.ssh/id_rsa.
+Your public key has been saved in C:\Users\YOUR USER NAME/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:QHli0XPdK1T3pqLfRs2DcR2jslJBmu46Yj1AtFVvm6U YOUR USER NAME@YOUR PC NAME
+The key's randomart image is:
++---[RSA 2048]----+
+|           +*.+oo|
+|           o+O oo|
+|          o==.= o|
+|         .oo.+  .|
+|        S.o . ...|
+|      .+.B + o o.|
+|     .oo= * B + .|
+|     .+  o E o o |
+|     oo.         |
++----[SHA256]-----+
+</code></pre>
+<p>这个时候你的私钥和公钥就生成好了，<code>C:\Users\YOUR USER NAME/.ssh/id_rsa</code> 是你的私钥，<code>C:\Users\YOUR USER NAME/.ssh/id_rsa.pub</code>是你的公钥。</p>
+<h1 id="将公钥提交给服务器"><a class="markdownIt-Anchor" href="# 将公钥提交给服务器"></a> 将公钥提交给服务器</h1>
+<p>现在我们登录到服务器，新建一个 <code>.ssh</code> 的目录，然后在里面新建一个叫做 <code>authorized_keys</code> 的文件，把你的公钥拷到里面就好了。</p>
+<pre class="highlight"><code class="">mkdir .ssh
+cd .ssh
+nano authorized_keys
+</code></pre>
+<p>把上面的命令输完后把你的公钥复制进去就行。就是 <code>C:\Users\YOUR USER NAME/.ssh/id_rsa.pub</code> 里面的数据。<br />
+现在再把 ssh 服务重启一下就可以试下没有密码登陆了。</p>
+<pre class="highlight"><code class="">service ssh restart
+</code></pre>
+<p>现在尝试下新开一个窗口输入以下的命令进行连接试试吧</p>
+<pre class="highlight"><code class="">ssh user@host -p hostport
+</code></pre>
+<p><code>user</code>就是要登陆的账户名，<code>host</code>就是你的服务器的地址，<code>-p hostport</code> 这个命令是在你的默认 ssh 端口不在 22 的时候使用的，把 <code>hostport</code> 换成你实际的 ssh 端口就可以了</p>
+<h1 id="取消密码登录"><a class="markdownIt-Anchor" href="# 取消密码登录"></a> 取消密码登录</h1>
+<p>现在我们登录到了服务器，开始取消密码登录吧。</p>
+<pre class="highlight"><code class="">nano etc/ssh/sshd_config
+</code></pre>
+<p>然后找到 <code>PasswordAuthentication</code> 项，把它设置为<code>no</code>。<br />
+就像下面这样</p>
+<pre class="highlight"><code class="">PasswordAuthentication no
+</code></pre>
+<p>记得要取消前面的 <code>#</code>，<code>#</code> 是用来注释的。</p>
+<h1 id="设置 ssh 运行在其他端口"><a class="markdownIt-Anchor" href="# 设置 ssh 运行在其他端口"></a> 设置 SSH 运行在其他端口</h1>
+<p>还是刚才的 <code>sshd_config</code> 文件，找到 <code>Port</code> 项，把它设置为你希望监控的端口。<br />
+比如下面这样</p>
+<pre class="highlight"><code class="">Port 1234
+</code></pre>
+<p>这里也要记得要取消前面的<code>#</code>。</p>
+<p>现在配置完了，把 ssh 服务重启一下，再试试能不能通过密码登陆了。</p>
+<pre class="highlight"><code class="">service ssh restart
+</code></pre>
+<h1 id="参考资料"><a class="markdownIt-Anchor" href="# 参考资料"></a> 参考资料</h1>
+<p><a href="https://hyjk2000.github.io/2012/03/16/how-to-set-up-ssh-keys/" target="_blank" rel="noopener">设置 SSH 通过密钥登录</a></p>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Linux">Linux</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/ssh">ssh</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -234,6 +386,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -274,7 +431,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "配置 SSH 只能使用密钥登录&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 47,
