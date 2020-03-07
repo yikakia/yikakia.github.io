@@ -69,9 +69,9 @@
       
       <category>学习</category>
       
-      <category>计算机网络</category>
-      
       <category>折腾</category>
+      
+      <category>计算机网络</category>
       
     </categories>
     
@@ -242,11 +242,11 @@
     
     <tags>
       
-      <tag>git</tag>
-      
       <tag>nginx</tag>
       
       <tag>linux</tag>
+      
+      <tag>git</tag>
       
       <tag>ssh</tag>
       
