@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>PyOpenGL 的一些报错及修复</title>
+    <link href="/OpenGL%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html"/>
+    <url>/OpenGL%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html</url>
+    
+    <content type="html"><![CDATA[<p>边学边更新吧，方便自己到时候找</p><h1 id="报错 openglerrornullfunctionerror"><a class="markdownIt-Anchor" href="# 报错 openglerrornullfunctionerror"></a> 报错 OpenGL.error.NullFunctionError</h1><p>我的环境是</p><ul><li>Windows10 1909 x64</li><li>Python 3.8.1<br />我用 pip 直接安装了 <code>PyOpenGL</code> 和<code>PyOpenGL-accelerate</code>，写好一个样例程序运行，发现报了如下的错误</li></ul><pre class="highlight"><code class="">OpenGL.error.NullFunctionError: Attempt to call an undefined function glutInit, check for bool(glutInit) before calling</code></pre><p>上网查了一下，发现是 pip 默认安装的包在 x64 的系统上运行有问题，需要另外安装兼容 x64 的包。</p><p>这个包的下载地址 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyopengl" target="_blank" rel="noopener"> 点这里</a></p><p>点进去后选择最新的 <code>PyOpenGL</code> 和<code>PyOpenGL-accelerate</code>就好了。<br />如下</p><blockquote><p>PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whl<br />PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl</p></blockquote><p>下好后直接到对应的文件夹用 pip 安装就好了，如下</p><pre class="highlight"><code class="">pip install PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whlpip install PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl</code></pre><p>要注意的是 <code>.whl</code> 文件 pip 是不能直接安装的，要先安装 <code>wheel</code> 才行。</p><pre class="highlight"><code class="">pip install wheel</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>opengl</tag>
+      
+      <tag>PyOpenGL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>修改 pip 地址为清华源</title>
     <link href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html"/>
     <url>/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html</url>
@@ -271,11 +300,11 @@
       
       <tag>nginx</tag>
       
-      <tag>hexo</tag>
+      <tag>linux</tag>
       
       <tag>ssh</tag>
       
-      <tag>linux</tag>
+      <tag>hexo</tag>
       
       <tag>建站</tag>
       
