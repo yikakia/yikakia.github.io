@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>修改 pip 地址为清华源</title>
+    <link href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html"/>
+    <url>/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html</url>
+    
+    <content type="html"><![CDATA[<p> 用 pip 装包的时候很慢，想了想修改到清华大学的源加速算了。</p><h1 id="临时使用"><a class="markdownIt-Anchor" href="# 临时使用"></a> 临时使用 </h1><pre class="highlight"><code class="">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</code></pre><p> 注意，simple 不能少, 是 https 而不是 http</p><h1 id="设为默认"><a class="markdownIt-Anchor" href="# 设为默认"></a> 设为默认 </h1><p> 升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p><pre class="highlight"><code class="">pip install pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code></pre><h1 id="临时使用清华源升级 pip"><a class="markdownIt-Anchor" href="# 临时使用清华源升级 pip"></a> 临时使用清华源升级 pip</h1><pre class="highlight"><code class="">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>配置 SSH 只能使用密钥登录</title>
     <link href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95.html"/>
     <url>/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95.html</url>
@@ -69,9 +94,9 @@
       
       <category>学习</category>
       
-      <category>折腾</category>
-      
       <category>计算机网络</category>
+      
+      <category>折腾</category>
       
     </categories>
     
@@ -242,15 +267,15 @@
     
     <tags>
       
+      <tag>git</tag>
+      
       <tag>nginx</tag>
       
-      <tag>linux</tag>
-      
-      <tag>git</tag>
+      <tag>hexo</tag>
       
       <tag>ssh</tag>
       
-      <tag>hexo</tag>
+      <tag>linux</tag>
       
       <tag>建站</tag>
       
