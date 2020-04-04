@@ -13,26 +13,30 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
   <title>Yika`s Blog</title>
 
-  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
-<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
-<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
-<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+  <link  rel="stylesheet" href="/lib/font-awesome/css/all.min.css" />
+<link  rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css" />
+<link  rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css" />
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
 
-<link rel="stylesheet" href="/css/main.css"  >
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+  <link defer rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
 
 
 <meta name="generator" content="Hexo 4.2.0"></head>
@@ -107,7 +111,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/index.png')no-repeat center center;
+         style="background: url('/img/index.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -132,7 +136,8 @@
   <main>
     
       <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5 z-depth-3" id="board"
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
@@ -143,7 +148,7 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/OpenGL%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html">
         <p class="h4 index-header">PyOpenGL 的一些报错及修复</p>
       </a>
@@ -164,15 +169,7 @@ Python 3.8.1
 
 OpenGL.error.NullFunctionError: Attempt to call an undefined function glutInit, check for bool(glutInit) before calling
 
-上网查了一下，发现是 pip 默认安装的包在 x64 的系统上运行有问题，需要另外安装兼容 x64 的包。
-这个包的下载地址  点这里
-点进去后选择最新的 PyOpenGL 和PyOpenGL-accelerate就好了。
-如下
-
-PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whl
-PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl
-
-下好后直接到对应的文件夹用 pip </div>
+上网查了一下，发现是 pip 默认安装的包在 x</div>
         </div>
       </a>
 
@@ -183,17 +180,17 @@ PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
+            <a href="/tags/python/">python</a>&nbsp;
           
-            <a href="/tags/opengl">opengl</a>&nbsp;
+            <a href="/tags/opengl/">opengl</a>&nbsp;
           
-            <a href="/tags/PyOpenGL">PyOpenGL</a>&nbsp;
+            <a href="/tags/PyOpenGL/">PyOpenGL</a>&nbsp;
           
         
       </div>
@@ -203,7 +200,7 @@ PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html">
         <p class="h4 index-header">修改 pip 地址为清华源</p>
       </a>
@@ -225,9 +222,7 @@ pip install pip -U
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
  临时使用清华源升级 pip
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
-
-</div>
+pip in</div>
         </div>
       </a>
 
@@ -238,13 +233,13 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
+            <a href="/tags/python/">python</a>&nbsp;
           
         
       </div>
@@ -254,7 +249,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95.html">
         <p class="h4 index-header">配置 SSH 只能使用密钥登录</p>
       </a>
@@ -277,15 +272,15 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           
-            <a href="/categories/Linux">Linux</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/Linux/">Linux</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/ssh">ssh</a>&nbsp;
+            <a href="/tags/ssh/">ssh</a>&nbsp;
           
         
       </div>
@@ -295,7 +290,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93.html">
         <p class="h4 index-header">为 oracle19c 创建 hr 样例数据库</p>
       </a>
@@ -318,15 +313,15 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           
-            <a href="/categories/OracleDatabase">OracleDatabase</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/OracleDatabase/">OracleDatabase</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/oracle">oracle</a>&nbsp;
+            <a href="/tags/oracle/">oracle</a>&nbsp;
           
         
       </div>
@@ -336,7 +331,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81.html">
         <p class="h4 index-header">利用 Let`s Encrypt 为你的网站加把小锁</p>
       </a>
@@ -359,21 +354,21 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
           
-            <a href="/categories/%E6%8A%98%E8%85%BE">折腾</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/linxu">linxu</a>&nbsp;
+            <a href="/tags/nginx/">nginx</a>&nbsp;
           
-            <a href="/tags/ssl">ssl</a>&nbsp;
+            <a href="/tags/linxu/">linxu</a>&nbsp;
           
-            <a href="/tags/nginx">nginx</a>&nbsp;
+            <a href="/tags/ssl/">ssl</a>&nbsp;
           
         
       </div>
@@ -383,7 +378,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC.html">
         <p class="h4 index-header">给你博客的中英文之间加空格~</p>
       </a>
@@ -399,20 +394,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 為什麼你們就是不能加個空格呢？
 如果你跟我一樣，每次看到網頁上的中文字和英文、數字、符號擠在一塊，就會坐立難安，忍不住想在它們之間加個空格。這個外掛（支援 Chrome 和 Firefox）正是你在網路世界走跳所需要的東西，它會自動替你在網頁中所有的中文字和半形的英文、數字、符號之間插入空白。
 漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。另有研究顯示，打字的時候不喜歡在中文和英文之間加空格的人，感情路都走得很辛苦，有七成的比例會在 34 歲的時候跟自己不愛的人結婚，而其餘三成的人最後只能把遺產留給自己的貓。畢竟愛情跟書寫都需要適時地留白。
-與大家共勉之。
-
-作者的页面
-很有趣，那试试呗，不过这是 js 的实现，幸好有人做好了 hexo 的插件，叫 hexo-filter-auto-spacing 像我这种懒人就直接用别人做好的吧。
-打开终端，输入如下的代码
-npm install hexo-filter-auto-spacing --save
-
-即可安装好。
-之后在你的博客的根目录运行
-hexo clean
-hexo g
-hexo s
-
-</div>
+與大家</div>
         </div>
       </a>
 
@@ -423,13 +405,13 @@ hexo s
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E6%8A%98%E8%85%BE">折腾</a>&nbsp;
+            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/hexo">hexo</a>&nbsp;
+            <a href="/tags/hexo/">hexo</a>&nbsp;
           
         
       </div>
@@ -439,7 +421,7 @@ hexo s
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5.html">
         <p class="h4 index-header">自定义微软拼音的快速时间输入</p>
       </a>
@@ -462,13 +444,13 @@ hexo s
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E6%8A%98%E8%85%BE">折腾</a>&nbsp;
+            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/windows">windows</a>&nbsp;
+            <a href="/tags/windows/">windows</a>&nbsp;
           
         
       </div>
@@ -478,7 +460,7 @@ hexo s
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/git%E5%88%A0%E9%99%A4%E5%A4%A7%E6%96%87%E4%BB%B6.html">
         <p class="h4 index-header">git 删除大文件怎么办？BFG 帮你忙</p>
       </a>
@@ -503,15 +485,15 @@ hexo s
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           
-            <a href="/categories/git">git</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/git/">git</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/git">git</a>&nbsp;
+            <a href="/tags/git/">git</a>&nbsp;
           
         
       </div>
@@ -521,7 +503,7 @@ hexo s
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE.html">
         <p class="h4 index-header">git 代理设置</p>
       </a>
@@ -544,17 +526,17 @@ hexo s
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           
-            <a href="/categories/git">git</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/git/">git</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/git">git</a>&nbsp;
+            <a href="/tags/git/">git</a>&nbsp;
           
-            <a href="/tags/%E4%BB%A3%E7%90%86">代理</a>&nbsp;
+            <a href="/tags/%E4%BB%A3%E7%90%86/">代理</a>&nbsp;
           
         
       </div>
@@ -564,7 +546,7 @@ hexo s
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-8 mx-auto index-info">
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/%E4%B8%AD%E7%82%B9%E7%94%BB%E7%BA%BF%E6%B3%95.html">
         <p class="h4 index-header">计算机图形学（一）中点画线法</p>
       </a>
@@ -587,17 +569,17 @@ hexo s
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
           
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6">计算机图形学</a>&nbsp;
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6">计算机图形学</a>&nbsp;
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>&nbsp;
           
-            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
           
         
       </div>
@@ -613,7 +595,7 @@ hexo s
   </nav>
   
   <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
       ele.href += '#board';
     }
   </script>
@@ -658,58 +640,68 @@ hexo s
 </div>
   
 
+  
+
+  
+
   <footer class="mt-5">
   <div class="text-center py-3">
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    <br>
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
 
     
-  
-    <!-- 不蒜子统计PV -->
-    
-    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
-          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
-  
-  
-    <!-- 不蒜子统计UV -->
-    
-    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
-            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
-  
-  <br>
-
-
 
     
-
-
-    <!-- cnzz Analytics icon -->
-    
-
   </div>
 </footer>
 
 <!-- SCRIPTS -->
-<script src="/lib/jquery/jquery.min.js" ></script>
-<script src="/lib/popper/popper.min.js" ></script>
-<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
-<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
-<script src="/js/main.js" ></script>
+<script  src="/lib/jquery/jquery.min.js" ></script>
+<script  src="/lib/popper/popper.min.js" ></script>
+<script  src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script  src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
 
 
-  <script src="/js/lazyload.js" ></script>
-
-
-
-
-
-  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+  <script  src="/js/lazyload.js" ></script>
 
 
 
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
 
 
 <!-- Plugins -->
@@ -719,7 +711,7 @@ hexo s
 
   
     <!-- Google Analytics -->
-    <script>
+    <script defer>
       (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -738,15 +730,30 @@ hexo s
   
 
   
+    <!-- Tencent Analytics -->
+    <script defer>
+      var _mtac = {};
+      (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "");
+        
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    </script>
+  
 
   
 
-  <!-- cnzz Analytics -->
+  
+
   
 
 
 
-  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script  src="/lib/prettify/prettify.min.js" ></script>
   <script>
     $(document).ready(function () {
       $('pre').addClass('prettyprint  ');
@@ -756,7 +763,7 @@ hexo s
 
 
 
-  <script src="/lib/typed/typed.min.js" ></script>
+  <script  src="/lib/typed/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
@@ -776,7 +783,7 @@ hexo s
 
 
 
-  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script  src="/lib/anchor/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
@@ -795,7 +802,7 @@ hexo s
 
 
 
-  <script src="/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
   <script>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
@@ -807,7 +814,7 @@ hexo s
 
 
 
-  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script defer src="/lib/fancybox/jquery.fancybox.min.js" ></script>
   <script>
     $("#post img:not(.no-zoom img, img[no-zoom])").each(
       function () {
@@ -825,7 +832,7 @@ hexo s
 
   
     <!-- KaTeX -->
-    <link rel="stylesheet" href="/lib/katex/katex.min.css"  >
+    <link  rel="stylesheet" href="/lib/katex/katex.min.css" />
   
 
 
