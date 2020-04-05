@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    188 字
+                    262 字
                   </span>
                 
 
@@ -176,7 +176,7 @@
           <div class="post-content mx-auto" id="post">
             
               <p
-                class="note note-warning">本文最后更新于：星期日, 四月 5日 2020, 11:09 晚上</p>
+                class="note note-warning">本文最后更新于：星期日, 四月 5日 2020, 11:17 晚上</p>
             
             <div class="markdown-body">
               <p>做作业的时候遇到的 c++ 错误报错及其解决方法</p>
@@ -214,6 +214,16 @@
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;
 
 </code></pre>
+<h1 id="e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"><a class="markdownIt-Anchor" href="#e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"></a> E0304	没有与参数列表匹配的 重载函数 “strcpy_s” 实例</h1>
+<p>换成用<code>strcpy_s</code>，但是直接改有问题，因为函数定义不一样。所以要修改程序，示例如下。</p>
+<pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确写法</span>
+<span class="hljs-keyword">char</span> a[]=<span class="hljs-string">"hello"</span>
+<span class="hljs-keyword">int</span> n=<span class="hljs-built_in">strlen</span>(a);
+<span class="hljs-keyword">char</span>* b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[a];
+strcpy_s(b,n,a);
+</code></pre>
+<p># 参考<br />
+<a href="https://zh.cppreference.com/w/c/string/byte/strcpy" target="_blank" rel="noopener">strcpy, strcpy_s</a></p>
 
             </div>
             <hr>
