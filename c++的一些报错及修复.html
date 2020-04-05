@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    98 字
+                    188 字
                   </span>
                 
 
@@ -176,29 +176,43 @@
           <div class="post-content mx-auto" id="post">
             
               <p
-                class="note note-warning">本文最后更新于：星期日, 四月 5日 2020, 10:37 晚上</p>
+                class="note note-warning">本文最后更新于：星期日, 四月 5日 2020, 11:09 晚上</p>
             
             <div class="markdown-body">
-              <p> 做作业的时候遇到的 c++ 错误报错及其解决方法 </p>
+              <p>做作业的时候遇到的 c++ 错误报错及其解决方法</p>
 <a id="more"></a>
 <h1 id="error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"><a class="markdownIt-Anchor" href="#error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"></a> error C4430: 缺少类型说明符 - 假定为 int。注意:C++ 不支持默认 int</h1>
-<p> 我的错误是出现在没有把 </p>
+<p>我的错误是出现在没有把</p>
 <pre class="highlight"><code class="">using namespace std;
 </code></pre>
-<p> 放在用 STL 之前。<br />
-举个例子 </p>
-<pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误 </span>
+<p>放在用 STL 之前。<br />
+举个例子</p>
+<pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;
 <span class="hljs-built_in">string</span> str[MAXNUM];
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
 </code></pre>
-<pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确 </span>
+<pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;
 <span class="hljs-built_in">string</span> str[MAXNUM];
+</code></pre>
+<h1 id="lnk2005xxxxx 在 xx 中已经定义"><a class="markdownIt-Anchor" href="#lnk2005xxxxx 在 xx 中已经定义"></a> LNK2005:XXXXX 在 XX 中已经定义</h1>
+<p>我的错误是在 <code>.h</code> 文件中定义了变量。示例如下</p>
+<pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误示范</span>
+<span class="hljs-comment">// 在 a.h 文件中定义了这么一个常量</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;
+</code></pre>
+<pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确写法</span>
+<span class="hljs-comment">// 在 a.h 中只定义类，在 a.cpp 文件中定义常量</span>
+<span class="hljs-comment">//a.h</span>
+只定义类不定义变量
+<span class="hljs-comment">//a.cpp</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;
+
 </code></pre>
 
             </div>
