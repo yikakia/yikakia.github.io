@@ -4,11 +4,38 @@
   
   
   <entry>
+    <title>c++ 的一些报错及修复</title>
+    <link href="/c++%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html"/>
+    <url>/c++%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html</url>
+    
+    <content type="html"><![CDATA[<p> 做作业的时候遇到的 c++ 错误报错及其解决方法 </p><a id="more"></a><h1 id="error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"><a class="markdownIt-Anchor" href="#error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"></a> error C4430: 缺少类型说明符 - 假定为 int。注意:C++ 不支持默认 int</h1><p> 我的错误是出现在没有把 </p><pre class="highlight"><code class="">using namespace std;</code></pre><p> 放在用 STL 之前。<br />举个例子 </p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误 </span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;<span class="hljs-built_in">string</span> str[MAXNUM];<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</code></pre><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确 </span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;<span class="hljs-built_in">string</span> str[MAXNUM];</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>error</tag>
+      
+      <tag>c++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>PyOpenGL 的一些报错及修复</title>
     <link href="/OpenGL%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html"/>
     <url>/OpenGL%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html</url>
     
-    <content type="html"><![CDATA[<p>边学边更新吧，方便自己到时候找</p><h1 id="报错 openglerrornullfunctionerror"><a class="markdownIt-Anchor" href="# 报错 openglerrornullfunctionerror"></a> 报错 OpenGL.error.NullFunctionError</h1><p>我的环境是</p><ul><li>Windows10 1909 x64</li><li>Python 3.8.1<br />我用 pip 直接安装了 <code>PyOpenGL</code> 和<code>PyOpenGL-accelerate</code>，写好一个样例程序运行，发现报了如下的错误</li></ul><pre class="highlight"><code class="">OpenGL.error.NullFunctionError: Attempt to call an undefined function glutInit, check for bool(glutInit) before calling</code></pre><p>上网查了一下，发现是 pip 默认安装的包在 x64 的系统上运行有问题，需要另外安装兼容 x64 的包。</p><p>这个包的下载地址 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyopengl" target="_blank" rel="noopener"> 点这里</a></p><p>点进去后选择最新的 <code>PyOpenGL</code> 和<code>PyOpenGL-accelerate</code>就好了。<br />如下</p><blockquote><p>PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whl<br />PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl</p></blockquote><p>下好后直接到对应的文件夹用 pip 安装就好了，如下</p><pre class="highlight"><code class="">pip install PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whlpip install PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl</code></pre><p>要注意的是 <code>.whl</code> 文件 pip 是不能直接安装的，要先安装 <code>wheel</code> 才行。</p><pre class="highlight"><code class="">pip install wheel</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>边学边更新吧，方便自己到时候找</p><a id="more"></a><h1 id="报错 openglerrornullfunctionerror"><a class="markdownIt-Anchor" href="# 报错 openglerrornullfunctionerror"></a> 报错 OpenGL.error.NullFunctionError</h1><p>我的环境是</p><ul><li>Windows10 1909 x64</li><li>Python 3.8.1<br />我用 pip 直接安装了 <code>PyOpenGL</code> 和<code>PyOpenGL-accelerate</code>，写好一个样例程序运行，发现报了如下的错误</li></ul><pre class="highlight"><code class="">OpenGL.error.NullFunctionError: Attempt to call an undefined function glutInit, check for bool(glutInit) before calling</code></pre><p>上网查了一下，发现是 pip 默认安装的包在 x64 的系统上运行有问题，需要另外安装兼容 x64 的包。</p><p>这个包的下载地址 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyopengl" target="_blank" rel="noopener"> 点这里</a></p><p>点进去后选择最新的 <code>PyOpenGL</code> 和<code>PyOpenGL-accelerate</code>就好了。<br />如下</p><blockquote><p>PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whl<br />PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl</p></blockquote><p>下好后直接到对应的文件夹用 pip 安装就好了，如下</p><pre class="highlight"><code class="bash">pip install PyOpenGL‑3.1.5‑cp38‑cp38‑win_amd64.whlpip install PyOpenGL_accelerate‑3.1.5‑cp38‑cp38‑win_amd64.whl</code></pre><p>要注意的是 <code>.whl</code> 文件 pip 是不能直接安装的，要先安装 <code>wheel</code> 才行。</p><pre class="highlight"><code class="bash">pip install wheel</code></pre>]]></content>
     
     
     <categories>
@@ -26,6 +53,8 @@
       
       <tag>PyOpenGL</tag>
       
+      <tag>error</tag>
+      
     </tags>
     
   </entry>
@@ -37,7 +66,7 @@
     <link href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html"/>
     <url>/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90.html</url>
     
-    <content type="html"><![CDATA[<p> 用 pip 装包的时候很慢，想了想修改到清华大学的源加速算了。</p><h1 id="临时使用"><a class="markdownIt-Anchor" href="# 临时使用"></a> 临时使用 </h1><pre class="highlight"><code class="">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</code></pre><p> 注意，simple 不能少, 是 https 而不是 http</p><h1 id="设为默认"><a class="markdownIt-Anchor" href="# 设为默认"></a> 设为默认 </h1><p> 升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p><pre class="highlight"><code class="">pip install pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code></pre><h1 id="临时使用清华源升级 pip"><a class="markdownIt-Anchor" href="# 临时使用清华源升级 pip"></a> 临时使用清华源升级 pip</h1><pre class="highlight"><code class="">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</code></pre>]]></content>
+    <content type="html"><![CDATA[<p> 用 pip 装包的时候很慢，想了想修改到清华大学的源加速算了。</p><a id="more"></a><h1 id="临时使用"><a class="markdownIt-Anchor" href="# 临时使用"></a> 临时使用 </h1><pre class="highlight"><code class="">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</code></pre><p> 注意，simple 不能少, 是 https 而不是 http</p><h1 id="设为默认"><a class="markdownIt-Anchor" href="# 设为默认"></a> 设为默认 </h1><p> 升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p><pre class="highlight"><code class="">pip install pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code></pre><h1 id="临时使用清华源升级 pip"><a class="markdownIt-Anchor" href="# 临时使用清华源升级 pip"></a> 临时使用清华源升级 pip</h1><pre class="highlight"><code class="">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</code></pre>]]></content>
     
     
     <categories>
@@ -50,6 +79,8 @@
     <tags>
       
       <tag>python</tag>
+      
+      <tag>pip</tag>
       
     </tags>
     
@@ -123,20 +154,20 @@
       
       <category>学习</category>
       
-      <category>折腾</category>
-      
       <category>计算机网络</category>
+      
+      <category>折腾</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>nginx</tag>
-      
       <tag>linxu</tag>
       
       <tag>ssl</tag>
+      
+      <tag>nginx</tag>
       
     </tags>
     
@@ -298,13 +329,13 @@
       
       <tag>git</tag>
       
-      <tag>hexo</tag>
+      <tag>nginx</tag>
       
       <tag>linux</tag>
       
       <tag>ssh</tag>
       
-      <tag>nginx</tag>
+      <tag>hexo</tag>
       
       <tag>建站</tag>
       
