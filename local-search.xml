@@ -4,11 +4,34 @@
   
   
   <entry>
+    <title>vsftp 配置</title>
+    <link href="/vsftp%E9%85%8D%E7%BD%AE.html"/>
+    <url>/vsftp%E9%85%8D%E7%BD%AE.html</url>
+    
+    <content type="html"><![CDATA[<p> 主要是想从 vps 上拖文件下来 </p><a id="more"></a><p> 我的环境 </p><ul><li>debian10</li></ul><h1 id="安装 vsftp"><a class="markdownIt-Anchor" href="# 安装 vsftp"></a> 安装 vsftp</h1><pre class="highlight"><code class="bash">apt install vsftp</code></pre><h1 id="配置 vsftp"><a class="markdownIt-Anchor" href="# 配置 vsftp"></a> 配置 vsftp</h1><p> 输入以下命令 </p><pre class="highlight"><code class="bash">cp /etc/vsftpd.conf /etc/vsftpd.conf.bak <span class="hljs-comment"># 备份配置文件 </span>nano /etc/vsftpd.conf                    <span class="hljs-comment"># 编辑配置文件 </span></code></pre><p> 按照下面的填法，把对应的项修改了 </p><pre class="highlight"><code class="conf">listen=NOlisten_ipv6=YESanonymous_enable=NO#允许本地用户登录 (就是你主机上本来的账户)local_enable=YESdirmessage_enable=YESuse_localtime=YESxferlog_enable=YESconnect_from_port_20=YESsecure_chroot_dir=/var/run/vsftpd/emptypam_service_name=vsftpdssl_enable=NO#这里表示你的 ftp 服务器的根目录local_root=/download</code></pre><p> 一般来说把我注释的这两项改了就行。</p><p> 改完以后保存并退出，然后重启 vsftp 服务。</p><pre class="highlight"><code class="bash">service vsftpd restart</code></pre><p> 如果没有报错，那就正常运行了。现在你可以试试登录看。<br />在浏览器这样输入 </p><pre class="highlight"><code class="">ftp:// 你的 IP 地址</code></pre><p> 一般就可以了。登录的账户就是你主机上可以登录的账户，而密码就是你用的那个密码。<br />为了安全起见还是应该开一个虚拟账户，专门用于登录 FTP，并且禁止本地用户登录，不过我就偷懒没这么做啦。直接禁止了用密码 SSH 登录上主机。</p><p> 想和我一样直接禁止用密码 SSH 登陆上主机的话，可以参考我的这篇博客👉<a href="https://www.yikakia.com/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95.html"> 配置 SSH 只能使用密钥登录 </a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>ftp</tag>
+      
+      <tag>折腾</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>c++ 的一些报错及修复</title>
     <link href="/c++%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html"/>
     <url>/c++%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D.html</url>
     
-    <content type="html"><![CDATA[<p>做作业的时候遇到的 c++ 错误报错及其解决方法</p><a id="more"></a><h1 id="error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"><a class="markdownIt-Anchor" href="#error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"></a> error C4430: 缺少类型说明符 - 假定为 int。注意:C++ 不支持默认 int</h1><p>我的错误是出现在没有把</p><pre class="highlight"><code class="">using namespace std;</code></pre><p>放在用 STL 之前。<br />举个例子</p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;<span class="hljs-built_in">string</span> str[MAXNUM];<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</code></pre><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;<span class="hljs-built_in">string</span> str[MAXNUM];</code></pre><h1 id="lnk2005xxxxx 在 xx 中已经定义"><a class="markdownIt-Anchor" href="#lnk2005xxxxx 在 xx 中已经定义"></a> LNK2005:XXXXX 在 XX 中已经定义</h1><p>我的错误是在 <code>.h</code> 文件中定义了变量。示例如下</p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误示范</span><span class="hljs-comment">// 在 a.h 文件中定义了这么一个常量</span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;</code></pre><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确写法</span><span class="hljs-comment">// 在 a.h 中只定义类，在 a.cpp 文件中定义常量</span><span class="hljs-comment">//a.h</span>只定义类不定义变量<span class="hljs-comment">//a.cpp</span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;</code></pre><h1 id="e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"><a class="markdownIt-Anchor" href="#e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"></a> E0304没有与参数列表匹配的 重载函数 “strcpy_s” 实例</h1><p>换成用<code>strcpy_s</code>，但是直接改有问题，因为函数定义不一样。所以要修改程序，示例如下。</p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确写法</span><span class="hljs-keyword">char</span> a[]=<span class="hljs-string">"hello"</span><span class="hljs-keyword">int</span> n=<span class="hljs-built_in">strlen</span>(a);<span class="hljs-keyword">char</span>* b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[a];strcpy_s(b,n,a);</code></pre><p># 参考<br /><a href="https://zh.cppreference.com/w/c/string/byte/strcpy" target="_blank" rel="noopener">strcpy, strcpy_s</a></p>]]></content>
+    <content type="html"><![CDATA[<p>做作业的时候遇到的 c++ 错误报错及其解决方法</p><a id="more"></a><h1 id="error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"><a class="markdownIt-Anchor" href="#error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"></a> error C4430: 缺少类型说明符 - 假定为 int。注意:C++ 不支持默认 int</h1><p>我的错误是出现在没有把</p><pre class="highlight"><code class="">using namespace std;</code></pre><p>放在用 STL 之前。<br />举个例子</p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;<span class="hljs-built_in">string</span> str[MAXNUM];<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</code></pre><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;<span class="hljs-built_in">string</span> str[MAXNUM];</code></pre><h1 id="lnk2005xxxxx 在 xx 中已经定义"><a class="markdownIt-Anchor" href="#lnk2005xxxxx 在 xx 中已经定义"></a> LNK2005:XXXXX 在 XX 中已经定义</h1><p>我的错误是在 <code>.h</code> 文件中定义了变量。示例如下</p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 错误示范</span><span class="hljs-comment">// 在 a.h 文件中定义了这么一个常量</span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;</code></pre><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确写法</span><span class="hljs-comment">// 在 a.h 中只定义类，在 a.cpp 文件中定义常量</span><span class="hljs-comment">//a.h</span>只定义类不定义变量<span class="hljs-comment">//a.cpp</span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;</code></pre><h1 id="e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"><a class="markdownIt-Anchor" href="#e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"></a> E0304没有与参数列表匹配的 重载函数 “strcpy_s” 实例</h1><p>换成用<code>strcpy_s</code>，但是直接改有问题，因为函数定义不一样。所以要修改程序，示例如下。</p><pre class="highlight"><code class="c++"><span class="hljs-comment">// 正确写法</span><span class="hljs-keyword">char</span> a[]=<span class="hljs-string">"hello"</span><span class="hljs-keyword">int</span> n=<span class="hljs-built_in">strlen</span>(a);<span class="hljs-keyword">char</span>* b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[a];strcpy_s(b,n,a);</code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://zh.cppreference.com/w/c/string/byte/strcpy" target="_blank" rel="noopener">strcpy, strcpy_s</a></p>]]></content>
     
     
     <categories>
@@ -154,20 +177,20 @@
       
       <category>学习</category>
       
-      <category>计算机网络</category>
-      
       <category>折腾</category>
+      
+      <category>计算机网络</category>
       
     </categories>
     
     
     <tags>
       
+      <tag>nginx</tag>
+      
       <tag>linxu</tag>
       
       <tag>ssl</tag>
-      
-      <tag>nginx</tag>
       
     </tags>
     
@@ -329,13 +352,13 @@
       
       <tag>git</tag>
       
-      <tag>nginx</tag>
-      
-      <tag>hexo</tag>
-      
       <tag>linux</tag>
       
       <tag>ssh</tag>
+      
+      <tag>hexo</tag>
+      
+      <tag>nginx</tag>
       
       <tag>建站</tag>
       
