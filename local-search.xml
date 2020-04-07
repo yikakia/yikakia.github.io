@@ -177,20 +177,20 @@
       
       <category>学习</category>
       
-      <category>折腾</category>
-      
       <category>计算机网络</category>
+      
+      <category>折腾</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>nginx</tag>
-      
       <tag>linxu</tag>
       
       <tag>ssl</tag>
+      
+      <tag>nginx</tag>
       
     </tags>
     
@@ -354,11 +354,11 @@
       
       <tag>linux</tag>
       
+      <tag>nginx</tag>
+      
       <tag>ssh</tag>
       
       <tag>hexo</tag>
-      
-      <tag>nginx</tag>
       
       <tag>建站</tag>
       
