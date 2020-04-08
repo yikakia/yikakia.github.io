@@ -8,7 +8,7 @@
     <link href="/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html"/>
     <url>/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html</url>
     
-    <content type="html"><![CDATA[<p>需要后台运行程序时，就可以用到 tmux 了。</p><a id="more"></a><h1 id="什么是 tmux"><a class="markdownIt-Anchor" href="# 什么是 tmux"></a> 什么是 tmux</h1><p>简单的说 tmux 就是终端复用工具。使用的场景是你有希望跑在 Linux 服务器上的程序，而且这个程序不会因为你退出而结束。</p><h1 id="tmux 的安装"><a class="markdownIt-Anchor" href="#tmux 的安装"></a> tmux 的安装</h1><p>我的环境是 debian10，安装的话用下面的语句就行</p><pre class="highlight"><code class="bash">apt install tmux</code></pre><p>这样就安装好了 tmux</p><h1 id="tmux 的启动与退出"><a class="markdownIt-Anchor" href="#tmux 的启动与退出"></a> tmux 的启动与退出</h1><h2 id="启动"><a class="markdownIt-Anchor" href="# 启动"></a> 启动</h2><p>在终端输入</p><pre class="highlight"><code class="bash">tmux</code></pre><p>即可进入 tmux 界面。你会进入一个新的界面，下面有一行关于 tmux 使用的信息。</p><h2 id="退出"><a class="markdownIt-Anchor" href="# 退出"></a> 退出</h2><p>在 tmux 的界面，按下 <code>Ctrl+D</code> 或者直接输入 <code>exit</code> 即可退出 tmux。</p><h1 id="tmux 查看所有会话"><a class="markdownIt-Anchor" href="#tmux 查看所有会话"></a> tmux 查看所有会话</h1><p>进入 tmux 以后，其实就开启了一个新的会话，你可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看正在运行的 tmux 会话。如果不出意外的话，大概会显示下面这样的结果。</p><pre class="highlight"><code class="">0: 1 windows (created Wed Apr  8 06:41:21 2020) [134x37] (attached)</code></pre><p>这里的 <code>0</code> 就是一个会话的名字，现在也就是当前这个会话的名字。当然也可以更改这个会话的名字。</p><h1 id="tmux 更改对应会话的名字"><a class="markdownIt-Anchor" href="#tmux 更改对应会话的名字"></a> tmux 更改对应会话的名字</h1><pre class="highlight"><code class="bash">tmux rename-session -t 0 new-sessiontmux ls</code></pre><p>这样就可以看到如下的结果，把原来叫 <code>0</code> 的窗口的名字改成了<code>new-session</code></p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37] (attached)</code></pre><h1 id="tmux 将当前会话放入后台"><a class="markdownIt-Anchor" href="#tmux 将当前会话放入后台"></a> tmux 将当前会话放入后台</h1><p>这个操作很简单，先按下<code>Ctrl+B</code>, 然后按下<code>D</code>，这样就可以把当前的会话放入后台了。<br />退出来了之后看看那个会话在不在后台运行，可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看。没有意外的话，会返回类似于这样的信息</p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37]</code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a><br /><a href="https://www.jianshu.com/p/c3e1ed08f029" target="_blank" rel="noopener">tmux–后台运行利器</a></p>]]></content>
+    <content type="html"><![CDATA[<p>需要后台运行程序时，就可以用到 tmux 了。</p><a id="more"></a><h1 id="什么是 tmux"><a class="markdownIt-Anchor" href="# 什么是 tmux"></a> 什么是 tmux</h1><p>简单的说 tmux 就是终端复用工具。使用的场景是你有希望跑在 Linux 服务器上的程序，而且这个程序不会因为你退出而结束。</p><h1 id="tmux 的安装"><a class="markdownIt-Anchor" href="#tmux 的安装"></a> tmux 的安装</h1><p>我的环境是 debian10，安装的话用下面的语句就行</p><pre class="highlight"><code class="bash">apt install tmux</code></pre><p>这样就安装好了 tmux</p><h1 id="tmux 的启动与退出"><a class="markdownIt-Anchor" href="#tmux 的启动与退出"></a> tmux 的启动与退出</h1><h2 id="启动"><a class="markdownIt-Anchor" href="# 启动"></a> 启动</h2><p>在终端输入</p><pre class="highlight"><code class="bash">tmux</code></pre><p>即可进入 tmux 界面。你会进入一个新的界面，下面有一行关于 tmux 使用的信息。</p><h2 id="退出"><a class="markdownIt-Anchor" href="# 退出"></a> 退出</h2><p>在 tmux 的界面，按下 <code>Ctrl+D</code> 或者直接输入 <code>exit</code> 即可退出 tmux。</p><h1 id="tmux 查看所有会话"><a class="markdownIt-Anchor" href="#tmux 查看所有会话"></a> tmux 查看所有会话</h1><p>进入 tmux 以后，其实就开启了一个新的会话，你可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看正在运行的 tmux 会话。如果不出意外的话，大概会显示下面这样的结果。</p><pre class="highlight"><code class="">0: 1 windows (created Wed Apr  8 06:41:21 2020) [134x37] (attached)</code></pre><p>这里的 <code>0</code> 就是一个会话的名字，现在也就是当前这个会话的名字。当然也可以更改这个会话的名字。</p><h1 id="tmux 更改对应会话的名字"><a class="markdownIt-Anchor" href="#tmux 更改对应会话的名字"></a> tmux 更改对应会话的名字</h1><pre class="highlight"><code class="bash">tmux rename-session -t 0 new-sessiontmux ls</code></pre><p>这样就可以看到如下的结果，把原来叫 <code>0</code> 的窗口的名字改成了<code>new-session</code></p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37] (attached)</code></pre><h1 id="tmux 将当前会话放入后台"><a class="markdownIt-Anchor" href="#tmux 将当前会话放入后台"></a> tmux 将当前会话放入后台</h1><p>这个操作很简单，先按下<code>Ctrl+B</code>, 然后按下<code>D</code>，这样就可以把当前的会话放入后台了。<br />退出来了之后看看那个会话在不在后台运行，可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看。没有意外的话，会返回类似于这样的信息</p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37]</code></pre><p>现在的话你就可以做到退出 SSH，而程序依然在后台跑了。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a><br /><a href="https://www.jianshu.com/p/c3e1ed08f029" target="_blank" rel="noopener">tmux–后台运行利器</a></p>]]></content>
     
     
     <categories>
@@ -73,6 +73,60 @@
       <tag>error</tag>
       
       <tag>c++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>python 中的元组是不是一定不可变？</title>
+    <link href="/python%E4%B8%AD%E7%9A%84%E5%85%83%E7%BB%84%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E5%AE%9A%E4%B8%8D%E5%8F%AF%E5%8F%98%EF%BC%9F.html"/>
+    <url>/python%E4%B8%AD%E7%9A%84%E5%85%83%E7%BB%84%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E5%AE%9A%E4%B8%8D%E5%8F%AF%E5%8F%98%EF%BC%9F.html</url>
+    
+    <content type="html"><![CDATA[<p> 先给结论，<strong> 元组是不可变的，但是当元组指向可变的变量时，元组就可以改变了。</strong></p><a id="more"></a><h1 id="原理"><a class="markdownIt-Anchor" href="# 原理"></a> 原理 </h1><p> 我们定义这么一个元组，并且输出看看 </p><pre class="highlight"><code class="python">a = ([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])print(a)</code></pre><p> 就会出现这样的结果 </p><pre class="highlight"><code class="python">([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>])</code></pre><p> 然后我们尝试直接更改元组中的列表 </p><pre class="highlight"><code class="python">a[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">3</span>print(a)</code></pre><p> 就会出现下面这样的输出 </p><pre class="highlight"><code class="python">([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">3</span>])</code></pre><p> 发现没有？原本应该不可变的元组竟然改变了！难道这是什么 bug 么？<br />让我们看看再仔细看看。</p><p> 输出元组以及其中的元素的内存地址 </p><pre class="highlight"><code class="python">print(id(a),id(a[<span class="hljs-number">0</span>]),id(a[<span class="hljs-number">1</span>]))</code></pre><p> 得到类似于这样的输出 </p><pre class="highlight"><code class="">2252305881536 2252305961792 2252305961664</code></pre><p> 让我们先记下这些的内存地址，再尝试改变一下其中一个列表的值 </p><pre class="highlight"><code class="python">a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">0</span></code></pre><p> 再查看一下元组以及其中的元素的内存地址 </p><pre class="highlight"><code class="python">print(id(a),id(a[<span class="hljs-number">0</span>]),id(a[<span class="hljs-number">1</span>]))</code></pre><p> 会发现输出的信息和刚才输出的是一样的。</p><pre class="highlight"><code class="">2252305881536 2252305961792 2252305961664</code></pre><p> 那么现在就可以得到我们最开始的那个结论了 </p><h1 id="结论"><a class="markdownIt-Anchor" href="# 结论"></a> 结论 </h1><p><strong> 元组是不可变的，但是当元组指向可变的变量时，元组就可以改变了。</strong></p><p> 在这里，元组的本身依然时不可变的，因为它指向的内存地址没有发生改变。然而元组所指向的内存地址却不一定是不可变的。因为它可以是列表。在这种情况下，元组就会表现得可变了。</p><p> 因此我们在使用多维元组时，如果不希望元组有一点的改变的话，就应该把其全部定义为元组，而不应该是元组嵌套列表。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://segmentfault.com/a/1190000010767068" target="_blank" rel="noopener">Python 中 tuple+= 赋值的四个问题 </a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vscode-pylint- 配置</title>
+    <link href="/vscode-pylint-%E9%85%8D%E7%BD%AE.html"/>
+    <url>/vscode-pylint-%E9%85%8D%E7%BD%AE.html</url>
+    
+    <content type="html"><![CDATA[<p> 主要是各种 unused 实在是太烦人了。</p><a id="more"></a><h1 id="新建 settingsjson 文件"><a class="markdownIt-Anchor" href="# 新建 settingsjson 文件"></a> 新建 settings.json 文件 </h1><p> 如果当前工作区没有这个文件的话，可以新建这样文件。</p><h1 id="编辑 settingsjson 文件"><a class="markdownIt-Anchor" href="# 编辑 settingsjson 文件"></a> 编辑 settings.json 文件 </h1><p> 然后就是配置 pylint 了 <br />输入以下的配置 </p><pre class="highlight"><code class="">{    &quot;python.linting.pylintArgs&quot;: [&quot;--disable=C,R,W, --enable=unreachable,duplicate-key,unnecessary-semicolon,global-variable-not-assigned,unused-variable,binary-op-exception,bad-format-string,anomalous-backslash-in-string,bad-open-mode&quot;]}</code></pre><p> 这就是禁用了常常会出现的一些警告。现在看报错信息的话，就更容易定位到错误位置了。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://youyou-tech.com/2019/09/26/vscode%E9%92%88%E5%AF%B9python%E7%BC%96%E7%A8%8B%EF%BC%8C%E7%AE%80%E5%8D%95%E8%AE%BE/" target="_blank" rel="noopener">vscode 针对 python 编程，简单设置 pylint, 解决各种无关的波浪线 </a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>vscode</tag>
+      
+      <tag>pylint</tag>
       
     </tags>
     
