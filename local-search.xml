@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>pip 的 requirements.txt 怎么用</title>
+    <link href="/pip%E7%9A%84requirements-txt%E6%80%8E%E4%B9%88%E7%94%A8.html"/>
+    <url>/pip%E7%9A%84requirements-txt%E6%80%8E%E4%B9%88%E7%94%A8.html</url>
+    
+    <content type="html"><![CDATA[<p>这是我第一个全靠看官方文档搞懂的问题</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>在从 git 上运行一些 Python 开源项目时，会发现有 <code>requirements.txt</code> 这样的文件。这个一般都存放着这个项目所需要的依赖项。通过这个文件，我们可以快速的搭建所需要的环境。</p><h1 id="使用"><a class="markdownIt-Anchor" href="# 使用"></a> 使用</h1><p>其实很简单，到有 <code>requirements.txt</code> 这个文件的文件夹下，输入以下的指令就可以安装好了</p><pre class="highlight"><code class="bash">pip install -r requirements.txt</code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://pip.pypa.io/en/stable/user_guide/" target="_blank" rel="noopener">pip 的官方说明书</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>pip</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>debian10 自己编译 python3.8</title>
     <link href="/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8.html"/>
     <url>/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8.html</url>
@@ -126,9 +153,9 @@
     
     <tags>
       
-      <tag>error</tag>
-      
       <tag>c++</tag>
+      
+      <tag>error</tag>
       
     </tags>
     
@@ -207,13 +234,13 @@
     
     <tags>
       
+      <tag>error</tag>
+      
       <tag>python</tag>
       
       <tag>opengl</tag>
       
       <tag>PyOpenGL</tag>
-      
-      <tag>error</tag>
       
     </tags>
     
