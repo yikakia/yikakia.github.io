@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>python 虚拟环境的使用</title>
+    <link href="/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8.html"/>
+    <url>/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8.html</url>
+    
+    <content type="html"><![CDATA[<p>为了开发的方便，所以得每个项目都有自己的库</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>在开发的时候，有些项目之间的依赖项冲突，有的用的是老版，有的用的是新版。为了解决这问题，最好在开发的时候就针对每一个项目搞一个自己环境，互相之间隔离起来。这样会方便很多。</p><h1 id="创建虚拟环境"><a class="markdownIt-Anchor" href="# 创建虚拟环境"></a> 创建虚拟环境</h1><p>在你喜欢的位置（最好是你的项目的根目录下），输入以下的指令</p><pre class="highlight"><code class="bash">python -m venv ProjectEnv</code></pre><p>这会新建一个叫 <code>ProjectEnv</code> 的目录，并且在里面配置好对应版本的 Python 解释器。如果你需要其他的版本，就用对应的版本来创建，如下便是创建了应用 Python3.8 的虚拟环境。</p><pre class="highlight"><code class="bash">python3.8 -m venv ProjectEnv</code></pre><h1 id="激活虚拟环境"><a class="markdownIt-Anchor" href="# 激活虚拟环境"></a> 激活虚拟环境</h1><p>在刚才的目录下，输入以下的指令来激活虚拟环境</p><pre class="highlight"><code class="bash"><span class="hljs-built_in">source</span> ProjectEnv/bin/activate</code></pre><h1 id="退出虚拟环境"><a class="markdownIt-Anchor" href="# 退出虚拟环境"></a> 退出虚拟环境</h1><p>直接输入以下指令就可以退出虚拟环境了</p><pre class="highlight"><code class="bash">deactivate</code></pre><h1 id="在虚拟环境中安装包"><a class="markdownIt-Anchor" href="# 在虚拟环境中安装包"></a> 在虚拟环境中安装包</h1><p>和在外面一样，直接用 pip 就可以了。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://docs.python.org/zh-cn/3/tutorial/venv.html#virtual-environments-and-packages" target="_blank" rel="noopener">12. 虚拟环境和包 ——Python 3.8.2 文档</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>linux</tag>
+      
+      <tag>虚拟环境</tag>
+      
+      <tag>debian</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>pip 的 requirements.txt 怎么用</title>
     <link href="/pip%E7%9A%84requirements-txt%E6%80%8E%E4%B9%88%E7%94%A8.html"/>
     <url>/pip%E7%9A%84requirements-txt%E6%80%8E%E4%B9%88%E7%94%A8.html</url>
@@ -153,9 +186,9 @@
     
     <tags>
       
-      <tag>c++</tag>
-      
       <tag>error</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -234,13 +267,13 @@
     
     <tags>
       
-      <tag>error</tag>
-      
       <tag>python</tag>
       
       <tag>opengl</tag>
       
       <tag>PyOpenGL</tag>
+      
+      <tag>error</tag>
       
     </tags>
     
