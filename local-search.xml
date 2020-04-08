@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>debian10 自己编译 python3.8</title>
+    <link href="/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8.html"/>
+    <url>/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8.html</url>
+    
+    <content type="html"><![CDATA[<p>apt 仓库罪大恶极，搞得民众怨声载道。</p><a id="more"></a><h1 id="闲聊"><a class="markdownIt-Anchor" href="# 闲聊"></a> 闲聊</h1><p>之所以会要这么干，主要就是因为 apt 仓库不提供 python3.8 的源。而我自己利用开源的 <a href="https://github.com/simonsmh/telegram-group-easyauth" target="_blank" rel="noopener">telegrambot</a> 自己搞的一个入群验证 Bot 发现要求 Python 版本在 3.8 以上。所以想了想，还是把这个搞定吧。</p><h1 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h1><p>我的环境是</p><ol><li>系统版本 debian10</li></ol><h1 id="安装编译依赖包"><a class="markdownIt-Anchor" href="# 安装编译依赖包"></a> 安装编译依赖包</h1><pre class="highlight"><code class="bash">apt updateapt-get install -y build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev tar wget vim</code></pre><h1 id="下载 python38 源代码"><a class="markdownIt-Anchor" href="# 下载 python38 源代码"></a> 下载 Python3.8 源代码</h1><pre class="highlight"><code class="bash">mkdir download<span class="hljs-built_in">cd</span> downloadwget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgztar -zxf Python-3.8.0.tgz<span class="hljs-built_in">cd</span> Python-3.8.0</code></pre><h1 id="编译并安装 python38"><a class="markdownIt-Anchor" href="# 编译并安装 python38"></a> 编译并安装 Python3.8</h1><pre class="highlight"><code class="bash">./configure --<span class="hljs-built_in">enable</span>-optimizationsmake -j 4 <span class="hljs-comment"># 如果你的系统有 8 核，可以使用 -j 8</span>make altinstall</code></pre><p>这里要查看系统核心数量的话，可以参考我的这篇博客<a href="https://www.yikakia.com/linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83%E6%95%B0.html">linux 查看系统核心数</a></p><h1 id="确认安装成功"><a class="markdownIt-Anchor" href="# 确认安装成功"></a> 确认安装成功</h1><pre class="highlight"><code class="bash">python3.8 --version</code></pre><h1 id="设置 python 默认版本"><a class="markdownIt-Anchor" href="# 设置 python 默认版本"></a> 设置 Python 默认版本</h1><pre class="highlight"><code class="bash">rm -rf /usr/bin/pythonln -s /usr/<span class="hljs-built_in">local</span>/bin/python3.8 /usr/bin/python</code></pre><p>现在就可以用</p><pre class="highlight"><code class="bash">python --version</code></pre><p>看看是不是设置好了。<br />之后如果 pip 出现问题可以看我参考链接的第二个和第三个</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.itgeeker.net/ubuntu-debian-raspbian-install-python3-8-use-source-code-complier/" target="_blank" rel="noopener">Ubuntu/Debian/Raspbian 源码编译安装 Python3.8 及默认版本选择配置</a><br /><a href="https://blog.csdn.net/White_Idiot/article/details/78240298" target="_blank" rel="noopener">【Python】Ubuntu 修改默认 Python 版本</a><br /><a href="https://www.cnblogs.com/phpper/p/10887602.html" target="_blank" rel="noopener">Python3 安装 pip 提示 ModuleNotFoundError: No module named ‘distutils.util’</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>linux</tag>
+      
+      <tag>编译</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>linux 查看系统核心数</title>
     <link href="/linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83%E6%95%B0.html"/>
     <url>/linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83%E6%95%B0.html</url>
@@ -283,9 +312,9 @@
     
     <categories>
       
-      <category>折腾</category>
-      
       <category>学习</category>
+      
+      <category>折腾</category>
       
       <category>计算机网络</category>
       
@@ -464,9 +493,9 @@
       
       <tag>nginx</tag>
       
-      <tag>hexo</tag>
-      
       <tag>ssh</tag>
+      
+      <tag>hexo</tag>
       
       <tag>建站</tag>
       
