@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>linux 查看系统核心数</title>
+    <link href="/linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83%E6%95%B0.html"/>
+    <url>/linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83%E6%95%B0.html</url>
+    
+    <content type="html"><![CDATA[<p> 主要是 vps 上编译软件的时候需要这个参数。</p><a id="more"></a><h1 id="查看物理 cpu 个数"><a class="markdownIt-Anchor" href="# 查看物理 cpu 个数"></a> 查看物理 CPU 个数 </h1><pre class="highlight"><code class="bash">cat /proc/cpuinfo| grep <span class="hljs-string">"physical id"</span>| sort| uniq| wc -l</code></pre><h1 id="查看每个物理 cpu 中 core 的个数即核数"><a class="markdownIt-Anchor" href="# 查看每个物理 cpu 中 core 的个数即核数"></a> 查看每个物理 CPU 中 core 的个数 (即核数)</h1><pre class="highlight"><code class="bash">cat /proc/cpuinfo| grep <span class="hljs-string">"cpu cores"</span>| uniq</code></pre><h1 id="查看逻辑 cpu 的个数"><a class="markdownIt-Anchor" href="# 查看逻辑 cpu 的个数"></a> 查看逻辑 CPU 的个数 </h1><pre class="highlight"><code class="bash">cat /proc/cpuinfo| grep <span class="hljs-string">"processor"</span>| wc -l</code></pre><p> 系统的总核数 = 物理 CPU 个数 * 每颗物理 CPU 的核数 <br />总逻辑 CPU 数 = 物理 CPU 个数 * 每颗物理 CPU 的核数 * 超线程数 </p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://www.cnblogs.com/emanlee/p/3587571.html" target="_blank" rel="noopener">Linux 查看物理 CPU 个数、核数、逻辑 CPU 个数 </a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>cpu</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>tmux 安装及简单的使用指南</title>
     <link href="/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html"/>
     <url>/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html</url>
@@ -256,9 +283,9 @@
     
     <categories>
       
-      <category>学习</category>
-      
       <category>折腾</category>
+      
+      <category>学习</category>
       
       <category>计算机网络</category>
       
@@ -431,15 +458,15 @@
     
     <tags>
       
-      <tag>git</tag>
-      
       <tag>linux</tag>
+      
+      <tag>git</tag>
       
       <tag>nginx</tag>
       
-      <tag>ssh</tag>
-      
       <tag>hexo</tag>
+      
+      <tag>ssh</tag>
       
       <tag>建站</tag>
       
