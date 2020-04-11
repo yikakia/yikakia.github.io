@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>利用官方脚本一键安装 docker</title>
+    <link href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker.html"/>
+    <url>/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker.html</url>
+    
+    <content type="html"><![CDATA[<p> 我可以简单的理解 docker 为一个简便的应用封装器么？</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1><p> 为了用 Olaindex 建一个分享网盘，我需要在服务器上配置 php 环境。我按照 Olaindex 的教程用 Oneinstack 安装了，结果是成功的失败了。<br />无奈只能把服务器回滚了。然后我想了想，不是说 docker 很方便么？于是就去搜了搜，结果还真找到了 Olaindex 的镜像。于是就安装了 docker 后试了试，还挺好用的。</p><p> 真的是要吹爆 docker。把需求的环境都封装了，剩下的就只有简单的配置了，怪不得这么多人用。</p><h1 id="利用官方脚本安装"><a class="markdownIt-Anchor" href="# 利用官方脚本安装"></a> 利用官方脚本安装 </h1><p> 还是说一下我的环境 </p><ul><li> 系统: debian10<br />一键安装真的是方便，导致这个文章的正文看起来没啥。</li></ul><pre class="highlight"><code class="bash">curl -fsSL get.docker.com -o get-docker.shsudo sh get-docker.sh</code></pre><p> 这样就可以了。这样就安装完成了。<br />安装完成之后验证是否安装成功。</p><h1 id="启动 docker"><a class="markdownIt-Anchor" href="# 启动 docker"></a> 启动 Docker</h1><pre class="highlight"><code class="bash">sudo systemctl <span class="hljs-built_in">enable</span> dockersudo systemctl start docker</code></pre><h1 id="建立 -docker- 用户组"><a class="markdownIt-Anchor" href="# 建立 -docker- 用户组"></a> 建立 docker 用户组 </h1><p> 默认情况下，只有 root 用户和 docker 组的用户才可以访问 Docker。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组。</p><h2 id="建立 -docker- 组"><a class="markdownIt-Anchor" href="# 建立 -docker- 组"></a> 建立 docker 组：</h2><pre class="highlight"><code class="bash">sudo groupadd docker</code></pre><h2 id="将当前用户加入 -docker- 组"><a class="markdownIt-Anchor" href="# 将当前用户加入 -docker- 组"></a> 将当前用户加入 docker 组：</h2><pre class="highlight"><code class="bash">sudo usermod -aG docker <span class="hljs-variable">$USER</span></code></pre><p> 退出当前终端并重新登录，进行如下测试。</p><h2 id="测试 -docker- 是否安装正确"><a class="markdownIt-Anchor" href="# 测试 -docker- 是否安装正确"></a> 测试 Docker 是否安装正确 </h2><pre class="highlight"><code class="bash">docker run hello-world</code></pre><pre class="highlight"><code class="">Unable to find image'hello-world:latest' locallylatest: Pulling from library/hello-worldd1725b59e92d: Pull completeDigest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788Status: Downloaded newer image for hello-world:latestHello from Docker!This message shows that your installation appears to be working correctly.To generate this message, Docker took the following steps: 1. The Docker client contacted the Docker daemon. 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.    (amd64) 3. The Docker daemon created a new container from that image which runs the    executable that produces the output you are currently reading. 4. The Docker daemon streamed that output to the Docker client, which sent it    to your terminal.To try something more ambitious, you can run an Ubuntu container with: $ docker run -it ubuntu bashShare images, automate workflows, and more with a free Docker ID: https://hub.docker.com/For more examples and ideas, visit: https://docs.docker.com/get-started/</code></pre><p> 若能正常输出以上信息，则说明安装成功。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://yeasy.gitbooks.io/docker_practice/install/debian.html" target="_blank" rel="noopener">Debian 安装 Docker CE</a><br /><a href="https://docs.docker.com/engine/install/debian/" target="_blank" rel="noopener">Install Docker Engine on Debian</a> (<strong> 这个是官网 </strong>)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python 虚拟环境的使用</title>
     <link href="/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8.html"/>
     <url>/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8.html</url>
@@ -186,9 +213,9 @@
     
     <tags>
       
-      <tag>error</tag>
-      
       <tag>c++</tag>
+      
+      <tag>error</tag>
       
     </tags>
     
@@ -267,13 +294,13 @@
     
     <tags>
       
+      <tag>error</tag>
+      
       <tag>python</tag>
       
       <tag>opengl</tag>
       
       <tag>PyOpenGL</tag>
-      
-      <tag>error</tag>
       
     </tags>
     
@@ -385,9 +412,9 @@
       
       <tag>linux</tag>
       
-      <tag>ssl</tag>
-      
       <tag>nginx</tag>
+      
+      <tag>ssl</tag>
       
     </tags>
     
@@ -547,15 +574,15 @@
     
     <tags>
       
-      <tag>linux</tag>
-      
       <tag>git</tag>
       
-      <tag>nginx</tag>
+      <tag>linux</tag>
+      
+      <tag>hexo</tag>
       
       <tag>ssh</tag>
       
-      <tag>hexo</tag>
+      <tag>nginx</tag>
       
       <tag>建站</tag>
       
