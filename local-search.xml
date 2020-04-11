@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>利用 docker 部署 Olaindex</title>
+    <link href="/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex.html"/>
+    <url>/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex.html</url>
+    
+    <content type="html"><![CDATA[<p>吹爆<code>docker</code>!</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>利用 Aria2 和 Rclone 成功地让我的小鸡实现了远程下载，下载完成后自动上传到 OneDrive 的功能。想知道的话可以看我的这篇博客<a href=""></a>。</p><p>这个功能搞定后我又想整一个方便直接显示想分享的文件的列表。于是找了找，发现了 Oneindex。不过看别人说这个不好用，那就算了吧。于是尝试了 Olaindex。</p><p>但是官网要求的 php 环境我不会搭啊，用了官网介绍的 Oneinstack 也没有用。在安装的过程中会报错，我怀疑是我的内存不够大造成的。而且报错就算了，报错之后它还把我的环境给搞坏了，导致我想自己手动安装配置 php 环境都失败了。所以只好无奈的回滚了。</p><p>回滚之后我还是不甘心，又突然想到了 docker。因为我搜 Oneindex 的时候找到了 Oneindex 的 docker，又因为经常听说 docker 是方便部署的，所有的环境需求都被封装了，所以是即开即用。真的这么神奇么？于是我就试了下，没想到真的就有 <strong> 这 么 神 奇!</strong>。直接从下载安装，配置 Nginx 的转发就搞定了！</p><h1 id="我的环境"><a class="markdownIt-Anchor" href="# 我的环境"></a> 我的环境</h1><ul><li>debian10</li><li>amd64 架构的 CPU</li><li>512M 内存</li></ul><h1 id="安装 docker"><a class="markdownIt-Anchor" href="# 安装 docker"></a> 安装 docker</h1><p>安装过程可以参考我的这篇博客 <a href="https://www.yikakia.com/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker.html"> 利用官方脚本一键安装 docker</a></p><p>安装过程真的很简单。</p><h1 id="下载 docker 镜像"><a class="markdownIt-Anchor" href="# 下载 docker 镜像"></a> 下载 docker 镜像</h1><p>在安装好 docker，并且确定正确配置了之后，输入以下命令</p><pre class="highlight"><code class="bash">docker run -d \--name=olaindex \--restart always \-p 8085:80 \-p 8443:443 \--mount <span class="hljs-built_in">type</span>=tmpfs,destination=/tmp \-v /home/hacklog/.config/olaindex/conf:/vol/conf \-v /home/hacklog/.config/olaindex/storage:/vol/storage \-v /home/hacklog/.config/olaindex/ssl:/vol/ssl \-e PHP_TZ=Asia/Shanghai \-e PHP_MAX_EXECUTION_TIME=600 \-e APP_DEBUG=<span class="hljs-literal">false</span> \80x86/olaindex:latest</code></pre><h1 id="配置 nginx"><a class="markdownIt-Anchor" href="# 配置 nginx"></a> 配置 nginx</h1><p>新建一个 olaindex.conf 文件</p><pre class="highlight"><code class="bash">nano /etc/nginx/conf.d/olaindex.conf</code></pre><p>之后这样配置 nginx，我这里默认使用 <code>olaindex.yikakia.com</code> 作为访问网站 Olaindex 服务的域名。</p><pre class="highlight"><code class="conf">server {    listen       80;    server_name  olaindex.yikakia.com; #这里改成你的用于访问 olaindex 的域名    #charset koi8-r;    access_log  /var/log/nginx/rom.nanodm.net.access.log;    error_log  /var/log/nginx/rom.nanodm.net.error.log;    location / {      proxy_set_header        Host $host;      proxy_set_header        X-Real-IP $remote_addr;      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;      proxy_set_header        X-Forwarded-Proto $scheme;      proxy_max_temp_file_size 0;      #this is the maximum upload size      client_max_body_size       100m;      client_body_buffer_size    256k;      proxy_connect_timeout      90;      proxy_send_timeout         90;      proxy_read_timeout         90;      proxy_buffering            off;      proxy_request_buffering    off;      proxy_set_header Connection &quot;&quot;; # Clear for keepalive      proxy_pass          http://127.0.0.1:8085;    }}server {    listen 443;    server_name  olaindex.yikakia.com; # 这里改成你用于访问 Olaindex 的域名    ssl_certificate           /etc/nginx/ssl/ssl.crt; #这里写你的 ssl 证书公钥    ssl_certificate_key       /etc/nginx/ssl/ssl.key; #这里写你的 ssl 证书私钥    ssl on;    ssl_session_cache  builtin:1000  shared:SSL:10m;    ssl_protocols  TLSv1.1 TLSv1.2;    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;    ssl_prefer_server_ciphers on;    access_log            /var/log/nginx/rom.nanodm.net_ssl.access.log;    error_log             /var/log/nginx/rom.nanodm.net_ssl.error.log;    location / {      proxy_set_header        Host $host;      proxy_set_header        X-Real-IP $remote_addr;      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;      proxy_set_header        X-Forwarded-Proto $scheme;      proxy_max_temp_file_size 0;      #this is the maximum upload size      client_max_body_size       100m;      client_body_buffer_size    256k;      proxy_connect_timeout      90;      proxy_send_timeout         90;      proxy_read_timeout         90;      proxy_buffering            off;      proxy_request_buffering    off;      proxy_set_header Connection &quot;&quot;; # Clear for keepalive      proxy_pass          https://127.0.0.1:8443;    }  }</code></pre><p>没有 ssl 证书的话可以参考我的这篇博客 <a href="https://www.yikakia.com/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81.html">利用 Lets Encrypt 为你的网站加把小锁<br /></a></p><p>现在重启 nginx</p><pre class="highlight"><code class="bash">service nginx restart</code></pre><p>再去访问你用于 Olaindex 的域名就可以了。这里最好专门另外申请一个二级域名。就是类似于这样的：<code>olaindex.yikakia.com</code>。</p><h1 id="配置 olaindex 申请账号"><a class="markdownIt-Anchor" href="# 配置 olaindex 申请账号"></a> 配置 Olaindex，申请账号</h1><h2 id="安装"><a class="markdownIt-Anchor" href="# 安装"></a> 安装</h2><p>做到了这一步，艰难的事情就做完了。<br />现在你可以在浏览器输入 <code>olaindex.yikakia.com</code>(替换成你用于访问 Olaindex 服务的域名) 来进行配置。<br />可以直接参考官网这个配置<br /><img src="https://i.loli.net/2018/10/27/5bd46f7f160a6.png" srcset="/img/loading.gif" alt="" /><br />在这里这么填写你的域名，把图片上的 <code>http://localhost:8000/oauth</code> 改成<code>https://olaindex.yikakia.com</code>，就是你自己设定的那个域名。</p><p>然后点击申请。</p><h2 id="获取密钥"><a class="markdownIt-Anchor" href="# 获取密钥"></a> 获取密钥</h2><p>打开一个记事本，把你获取的那个应用机密复制保存好。<br /><img src="https://i.loli.net/2018/10/27/5bd47070cd1b0.png" srcset="/img/loading.gif" alt="" /><br />然后点击继续。</p><h2 id="获取 id"><a class="markdownIt-Anchor" href="# 获取 id"></a> 获取 id</h2><p><img src="https://i.loli.net/2018/10/27/5bd470721f1a3.png" srcset="/img/loading.gif" alt="" /></p><p>把获得的那个 client_id 也复制到记事本里面。</p><h2 id="保存提交"><a class="markdownIt-Anchor" href="# 保存提交"></a> 保存提交</h2><p><img src="https://i.loli.net/2018/10/27/5bd470719602a.png" srcset="/img/loading.gif" alt="" /><br />接下来就把之前获取的那两个输入进去。同时第一个回调地址就是你之前申请的那个。<br />如果没错的话，现在就配置完成了。你可以访问 <code>olaindex.yikakia.com/admin</code> 进入管理后台，默认的密码是<code>12345678</code>。一定要改！</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://wangningkai.github.io/OLAINDEX/#/" target="_blank" rel="noopener">OLAINDEX 官方文档</a><br /><a href="https://hub.docker.com/r/80x86/olaindex" target="_blank" rel="noopener">80x86/olaindex docker 镜像提供者</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>docker</tag>
+      
+      <tag>olaindex</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>利用官方脚本一键安装 docker</title>
     <link href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker.html"/>
     <url>/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker.html</url>
@@ -213,9 +242,9 @@
     
     <tags>
       
-      <tag>c++</tag>
-      
       <tag>error</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -294,13 +323,13 @@
     
     <tags>
       
-      <tag>error</tag>
-      
       <tag>python</tag>
       
       <tag>opengl</tag>
       
       <tag>PyOpenGL</tag>
+      
+      <tag>error</tag>
       
     </tags>
     
@@ -412,9 +441,9 @@
       
       <tag>linux</tag>
       
-      <tag>nginx</tag>
-      
       <tag>ssl</tag>
+      
+      <tag>nginx</tag>
       
     </tags>
     
@@ -574,15 +603,15 @@
     
     <tags>
       
+      <tag>linux</tag>
+      
       <tag>git</tag>
       
-      <tag>linux</tag>
+      <tag>nginx</tag>
       
       <tag>hexo</tag>
       
       <tag>ssh</tag>
-      
-      <tag>nginx</tag>
       
       <tag>建站</tag>
       
