@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
-  <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" type="image/png" href="/static/logo.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -111,7 +111,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/post.jpg') no-repeat center center;
+         style="background: url('/static/post.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -229,26 +229,26 @@
 <p>前期的准备做好后，就可以开始尝试实操了。</p>
 <h1 id="windows 下的操作"><a class="markdownIt-Anchor" href="#windows 下的操作"></a> Windows 下的操作</h1>
 <p>Windows 下主要是要提前进行分区。因为 Manjaro 自带的分区功能太废柴了，直接报错，分不了。所以我们就在这里提前分好区。下图就是报错的提示<br />
-<img src="https://od.yikakia.com/view/blog/%E7%A1%AC%E7%9B%98%E6%8A%A5%E9%94%99%E7%A4%BA%E6%84%8F.png" srcset="/img/loading.gif" alt="硬盘报错示意" /></p>
+<img src="https://od.yikakia.com/view/blog/%E7%A1%AC%E7%9B%98%E6%8A%A5%E9%94%99%E7%A4%BA%E6%84%8F.png" srcset="/static/loading.gif" alt="硬盘报错示意" /></p>
 <h2 id="分区"><a class="markdownIt-Anchor" href="# 分区"></a> 分区</h2>
 <ol>
 <li>打开资源管理器 <code>Win+E</code>，点击<code> 管理</code></li>
 </ol>
-<p><img src="https://od.yikakia.com/view/blog/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="https://od.yikakia.com/view/blog/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86.png" srcset="/static/loading.gif" alt="" /></p>
 <ol start="2">
 <li>选择磁盘管理</li>
 </ol>
-<p><img src="https://od.yikakia.com/view/blog/%E9%80%89%E6%8B%A9%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="https://od.yikakia.com/view/blog/%E9%80%89%E6%8B%A9%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.png" srcset="/static/loading.gif" alt="" /></p>
 <ol start="3">
 <li>对 C 盘的最后一个分区右键压缩卷，压缩一个 G 就好，用于之后挂载 <code>/boot</code> 分区</li>
 </ol>
-<p><img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B71.png" srcset="/img/loading.gif" alt="" /><br />
+<p><img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B71.png" srcset="/static/loading.gif" alt="" /><br />
 这里我们可以看到你的 C 盘的那个磁盘，第二个分区是 100MB 的，那个就是你的电脑的 <code>EFI</code> 分区，这个里面储存了这台电脑所有的引导程序。这是 GPT 格式的硬盘必然有的。这个盘我们用于挂载 <code>/boot/efi</code> 分区。<br />
-<img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B72.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B72.png" srcset="/static/loading.gif" alt="" /></p>
 <ol start="4">
 <li>
 <p>对 D 盘的最后一个分区右键压缩卷。看你的需求压缩多少空间，至少压 20g 吧。具体要求多低你可以自己尝试。这里因为我已经是装好了的，所以不是压缩之后的样子。压缩之后应该是一个黑色的未分区。<br />
-<img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B73.png" srcset="/img/loading.gif" alt="" /><br />
+<img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B73.png" srcset="/static/loading.gif" alt="" /><br />
 在这里我们要分三个区，分别用于挂载 <code>/</code>,<code>/home</code> 和<code>swap</code>交换分区。</p>
 </li>
 <li>
@@ -264,13 +264,13 @@
 <h2 id="制作启动盘"><a class="markdownIt-Anchor" href="# 制作启动盘"></a> 制作启动盘</h2>
 <p>打开 rufus, 插入 U 盘, 选择你之前下载好的镜像，然后点击开始即可开始烧录。<br />
 这个时候要注意，新版的 rufus 是默认用 dd 模式进行烧录的。而老版的话一定要选择用 dd 模式进行烧录！总结一下就是，提示你用 dd 模式烧录的话，就一定要用 dd 模式进行烧录！<br />
-<img src="https://od.yikakia.com/view/blog/rufus%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="rufus 选择" /></p>
-<p><img src="https://od.yikakia.com/view/blog/rufus%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E5%90%8E%E7%A4%BA%E4%BE%8B.png" srcset="/img/loading.gif" alt="rufus 选择镜像后示例.png" /></p>
-<p><img src="https://od.yikakia.com/view/blog/rufus%E7%82%B9%E5%87%BB%E5%BC%80%E5%A7%8B.png" srcset="/img/loading.gif" alt="rufus 点击开始.png" /></p>
+<img src="https://od.yikakia.com/view/blog/rufus%E9%80%89%E6%8B%A9.png" srcset="/static/loading.gif" alt="rufus 选择" /></p>
+<p><img src="https://od.yikakia.com/view/blog/rufus%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E5%90%8E%E7%A4%BA%E4%BE%8B.png" srcset="/static/loading.gif" alt="rufus 选择镜像后示例.png" /></p>
+<p><img src="https://od.yikakia.com/view/blog/rufus%E7%82%B9%E5%87%BB%E5%BC%80%E5%A7%8B.png" srcset="/static/loading.gif" alt="rufus 点击开始.png" /></p>
 <p>烧录完成后你的 U 盘可能会变成这样👇<br />
-<img src="https://od.yikakia.com/view/blog/%E7%83%A7%E5%BD%95%E5%AE%8C%E6%88%90%E7%A4%BA%E6%84%8F.png" srcset="/img/loading.gif" alt="烧录完成示意.png" /></p>
+<img src="https://od.yikakia.com/view/blog/%E7%83%A7%E5%BD%95%E5%AE%8C%E6%88%90%E7%A4%BA%E6%84%8F.png" srcset="/static/loading.gif" alt="烧录完成示意.png" /></p>
 <p>不要担心，这是 Windows 不能识别而已，你的 U 盘并没有坏。你可以在磁盘管理中看到这一点。<br />
-<img src="https://od.yikakia.com/view/blog/u%E7%9B%98%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.png" srcset="/img/loading.gif" alt="u 盘磁盘管理.png" /></p>
+<img src="https://od.yikakia.com/view/blog/u%E7%9B%98%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.png" srcset="/static/loading.gif" alt="u 盘磁盘管理.png" /></p>
 <p>用完之后你可以用 rufus，选择非可引导进行烧录，这样就自动把你的 U 盘分区找回来了。</p>
 <h1 id="在主板中的操作"><a class="markdownIt-Anchor" href="# 在主板中的操作"></a> 在主板中的操作</h1>
 <p>为了安装 Manjaro，我们需要</p>
@@ -289,9 +289,9 @@
 <p>现在我们关机，插入我们的 U 盘，然后开机。从 U 盘中启动。<br />
 接下来的步骤我用的是 VirtualBox 进行演示，因为已经装好了系统了。</p>
 <h2 id="语言选择"><a class="markdownIt-Anchor" href="# 语言选择"></a> 语言选择</h2>
-<p><img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="language 选择.png" /><br />
-<img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A92.png" srcset="/img/loading.gif" alt="language 选择 2.png" /><br />
-<img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A93.png" srcset="/img/loading.gif" alt="language 选择 3.png" /></p>
+<p><img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A9.png" srcset="/static/loading.gif" alt="language 选择.png" /><br />
+<img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A92.png" srcset="/static/loading.gif" alt="language 选择 2.png" /><br />
+<img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A93.png" srcset="/static/loading.gif" alt="language 选择 3.png" /></p>
 <h2 id="驱动选择"><a class="markdownIt-Anchor" href="# 驱动选择"></a> 驱动选择</h2>
 <p>这里要说，这里的驱动选择要根据你的实际情况来看。可以参考下面这个表格</p>
 <table>
@@ -330,18 +330,18 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://od.yikakia.com/view/blog/%E9%A9%B1%E5%8A%A8%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="驱动选择.png" /></p>
+<p><img src="https://od.yikakia.com/view/blog/%E9%A9%B1%E5%8A%A8%E9%80%89%E6%8B%A9.png" srcset="/static/loading.gif" alt="驱动选择.png" /></p>
 <h2 id="时区选择"><a class="markdownIt-Anchor" href="# 时区选择"></a> 时区选择</h2>
-<p><img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="时区选择.png" /><br />
-<img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A92.png" srcset="/img/loading.gif" alt="时区选择 2.png" /><br />
-<img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A93.png" srcset="/img/loading.gif" alt="时区选择 3.png" /></p>
+<p><img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A9.png" srcset="/static/loading.gif" alt="时区选择.png" /><br />
+<img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A92.png" srcset="/static/loading.gif" alt="时区选择 2.png" /><br />
+<img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A93.png" srcset="/static/loading.gif" alt="时区选择 3.png" /></p>
 <p>这些都搞定之后，就选择主界面中的 <code>Boot: Manjaro.x86_64 kde</code> 开始安装吧。</p>
 <h2 id="安装界面开始安装"><a class="markdownIt-Anchor" href="# 安装界面开始安装"></a> 安装界面开始安装</h2>
 <ol>
 <li>在左上角选择语言<br />
-<img src="https://od.yikakia.com/view/blog/%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="安装界面语言选择.png" /></li>
+<img src="https://od.yikakia.com/view/blog/%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9.png" srcset="/static/loading.gif" alt="安装界面语言选择.png" /></li>
 <li>点击启动安装程序，一路下一步到分区<br />
-<img src="https://od.yikakia.com/view/blog/%E5%88%86%E5%8C%BA%E5%BC%80%E5%A7%8B.png" srcset="/img/loading.gif" alt="分区开始.png" /></li>
+<img src="https://od.yikakia.com/view/blog/%E5%88%86%E5%8C%BA%E5%BC%80%E5%A7%8B.png" srcset="/static/loading.gif" alt="分区开始.png" /></li>
 </ol>
 <h2 id="如何分区"><a class="markdownIt-Anchor" href="# 如何分区"></a> 如何分区</h2>
 <p>这里我就从网上找图了，因为当时没想着截图。<br />
@@ -352,11 +352,11 @@
 <li>到你的机械硬盘，选择分好的那三个分区，分别按你之前的选择挂载 <code>/</code> <code>/home</code> 和<code>linuxswap</code> 分区。</li>
 </ol>
 <p>下面是一些图片示例。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304160721050-258020564.png" srcset="/img/loading.gif" alt="boot/efi" /><br />
-<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155717689-599131037.png" srcset="/img/loading.gif" alt="boot" /><br />
-<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155758720-1352697870.png" srcset="/img/loading.gif" alt="root" /><br />
-<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155812007-314480847.png" srcset="/img/loading.gif" alt="home" /><br />
-<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155457688-1847811638.png" srcset="/img/loading.gif" alt="swap" /></p>
+<p><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304160721050-258020564.png" srcset="/static/loading.gif" alt="boot/efi" /><br />
+<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155717689-599131037.png" srcset="/static/loading.gif" alt="boot" /><br />
+<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155758720-1352697870.png" srcset="/static/loading.gif" alt="root" /><br />
+<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155812007-314480847.png" srcset="/static/loading.gif" alt="home" /><br />
+<img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155457688-1847811638.png" srcset="/static/loading.gif" alt="swap" /></p>
 <p>现在就一路下一步就好了。<br />
 安装完成后就可以关闭电脑，然后拔出 U 盘，准备正式进入系统了。</p>
 <p>这个时候可以通过进入 Windows 后再通过 Windows 的高级恢复，重启到 Boot 界面，然后选择从 U 盘等介质恢复里面选择 Manjaro 即可。</p>
