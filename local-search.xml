@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>双系统双硬盘安装 Manjaro,Windows10</title>
+    <link href="/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10.html"/>
+    <url>/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10.html</url>
+    
+    <content type="html"><![CDATA[<p>Manjaro 自带的分区功能真是弱鸡</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>这次想起来搞这个双系统主要是我服务器端用的多了，感觉对 Linux 比较熟悉了，所以就想着搞搞双系统。</p><p>而我以前又装过<code>deepin</code>，那个时候觉得引导界面太丑了于是就又搞了些事情想让 Windows10 的 Metro 引导来引导 Linux。结果最后失败了，还把引导搞坏了。所以最后还得重装一次系统。</p><p>现在的话就知道了，这个引导界面是 Grub 的，是可以有主题进行美化的。所以没必要直接格掉，换个主题的事情。</p><p>而我选用 <code>Manjaro</code> 的原因，是因为感觉 <code>Ubuntu</code> 太重了。虚拟机里面装的 <code>Ubuntu 1804</code> 感觉界面不是很合我的胃口，有点太油腻的感觉。所以就找了找，发现 <code>Manjaro</code> 这么一个发行版，背靠 <code>ArchLinux</code>，坐拥浩大的软件仓库。同时还兼有易用性和稳定性，可以开箱即用，也可以有稳定的体验。那这感情好，还不得体验体验。于是去官网看了看，选择了<code>manjaro-kde-19.0.2-200311-linux54</code>。因为问了大佬，大佬说<code>Xfce</code> 对高分屏支持不好，<code>kde</code>和 <code>gnome</code> 还好一点。而 <code>kde</code> 的主题我看着还比较清爽，于是就选择了这么一个版本。</p><h1 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h1><p>还是惯例说下我的环境和配置</p><ul><li>已经有的部分<ul><li>系统<ul><li>Windows 10</li></ul></li><li>硬盘<ul><li>C 盘 SSD，GPT 分区格式</li><li>D 盘机械硬盘，MBR 分区格式</li></ul></li><li>引导<ul><li>UEFI 引导</li></ul></li></ul></li><li>要做的部分<ul><li>[] 在 Windows 下分好区(原因之后会讲)</li><li>[] 做一个启动盘</li></ul></li><li>需要准备的东西<ul><li>[] <a href="https://manjaro.org/download/" target="_blank" rel="noopener">官网下载好的镜像</a></li><li>[] 用于烧录镜像的<a href="https://rufus.ie/" target="_blank" rel="noopener">rufus</a></li><li>[] 一个用于写入镜像的 U 盘。(大于等于 8g 最好)</li><li>可能会需要的东西<br />有科学上网的需求的话，可以提前准备好 Linux 中对应的客户端。<br />在这里我用的是<code>V2Ray</code>，用的是图形化的程序<a href="https://github.com/Qv2ray/Qv2ray" target="_blank" rel="noopener">Qv2ray</a>。当然，如果喜欢用 V2ray 原版的话也可以。安装好 Manjaro 后可以在官方仓库中进行下载。</li></ul></li></ul><p>前期的准备做好后，就可以开始尝试实操了。</p><h1 id="windows 下的操作"><a class="markdownIt-Anchor" href="#windows 下的操作"></a> Windows 下的操作</h1><p>Windows 下主要是要提前进行分区。因为 Manjaro 自带的分区功能太废柴了，直接报错，分不了。所以我们就在这里提前分好区。下图就是报错的提示<br /><img src="https://od.yikakia.com/view/blog/%E7%A1%AC%E7%9B%98%E6%8A%A5%E9%94%99%E7%A4%BA%E6%84%8F.png" srcset="/img/loading.gif" alt="硬盘报错示意" /></p><h2 id="分区"><a class="markdownIt-Anchor" href="# 分区"></a> 分区</h2><ol><li>打开资源管理器 <code>Win+E</code>，点击<code> 管理</code></li></ol><p><img src="https://od.yikakia.com/view/blog/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86.png" srcset="/img/loading.gif" alt="" /></p><ol start="2"><li>选择磁盘管理</li></ol><p><img src="https://od.yikakia.com/view/blog/%E9%80%89%E6%8B%A9%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.png" srcset="/img/loading.gif" alt="" /></p><ol start="3"><li>对 C 盘的最后一个分区右键压缩卷，压缩一个 G 就好，用于之后挂载 <code>/boot</code> 分区</li></ol><p><img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B71.png" srcset="/img/loading.gif" alt="" /><br />这里我们可以看到你的 C 盘的那个磁盘，第二个分区是 100MB 的，那个就是你的电脑的 <code>EFI</code> 分区，这个里面储存了这台电脑所有的引导程序。这是 GPT 格式的硬盘必然有的。这个盘我们用于挂载 <code>/boot/efi</code> 分区。<br /><img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B72.png" srcset="/img/loading.gif" alt="" /></p><ol start="4"><li><p>对 D 盘的最后一个分区右键压缩卷。看你的需求压缩多少空间，至少压 20g 吧。具体要求多低你可以自己尝试。这里因为我已经是装好了的，所以不是压缩之后的样子。压缩之后应该是一个黑色的未分区。<br /><img src="https://od.yikakia.com/view/blog/%E5%8E%8B%E7%BC%A9%E5%8D%B73.png" srcset="/img/loading.gif" alt="" /><br />在这里我们要分三个区，分别用于挂载 <code>/</code>,<code>/home</code> 和<code>swap</code>交换分区。</p></li><li><p>对 D 盘压缩好的未分区进行分区。右键新建简单卷，分配一定的空间用于挂载 <code>/</code> 目录。这里最好是 10g 以上，主要是用于存放 Linux 系统相关的东西，就相当于是 Windows 下的 C 盘。所以就按你的需要看分多少。</p></li><li><p>对剩下未分区的部分继续右键，新建简单卷，分配一定的空间用于挂载 <code>/home</code> 目录。这个就是你的用户文件夹。把这个单独分区了的话，你重装 Linux 直接重装 <code>/</code> 所在的那个分区就行了，而你的用户文件还保留着。这里分区的时候大小要注意一下，要预留等同于内存的大小的空间给 <code>swap</code> 交换分区。</p></li><li><p>对剩下的未分区的部分右键，新建简单卷。这里就可以全部的空间用于新建了。</p></li></ol><h2 id="制作启动盘"><a class="markdownIt-Anchor" href="# 制作启动盘"></a> 制作启动盘</h2><p>打开 rufus, 插入 U 盘, 选择你之前下载好的镜像，然后点击开始即可开始烧录。<br />这个时候要注意，新版的 rufus 是默认用 dd 模式进行烧录的。而老版的话一定要选择用 dd 模式进行烧录！总结一下就是，提示你用 dd 模式烧录的话，就一定要用 dd 模式进行烧录！<br /><img src="https://od.yikakia.com/view/blog/rufus%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="rufus 选择" /></p><p><img src="https://od.yikakia.com/view/blog/rufus%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E5%90%8E%E7%A4%BA%E4%BE%8B.png" srcset="/img/loading.gif" alt="rufus 选择镜像后示例.png" /></p><p><img src="https://od.yikakia.com/view/blog/rufus%E7%82%B9%E5%87%BB%E5%BC%80%E5%A7%8B.png" srcset="/img/loading.gif" alt="rufus 点击开始.png" /></p><p>烧录完成后你的 U 盘可能会变成这样👇<br /><img src="https://od.yikakia.com/view/blog/%E7%83%A7%E5%BD%95%E5%AE%8C%E6%88%90%E7%A4%BA%E6%84%8F.png" srcset="/img/loading.gif" alt="烧录完成示意.png" /></p><p>不要担心，这是 Windows 不能识别而已，你的 U 盘并没有坏。你可以在磁盘管理中看到这一点。<br /><img src="https://od.yikakia.com/view/blog/u%E7%9B%98%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.png" srcset="/img/loading.gif" alt="u 盘磁盘管理.png" /></p><p>用完之后你可以用 rufus，选择非可引导进行烧录，这样就自动把你的 U 盘分区找回来了。</p><h1 id="在主板中的操作"><a class="markdownIt-Anchor" href="# 在主板中的操作"></a> 在主板中的操作</h1><p>为了安装 Manjaro，我们需要</p><ol><li><p>到 BIOS 中关闭<code>Secure boot</code>。</p></li><li><p>把启动顺序改成从 USB 启动在从硬盘 (harddrive) 启动之前。<br />具体的修改位置和方法你可以通过搜索你主板的型号来看。我的微星主板是开机后按 <code>Delete</code> 键进入 BIOS。</p></li></ol><p>当然也可以不进行修改，我的微星主板是开机后按 <code>F11</code> 选择从哪个引导程序启动。这个也可以通过搜索你的主板的型号来看。</p><h1 id="安装 manjaro"><a class="markdownIt-Anchor" href="# 安装 manjaro"></a> 安装 Manjaro</h1><p>现在所有准备都准备好了，接下来就是正式开干了。</p><p>现在我们关机，插入我们的 U 盘，然后开机。从 U 盘中启动。<br />接下来的步骤我用的是 VirtualBox 进行演示，因为已经装好了系统了。</p><h2 id="语言选择"><a class="markdownIt-Anchor" href="# 语言选择"></a> 语言选择</h2><p><img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="language 选择.png" /><br /><img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A92.png" srcset="/img/loading.gif" alt="language 选择 2.png" /><br /><img src="https://od.yikakia.com/view/blog/language%E9%80%89%E6%8B%A93.png" srcset="/img/loading.gif" alt="language 选择 3.png" /></p><h2 id="驱动选择"><a class="markdownIt-Anchor" href="# 驱动选择"></a> 驱动选择</h2><p>这里要说，这里的驱动选择要根据你的实际情况来看。可以参考下面这个表格</p><table><thead><tr><th>CPU</th><th>GPU</th><th>选择</th></tr></thead><tbody><tr><td>Intet</td><td>无独立显卡</td><td>free</td></tr><tr><td>AMD</td><td>无独立显卡</td><td>free</td></tr><tr><td>AMD</td><td>NVIDIA</td><td>no free</td></tr><tr><td>Intet</td><td>AMD</td><td>free</td></tr><tr><td>Intet</td><td>NVIDIA</td><td>no free</td></tr></tbody></table><p><img src="https://od.yikakia.com/view/blog/%E9%A9%B1%E5%8A%A8%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="驱动选择.png" /></p><h2 id="时区选择"><a class="markdownIt-Anchor" href="# 时区选择"></a> 时区选择</h2><p><img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="时区选择.png" /><br /><img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A92.png" srcset="/img/loading.gif" alt="时区选择 2.png" /><br /><img src="https://od.yikakia.com/view/blog/%E6%97%B6%E5%8C%BA%E9%80%89%E6%8B%A93.png" srcset="/img/loading.gif" alt="时区选择 3.png" /></p><p>这些都搞定之后，就选择主界面中的 <code>Boot: Manjaro.x86_64 kde</code> 开始安装吧。</p><h2 id="安装界面开始安装"><a class="markdownIt-Anchor" href="# 安装界面开始安装"></a> 安装界面开始安装</h2><ol><li>在左上角选择语言<br /><img src="https://od.yikakia.com/view/blog/%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" alt="安装界面语言选择.png" /></li><li>点击启动安装程序，一路下一步到分区<br /><img src="https://od.yikakia.com/view/blog/%E5%88%86%E5%8C%BA%E5%BC%80%E5%A7%8B.png" srcset="/img/loading.gif" alt="分区开始.png" /></li></ol><h2 id="如何分区"><a class="markdownIt-Anchor" href="# 如何分区"></a> 如何分区</h2><p>这里我就从网上找图了，因为当时没想着截图。<br />我这里用语言说一下。</p><ol><li>到你的 C 盘，选择那个 100MB 的分区，点击它，选择保留，挂载选择挂载<code>/boot/efi</code></li><li>选择那个一个 G 的空白分区，点击它，选择挂载为 <code>/boot</code> 分区。</li><li>到你的机械硬盘，选择分好的那三个分区，分别按你之前的选择挂载 <code>/</code> <code>/home</code> 和<code>linuxswap</code> 分区。</li></ol><p>下面是一些图片示例。</p><p><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304160721050-258020564.png" srcset="/img/loading.gif" alt="boot/efi" /><br /><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155717689-599131037.png" srcset="/img/loading.gif" alt="boot" /><br /><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155758720-1352697870.png" srcset="/img/loading.gif" alt="root" /><br /><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155812007-314480847.png" srcset="/img/loading.gif" alt="home" /><br /><img src="https://img2020.cnblogs.com/blog/1539665/202003/1539665-20200304155457688-1847811638.png" srcset="/img/loading.gif" alt="swap" /></p><p>现在就一路下一步就好了。<br />安装完成后就可以关闭电脑，然后拔出 U 盘，准备正式进入系统了。</p><p>这个时候可以通过进入 Windows 后再通过 Windows 的高级恢复，重启到 Boot 界面，然后选择从 U 盘等介质恢复里面选择 Manjaro 即可。</p><p>当然也可以在开机的时候狂按那个选择是哪个驱动引导的键来选择 Manjaro。</p><h2 id="更换国内源"><a class="markdownIt-Anchor" href="# 更换国内源"></a> 更换国内源</h2><p>开机之后，按 F12 打开终端，输入如下命令</p><pre class="highlight"><code class="bash">sudo pacman-mirrors -c China -m rank <span class="hljs-comment"># 更改源</span></code></pre><h2 id="安装输入法"><a class="markdownIt-Anchor" href="# 安装输入法"></a> 安装输入法</h2><p>这个可以直接通过软件商城来安装。直接输入 <code>fcitx</code> 来搜索，选择安装，并且安装可选依赖项。这样就可以用了。</p><h2 id="manjaro 和 windows 的时间差了 8 小时的解决方案"><a class="markdownIt-Anchor" href="#manjaro 和 windows 的时间差了 8 小时的解决方案"></a> Manjaro 和 Windows 的时间差了 8 小时的解决方案</h2><pre class="highlight"><code class="bash">sudo timedatectl <span class="hljs-built_in">set</span>-local-rtc <span class="hljs-literal">true</span></code></pre><h1 id="总结"><a class="markdownIt-Anchor" href="# 总结"></a> 总结</h1><p>这次踩的坑还行，主要就是被 Manjaro 自带的弱鸡分区给坑了，其他的都还好，没啥大问题。使用的话挺顺滑的。哦对了，安装好后一定要把所有的软件更新到最新版！</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.bysb.net/3557.html" target="_blank" rel="noopener">在 Windows 基础上安装 Manjaro 双系统和基本配置 手柄君的小阁</a><br /><a href="https://blog.csdn.net/lj402159806/article/details/80218360" target="_blank" rel="noopener">manjaro 安装分区以及配置方案</a><br /><a href="https://mogeko.me/2019/059/" target="_blank" rel="noopener">安装 Manjaro 双系统</a><br /><a href="https://www.cnblogs.com/Jaywhen-xiang/p/11561661.html" target="_blank" rel="noopener">win10 环境下安装 manjaro kde（双系统）Jaywhen-xiang</a><br /><a href="https://www.biaodianfu.com/windows-manjaro.html" target="_blank" rel="noopener">Windows、Manjaro 双系统的安装</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>windows</tag>
+      
+      <tag>manjaro</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>利用 docker 部署 Olaindex</title>
     <link href="/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex.html"/>
     <url>/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex.html</url>
@@ -242,9 +271,9 @@
     
     <tags>
       
-      <tag>error</tag>
-      
       <tag>c++</tag>
+      
+      <tag>error</tag>
       
     </tags>
     
@@ -323,13 +352,13 @@
     
     <tags>
       
+      <tag>error</tag>
+      
       <tag>python</tag>
       
       <tag>opengl</tag>
       
       <tag>PyOpenGL</tag>
-      
-      <tag>error</tag>
       
     </tags>
     
@@ -603,13 +632,13 @@
     
     <tags>
       
-      <tag>linux</tag>
-      
       <tag>git</tag>
       
-      <tag>nginx</tag>
+      <tag>linux</tag>
       
       <tag>hexo</tag>
+      
+      <tag>nginx</tag>
       
       <tag>ssh</tag>
       
