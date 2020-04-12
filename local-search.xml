@@ -271,9 +271,9 @@
     
     <tags>
       
-      <tag>c++</tag>
-      
       <tag>error</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -352,13 +352,13 @@
     
     <tags>
       
-      <tag>error</tag>
-      
       <tag>python</tag>
       
       <tag>opengl</tag>
       
       <tag>PyOpenGL</tag>
+      
+      <tag>error</tag>
       
     </tags>
     
@@ -632,15 +632,15 @@
     
     <tags>
       
-      <tag>git</tag>
-      
       <tag>linux</tag>
       
-      <tag>hexo</tag>
+      <tag>git</tag>
       
       <tag>nginx</tag>
       
       <tag>ssh</tag>
+      
+      <tag>hexo</tag>
       
       <tag>建站</tag>
       
