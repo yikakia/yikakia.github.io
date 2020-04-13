@@ -107,9 +107,9 @@
     
     <tags>
       
-      <tag>python</tag>
-      
       <tag>linux</tag>
+      
+      <tag>python</tag>
       
       <tag>虚拟环境</tag>
       
@@ -165,11 +165,11 @@
     
     <tags>
       
-      <tag>python</tag>
-      
       <tag>linux</tag>
       
       <tag>编译</tag>
+      
+      <tag>python</tag>
       
     </tags>
     
@@ -457,9 +457,9 @@
     
     <categories>
       
-      <category>学习</category>
-      
       <category>折腾</category>
+      
+      <category>学习</category>
       
       <category>计算机网络</category>
       
@@ -636,11 +636,11 @@
       
       <tag>git</tag>
       
+      <tag>hexo</tag>
+      
       <tag>nginx</tag>
       
       <tag>ssh</tag>
-      
-      <tag>hexo</tag>
       
       <tag>建站</tag>
       
