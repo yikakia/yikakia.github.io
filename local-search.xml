@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>删除右键菜单中的新建 office 文件</title>
+    <link href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/"/>
+    <url>/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<p>简单总结，改注册表。</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>为什么突然想到要搞这个呢？因为我突然发现我卸载了 Access 和 Publisher 之后，右键还是有这两位的新建方式。这明显就是没有卸载干净嘛！</p><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><ol><li>按下 <code>Win+R</code>，输入<code>regedit</code> 进入注册表编辑器。</li><li>在上面的目录，输入 <code> 计算机 \HKEY_CLASSES_ROOT\.mdb</code>进入相关项。<br />这里我是用 Access 的 <code>.mbd</code> 格式举例。因为 Access 还有一个格式<code>.accdb</code>。所以还要做同样的操作来删除新建<code>.accdb</code>。而 Publisher 相关的格式是<code>.pub</code>，重复这个步骤也可以搞定。</li><li>这个时候你应该能看到和我这个相似的界面。<br /><img src="Snipaste_2020-04-14_20-54-35.png" srcset="/img/loading.gif" alt="" /><br />因为我现在已经删除了，所以没有 <code>ShellNew</code> 这一项。而你应该做的，就是删除这一项。删除之后你可以在桌面右键点击看看，是不是那一项没有了？😀</li></ol><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://answers.microsoft.com/zh-hans/msoffice/forum/msoffice_word-mso_other-mso_2007/%e5%b7%b2%e5%8d%b8%e8%bd%bdword%e5%90%8e%e4%bb%8d/6ada6678-2f01-4ff0-a6e3-902e25f78bb5" target="_blank" rel="noopener">已卸载 Word 后仍在右键的新建菜单中显示，如何删除</a><br /><a href="https://blog.csdn.net/q290994/article/details/72587931" target="_blank" rel="noopener">右键新建项的增加和删除</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Windows</tag>
+      
+      <tag>Access</tag>
+      
+      <tag>Publisher</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>双系统双硬盘安装 Manjaro,Windows10</title>
     <link href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/"/>
     <url>/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/</url>
