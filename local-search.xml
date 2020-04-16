@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>如何禁用 Software-Reporter-Tool</title>
+    <link href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/"/>
+    <url>/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/</url>
+    
+    <content type="html"><![CDATA[<p>不作恶的谷歌扫硬盘搞毛。</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>今天发现电脑 CPU 占用很高，风扇在狂转。想了想我好像后台没开什么应用啊？于是打开了任务管理器看了看，发现有个叫 <code>software reporter tool</code> 的进程在后台使劲跑。觉得纳闷就上网搜了下，发现原来是谷歌 Chrome 的后台程序。下面简单的说下这个软件是干嘛的吧。</p><p>这个 <code>software reporter tool</code> 会扫描你电脑的硬盘，然后把扫描的结果报告给谷歌，让谷歌分析这些结果，看是什么软件影响了用户的网页浏览体验。然后推荐用户删除这些软件。<br />看起来好像没啥问题是不是？但是这里面有两个让人很不爽的点啊。</p><ol><li>当它扫描的时候，会让 CPU 的负载过高，而且持续时间还很久。而且还可能会在你工作的时候干这种事情。换句话说，谷歌为了解决可能影响到用户网页浏览体验的问题，而影响到了用户日常的体验！</li><li>这个扫描结果会发给谷歌。虽然说这是匿名的，脱敏的。但谁有能信得过谷歌呢？这样的东西真的没问题么？棱镜计划虽然现在已经没多少人提了，但它所暴露出的问题是不容辩驳的。真的能放心的将隐私交给谷歌么？</li></ol><p>说是为了清除让 Chrome 崩溃的软件，但是你这个扫描硬盘是不是有点过了啊？<br />总之，让人心生疑虑了，就把它干掉吧。</p><h1 id="通过修改权限禁用"><a class="markdownIt-Anchor" href="# 通过修改权限禁用"></a> 通过修改权限禁用</h1><p>查了之后发现这个文件是就算你删除了，谷歌也可能会给你装回来的。是不是有点眼熟这个全家桶操作？😀<br />所以我们要做的就是禁止谷歌启动这个程序。</p><p>这个软件的位置大概是在这里:</p><pre class="highlight"><code class="">C:\Users\USERNAME\AppData\Local\Google\Chrome\User Data\SwReporter\VERSION</code></pre><p>把这里面的 <code>USERNAME</code> 改成你的用户名,<code>VERSION</code>改成你的 Chrome 版本。然后就可以看到这个文件了。<br />这里我的版本是 <code>81.233.200</code><br /><img src="%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" alt="" /></p><ol><li>在这里我们往上退两步，到 <code>C:\Users\USERNAME\AppData\Local\Google\Chrome\User Data\</code> 这一层，然后右键 <code>SwReporter</code> 这个文件夹, 选择属性。<br /><img src="%E5%8F%B3%E9%94%AESwReporter.png" srcset="/img/loading.gif" alt="" /></li><li>选择 <code> 安全 </code> 选项卡</li><li>点击 <code> 高级</code><br /><img src="%E7%82%B9%E5%87%BB%E9%AB%98%E7%BA%A7.png" srcset="/img/loading.gif" alt="" /></li><li>点击 <code> 禁用继承</code><br /><img src="%E7%82%B9%E5%87%BB%E7%A6%81%E7%94%A8%E7%BB%A7%E6%89%BF.png" srcset="/img/loading.gif" alt="" /></li><li>选择 <code> 从此对象中删除所有继承的权限</code>, 之后一路确定。<br /><img src="%E9%98%BB%E6%AD%A2%E7%BB%A7%E6%89%BF.png" srcset="/img/loading.gif" alt="" /><br />这样就没有人可以访问 <code>SwReporter</code> 文件夹并启动 <code>software reporter tool</code> 了。</li></ol><h1 id="通过修改注册表禁用"><a class="markdownIt-Anchor" href="# 通过修改注册表禁用"></a> 通过修改注册表禁用</h1><p>不推荐，修改注册表前请做好备份工作。<br />这里先给一段原文</p><pre class="highlight"><code class="">Google introduced support for policies that administrators may use to configure certain Chrome features; one of the available policies manages the Software Reporter Tool of the browser.Open the Registry Editor on Windows, e.g. by opening the Start Menu, typing regedit.exe, and selecting the item from the list of results.Go to HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome.Note: if one of the keys does not exist create it with a right-click on the previous key and the selection of New &gt; Key.Right-click on the Chrome key and select New &gt; Dword (32-bit) Value.Name the new Dword ChromeCleanupEnabled.Make sure its value is 0.Right-click on the Chrome key again and select New &gt; Dword (32-bit) Value.Name it ChromeCleanupReportingEnabled.Make sure its value is 0.ChromeCleanupEnabled's value determines whether the Software Reporter Tool may run on the system.A value of 0 means the tool is disabled and won't be run.A value of 1 means the Software Reporter is enabled and will be run by Chrome.ChromeCleanupReportingEnabled's value determines whether the results are reported to Google.A value of 0 means the reporting is disabled.A value of 1 means the reporting is enabled.</code></pre><p>简单地说就是打开注册表，在 <code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome</code> 这项下面新建叫做 <code>ChromeCleanupEnabled</code> 和<code>ChromeCleanupReportingEnabled</code>的键，它们的类型都是 <code>Dword</code>(32 位) 双字节数据类型，把它们都赋值为 0。<br />下面是不同键值的作用</p><table><thead><tr><th></th><th>0</th><th>1</th></tr></thead><tbody><tr><td>ChromeCleanupEnabled</td><td>这个工具将被禁用并且不会运行</td><td>这个工具将被启用，并且会被 Chrome 运行</td></tr><tr><td>ChromeCleanupReportingEnabled</td><td>禁止将报告传回谷歌</td><td>生成的报告将会传给谷歌</td></tr></tbody></table><p>然后没有 <code>\Google\Chrome</code> 这一项的话，就自己新建就行。不过，还是不建议不清楚自己这么做了有什么后果的人通过这一项来修改。</p><h1 id="通过 chrome 浏览器来设置"><a class="markdownIt-Anchor" href="# 通过 chrome 浏览器来设置"></a> 通过 Chrome 浏览器来设置</h1><p>这个我觉得是不行的，不过看到网上说有用的，那就也一并记录下来吧。</p><ol><li>进入 Chrome 的设置界面 -&gt; 高级 -&gt; 系统<br />在这个选项下的 <code> 关闭 Google Chrome 后继续运行后台应用 </code> 关闭掉。</li><li>把 <code> 向 Google 报告在此次清理期间，在您计算机中发现的有害软件、系统设置和进程的相关详情 </code> 反选掉。<br /><img src="chrome%E8%AE%BE%E7%BD%AE1.png" srcset="/img/loading.gif" alt="" /><br /><img src="chrome%E8%AE%BE%E7%BD%AE2.png" srcset="/img/loading.gif" alt="" /><br />这样就好了。<br />不过我在这么搞的时候发现我的这个已经设置过了。看来谷歌这小子浓眉大眼的，结果还是不好好做事啊。</li></ol><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/" target="_blank" rel="noopener">How to block the Chrome Software Reporter Tool (software_reporter_tool.exe)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>windows</tag>
+      
+      <tag>software</tag>
+      
+      <tag>chrome</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>删除右键菜单中的新建 office 文件</title>
     <link href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/"/>
     <url>/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/</url>
