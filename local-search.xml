@@ -323,7 +323,7 @@
     <link href="/2020/04/08/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
     <url>/2020/04/08/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
     
-    <content type="html"><![CDATA[<p>需要后台运行程序时，就可以用到 tmux 了。</p><a id="more"></a><h1 id="什么是 tmux"><a class="markdownIt-Anchor" href="# 什么是 tmux"></a> 什么是 tmux</h1><p>简单的说 tmux 就是终端复用工具。使用的场景是你有希望跑在 Linux 服务器上的程序，而且这个程序不会因为你退出而结束。</p><h1 id="tmux 的安装"><a class="markdownIt-Anchor" href="#tmux 的安装"></a> tmux 的安装</h1><p>我的环境是 debian10，安装的话用下面的语句就行</p><pre class="highlight"><code class="bash">apt install tmux</code></pre><p>这样就安装好了 tmux</p><h1 id="tmux 的启动与退出"><a class="markdownIt-Anchor" href="#tmux 的启动与退出"></a> tmux 的启动与退出</h1><h2 id="启动"><a class="markdownIt-Anchor" href="# 启动"></a> 启动</h2><p>在终端输入</p><pre class="highlight"><code class="bash">tmux</code></pre><p>即可进入 tmux 界面。你会进入一个新的界面，下面有一行关于 tmux 使用的信息。</p><h2 id="退出"><a class="markdownIt-Anchor" href="# 退出"></a> 退出</h2><p>在 tmux 的界面，按下 <code>Ctrl+D</code> 或者直接输入 <code>exit</code> 即可退出 tmux。</p><h1 id="tmux 查看所有会话"><a class="markdownIt-Anchor" href="#tmux 查看所有会话"></a> tmux 查看所有会话</h1><p>进入 tmux 以后，其实就开启了一个新的会话，你可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看正在运行的 tmux 会话。如果不出意外的话，大概会显示下面这样的结果。</p><pre class="highlight"><code class="">0: 1 windows (created Wed Apr  8 06:41:21 2020) [134x37] (attached)</code></pre><p>这里的 <code>0</code> 就是一个会话的名字，现在也就是当前这个会话的名字。当然也可以更改这个会话的名字。</p><h1 id="tmux 更改对应会话的名字"><a class="markdownIt-Anchor" href="#tmux 更改对应会话的名字"></a> tmux 更改对应会话的名字</h1><pre class="highlight"><code class="bash">tmux rename-session -t 0 new-sessiontmux ls</code></pre><p>这样就可以看到如下的结果，把原来叫 <code>0</code> 的窗口的名字改成了<code>new-session</code></p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37] (attached)</code></pre><h1 id="tmux 将当前会话放入后台"><a class="markdownIt-Anchor" href="#tmux 将当前会话放入后台"></a> tmux 将当前会话放入后台</h1><p>这个操作很简单，先按下<code>Ctrl+B</code>, 然后按下<code>D</code>，这样就可以把当前的会话放入后台了。<br />退出来了之后看看那个会话在不在后台运行，可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看。没有意外的话，会返回类似于这样的信息</p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37]</code></pre><p>现在的话你就可以做到退出 SSH，而程序依然在后台跑了。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a><br /><a href="https://www.jianshu.com/p/c3e1ed08f029" target="_blank" rel="noopener">tmux–后台运行利器</a></p>]]></content>
+    <content type="html"><![CDATA[<p>需要后台运行程序时，就可以用到 tmux 了。</p><a id="more"></a><h1 id="什么是 tmux"><a class="markdownIt-Anchor" href="# 什么是 tmux"></a> 什么是 tmux</h1><p>简单的说 tmux 就是终端复用工具。使用的场景是你有希望跑在 Linux 服务器上的程序，而且这个程序不会因为你退出而结束。</p><h1 id="tmux 的安装"><a class="markdownIt-Anchor" href="#tmux 的安装"></a> tmux 的安装</h1><p>我的环境是 debian10，安装的话用下面的语句就行</p><pre class="highlight"><code class="bash">apt install tmux</code></pre><p>这样就安装好了 tmux</p><h1 id="tmux 的启动与退出"><a class="markdownIt-Anchor" href="#tmux 的启动与退出"></a> tmux 的启动与退出</h1><h2 id="启动"><a class="markdownIt-Anchor" href="# 启动"></a> 启动</h2><p>在终端输入</p><pre class="highlight"><code class="bash">tmux</code></pre><p>即可进入 tmux 界面。你会进入一个新的界面，下面有一行关于 tmux 使用的信息。</p><h2 id="退出"><a class="markdownIt-Anchor" href="# 退出"></a> 退出</h2><p>在 tmux 的界面，按下 <code>Ctrl+D</code> 或者直接输入 <code>exit</code> 即可退出 tmux。</p><h1 id="tmux 查看所有会话"><a class="markdownIt-Anchor" href="#tmux 查看所有会话"></a> tmux 查看所有会话</h1><p>进入 tmux 以后，其实就开启了一个新的会话，你可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看正在运行的 tmux 会话。如果不出意外的话，大概会显示下面这样的结果。</p><pre class="highlight"><code class="">0: 1 windows (created Wed Apr  8 06:41:21 2020) [134x37] (attached)</code></pre><p>这里的 <code>0</code> 就是一个会话的名字，现在也就是当前这个会话的名字。当然也可以更改这个会话的名字。</p><h1 id="tmux 更改对应会话的名字"><a class="markdownIt-Anchor" href="#tmux 更改对应会话的名字"></a> tmux 更改对应会话的名字</h1><pre class="highlight"><code class="bash">tmux rename-session -t 0 new-sessiontmux ls</code></pre><p>这样就可以看到如下的结果，把原来叫 <code>0</code> 的窗口的名字改成了<code>new-session</code></p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37] (attached)</code></pre><h1 id="tmux 将当前会话放入后台"><a class="markdownIt-Anchor" href="#tmux 将当前会话放入后台"></a> tmux 将当前会话放入后台</h1><p>这个操作很简单，先按下<code>Ctrl+B</code>, 然后按下<code>D</code>，这样就可以把当前的会话放入后台了。<br />退出来了之后看看那个会话在不在后台运行，可以输入</p><pre class="highlight"><code class="bash">tmux ls</code></pre><p>来查看。没有意外的话，会返回类似于这样的信息</p><pre class="highlight"><code class="">new-session: 1 windows (created Wed Apr  8 06:43:51 2020) [134x37]</code></pre><p>现在的话你就可以做到退出 SSH，而程序依然在后台跑了。</p><h1 id="tmux-attach 命令用于重新接入某个已存在的会话"><a class="markdownIt-Anchor" href="#tmux-attach 命令用于重新接入某个已存在的会话"></a> tmux attach 命令用于重新接入某个已存在的会话。</h1><pre class="highlight"><code class="bash"><span class="hljs-comment"># 使用会话编号</span>tmux attach -t 0<span class="hljs-comment"># 使用会话名称</span>tmux attach -t &lt;session-name&gt;</code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a><br /><a href="https://www.jianshu.com/p/c3e1ed08f029" target="_blank" rel="noopener">tmux–后台运行利器</a></p>]]></content>
     
     
     <categories>
@@ -746,15 +746,15 @@
     
     <tags>
       
-      <tag>linux</tag>
-      
       <tag>git</tag>
+      
+      <tag>linux</tag>
       
       <tag>nginx</tag>
       
-      <tag>ssh</tag>
-      
       <tag>hexo</tag>
+      
+      <tag>ssh</tag>
       
       <tag>建站</tag>
       
