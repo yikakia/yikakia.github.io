@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>去除 Chrome 请停用以开发者模式运行的扩展程序</title>
+    <link href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/"/>
+    <url>/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<p>下载，运行，搞定</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>看这个真的很不舒服，于是就这么搞了</p><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><p>我这个是直接用的别人的工具，原帖在这里👉<a href="https://www.52pojie.cn/thread-1093576-1-1.html" target="_blank" rel="noopener">完美去除 Chrome「请停用以开发者模式运行的扩展程序」</a></p><p>简单的说就是下载这个工具，然后放到 chrome 程序的文件夹中，然后以管理员程序运行这个工具就好。</p><p>先下载这个工具，可以直接走我的 <a href="https://od.yikakia.com/down/%E8%BD%AF%E4%BB%B6/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F.exe" target="_blank" rel="noopener"> 分流</a>，也可以直接下载原帖的</p><blockquote><p>链接: <a href="https://pan.baidu.com/s/1nDrEiVSEHVde6WOAaXxMKQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1nDrEiVSEHVde6WOAaXxMKQ</a> 提取码: s2qd</p></blockquote><p>然后把下载好的这个程序放在你的 <code>Chrome</code> 程序的目录下，如下👇</p><p><img src="%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" alt="放置位置" /></p><p>然后点击右键，以管理员权限运行即可。对了，先要退出 <code>Chrome</code> 再运行这个程序。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.52pojie.cn/thread-1093576-1-1.html" target="_blank" rel="noopener">完美去除 Chrome「请停用以开发者模式运行的扩展程序」</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Chrome</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>中值滤波及快速中值滤波的 Python 实现</title>
     <link href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/"/>
     <url>/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/</url>
