@@ -19,22 +19,25 @@
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
   <title>Yika`s Blog</title>
 
-  <link  rel="stylesheet" href="/lib/font-awesome/css/all.min.css" />
-<link  rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css" />
-<link  rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css" />
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
 
-  <link  rel="stylesheet" href="/lib/prettify/github-v2.min.css" />
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -62,41 +65,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">首页</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">归档</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">分类</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">标签</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">关于</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
           </li>
         
         
@@ -114,7 +122,7 @@
          style="background: url('/static/index.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -125,7 +133,7 @@
 
           
             <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
+              <i class="iconfont icon-arrowdown"></i>
             </div>
           
         </div>
@@ -136,7 +144,7 @@
   <main>
     
       <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
+        <div class="py-5" id="board"
           style=margin-top:0>
           
           <div class="container">
@@ -148,44 +156,44 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/" target="_blank">
-          <img src="/img/banner/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F.png" srcset="/img/loading.gif" alt="去除 Chrome 请停用以开发者模式运行的扩展程序"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/" target="_self">
+          <img src="/img/banner/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F.png" srcset="/img/loading.gif" alt="去除 Chrome 请停用以开发者模式运行的扩展程序">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
-        <p class="h4 index-header">去除 Chrome 请停用以开发者模式运行的扩展程序</p>
+      <a class="index-header" href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">去除 Chrome 请停用以开发者模式运行的扩展程序</a>
+
+      <a href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/" class="index-excerpt">
+        
+        
+          
+        
+        <div>下载，运行，搞定</div>
       </a>
 
-      <a href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-12
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">下载，运行，搞定...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Chrome/">Chrome</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Chrome/">Chrome</a>
+            
+          </div>
         
       </div>
     </div>
@@ -194,52 +202,52 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/" target="_blank">
-          <img src="/img/banner/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0.png" srcset="/img/loading.gif" alt="中值滤波及快速中值滤波的 Python 实现"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/" target="_self">
+          <img src="/img/banner/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0.png" srcset="/img/loading.gif" alt="中值滤波及快速中值滤波的 Python 实现">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/">
-        <p class="h4 index-header">中值滤波及快速中值滤波的 Python 实现</p>
+      <a class="index-header" href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/">中值滤波及快速中值滤波的 Python 实现</a>
+
+      <a href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div>写完发现比opencv自带的慢了十倍。😂</div>
       </a>
 
-      <a href="/2020/05/06/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-06
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">写完发现比opencv自带的慢了十倍。😂...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-06&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python/">python</a>&nbsp;
-          
-            <a href="/tags/opencv/">opencv</a>&nbsp;
-          
-            <a href="/tags/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2/">中值滤波</a>&nbsp;
-          
-            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/OpenCV/">OpenCV</a>
+            
+              <a href="/tags/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2/">中值滤波</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
         
       </div>
     </div>
@@ -248,48 +256,48 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/29/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/" target="_blank">
-          <img src="/img/banner/%E5%88%A9%E7%94%A8rclone%20%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD.png" srcset="/img/loading.gif" alt="利用 rclone 将别人分享的 GoogleDrive 文件保存到 OneDrive 中"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/29/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/" target="_self">
+          <img src="/img/banner/%E5%88%A9%E7%94%A8rclone%20%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD.png" srcset="/img/loading.gif" alt="利用 rclone 将别人分享的 GoogleDrive 文件保存到 OneDrive 中">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/29/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/">
-        <p class="h4 index-header">利用 rclone 将别人分享的 GoogleDrive 文件保存到 OneDrive 中</p>
+      <a class="index-header" href="/2020/04/29/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/">利用 rclone 将别人分享的 GoogleDrive 文件保存到 OneDrive 中</a>
+
+      <a href="/2020/04/29/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/" class="index-excerpt">
+        
+        
+          
+        
+        <div>一句话解决问题，--drive-shared-with-me</div>
       </a>
 
-      <a href="/2020/04/29/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-29
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一句话解决问题，--drive-shared-with-me...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-29&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/rclone/">rclone</a>&nbsp;
-          
-            <a href="/tags/OneDrive/">OneDrive</a>&nbsp;
-          
-            <a href="/tags/GoogleDrive/">GoogleDrive</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/rclone/">rclone</a>
+            
+              <a href="/tags/OneDrive/">OneDrive</a>
+            
+              <a href="/tags/GoogleDrive/">GoogleDrive</a>
+            
+          </div>
         
       </div>
     </div>
@@ -298,46 +306,46 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/19/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/" target="_blank">
-          <img src="/img/banner/First%E9%9B%86%20Follow%E9%9B%86%20Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89.png" srcset="/img/loading.gif" alt="First 集 Follow 集 Select 集分别有什么意义"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/19/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/" target="_self">
+          <img src="/img/banner/First%E9%9B%86%20Follow%E9%9B%86%20Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89.png" srcset="/img/loading.gif" alt="First 集 Follow 集 Select 集分别有什么意义">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/19/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/">
-        <p class="h4 index-header">First 集 Follow 集 Select 集分别有什么意义</p>
+      <a class="index-header" href="/2020/04/19/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/">First 集 Follow 集 Select 集分别有什么意义</a>
+
+      <a href="/2020/04/19/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/" class="index-excerpt">
+        
+        
+          
+        
+        <div>这三个集合是为了后期规约与分解方便</div>
       </a>
 
-      <a href="/2020/04/19/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-19
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">这三个集合是为了后期规约与分解方便...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+            
+          </div>
         
       </div>
     </div>
@@ -346,48 +354,46 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/" target="_blank">
-          <img src="/img/banner/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" alt="如何禁用 Software-Reporter-Tool"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/" target="_self">
+          <img src="/img/banner/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" alt="如何禁用 Software-Reporter-Tool">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/">
-        <p class="h4 index-header">如何禁用 Software-Reporter-Tool</p>
+      <a class="index-header" href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/">如何禁用 Software-Reporter-Tool</a>
+
+      <a href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/" class="index-excerpt">
+        
+        
+          
+        
+        <div>不作恶的谷歌扫硬盘搞毛。</div>
       </a>
 
-      <a href="/2020/04/16/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-16
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">不作恶的谷歌扫硬盘搞毛。...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-16&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/windows/">windows</a>&nbsp;
-          
-            <a href="/tags/software/">software</a>&nbsp;
-          
-            <a href="/tags/chrome/">chrome</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Windows/">Windows</a>
+            
+              <a href="/tags/Chrome/">Chrome</a>
+            
+          </div>
         
       </div>
     </div>
@@ -396,48 +402,48 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/" target="_blank">
-          <img src="/img/banner/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" alt="删除右键菜单中的新建 office 文件"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/" target="_self">
+          <img src="/img/banner/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" alt="删除右键菜单中的新建 office 文件">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/">
-        <p class="h4 index-header">删除右键菜单中的新建 office 文件</p>
+      <a class="index-header" href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/">删除右键菜单中的新建 office 文件</a>
+
+      <a href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/" class="index-excerpt">
+        
+        
+          
+        
+        <div>简单总结，改注册表。</div>
       </a>
 
-      <a href="/2020/04/14/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-14
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">简单总结，改注册表。...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-14&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Windows/">Windows</a>&nbsp;
-          
-            <a href="/tags/Access/">Access</a>&nbsp;
-          
-            <a href="/tags/Publisher/">Publisher</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Windows/">Windows</a>
+            
+              <a href="/tags/Access/">Access</a>
+            
+              <a href="/tags/Publisher/">Publisher</a>
+            
+          </div>
         
       </div>
     </div>
@@ -446,48 +452,48 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/" target="_blank">
-          <img src="/img/banner/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10.png" srcset="/img/loading.gif" alt="双系统双硬盘安装 Manjaro,Windows10"
-               class="index-img img-fluid rounded index-thumbnails">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/" target="_self">
+          <img src="/img/banner/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10.png" srcset="/img/loading.gif" alt="双系统双硬盘安装 Manjaro,Windows10">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/">
-        <p class="h4 index-header">双系统双硬盘安装 Manjaro,Windows10</p>
+      <a class="index-header" href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/">双系统双硬盘安装 Manjaro,Windows10</a>
+
+      <a href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/" class="index-excerpt">
+        
+        
+          
+        
+        <div>Manjaro自带的分区功能真是弱鸡</div>
       </a>
 
-      <a href="/2020/04/12/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-12
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">Manjaro自带的分区功能真是弱鸡...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-12&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux/">linux</a>&nbsp;
-          
-            <a href="/tags/windows/">windows</a>&nbsp;
-          
-            <a href="/tags/manjaro/">manjaro</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/Windows/">Windows</a>
+            
+              <a href="/tags/Manjaro/">Manjaro</a>
+            
+          </div>
         
       </div>
     </div>
@@ -497,40 +503,41 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/04/11/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/">
-        <p class="h4 index-header">利用 docker 部署 Olaindex</p>
+      <a class="index-header" href="/2020/04/11/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/">利用 docker 部署 Olaindex</a>
+
+      <a href="/2020/04/11/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/" class="index-excerpt">
+        
+        
+          
+        
+        <div>吹爆docker!</div>
       </a>
 
-      <a href="/2020/04/11/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-11
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">吹爆docker!...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-11&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux/">linux</a>&nbsp;
-          
-            <a href="/tags/docker/">docker</a>&nbsp;
-          
-            <a href="/tags/olaindex/">olaindex</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/Docker/">Docker</a>
+            
+              <a href="/tags/olaindex/">olaindex</a>
+            
+          </div>
         
       </div>
     </div>
@@ -540,38 +547,39 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/04/11/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/">
-        <p class="h4 index-header">利用官方脚本一键安装 docker</p>
+      <a class="index-header" href="/2020/04/11/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/">利用官方脚本一键安装 docker</a>
+
+      <a href="/2020/04/11/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/" class="index-excerpt">
+        
+        
+          
+        
+        <div>我可以简单的理解docker为一个简便的应用封装器么？</div>
       </a>
 
-      <a href="/2020/04/11/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-11
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">我可以简单的理解docker为一个简便的应用封装器么？...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-11&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux/">linux</a>&nbsp;
-          
-            <a href="/tags/docker/">docker</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/Docker/">Docker</a>
+            
+          </div>
         
       </div>
     </div>
@@ -581,44 +589,43 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/04/08/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/">
-        <p class="h4 index-header">python 虚拟环境的使用</p>
+      <a class="index-header" href="/2020/04/08/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/">python 虚拟环境的使用</a>
+
+      <a href="/2020/04/08/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/" class="index-excerpt">
+        
+        
+          
+        
+        <div>为了开发的方便，所以得每个项目都有自己的库</div>
       </a>
 
-      <a href="/2020/04/08/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-08
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">为了开发的方便，所以得每个项目都有自己的库...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/Python/">Python</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/Python/">Python</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python/">python</a>&nbsp;
-          
-            <a href="/tags/linux/">linux</a>&nbsp;
-          
-            <a href="/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">虚拟环境</a>&nbsp;
-          
-            <a href="/tags/debian/">debian</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">虚拟环境</a>
+            
+          </div>
         
       </div>
     </div>
@@ -626,9 +633,9 @@
 
 
 
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
@@ -649,8 +656,8 @@
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -685,28 +692,12 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
-    
-  </div>
-
 
     
 
@@ -715,10 +706,8 @@
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="/lib/jquery/jquery.min.js" ></script>
-<script  src="/lib/popper/popper.min.js" ></script>
-<script  src="/lib/bootstrap/js/bootstrap.min.js" ></script>
-<script  src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -733,10 +722,6 @@
 
 
 
-  <script defer src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
-
-
-
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
@@ -745,63 +730,8 @@
 <!-- Plugins -->
 
 
-  
 
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-159925556-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-    <!-- Tencent Analytics -->
-    <script defer>
-      var _mtac = {};
-      (function () {
-        var mta = document.createElement("script");
-        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
-        mta.setAttribute("name", "MTAH5");
-        mta.setAttribute("sid", "");
-        
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(mta, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-
-
-  <script  src="/lib/prettify/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script  src="/lib/typed/typed.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
@@ -809,7 +739,7 @@
         "Write The Code. Change The World!&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 47,
+      typeSpeed: 35,
       loop: false,
     });
     typed.stop();
@@ -821,11 +751,11 @@
 
 
 
-  <script  src="/lib/anchor/anchor.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
-      visible: "false",
+      visible: "hover",
       
       icon: "❡"
       
@@ -845,107 +775,24 @@
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="/lib/fancybox/jquery.fancybox.min.js" ></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
-  </script>
 
 
 
-  
-
-  
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="/lib/katex/katex.min.css" />
-  
 
 
 
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
 
 
 
-  <script>(function (i, s, o, g, r, a, m) {
-      i['DaoVoiceObject'] = r;
-      i[r] = i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        };
-      i[r].l = 1 * new Date();
-      a = s.createElement(o);
-      m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      a.charset = 'utf-8';
-      m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/6bde29d9.js", 'daovoice');
-    daovoice('init', {
-      app_id: "6bde29d9",
-    });
-    daovoice('update');
-  </script>
+
+
 
 
 
