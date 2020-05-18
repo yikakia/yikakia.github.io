@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>为 OracleDatabase 配置 PDB 登录</title>
+    <link href="/2020/05/17/%E4%B8%BAOracleDatabase%E9%85%8D%E7%BD%AEPDB%E7%99%BB%E5%BD%95/"/>
+    <url>/2020/05/17/%E4%B8%BAOracleDatabase%E9%85%8D%E7%BD%AEPDB%E7%99%BB%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>原理简单，懂之前觉得麻烦。</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>做数据库的大作业了，要求自己设计一个数据库。之前用的 HR 数据库姑且是通过改权限强行让 CDB 能够添加不以 C## 开头的用户名了。<br />然而大作业也要求搞一个以自己名字命名的用户名，想了想还是试试 PDB 的结构吧。试了半天终于搞定了。</p><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><p>我是默认就有了一个自带的叫 <code>orclpdb</code> 的 PDB 数据库了，所以就没有新建一个 PDB 数据库了。</p><h2 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h2><ul><li>Oracle Database 19.3c</li><li>Windows10</li></ul><h2 id="登录到 cdb"><a class="markdownIt-Anchor" href="# 登录到 cdb"></a> 登录到 CDB</h2><p>就用你的账号登录就好啦，下面我就以 <code>testuser</code> 作为用户名，<code>pswd</code>作为密码来演示吧。</p><div class="hljs"><pre><code class="hljs sql">sqlplus testuser as sysdba/pswd@localhost:1521/orcl</code></pre></div><h2 id="切换到 pdb"><a class="markdownIt-Anchor" href="# 切换到 pdb"></a> 切换到 PDB</h2><p>先查看你是否已经有了 PDB</p><div class="hljs"><pre><code class="hljs sql">SQL&gt; show pdbs;</code></pre></div><p>之后大概会弹出这样的结果</p><div class="hljs"><pre><code class="hljs plain">    CON_ID CON_NAME                       OPEN MODE  RESTRICTED---------- ------------------------------ ---------- ----------         2 PDB$SEED                       READ ONLY  NO         3 ORCLPDB                        READ WRITE NO</code></pre></div><p>这了的 <code>ORCLPDB</code>就是我们已经有了的默认 PDB 啦。接下来我们就登录进去吧。</p><h2 id="打开 pdb"><a class="markdownIt-Anchor" href="# 打开 pdb"></a> 打开 PDB</h2><p>现在我们切换到 PDB <code>ORCLPDB</code>中去。</p><div class="hljs"><pre><code class="hljs sql">SQL&gt; alter session set container=orclpdb;</code></pre></div><p>正常的会显示如下的字样</p><div class="hljs"><pre><code class="hljs plain">会话已更改。</code></pre></div><p>我们检查一下是否已经切换成功了</p><div class="hljs"><pre><code class="hljs sql">SQL&gt; show pdbs;    CON_ID CON_NAME                       OPEN MODE  RESTRICTED---------- ------------------------------ ---------- ----------         3 ORCLPDB                        READ WRITE NO</code></pre></div><p>然后就把这个 PDB 打开吧</p><div class="hljs"><pre><code class="hljs plain">SQL&gt; startup;</code></pre></div><h2 id="为 pdb 创建用户"><a class="markdownIt-Anchor" href="# 为 pdb 创建用户"></a> 为 PDB 创建用户</h2><p>下面我们来创建用于专门连接这个 PDB 的用户。</p><div class="hljs"><pre><code class="hljs sql">SQL&gt; create user test identified by pswd;  用户已创建。</code></pre></div><h2 id="授予用户该 pdb 的 dba 权限"><a class="markdownIt-Anchor" href="# 授予用户该 pdb 的 dba 权限"></a> 授予用户该 PDB 的 DBA 权限</h2><p>SQL&gt; grant dba to test;</p><p>授权成功。</p><h2 id="配置 listenerora"><a class="markdownIt-Anchor" href="# 配置 listenerora"></a> 配置 listener.ora</h2><p>这里找到 <code>listener.ora</code> 这个文件，它的地址是在 <code>ORACLE_HOME/network/admin/listener.ora</code> 这里。<br />先找到下面这一段</p><div class="hljs"><pre><code class="hljs plain">SID_LIST_LISTENER &#x3D;  (SID_LIST &#x3D;    (SID_DESC &#x3D;      (SID_NAME &#x3D; CLRExtProc)      (ORACLE_HOME &#x3D; D:\Oracle\WINDOWS.X64_193000_db_home)      (PROGRAM &#x3D; extproc)      (ENVS &#x3D; &quot;EXTPROC_DLLS&#x3D;ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll&quot;)    )  )</code></pre></div><p>然后加上这样一段配置就行了</p><div class="hljs"><pre><code class="hljs plain">(SID_DESC &#x3D;(GLOBAL_DBNAME &#x3D; orclpdb)(SID_NAME &#x3D; orcl))</code></pre></div><p>整体的结果是类似于这样的</p><div class="hljs"><pre><code class="hljs plain">SID_LIST_LISTENER &#x3D;  (SID_LIST &#x3D;    (SID_DESC &#x3D;      (SID_NAME &#x3D; CLRExtProc)      (ORACLE_HOME &#x3D; D:\Oracle\WINDOWS.X64_193000_db_home)      (PROGRAM &#x3D; extproc)      (ENVS &#x3D; &quot;EXTPROC_DLLS&#x3D;ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll&quot;)    )    (SID_DESC &#x3D;    (GLOBAL_DBNAME &#x3D; orclpdb)    (SID_NAME &#x3D; orcl)    )  )</code></pre></div><h1 id="优化"><a class="markdownIt-Anchor" href="# 优化"></a> 优化</h1><h2 id="设置 pdb 自动启动"><a class="markdownIt-Anchor" href="# 设置 pdb 自动启动"></a> 设置 PDB 自动启动</h2><p>每次要用 PDB 的时候都得从 CDB 切换到 PDB 然后打开，为了简单我们就用触发器来自动打开吧。</p><div class="hljs"><pre><code class="hljs sql">SQL&gt;CREATE OR REPLACE TRIGGER open_pdbsAFTER STARTUP ON DATABASEBEGINEXECUTE IMMEDIATE 'ALTER PLUGGABLE DATABASE ALL OPEN';END open_pdbs;/</code></pre></div><p>这样就搞定了。</p><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://www.cnblogs.com/ray-bk/p/9711757.html" target="_blank" rel="noopener">Oracle 12c 中新建 pdb 用户登录问题分析</a></p><p><a href="https://www.cnblogs.com/zhjh256/p/9353579.html" target="_blank" rel="noopener">oracle 12c 多租户下的日常操作变化</a></p><p><a href="https://www.cnblogs.com/polestar/p/5892410.html" target="_blank" rel="noopener">Oracle 12C 创建用户连接 pdb</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>OracleDatabase</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OracleDatabase</tag>
+      
+      <tag>PDB</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>去除 Chrome 请停用以开发者模式运行的扩展程序</title>
     <link href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/"/>
     <url>/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/</url>
@@ -609,9 +638,9 @@
     
     <tags>
       
-      <tag>Oracle</tag>
-      
       <tag>OracleDatabase</tag>
+      
+      <tag>Oracle</tag>
       
     </tags>
     

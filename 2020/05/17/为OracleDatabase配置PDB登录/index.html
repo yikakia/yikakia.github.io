@@ -17,7 +17,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
-  <title>为 oracle19c 创建 hr 样例数据库 ~ Yika`s Blog</title>
+  <title>为 OracleDatabase 配置 PDB 登录 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -132,8 +132,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-05 09:38">
-                    2020年3月5日 上午
+                  <time datetime="2020-05-17 21:40">
+                    2020年5月17日 晚上
                   </time>
                 </div>
               
@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.1k 字
+                    659 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    13
+                    8
                      分钟
                   </span>
                 
@@ -190,96 +190,102 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年5月13日 晚上
+                  本文最后更新于：2020年5月18日 晚上
                 
               </p>
             
             <article class="markdown-body">
-              <p>报了 ORA-20000: Schema “HR” does not exist or insufficient privileges 错找了半天才找到解决方法。</p>
+              <p>原理简单，懂之前觉得麻烦。</p>
 <a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
-<p>这学期开了大型数据库的课，要用 Oracle 的数据库。但老师的实验是用 Oracle 的样例数据库。而我看了看，我没有这个啊。</p>
-<p>怎么办呢？查了一下，原来是这个数据库要自己安装。于是跟着教程走了一遍，不过出了点问题，但搜了一下还是解决了。</p>
-<p>于是记录一下，方便自己以后用以及和我遇到了一样的问题的人。</p>
-<h1 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h1>
-<ol>
-<li>Windows10 1909</li>
-<li>Oracle Database 19c 19.3</li>
-<li>Oracle Database 19c Client (19.3)</li>
-</ol>
-<h1 id="安装步骤"><a class="markdownIt-Anchor" href="# 安装步骤"></a> 安装步骤</h1>
-<p>不知道你是安的 <code>client</code> 还是 <code>db</code>。最开始我安的<code>db</code>，但老师又安了<code>client</code>，所以我也跟着安装，结果这东西好像<code>client</code> 的覆盖了 <code>db</code> 的路径。莫名其妙的。也不知道 <code>db</code> 安装了到底有啥用。</p>
-<p>总之我发现现在的环境变量是 <code>client</code> 的而不是 <code>db</code> 的。而我们要安装这个样例数据库的话，可以用 Oracle 官方的脚本，但这个脚本是包含在 <code>db</code> 的而不是 <code>client</code> 里的。所以要用的话可以从 <code>db</code> 的文件夹里复制脚本到 <code>client</code> 的文件夹里。</p>
-<h2 id="找到脚本"><a class="markdownIt-Anchor" href="# 找到脚本"></a> 找到脚本</h2>
-<h3 id="从 db 里复制"><a class="markdownIt-Anchor" href="# 从 db 里复制"></a> 从 <code>db</code> 里复制</h3>
-<p>去你下的那个安装包解压的地方，比如 <code>\WINDOWS.X64_193000_db_home</code> 这样的。</p>
-<p>然后复制这个文件夹下的 <code>demo</code> 文件夹到 <code>\WINDOWS.X64_193000_client_home</code> 这个文件夹里。</p>
-<p>用这个方法的是和我一样先装了 <code>db</code> 后装了 <code>client</code> 的。如果你只装了 <code>db</code> 或者先装了 <code>client</code> 后装了 <code>db</code> 的那就无所谓了，因为默认的环境变量的下面就有这个。</p>
-<h3 id="从 github 上下载"><a class="markdownIt-Anchor" href="# 从 github 上下载"></a> 从 github 上下载</h3>
-<p>Oracle 官方在 github 上放了脚本来安装样例数据库，可以 <a href="https://github.com/oracle/db-sample-schemas/releases" target="_blank" rel="noopener"> 点这里 </a> 去下载最新的脚本。</p>
-<p>下载完了后，把里面的文件夹都拷出来，放的位置是<code>\WINDOWS.X64_193000_client_home\demo\schema</code>。没有这个文件夹的可以自己创建。</p>
-<h2 id="安装"><a class="markdownIt-Anchor" href="# 安装"></a> 安装</h2>
-<p>总之现在把脚本放在了指定的地方，其实也可以不放在这里，但我主要是为了方便用环境变量做解释。<br />
-现在连接 sqlplus, 用 sys 账号，以 sysdba 的身份登录<br />
-然后输入如下的命令</p>
-<div class="hljs"><pre><code class="hljs sql">sql&gt;@?/demo/schema/human_resources/hr_main.sql;</code></pre></div>
-<p>现在就是正式创建了，输入之前的命令后会出现下面这样的字样。<br />
-我一步步翻译解释一下吧。</p>
+<p>做数据库的大作业了，要求自己设计一个数据库。之前用的 HR 数据库姑且是通过改权限强行让 CDB 能够添加不以 C## 开头的用户名了。<br />
+然而大作业也要求搞一个以自己名字命名的用户名，想了想还是试试 PDB 的结构吧。试了半天终于搞定了。</p>
+<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
+<p>我是默认就有了一个自带的叫 <code>orclpdb</code> 的 PDB 数据库了，所以就没有新建一个 PDB 数据库了。</p>
+<h2 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h2>
 <ul>
-<li>输入 HR 的密码</li>
+<li>Oracle Database 19.3c</li>
+<li>Windows10</li>
 </ul>
-<p>这里我输入的是 hr 作为密码</p>
-<div class="hljs"><pre><code class="hljs plain">specify password for HR as parameter 1:
-Enter value for 1: hr</code></pre></div>
-<ul>
-<li>输入 HR 的默认表空间</li>
-</ul>
-<p>这里我把 <code>user</code> 作为默认表空间</p>
-<div class="hljs"><pre><code class="hljs plain">specify default tablespeace for HR as parameter 2:
-Enter value for 2: user</code></pre></div>
-<ul>
-<li>输入 HR 的临时表空间</li>
-</ul>
-<p>这里我把 <code>temp</code> 作为临时表空间</p>
-<div class="hljs"><pre><code class="hljs plain">specify temporary tablespace for HR as parameter 3:
-Enter value for 3: temp</code></pre></div>
-<ul>
-<li>输入 log 存放的地址</li>
-</ul>
-<p>这里我把直接把它放在了数据库程序的 <code>~/demo/schema/log/</code>这个文件夹里面</p>
-<div class="hljs"><pre><code class="hljs plain">specify log path as parameter 4:
-Enter value for 4:  $ORACLE_HOME&#x2F;demo&#x2F;schema&#x2F;log&#x2F;</code></pre></div>
-<p>这个时候有些人会报错，像下面这样</p>
-<div class="hljs"><pre><code class="hljs plain">Comment created.
+<h2 id="登录到 cdb"><a class="markdownIt-Anchor" href="# 登录到 cdb"></a> 登录到 CDB</h2>
+<p>就用你的账号登录就好啦，下面我就以 <code>testuser</code> 作为用户名，<code>pswd</code>作为密码来演示吧。</p>
+<div class="hljs"><pre><code class="hljs sql">sqlplus testuser as sysdba/pswd@localhost:1521/orcl</code></pre></div>
+<h2 id="切换到 pdb"><a class="markdownIt-Anchor" href="# 切换到 pdb"></a> 切换到 PDB</h2>
+<p>先查看你是否已经有了 PDB</p>
+<div class="hljs"><pre><code class="hljs sql">SQL&gt; show pdbs;</code></pre></div>
+<p>之后大概会弹出这样的结果</p>
+<div class="hljs"><pre><code class="hljs plain">    CON_ID CON_NAME                       OPEN MODE  RESTRICTED
+---------- ------------------------------ ---------- ----------
+         2 PDB$SEED                       READ ONLY  NO
+         3 ORCLPDB                        READ WRITE NO</code></pre></div>
+<p>这了的 <code>ORCLPDB</code>就是我们已经有了的默认 PDB 啦。接下来我们就登录进去吧。</p>
+<h2 id="打开 pdb"><a class="markdownIt-Anchor" href="# 打开 pdb"></a> 打开 PDB</h2>
+<p>现在我们切换到 PDB <code>ORCLPDB</code>中去。</p>
+<div class="hljs"><pre><code class="hljs sql">SQL&gt; alter session set container=orclpdb;</code></pre></div>
+<p>正常的会显示如下的字样</p>
+<div class="hljs"><pre><code class="hljs plain">会话已更改。</code></pre></div>
+<p>我们检查一下是否已经切换成功了</p>
+<div class="hljs"><pre><code class="hljs sql">SQL&gt; show pdbs;
 
+    CON_ID CON_NAME                       OPEN MODE  RESTRICTED
+---------- ------------------------------ ---------- ----------
+         3 ORCLPDB                        READ WRITE NO</code></pre></div>
+<p>然后就把这个 PDB 打开吧</p>
+<div class="hljs"><pre><code class="hljs plain">SQL&gt; startup;</code></pre></div>
+<h2 id="为 pdb 创建用户"><a class="markdownIt-Anchor" href="# 为 pdb 创建用户"></a> 为 PDB 创建用户</h2>
+<p>下面我们来创建用于专门连接这个 PDB 的用户。</p>
+<div class="hljs"><pre><code class="hljs sql">SQL&gt; create user test identified by pswd;  
 
-Commit complete.
-
-BEGIN dbms_stats.gather_schema_stats(&#39;HR&#39;                            ,                granularity &#x3D;&gt; &#39;ALL&#39;            ,                cascade &#x3D;&gt; TRUE                 ,                block_sample &#x3D;&gt; TRUE); END;
-
-*
-ERROR at line 1:
-ORA-20000: Schema &quot;HR&quot; does not exist or insufficient privileges
-ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 3701
-ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24470
-ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24435
-ORA-06512: at line 1</code></pre></div>
-<h2 id="报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"><a class="markdownIt-Anchor" href="# 报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"></a> 报错 ORA-20000: Schema “HR” does not exist or insufficient privileges</h2>
-<p>这是因为 HR 用户之前没有被创建，而脚本自己好像又建不了。而 Oracle 19c 要求自建用户的用户名的格式是 <code>c##hr</code> 而不是<code>hr</code> 这样的。但我们要求用的用户名是<code>hr</code>。所以就得输入下面的命令来改变一下。</p>
-<div class="hljs"><pre><code class="hljs plain">SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;&#x3D;true;</code></pre></div>
-<p>然后我们就可以再运行上面的脚本来搞定了。</p>
-<p>当出现下面这样的字样时就说明搞定了</p>
-<div class="hljs"><pre><code class="hljs plain">Comment created.
-
-
-Commit complete.
-
-
-PL&#x2F;SQL procedure successfully completed.</code></pre></div>
-<p>现在我们打开新的终端或者 sql devoloper 来连接试试吧。</p>
-<h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
-<p><a href="https://blog.csdn.net/gsforget321/article/details/102918518" target="_blank" rel="noopener">oracle 19c 创建 sample schema-HR,OE,SH 等等</a><br />
-<a href="http://susantotech.blogspot.com/2019/10/ora-20000-schema-hr-does-not-exist-or.html" target="_blank" rel="noopener">ORA-20000: Schema “HR” does not exist or insufficient privileges in Oracle Database 19C</a>(主要参考的这篇文章)</p>
+用户已创建。</code></pre></div>
+<h2 id="授予用户该 pdb 的 dba 权限"><a class="markdownIt-Anchor" href="# 授予用户该 pdb 的 dba 权限"></a> 授予用户该 PDB 的 DBA 权限</h2>
+<p>SQL&gt; grant dba to test;</p>
+<p>授权成功。</p>
+<h2 id="配置 listenerora"><a class="markdownIt-Anchor" href="# 配置 listenerora"></a> 配置 listener.ora</h2>
+<p>这里找到 <code>listener.ora</code> 这个文件，它的地址是在 <code>ORACLE_HOME/network/admin/listener.ora</code> 这里。<br />
+先找到下面这一段</p>
+<div class="hljs"><pre><code class="hljs plain">SID_LIST_LISTENER &#x3D;
+  (SID_LIST &#x3D;
+    (SID_DESC &#x3D;
+      (SID_NAME &#x3D; CLRExtProc)
+      (ORACLE_HOME &#x3D; D:\Oracle\WINDOWS.X64_193000_db_home)
+      (PROGRAM &#x3D; extproc)
+      (ENVS &#x3D; &quot;EXTPROC_DLLS&#x3D;ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll&quot;)
+    )
+  )</code></pre></div>
+<p>然后加上这样一段配置就行了</p>
+<div class="hljs"><pre><code class="hljs plain">(SID_DESC &#x3D;
+(GLOBAL_DBNAME &#x3D; orclpdb)
+(SID_NAME &#x3D; orcl)
+)</code></pre></div>
+<p>整体的结果是类似于这样的</p>
+<div class="hljs"><pre><code class="hljs plain">SID_LIST_LISTENER &#x3D;
+  (SID_LIST &#x3D;
+    (SID_DESC &#x3D;
+      (SID_NAME &#x3D; CLRExtProc)
+      (ORACLE_HOME &#x3D; D:\Oracle\WINDOWS.X64_193000_db_home)
+      (PROGRAM &#x3D; extproc)
+      (ENVS &#x3D; &quot;EXTPROC_DLLS&#x3D;ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll&quot;)
+    )
+    (SID_DESC &#x3D;
+    (GLOBAL_DBNAME &#x3D; orclpdb)
+    (SID_NAME &#x3D; orcl)
+    )
+  )</code></pre></div>
+<h1 id="优化"><a class="markdownIt-Anchor" href="# 优化"></a> 优化</h1>
+<h2 id="设置 pdb 自动启动"><a class="markdownIt-Anchor" href="# 设置 pdb 自动启动"></a> 设置 PDB 自动启动</h2>
+<p>每次要用 PDB 的时候都得从 CDB 切换到 PDB 然后打开，为了简单我们就用触发器来自动打开吧。</p>
+<div class="hljs"><pre><code class="hljs sql">SQL&gt;
+CREATE OR REPLACE TRIGGER open_pdbs
+AFTER STARTUP ON DATABASE
+BEGIN
+EXECUTE IMMEDIATE 'ALTER PLUGGABLE DATABASE ALL OPEN';
+END open_pdbs;
+/</code></pre></div>
+<p>这样就搞定了。</p>
+<h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
+<p><a href="https://www.cnblogs.com/ray-bk/p/9711757.html" target="_blank" rel="noopener">Oracle 12c 中新建 pdb 用户登录问题分析</a></p>
+<p><a href="https://www.cnblogs.com/zhjh256/p/9353579.html" target="_blank" rel="noopener">oracle 12c 多租户下的日常操作变化</a></p>
+<p><a href="https://www.cnblogs.com/polestar/p/5892410.html" target="_blank" rel="noopener">Oracle 12C 创建用户连接 pdb</a></p>
 
             </article>
             <hr>
@@ -301,7 +307,7 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
                     
                       <a class="hover-with-bg" href="/tags/OracleDatabase/">OracleDatabase</a>
                     
-                      <a class="hover-with-bg" href="/tags/Oracle/">Oracle</a>
+                      <a class="hover-with-bg" href="/tags/PDB/">PDB</a>
                     
                   </div>
                 
@@ -314,18 +320,12 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/03/06/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">配置 SSH 只能使用密钥登录</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/03/04/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/">
-                        <span class="hidden-mobile">利用 Let`s Encrypt 为你的网站加把小锁</span>
+                      <a href="/2020/05/12/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
+                        <span class="hidden-mobile">去除 Chrome 请停用以开发者模式运行的扩展程序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -484,7 +484,7 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "为 oracle19c 创建 hr 样例数据库&nbsp;",
+        "为 OracleDatabase 配置 PDB 登录&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 35,
