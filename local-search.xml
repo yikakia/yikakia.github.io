@@ -687,9 +687,9 @@
     
     <categories>
       
-      <category>折腾</category>
-      
       <category>学习</category>
+      
+      <category>折腾</category>
       
       <category>计算机网络</category>
       
@@ -868,9 +868,9 @@
       
       <tag>Nginx</tag>
       
-      <tag>hexo</tag>
-      
       <tag>ssh</tag>
+      
+      <tag>hexo</tag>
       
       <tag>建站</tag>
       
