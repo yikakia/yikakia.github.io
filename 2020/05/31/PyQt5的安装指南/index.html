@@ -17,7 +17,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
-  <title>Manjaro 开机自动打开 NumLock ~ Yika`s Blog</title>
+  <title>PyQt5 的安装指南 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -132,8 +132,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-22 20:30">
-                    2020年5月22日 晚上
+                  <time datetime="2020-05-31 10:45">
+                    2020年5月31日 上午
                   </time>
                 </div>
               
@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    260 字
+                    522 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    3
+                    6
                      分钟
                   </span>
                 
@@ -190,45 +190,49 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年5月28日 下午
+                  本文最后更新于：2020年5月31日 下午
                 
               </p>
             
             <article class="markdown-body">
-              <p>安装 Numlockx，配置 /etc/sddm.conf，把 None 改成 on</p>
+              <p>从入坑到入土</p>
 <a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
-<p>每次登录 Manjaro 的时候因为密码里面有数字，而 Manjaro 又不会自动打开数字键，所以每次都得去手动打开，非常麻烦。于是就去搜了搜，发现解决方式还挺简单的。</p>
-<h1 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h1>
-<ul>
-<li>OS: Manjaro 20.0.1 Lysia</li>
-<li>numlockx: 1.2-5</li>
-</ul>
-<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
-<h2 id="安装 numlockx"><a class="markdownIt-Anchor" href="# 安装 numlockx"></a> 安装<code>Numlockx</code></h2>
-<p>这个我看了看，我的 Manjaro 是自带的，没有的话就安装一下吧。</p>
-<div class="hljs"><pre><code class="hljs bash">sudo pacman -S numlockx</code></pre></div>
-<h2 id="配置 ssdmconf"><a class="markdownIt-Anchor" href="# 配置 ssdmconf"></a> 配置<code>ssdm.conf</code></h2>
-<p>安装好之后配置一下就行了。</p>
-<div class="hljs"><pre><code class="hljs bash">sudo nano /etc/sddm.conf</code></pre></div>
-<p>打开文件后，找到类似于下面这样的一行</p>
-<div class="hljs"><pre><code class="hljs conf">[General]
-HaltCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl poweroff
-InputMethod&#x3D;
-Numlock&#x3D;none
-RebootCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl reboot</code></pre></div>
-<p>然后把 <code>Numlock=none</code> 这一条改成 <code>Numlock=on</code> 就行了。</p>
-<div class="hljs"><pre><code class="hljs plain">Numlock&#x3D;on</code></pre></div>
-<p>修改后的结果大概长这样</p>
-<div class="hljs"><pre><code class="hljs plain">[General]
-HaltCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl poweroff
-InputMethod&#x3D;
-Numlock&#x3D;on
-#Numlock&#x3D;none
-RebootCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl reboot</code></pre></div>
-<p>现在重启一下就好啦。</p>
+<p>数字图像处理的作业要求有图形化的设计。我都是用的 Python 来实现的代码的，感觉转成用 C 来写的话各种类型太麻烦了，还是直接用 Python 试试 GUI 开发。</p>
+<p>结果只能说差强人意。我也没用到什么槽函数感觉也可以写出来。不过打包成.exe 文件的时候却发现整个包太大了。估计是打包了 Python 运行环境的原因。所以要想开发小而美的软件还是得用 C 啊</p>
+<h1 id="从 pip 安装"><a class="markdownIt-Anchor" href="# 从 pip 安装"></a> 从 pip 安装</h1>
+<p>安装很简单，用 pip 就行</p>
+<div class="hljs"><pre><code class="hljs cmd">pip install PyQt5</code></pre></div>
+<p>不过一般还得安装个插件，这样才能用 QT Designer 进行可视化的编辑</p>
+<div class="hljs"><pre><code class="hljs cmd">pip install pyqt5-tools</code></pre></div>
+<h1 id="汉化 qt-designer"><a class="markdownIt-Anchor" href="# 汉化 qt-designer"></a> 汉化 QT Designer</h1>
+<p>找到你的对应的包的地址，如下</p>
+<div class="hljs"><pre><code class="hljs plain">\python\python381\Lib\site-packages\pyqt5_tools\Qt\bin\translations</code></pre></div>
+<p>如果没有 <code>translations</code> 这个文件夹的话你可以自己新建一个。然后把 <a href="designer_zh_CN.qm">designer_zh_CN.qm</a> 这个文件放进去。还有下载地址是<a href="https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw" target="_blank" rel="noopener">https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw</a><br />
+大概的效果是这样的<br />
+<img src="%E6%B1%89%E5%8C%96%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" alt="汉化示例" /></p>
+<h1 id="设置环境变量"><a class="markdownIt-Anchor" href="# 设置环境变量"></a> 设置环境变量</h1>
+<p>这是为了避免到时候如下报错</p>
+<div class="hljs"><pre><code class="hljs plain">this application failed to start because no Qt platform plugin could be initialized, Reinstalling the application may fix this problem, available platform</code></pre></div>
+<p>打开 <code> 我的电脑 </code>，在上方的<code> 文件 </code> 选项卡里面选择 <code> 系统属性 </code>，然后在弹出来的界面的<code> 相关设置 </code> 栏中选择 <code> 系统信息</code>。<br />
+<img src="%E6%96%87%E4%BB%B6%E9%80%89%E9%A1%B9%E5%8D%A1.jpg" srcset="/img/loading.gif" alt="文件选项卡.jpg" /><br />
+<img src="%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF.jpg" srcset="/img/loading.gif" alt="系统信息.jpg" /></p>
+<p>在弹出的页面中选择 <code> 高级系统设置 </code>，然后点击<code> 环境变量</code><br />
+<img src="%E9%AB%98%E7%BA%A7%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE.jpg" srcset="/img/loading.gif" alt="高级系统设置.jpg" /><br />
+<img src="%E7%82%B9%E5%87%BB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" alt="点击环境变量.jpg" /></p>
+<p>编辑系统环境变量中的 Path 项，在里面添加如下的地址<br />
+<img src="%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" alt="添加环境变量.jpg" /><br />
+大概的就是这样的</p>
+<div class="hljs"><pre><code class="hljs plain">你的 Python 地址 \Lib\site-packages\PyQt5\Qt\plugins\platforms</code></pre></div>
+<p>然后再在系统变量中新建项，命名为<code>QT_PLUGIN_PATH</code><br />
+然后把值设置为</p>
+<div class="hljs"><pre><code class="hljs plain">你的 Python 地址 \Lib\site-packages\PyQt5\Qt\plugins</code></pre></div>
+<p><img src="%E6%B7%BB%E5%8A%A0QT_Plugin_Path.jpg" srcset="/img/loading.gif" alt="添加 QT_Plugin_Path.jpg" /></p>
+<p>现在搞定后重启就可以了。</p>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://www.cnblogs.com/sigma0/p/10317866.html" target="_blank" rel="noopener">安装 manjaro kde linux 的个人步骤</a></p>
+<p><a href="https://www.cnblogs.com/awakenedy/articles/9492017.html" target="_blank" rel="noopener">PyQt（pyqt-tools）中的 Qt Designer 改为中文界面</a><br />
+<a href="https://blog.csdn.net/lyzwjaa/article/details/79429901" target="_blank" rel="noopener">python3+PyQt5+Qt designer+pycharm 安装及配置 + 将 ui 文件转 py 文件</a><br />
+<a href="https://blog.csdn.net/Bingoooooo_/article/details/81535892" target="_blank" rel="noopener">如何将 PyQt（pyqt-tools）中的 Qt Designer 改为中文界面（汉化）</a></p>
 
             </article>
             <hr>
@@ -238,7 +242,7 @@ RebootCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl reboot</code></pre></div>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
                   </div>
                 
@@ -246,11 +250,11 @@ RebootCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl reboot</code></pre></div>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
                     
-                      <a class="hover-with-bg" href="/tags/Manjaro/">Manjaro</a>
+                      <a class="hover-with-bg" href="/tags/PyQt5/">PyQt5</a>
                     
-                      <a class="hover-with-bg" href="/tags/Numlockx/">Numlockx</a>
+                      <a class="hover-with-bg" href="/tags/QT-Designer/">QT Designer</a>
                     
                   </div>
                 
@@ -263,18 +267,12 @@ RebootCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl reboot</code></pre></div>
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/05/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数字图像处理大作业记录 - 边缘检测与阈值分割的 Python 实现及利用 PyQt5 的 GUI 开发</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/05/17/%E4%B8%BAOracleDatabase%E9%85%8D%E7%BD%AEPDB%E7%99%BB%E5%BD%95/">
-                        <span class="hidden-mobile">为 OracleDatabase 配置 PDB 登录</span>
+                      <a href="/2020/05/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/">
+                        <span class="hidden-mobile">数字图像处理大作业记录 - 边缘检测与阈值分割的 Python 实现及利用 PyQt5 的 GUI 开发</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -464,7 +462,7 @@ RebootCommand&#x3D;&#x2F;usr&#x2F;bin&#x2F;systemctl reboot</code></pre></div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Manjaro 开机自动打开 NumLock&nbsp;",
+        "PyQt5 的安装指南&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 35,
