@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" type="image/png" href="/static/logo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个新晋程序员的博客">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
+  <title>为 oracle19c 创建 hr 样例数据库 ~ Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yika`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/static/post.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-05 09:38">
+                    2020年3月5日 上午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.1k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    13
+                     分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="iconfont icon-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年5月13日 晚上
+                
+              </p>
+            
+            <article class="markdown-body">
+              <p>报了 ORA-20000: Schema “HR” does not exist or insufficient privileges 错找了半天才找到解决方法。</p>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
+<p>这学期开了大型数据库的课，要用 Oracle 的数据库。但老师的实验是用 Oracle 的样例数据库。而我看了看，我没有这个啊。</p>
+<p>怎么办呢？查了一下，原来是这个数据库要自己安装。于是跟着教程走了一遍，不过出了点问题，但搜了一下还是解决了。</p>
+<p>于是记录一下，方便自己以后用以及和我遇到了一样的问题的人。</p>
+<h1 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h1>
+<ol>
+<li>Windows10 1909</li>
+<li>Oracle Database 19c 19.3</li>
+<li>Oracle Database 19c Client (19.3)</li>
+</ol>
+<h1 id="安装步骤"><a class="markdownIt-Anchor" href="# 安装步骤"></a> 安装步骤</h1>
+<p>不知道你是安的 <code>client</code> 还是 <code>db</code>。最开始我安的<code>db</code>，但老师又安了<code>client</code>，所以我也跟着安装，结果这东西好像<code>client</code> 的覆盖了 <code>db</code> 的路径。莫名其妙的。也不知道 <code>db</code> 安装了到底有啥用。</p>
+<p>总之我发现现在的环境变量是 <code>client</code> 的而不是 <code>db</code> 的。而我们要安装这个样例数据库的话，可以用 Oracle 官方的脚本，但这个脚本是包含在 <code>db</code> 的而不是 <code>client</code> 里的。所以要用的话可以从 <code>db</code> 的文件夹里复制脚本到 <code>client</code> 的文件夹里。</p>
+<h2 id="找到脚本"><a class="markdownIt-Anchor" href="# 找到脚本"></a> 找到脚本</h2>
+<h3 id="从 db 里复制"><a class="markdownIt-Anchor" href="# 从 db 里复制"></a> 从 <code>db</code> 里复制</h3>
+<p>去你下的那个安装包解压的地方，比如 <code>\WINDOWS.X64_193000_db_home</code> 这样的。</p>
+<p>然后复制这个文件夹下的 <code>demo</code> 文件夹到 <code>\WINDOWS.X64_193000_client_home</code> 这个文件夹里。</p>
+<p>用这个方法的是和我一样先装了 <code>db</code> 后装了 <code>client</code> 的。如果你只装了 <code>db</code> 或者先装了 <code>client</code> 后装了 <code>db</code> 的那就无所谓了，因为默认的环境变量的下面就有这个。</p>
+<h3 id="从 github 上下载"><a class="markdownIt-Anchor" href="# 从 github 上下载"></a> 从 github 上下载</h3>
+<p>Oracle 官方在 github 上放了脚本来安装样例数据库，可以 <a href="https://github.com/oracle/db-sample-schemas/releases" target="_blank" rel="noopener"> 点这里 </a> 去下载最新的脚本。</p>
+<p>下载完了后，把里面的文件夹都拷出来，放的位置是<code>\WINDOWS.X64_193000_client_home\demo\schema</code>。没有这个文件夹的可以自己创建。</p>
+<h2 id="安装"><a class="markdownIt-Anchor" href="# 安装"></a> 安装</h2>
+<p>总之现在把脚本放在了指定的地方，其实也可以不放在这里，但我主要是为了方便用环境变量做解释。<br />
+现在连接 sqlplus, 用 sys 账号，以 sysdba 的身份登录<br />
+然后输入如下的命令</p>
+<div class="hljs"><pre><code class="hljs sql">sql&gt;@?/demo/schema/human_resources/hr_main.sql;</code></pre></div>
+<p>现在就是正式创建了，输入之前的命令后会出现下面这样的字样。<br />
+我一步步翻译解释一下吧。</p>
+<ul>
+<li>输入 HR 的密码</li>
+</ul>
+<p>这里我输入的是 hr 作为密码</p>
+<div class="hljs"><pre><code class="hljs plain">specify password for HR as parameter 1:
+Enter value for 1: hr</code></pre></div>
+<ul>
+<li>输入 HR 的默认表空间</li>
+</ul>
+<p>这里我把 <code>user</code> 作为默认表空间</p>
+<div class="hljs"><pre><code class="hljs plain">specify default tablespeace for HR as parameter 2:
+Enter value for 2: user</code></pre></div>
+<ul>
+<li>输入 HR 的临时表空间</li>
+</ul>
+<p>这里我把 <code>temp</code> 作为临时表空间</p>
+<div class="hljs"><pre><code class="hljs plain">specify temporary tablespace for HR as parameter 3:
+Enter value for 3: temp</code></pre></div>
+<ul>
+<li>输入 log 存放的地址</li>
+</ul>
+<p>这里我把直接把它放在了数据库程序的 <code>~/demo/schema/log/</code>这个文件夹里面</p>
+<div class="hljs"><pre><code class="hljs plain">specify log path as parameter 4:
+Enter value for 4:  $ORACLE_HOME&#x2F;demo&#x2F;schema&#x2F;log&#x2F;</code></pre></div>
+<p>这个时候有些人会报错，像下面这样</p>
+<div class="hljs"><pre><code class="hljs plain">Comment created.
+
+
+Commit complete.
+
+BEGIN dbms_stats.gather_schema_stats(&#39;HR&#39;                            ,                granularity &#x3D;&gt; &#39;ALL&#39;            ,                cascade &#x3D;&gt; TRUE                 ,                block_sample &#x3D;&gt; TRUE); END;
+
+*
+ERROR at line 1:
+ORA-20000: Schema &quot;HR&quot; does not exist or insufficient privileges
+ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 3701
+ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24470
+ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24435
+ORA-06512: at line 1</code></pre></div>
+<h2 id="报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"><a class="markdownIt-Anchor" href="# 报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"></a> 报错 ORA-20000: Schema “HR” does not exist or insufficient privileges</h2>
+<p>这是因为 HR 用户之前没有被创建，而脚本自己好像又建不了。而 Oracle 19c 要求自建用户的用户名的格式是 <code>c##hr</code> 而不是<code>hr</code> 这样的。但我们要求用的用户名是<code>hr</code>。所以就得输入下面的命令来改变一下。</p>
+<div class="hljs"><pre><code class="hljs plain">SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;&#x3D;true;</code></pre></div>
+<p>然后我们就可以再运行上面的脚本来搞定了。</p>
+<p>当出现下面这样的字样时就说明搞定了</p>
+<div class="hljs"><pre><code class="hljs plain">Comment created.
+
+
+Commit complete.
+
+
+PL&#x2F;SQL procedure successfully completed.</code></pre></div>
+<p>现在我们打开新的终端或者 sql devoloper 来连接试试吧。</p>
+<h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
+<p><a href="https://blog.csdn.net/gsforget321/article/details/102918518" target="_blank" rel="noopener">oracle 19c 创建 sample schema-HR,OE,SH 等等</a><br />
+<a href="http://susantotech.blogspot.com/2019/10/ora-20000-schema-hr-does-not-exist-or.html" target="_blank" rel="noopener">ORA-20000: Schema “HR” does not exist or insufficient privileges in Oracle Database 19C</a>(主要参考的这篇文章)</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/OracleDatabase/">OracleDatabase</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OracleDatabase/">OracleDatabase</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Oracle/">Oracle</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">配置 SSH 只能使用密钥登录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/">
+                        <span class="hidden-mobile">利用 Let`s Encrypt 为你的网站加把小锁</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-159925556-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "为 oracle19c 创建 hr 样例数据库&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 35,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "❡"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
