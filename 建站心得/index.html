@@ -20,21 +20,25 @@
   <title>建站心得 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
 
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
-
-
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -42,6 +46,7 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -65,47 +70,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -130,43 +150,46 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2019-07-19 22:05">
-                    2019年7月19日 晚上
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-07-19 22:05">
+      2019年7月19日 晚上
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    3.1k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    37
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
 
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="iconfont icon-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      36
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
             
           </div>
 
@@ -240,14 +263,14 @@ hexo s</code></pre></div>
 <p>在这里 第二行的 <code>hexo init</code> 这个地方可能会等很久，因为众所周知的原因，国内对外网的支持并不好，所以耐心等待即可。</p>
 <p>当你看到界面上弹出 <code>INFO Start blogging with Hexo!</code> 的字样时，说明 hexo 已经在这个文件夹里拷贝了一份基础的框架，这个时候就可以输第三行代码 <code>npm install</code> 了。</p>
 <p>现在基本的框架都搭好了，输入第四行代码<code>hexo s</code> 等到提示</p>
-<div class="hljs"><pre><code class="hljs plain">INFO  Hexo is running at http:&#x2F;&#x2F;localhost:4000 . Press Ctrl+C to stop.</code></pre></div>
+<div class="hljs"><pre><code class="hljs livecodeserver">INFO  Hexo is running <span class="hljs-keyword">at</span> <span class="hljs-keyword">http</span>://localhost:<span class="hljs-number">4000</span> . Press Ctrl+C <span class="hljs-built_in">to</span> <span class="hljs-built_in">stop</span>.</code></pre></div>
 <p>的时候，你就可以打开浏览器，输入 <code>http://localhost:4000</code> 来看你的博客的雏形了。大概长这样👇</p>
 <p><img src="https://i.loli.net/2019/07/20/5d32f1cbe97fa10567.png" srcset="/img/loading.gif" alt="大概长这样" /></p>
 <p>那么到了现在，Windows 端的基础的都搭好了，现在开始下一步吧。</p>
 <h2 id="linux- 环境"><a class="markdownIt-Anchor" href="#linux- 环境"></a> Linux 环境</h2>
 <p>首先链接到你的 vps，我用的是 xshell。</p>
 <p>登录之后更新软件源</p>
-<div class="hljs"><pre><code class="hljs plain">sudo apt-get update</code></pre></div>
+<div class="hljs"><pre><code class="hljs pgsql">sudo apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">update</span></code></pre></div>
 <h3 id="git- 安装"><a class="markdownIt-Anchor" href="#git- 安装"></a> git 安装</h3>
 <div class="hljs"><pre><code class="hljs bash">sudo apt-get install git-core</code></pre></div>
 <p>安装好了之后可以用 git --version 查看是否安装成功。</p>
@@ -257,52 +280,52 @@ hexo s</code></pre></div>
 <p>的时候发现我的搬瓦工的 debain9 不能安装上，最后是按官方的教程走的。</p>
 <p>官方的页面在 <a href="http://nginx.org/en/linux_packages.html#Debian" target="_blank" rel="noopener"> 这里</a></p>
 <p>安装好后可以通过</p>
-<div class="hljs"><pre><code class="hljs plain">nginx -v</code></pre></div>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">nginx -v</span></code></pre></div>
 <p>来查看是否安装成功。</p>
 <h3 id="新增 -git- 用户并添加 sudo 权限"><a class="markdownIt-Anchor" href="# 新增 -git- 用户并添加 sudo 权限"></a> 新增 git 用户并添加 sudo 权限</h3>
-<div class="hljs"><pre><code class="hljs plain">adduser git
-chmod 740 &#x2F;etc&#x2F;sudoers
-nano &#x2F;etc&#x2F;sudoers</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">adduser</span> <span class="hljs-string">git</span>
+<span class="hljs-attr">chmod</span> <span class="hljs-string">740 /etc/sudoers</span>
+<span class="hljs-attr">nano</span> <span class="hljs-string">/etc/sudoers</span></code></pre></div>
 <p>这里用 nano 编辑器打开了 <code>sudoers</code> 这个文件。对初学者而言，nano 编辑器更为直观。</p>
 <p>在文件中找到如下内容</p>
-<div class="hljs"><pre><code class="hljs plain"># User privilege specification
-root    ALL&#x3D;(ALL)     ALL</code></pre></div>
+<div class="hljs"><pre><code class="hljs apache"><span class="hljs-comment"># User privilege specification</span>
+<span class="hljs-attribute">root</span>    <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>)     <span class="hljs-literal">ALL</span></code></pre></div>
 <p>找到后在下面新增一行</p>
-<div class="hljs"><pre><code class="hljs plain">git   ALL&#x3D;(ALL)     ALL</code></pre></div>
+<div class="hljs"><pre><code class="hljs ada">git   <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)     <span class="hljs-keyword">ALL</span></code></pre></div>
 <p>按 <code>Ctrl+X</code> 退出，这时会提醒你要不要保存，输入 <code>y</code> 确认保存，按下回车进行保存。</p>
 <p>保存后输入</p>
-<div class="hljs"><pre><code class="hljs plain">chmod 440 &#x2F;etc&#x2F;sudoers</code></pre></div>
+<div class="hljs"><pre><code class="hljs angelscript">chmod <span class="hljs-number">440</span> /etc/sudoers</code></pre></div>
 <p>恢复初始权限</p>
 <h3 id="创建 -git- 仓库并配置 -ssh- 登录"><a class="markdownIt-Anchor" href="# 创建 -git- 仓库并配置 -ssh- 登录"></a> 创建 git 仓库，并配置 ssh 登录</h3>
-<div class="hljs"><pre><code class="hljs plain">su git
-cd ~
-mkdir .ssh &amp;&amp; cd .ssh
-touch authorized_keys
-nano authorized_keys</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">su</span> <span class="hljs-string">git</span>
+<span class="hljs-attr">cd</span> <span class="hljs-string">~</span>
+<span class="hljs-attr">mkdir</span> <span class="hljs-string">.ssh &amp;&amp; cd .ssh</span>
+<span class="hljs-attr">touch</span> <span class="hljs-string">authorized_keys</span>
+<span class="hljs-attr">nano</span> <span class="hljs-string">authorized_keys</span></code></pre></div>
 <p>在打开的页面，复制 <code>id_rsa.pub</code> 这个文件中存放着的公钥，按 <code>Shift+Insert</code> 粘贴进去。粘贴好后，和上面一样保存并退出。</p>
 <p>退出来后测试一下，如果在 git bash 中输入</p>
-<div class="hljs"><pre><code class="hljs plain">ssh git@vps 的 ip 地址</code></pre></div>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> git<span class="hljs-variable">@vps</span>的 ip 地址</code></pre></div>
 <p>能够远程登录的话，则表示设置成功了。</p>
 <p>如果在这里，你的 vps 的 ssh 端口不是默认的 22 端口的话，则需要加入参数 -p 你的 vps 的 ssh 端口号，如下面这样</p>
-<div class="hljs"><pre><code class="hljs plain">ssh git@vps 的 ip 地址 -p 你的 vps 的端口号
+<div class="hljs"><pre><code class="hljs angelscript">ssh <span class="hljs-symbol">git@</span>vps 的 ip 地址 -p 你的 vps 的端口号
 #下面举个例说明
-ssh git@123.234.123.234 -p 12345</code></pre></div>
+ssh <span class="hljs-symbol">git@</span><span class="hljs-number">123.234</span><span class="hljs-number">.123</span><span class="hljs-number">.234</span> -p <span class="hljs-number">12345</span></code></pre></div>
 <p>为了避免以后麻烦需要添加配置文件方便登录。</p>
 <p>到你的电脑的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中，新建一个叫 <code>config</code> 的文件。<strong>没有后缀名</strong>。打开它，输入</p>
-<div class="hljs"><pre><code class="hljs plain">Host 你的 vps 的 ip 地址
-User git
-Port 你的 vps 的 ssh 端口
-IdentityFile ~&#x2F;.ssh&#x2F;id_rsa
-#下面举个例子说明
-Host 123.234.123.234
-User git
-Port 12345
-IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</code></pre></div>
+<div class="hljs"><pre><code class="hljs routeros">Host 你的 vps 的 <span class="hljs-built_in"> ip </span> 地址<span class="hljs-built_in">
+User </span>git<span class="hljs-built_in">
+Port </span>你的 vps 的 ssh 端口
+IdentityFile ~/.ssh/id_rsa
+<span class="hljs-comment"># 下面举个例子说明</span>
+Host 123.234.123.234<span class="hljs-built_in">
+User </span>git<span class="hljs-built_in">
+Port </span>12345
+IdentityFile ~/.ssh/id_rsa</code></pre></div>
 <p>这里遇到了小坑. 就是第四行的那个 IdentityFile 有些人的教程上写的是 IdentifyFile，这个简单的错误导致我查了半天错都没搞出来。英语真的很重要。</p>
 <p>现在我们通过 git bash ，利用公钥文件登陆到了 vps。</p>
 <p>下面我们进行仓库的创建</p>
-<div class="hljs"><pre><code class="hljs plain">cd ~ 
-mkdir hexo.git &amp;&amp; cd hexo.git
+<div class="hljs"><pre><code class="hljs dos"><span class="hljs-built_in">cd</span> ~ 
+<span class="hljs-built_in">mkdir</span> hexo.git &amp;&amp; <span class="hljs-built_in">cd</span> hexo.git
 git init --bare</code></pre></div>
 <p>这就创建好了一个裸的仓库。之后我们的博客就上传到这个目录里面。</p>
 <h3 id="创建网站目录并赋予 -git- 用户对此目录的所有权"><a class="markdownIt-Anchor" href="# 创建网站目录并赋予 -git- 用户对此目录的所有权"></a> 创建网站目录，并赋予 git 用户对此目录的所有权</h3>
@@ -316,98 +339,98 @@ chown git:git -R /var/www/hexo</code></pre></div>
 </blockquote>
 <p>简单地说就是在 git 操作之后的自动化操作。在我们这里就是利用它实现当 vps 上的 <code>hexo.git</code> 这个仓库被推送了新的 post 之后，我们把推送上来的 hexo 博客的源文件转化为可以被访问的网页文件并且放置在我们设定的网站目录中。</p>
 <p>下面开始配置当接收到 post 后的自动操作</p>
-<div class="hljs"><pre><code class="hljs plain">su git
-cd &#x2F;home&#x2F;git&#x2F;hexo.git&#x2F;hooks
-nano post-receive</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">su</span> <span class="hljs-string">git</span>
+<span class="hljs-attr">cd</span> <span class="hljs-string">/home/git/hexo.git/hooks</span>
+<span class="hljs-attr">nano</span> <span class="hljs-string">post-receive</span></code></pre></div>
 <p>现在打开了名为 <code>post-receive</code> 的配置文件。在文件中输入以下内容并保存退出。</p>
-<div class="hljs"><pre><code class="hljs plain">#!&#x2F;bin&#x2F;bash
-GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;hexo.git #git 仓库
-TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;hexo
-PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;hexo #网站目录，就是在上一小节你新建的目录
-rm -rf $&#123;TMP_GIT_CLONE&#125;
-git clone $GIT_REPO $TMP_GIT_CLONE
-rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*
-cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+GIT_REPO=/home/git/hexo.git <span class="hljs-comment">#git 仓库</span>
+TMP_GIT_CLONE=/tmp/hexo
+PUBLIC_WWW=/var/www/hexo <span class="hljs-comment"># 网站目录，就是在上一小节你新建的目录</span>
+rm -rf <span class="hljs-variable">$&#123;TMP_GIT_CLONE&#125;</span>
+git <span class="hljs-built_in">clone</span> <span class="hljs-variable">$GIT_REPO</span> <span class="hljs-variable">$TMP_GIT_CLONE</span>
+rm -rf <span class="hljs-variable">$&#123;PUBLIC_WWW&#125;</span>/*
+cp -rf <span class="hljs-variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="hljs-variable">$&#123;PUBLIC_WWW&#125;</span></code></pre></div>
 <p>然后给这个脚本赋予执行权限</p>
-<div class="hljs"><pre><code class="hljs plain">chmod +x post-receive</code></pre></div>
+<div class="hljs"><pre><code class="hljs erlang">chmod +x post-<span class="hljs-keyword">receive</span></code></pre></div>
 <h3 id="配置 -nginx"><a class="markdownIt-Anchor" href="# 配置 -nginx"></a> 配置 nginx</h3>
 <p>我们利用 nginx 来做到当监听端口收到消息后，把服务器上的资源发给浏览器。</p>
-<div class="hljs"><pre><code class="hljs plain">nano &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;hexo.conf</code></pre></div>
+<div class="hljs"><pre><code class="hljs awk">nano <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>hexo.conf</code></pre></div>
 <p>输入以下内容</p>
-<div class="hljs"><pre><code class="hljs plain">server &#123;
-    listen         80 ;&#x2F;&#x2F; 监听 80 端口
-    root &#x2F;var&#x2F;www&#x2F;hexo;&#x2F;&#x2F; 你的网页的位置，就是上面你新建的目录
-    server_name _;      
-    access_log  &#x2F;var&#x2F;log&#x2F;nginx&#x2F;hexo_access.log;
-    error_log   &#x2F;var&#x2F;log&#x2F;nginx&#x2F;hexo_error.log;
-    location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;
-            root &#x2F;var&#x2F;www&#x2F;hexo;
-            access_log   off;
-            expires      1d;
-    &#125;
-    location ~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;
-        root &#x2F;var&#x2F;www&#x2F;hexo;
-        access_log   off;
-        expires      10m;
-    &#125;
-    location &#x2F; &#123;
-        root &#x2F;var&#x2F;www&#x2F;hexo;
-        if (-f $request_filename) &#123;
-            rewrite ^&#x2F;(.*)$  &#x2F;$1 break;
-        &#125;
-    &#125;
-&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">server</span> <span class="hljs-string">&#123;</span>
+    <span class="hljs-attr">listen</span>         <span class="hljs-string">80 ;// 监听 80 端口</span>
+    <span class="hljs-attr">root</span> <span class="hljs-string">/var/www/hexo;// 你的网页的位置，就是上面你新建的目录</span>
+    <span class="hljs-attr">server_name</span> <span class="hljs-string">_;      </span>
+    <span class="hljs-attr">access_log</span>  <span class="hljs-string">/var/log/nginx/hexo_access.log;</span>
+    <span class="hljs-attr">error_log</span>   <span class="hljs-string">/var/log/nginx/hexo_error.log;</span>
+    <span class="hljs-attr">location</span> <span class="hljs-string">~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;</span>
+            <span class="hljs-attr">root</span> <span class="hljs-string">/var/www/hexo;</span>
+            <span class="hljs-attr">access_log</span>   <span class="hljs-string">off;</span>
+            <span class="hljs-attr">expires</span>      <span class="hljs-string">1d;</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">location</span> <span class="hljs-string">~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;</span>
+        <span class="hljs-attr">root</span> <span class="hljs-string">/var/www/hexo;</span>
+        <span class="hljs-attr">access_log</span>   <span class="hljs-string">off;</span>
+        <span class="hljs-attr">expires</span>      <span class="hljs-string">10m;</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">location</span> <span class="hljs-string">/ &#123;</span>
+        <span class="hljs-attr">root</span> <span class="hljs-string">/var/www/hexo;</span>
+        <span class="hljs-attr">if</span> <span class="hljs-string">(-f $request_filename) &#123;</span>
+            <span class="hljs-attr">rewrite</span> <span class="hljs-string">^/(.*)$  /$1 break;</span>
+        <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">&#125;</span>
+<span class="hljs-attr">&#125;</span></code></pre></div>
 <p>第 4 行的 server_name 那里，可以只填一个下划线。我最开始是直接用 ip 地址访问的服务器，后来申请了一个免费域名，这个地方也没改，也还是能用。所以应该不会有太大的问题。</p>
 <p>重启 nginx</p>
-<div class="hljs"><pre><code class="hljs plain">nginx -s reload</code></pre></div>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">nginx -s reload</span></code></pre></div>
 <h2 id="本机的最后配置"><a class="markdownIt-Anchor" href="# 本机的最后配置"></a> 本机的最后配置</h2>
 <h3 id="配置 -hexo- 配置文件"><a class="markdownIt-Anchor" href="# 配置 -hexo- 配置文件"></a> 配置 hexo 配置文件</h3>
 <p>打开本机的 <code>D:\hexo</code> 文件夹，编辑 <code>_config.yml</code> 文件，找到 `deploy’项，并且修改成下面这个样子</p>
-<div class="hljs"><pre><code class="hljs plain">deploy:
-  type: git
-  repo: git@123.234.123.234:hexo.git</code></pre></div>
+<div class="hljs"><pre><code class="hljs less"><span class="hljs-attribute">deploy</span>:
+  <span class="hljs-attribute">type</span>: git
+  <span class="hljs-attribute">repo</span>: git<span class="hljs-variable">@123</span>.<span class="hljs-number">234.123</span>.<span class="hljs-number">234</span>:hexo.git</code></pre></div>
 <p><code>type</code> 是 <code>git</code> 不能变。能变的是第二行的。<br />
 <code>repo: A@B:C</code> 这个结构里面， <code>A</code> 是你新建好的 git 用户的用户名，<code>B</code> 是你的 vps 的地址， <code>C</code> 是你的仓库的地址。</p>
 <h3 id="推送到 -vps"><a class="markdownIt-Anchor" href="# 推送到 -vps"></a> 推送到 <code>vps</code></h3>
 <p>打开本机的 <code>D:\hexo</code> 文件夹，右键选择 <code>git bash here</code> 然后运行</p>
-<div class="hljs"><pre><code class="hljs plain">hexo clean 
-hexo g
-hexo d</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean </span>
+<span class="hljs-attr">hexo</span> <span class="hljs-string">g</span>
+<span class="hljs-attr">hexo</span> <span class="hljs-string">d</span></code></pre></div>
 <p>现在，我们的 vps 上的仓库就有了我们的文件。它收到了 post 后就会启动 <code>post-receive</code> 脚本，把我们的网站放到指定的目录里面。现在，你就可以通过 直接访问你的 vps 的地址来查看你的博客了。</p>
 <h1 id="hexo- 相关"><a class="markdownIt-Anchor" href="#hexo- 相关"></a> hexo 相关</h1>
 <h2 id="更新博客"><a class="markdownIt-Anchor" href="# 更新博客"></a> 更新博客</h2>
 <p>hexo 是通过你的 <code>~\source\_posts</code> 文件夹里面的 <code>.md</code> 文件来生成页面的。所以要会 markdown 语法。可以看 <a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener"> 这个网页</a> 来学习基本的 markdown 语法。</p>
 <p>每篇文章抬头都要有这篇文章的基本信息 ，注意在 冒号<code>:</code> 后面要有一个空格隔开。</p>
-<div class="hljs"><pre><code class="hljs plain">title: title
+<div class="hljs"><pre><code class="hljs vala">title: title
 date: yyyy-mm-dd
 categories: category  
 tags: tag
-#多标签请这样写：  
-#tags: [tag1,tag2,tag3]
-#或者这样写： 
-#tags:
-#- tag1 
-#- tag2  
-#- tag3  
+<span class="hljs-meta"># 多标签请这样写：  </span>
+<span class="hljs-meta">#tags: [tag1,tag2,tag3]</span>
+<span class="hljs-meta"># 或者这样写： </span>
+<span class="hljs-meta">#tags:</span>
+<span class="hljs-meta">#- tag1 </span>
+<span class="hljs-meta">#- tag2  </span>
+<span class="hljs-meta">#- tag3  </span>
 ---  
 正文</code></pre></div>
 <p>完成后你只需要在 <code>cmd</code> 或者 <code>git bash</code> 里面运行</p>
-<div class="hljs"><pre><code class="hljs plain">hexo clean
-hexo g
-hexo d</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean</span>
+<span class="hljs-attr">hexo</span> <span class="hljs-string">g</span>
+<span class="hljs-attr">hexo</span> <span class="hljs-string">d</span></code></pre></div>
 <p>就可以了<br />
 嫌麻烦的话可以在 <code>D:\hexo</code> 这个文件夹里面新建一个 <code>post.bat</code> 文件，输入以下内容</p>
-<div class="hljs"><pre><code class="hljs plain">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre></div>
+<div class="hljs"><pre><code class="hljs sas">hexo clean <span class="hljs-variable">&amp;&amp;</span> hexo g <span class="hljs-variable">&amp;&amp;</span> hexo d</code></pre></div>
 <p>这样就能每次双击运行 <code>post.bat</code> 文件来达到推送的目的。</p>
 <h2 id="修改主题"><a class="markdownIt-Anchor" href="# 修改主题"></a> 修改主题</h2>
 <p>把你在 github 上下载的 文件夹放到 <code>D:\hexo\themes</code> 文件夹里面，然后修改 <code>D:\hexo</code> 文件夹里面的 <code>_config.yml</code> 文件里面的</p>
-<div class="hljs"><pre><code class="hljs plain"># Extensions
-## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;
-## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;
+<div class="hljs"><pre><code class="hljs clean"># Extensions
+## Plugins: https:<span class="hljs-comment">//hexo.io/plugins/</span>
+## Themes: https:<span class="hljs-comment">//hexo.io/themes/</span>
 theme: Material-T</code></pre></div>
 <p>这个地方的 <code>theme: Material-T</code> 为你的主题的文件夹的名字就可以了。然后运行</p>
-<div class="hljs"><pre><code class="hljs plain">hexo clean 
-hexo s</code></pre></div>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean </span>
+<span class="hljs-attr">hexo</span> <span class="hljs-string">s</span></code></pre></div>
 <p>就能看你的新主题了。</p>
 <p>对于主题的配置，我们需要看官方文档，因为可能有很多需要修改的地方。可以看看 <a href="https://easyhexo.com/" target="_blank" rel="noopener"> 这个网站</a>，来找到你喜欢的主题并且配置到本地。</p>
 <h1 id="尾巴"><a class="markdownIt-Anchor" href="# 尾巴"></a> 尾巴</h1>
@@ -540,20 +563,28 @@ hexo s</code></pre></div>
         <span>Fluid</span></a>
     </div>
     
-  <div>
+  <div class="statistics">
     
-      <!-- 不蒜子统计PV -->
+    
+
+    
       
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
       
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
     
   </div>
 
@@ -567,14 +598,27 @@ hexo s</code></pre></div>
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -583,7 +627,7 @@ hexo s</code></pre></div>
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -599,53 +643,6 @@ hexo s</code></pre></div>
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
-
-
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-159925556-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -733,6 +730,39 @@ hexo s</code></pre></div>
 
 
 
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-159925556-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

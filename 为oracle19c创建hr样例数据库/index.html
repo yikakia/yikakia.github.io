@@ -20,21 +20,25 @@
   <title>为 oracle19c 创建 hr 样例数据库 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
 
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
-
-
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -42,6 +46,7 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -65,47 +70,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -130,43 +150,46 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-05 09:38">
-                    2020年3月5日 上午
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-03-05 09:38">
+      2020年3月5日 上午
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.1k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    13
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
 
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="iconfont icon-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
             
           </div>
 
@@ -229,53 +252,53 @@
 <li>输入 HR 的密码</li>
 </ul>
 <p>这里我输入的是 hr 作为密码</p>
-<div class="hljs"><pre><code class="hljs plain">specify password for HR as parameter 1:
-Enter value for 1: hr</code></pre></div>
+<div class="hljs"><pre><code class="hljs pgsql">specify <span class="hljs-keyword">password</span> <span class="hljs-keyword">for</span> HR <span class="hljs-keyword">as</span> parameter <span class="hljs-number">1</span>:
+Enter <span class="hljs-keyword">value</span> <span class="hljs-keyword">for</span> <span class="hljs-number">1</span>: hr</code></pre></div>
 <ul>
 <li>输入 HR 的默认表空间</li>
 </ul>
 <p>这里我把 <code>user</code> 作为默认表空间</p>
-<div class="hljs"><pre><code class="hljs plain">specify default tablespeace for HR as parameter 2:
-Enter value for 2: user</code></pre></div>
+<div class="hljs"><pre><code class="hljs routeros">specify<span class="hljs-built_in"> default </span>tablespeace <span class="hljs-keyword">for</span> HR as parameter 2:
+Enter value <span class="hljs-keyword">for</span> 2: user</code></pre></div>
 <ul>
 <li>输入 HR 的临时表空间</li>
 </ul>
 <p>这里我把 <code>temp</code> 作为临时表空间</p>
-<div class="hljs"><pre><code class="hljs plain">specify temporary tablespace for HR as parameter 3:
-Enter value for 3: temp</code></pre></div>
+<div class="hljs"><pre><code class="hljs pgsql">specify <span class="hljs-keyword">temporary</span> <span class="hljs-keyword">tablespace</span> <span class="hljs-keyword">for</span> HR <span class="hljs-keyword">as</span> parameter <span class="hljs-number">3</span>:
+Enter <span class="hljs-keyword">value</span> <span class="hljs-keyword">for</span> <span class="hljs-number">3</span>: <span class="hljs-keyword">temp</span></code></pre></div>
 <ul>
 <li>输入 log 存放的地址</li>
 </ul>
 <p>这里我把直接把它放在了数据库程序的 <code>~/demo/schema/log/</code>这个文件夹里面</p>
-<div class="hljs"><pre><code class="hljs plain">specify log path as parameter 4:
-Enter value for 4:  $ORACLE_HOME&#x2F;demo&#x2F;schema&#x2F;log&#x2F;</code></pre></div>
+<div class="hljs"><pre><code class="hljs gams">specify <span class="hljs-built-in">log</span> path as <span class="hljs-keyword">parameter</span> 4:
+Enter <span class="hljs-comment">value for 4:  $ORACLE_HOME</span>/demo/<span class="hljs-comment">schema</span>/<span class="hljs-built-in">log</span>/</code></pre></div>
 <p>这个时候有些人会报错，像下面这样</p>
-<div class="hljs"><pre><code class="hljs plain">Comment created.
+<div class="hljs"><pre><code class="hljs mipsasm">Comment created.
 
 
 Commit complete.
 
-BEGIN dbms_stats.gather_schema_stats(&#39;HR&#39;                            ,                granularity &#x3D;&gt; &#39;ALL&#39;            ,                cascade &#x3D;&gt; TRUE                 ,                block_sample &#x3D;&gt; TRUE); END;
+<span class="hljs-keyword">BEGIN </span>dbms_stats.gather_schema_stats(<span class="hljs-string">'HR'</span>                            ,                granularity =&gt; <span class="hljs-string">'ALL'</span>            ,                cascade =&gt; TRUE                 ,                <span class="hljs-keyword">block_sample </span>=&gt; TRUE            )<span class="hljs-comment">; END;</span>
 
 *
-ERROR at line 1:
-ORA-20000: Schema &quot;HR&quot; does not exist or insufficient privileges
-ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 3701
-ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24470
-ORA-06512: at &quot;SYS.DBMS_STATS&quot;, line 24435
-ORA-06512: at line 1</code></pre></div>
+ERROR <span class="hljs-built_in">at</span> line <span class="hljs-number">1</span>:
+<span class="hljs-keyword">ORA-20000: </span><span class="hljs-keyword">Schema </span><span class="hljs-string">"HR"</span> does not exist <span class="hljs-keyword">or </span><span class="hljs-keyword">insufficient </span>privileges
+<span class="hljs-keyword">ORA-06512: </span><span class="hljs-built_in">at</span> <span class="hljs-string">"SYS.DBMS_STATS"</span>, line <span class="hljs-number">3701</span>
+<span class="hljs-keyword">ORA-06512: </span><span class="hljs-built_in">at</span> <span class="hljs-string">"SYS.DBMS_STATS"</span>, line <span class="hljs-number">24470</span>
+<span class="hljs-keyword">ORA-06512: </span><span class="hljs-built_in">at</span> <span class="hljs-string">"SYS.DBMS_STATS"</span>, line <span class="hljs-number">24435</span>
+<span class="hljs-keyword">ORA-06512: </span><span class="hljs-built_in">at</span> line <span class="hljs-number">1</span></code></pre></div>
 <h2 id="报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"><a class="markdownIt-Anchor" href="# 报错 -ora-20000-schema-hr-does-not-exist-or-insufficient-privileges"></a> 报错 ORA-20000: Schema “HR” does not exist or insufficient privileges</h2>
 <p>这是因为 HR 用户之前没有被创建，而脚本自己好像又建不了。而 Oracle 19c 要求自建用户的用户名的格式是 <code>c##hr</code> 而不是<code>hr</code> 这样的。但我们要求用的用户名是<code>hr</code>。所以就得输入下面的命令来改变一下。</p>
-<div class="hljs"><pre><code class="hljs plain">SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;&#x3D;true;</code></pre></div>
+<div class="hljs"><pre><code class="hljs pgsql"><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">session</span> <span class="hljs-keyword">set</span> "_ORACLE_SCRIPT"=<span class="hljs-keyword">true</span>;</code></pre></div>
 <p>然后我们就可以再运行上面的脚本来搞定了。</p>
 <p>当出现下面这样的字样时就说明搞定了</p>
-<div class="hljs"><pre><code class="hljs plain">Comment created.
+<div class="hljs"><pre><code class="hljs cal">Comment created.
 
 
 Commit complete.
 
 
-PL&#x2F;SQL procedure successfully completed.</code></pre></div>
+PL/SQL <span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">successfully</span> <span class="hljs-title">completed</span>.</span></code></pre></div>
 <p>现在我们打开新的终端或者 sql devoloper 来连接试试吧。</p>
 <h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
 <p><a href="https://blog.csdn.net/gsforget321/article/details/102918518" target="_blank" rel="noopener">oracle 19c 创建 sample schema-HR,OE,SH 等等</a><br />
@@ -401,20 +424,28 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
         <span>Fluid</span></a>
     </div>
     
-  <div>
+  <div class="statistics">
     
-      <!-- 不蒜子统计PV -->
+    
+
+    
       
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
       
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
     
   </div>
 
@@ -428,14 +459,27 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -444,7 +488,7 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -460,53 +504,6 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
-
-
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-159925556-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -594,6 +591,39 @@ PL&#x2F;SQL procedure successfully completed.</code></pre></div>
 
 
 
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-159925556-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

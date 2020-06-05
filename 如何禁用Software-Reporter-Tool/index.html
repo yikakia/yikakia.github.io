@@ -20,21 +20,25 @@
   <title>如何禁用 Software-Reporter-Tool ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
 
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
-
-
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -42,6 +46,7 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -65,47 +70,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -130,43 +150,46 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-04-16 21:48">
-                    2020年4月16日 晚上
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-04-16 21:48">
+      2020年4月16日 晚上
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.2k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    15
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
 
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="iconfont icon-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
             
           </div>
 
@@ -211,7 +234,7 @@
 <p>查了之后发现这个文件是就算你删除了，谷歌也可能会给你装回来的。是不是有点眼熟这个全家桶操作？😀<br />
 所以我们要做的就是禁止谷歌启动这个程序。</p>
 <p>这个软件的位置大概是在这里:</p>
-<div class="hljs"><pre><code class="hljs plain">C:\Users\USERNAME\AppData\Local\Google\Chrome\User Data\SwReporter\VERSION</code></pre></div>
+<div class="hljs"><pre><code class="hljs taggerscript">C:<span class="hljs-symbol">\U</span>sers<span class="hljs-symbol">\U</span>SERNAME<span class="hljs-symbol">\A</span>ppData<span class="hljs-symbol">\L</span>ocal<span class="hljs-symbol">\G</span>oogle<span class="hljs-symbol">\C</span>hrome<span class="hljs-symbol">\U</span>ser Data<span class="hljs-symbol">\S</span>wReporter<span class="hljs-symbol">\V</span>ERSION</code></pre></div>
 <p>把这里面的 <code>USERNAME</code> 改成你的用户名,<code>VERSION</code>改成你的 Chrome 版本。然后就可以看到这个文件了。<br />
 这里我的版本是 <code>81.233.200</code><br />
 <img src="%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" alt="" /></p>
@@ -230,25 +253,25 @@
 <h1 id="通过修改注册表禁用"><a class="markdownIt-Anchor" href="# 通过修改注册表禁用"></a> 通过修改注册表禁用</h1>
 <p>不推荐，修改注册表前请做好备份工作。<br />
 这里先给一段原文</p>
-<div class="hljs"><pre><code class="hljs plain">Google introduced support for policies that administrators may use to configure certain Chrome features; one of the available policies manages the Software Reporter Tool of the browser.
+<div class="hljs"><pre><code class="hljs sql">Google introduced support for policies that administrators may <span class="hljs-keyword">use</span> <span class="hljs-keyword">to</span> configure certain Chrome features; one of the available policies manages the Software Reporter Tool of the browser.
 
-Open the Registry Editor on Windows, e.g. by opening the Start Menu, typing regedit.exe, and selecting the item from the list of results.
-Go to HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome.
-Note: if one of the keys does not exist create it with a right-click on the previous key and the selection of New &gt; Key.
-Right-click on the Chrome key and select New &gt; Dword (32-bit) Value.
-Name the new Dword ChromeCleanupEnabled.
-Make sure its value is 0.
-Right-click on the Chrome key again and select New &gt; Dword (32-bit) Value.
-Name it ChromeCleanupReportingEnabled.
-Make sure its value is 0.
-ChromeCleanupEnabled&#39;s value determines whether the Software Reporter Tool may run on the system.
+Open the Registry Editor on Windows, e.g. by opening the <span class="hljs-keyword">Start</span> Menu, typing regedit.exe, <span class="hljs-keyword">and</span> selecting the item <span class="hljs-keyword">from</span> the <span class="hljs-keyword">list</span> <span class="hljs-keyword">of</span> results.
+<span class="hljs-keyword">Go</span> <span class="hljs-keyword">to</span> HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome.
+Note: <span class="hljs-keyword">if</span> one <span class="hljs-keyword">of</span> the <span class="hljs-keyword">keys</span> does <span class="hljs-keyword">not</span> exist <span class="hljs-keyword">create</span> it <span class="hljs-keyword">with</span> a <span class="hljs-keyword">right</span>-click <span class="hljs-keyword">on</span> the previous <span class="hljs-keyword">key</span> <span class="hljs-keyword">and</span> the selection <span class="hljs-keyword">of</span> <span class="hljs-keyword">New</span> &gt; Key.
+<span class="hljs-keyword">Right</span>-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">New</span> &gt; Dword (<span class="hljs-number">32</span>-<span class="hljs-built_in">bit</span>) Value.
+<span class="hljs-keyword">Name</span> the <span class="hljs-keyword">new</span> Dword ChromeCleanupEnabled.
+Make sure its <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> <span class="hljs-number">0.</span>
+<span class="hljs-keyword">Right</span>-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> again <span class="hljs-keyword">and</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">New</span> &gt; Dword (<span class="hljs-number">32</span>-<span class="hljs-built_in">bit</span>) Value.
+<span class="hljs-keyword">Name</span> it ChromeCleanupReportingEnabled.
+Make sure its <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> <span class="hljs-number">0.</span>
+ChromeCleanupEnabled<span class="hljs-string">'s value determines whether the Software Reporter Tool may run on the system.
 
-A value of 0 means the tool is disabled and won&#39;t be run.
-A value of 1 means the Software Reporter is enabled and will be run by Chrome.
-ChromeCleanupReportingEnabled&#39;s value determines whether the results are reported to Google.
+A value of 0 means the tool is disabled and won'</span>t be run.
+A <span class="hljs-keyword">value</span> <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> means the Software Reporter <span class="hljs-keyword">is</span> enabled <span class="hljs-keyword">and</span> will be run <span class="hljs-keyword">by</span> Chrome.
+ChromeCleanupReportingEnabled<span class="hljs-string">'s value determines whether the results are reported to Google.
 
 A value of 0 means the reporting is disabled.
-A value of 1 means the reporting is enabled.</code></pre></div>
+A value of 1 means the reporting is enabled.</span></code></pre></div>
 <p>简单地说就是打开注册表，在 <code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome</code> 这项下面新建叫做 <code>ChromeCleanupEnabled</code> 和<code>ChromeCleanupReportingEnabled</code>的键，它们的类型都是 <code>Dword</code>(32 位) 双字节数据类型，把它们都赋值为 0。<br />
 下面是不同键值的作用</p>
 <table>
@@ -405,20 +428,28 @@ A value of 1 means the reporting is enabled.</code></pre></div>
         <span>Fluid</span></a>
     </div>
     
-  <div>
+  <div class="statistics">
     
-      <!-- 不蒜子统计PV -->
+    
+
+    
       
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
       
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
     
   </div>
 
@@ -432,14 +463,27 @@ A value of 1 means the reporting is enabled.</code></pre></div>
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -448,7 +492,7 @@ A value of 1 means the reporting is enabled.</code></pre></div>
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -464,53 +508,6 @@ A value of 1 means the reporting is enabled.</code></pre></div>
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
-
-
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-159925556-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -598,6 +595,39 @@ A value of 1 means the reporting is enabled.</code></pre></div>
 
 
 
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-159925556-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
