@@ -16,7 +16,7 @@
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
-  <meta name="keywords" content="java,c++,c,hexo,blog,算法,linux,debian,v2ray">
+  <meta name="keywords" content="博客,算法，技术">
   <title>pyqt5 的报错处理 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      41 字
+      92 字
     </span>
   
 
@@ -213,16 +213,21 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年5月29日 中午
+                  本文最后更新于：2020年7月5日 晚上
                 
               </p>
             
             <article class="markdown-body">
-              <a id="more"></a>
+              <p>收集遇到的报错</p>
+<a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
+<p>摸了好久终于搞定了，不知道下次更新是什么时候了。</p>
 <h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
 <h2 id="报错 -typeerror-argument-1-has-unexpected-type-nonetype"><a class="markdownIt-Anchor" href="# 报错 -typeerror-argument-1-has-unexpected-type-nonetype"></a> 报错 TypeError: argument 1 has unexpected type ‘NoneType’</h2>
-<p>参考这个 StackOverFlow 上的 <a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener"> 问答</a>，将报错的函数改成直接调用即可。</p>
+<p>参考这个 StackOverFlow 上的 <a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener"> 回答</a>，将报错的函数改成直接调用即可。<br />
+比如之前的是</p>
+<div class="hljs"><pre><code class="hljs python">self.action_genrate.triggered.connect(self.genrateWork())  <span class="hljs-comment"># 报错</span>
+self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-comment"># 正确</span></code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
 <p><a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener">clicked.connect() Error</a></p>
 
@@ -231,11 +236,52 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%EF%BC%8CPython/">学习，Python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/error/">error</a>
+                    
+                      <a class="hover-with-bg" href="/tags/pyqt/">pyqt</a>
+                    
+                  </div>
                 
               </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
               
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数字图像处理大作业记录 - 边缘检测与阈值分割的 Python 实现及利用 PyQt5 的 GUI 开发</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/Manjaro%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80NumLock/">
+                        <span class="hidden-mobile">Manjaro 开机自动打开 NumLock</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
               
             </div>
 

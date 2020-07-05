@@ -124,6 +124,35 @@
   
   
   <entry>
+    <title>pyqt5 的报错处理</title>
+    <link href="/pyqt5%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/"/>
+    <url>/pyqt5%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>收集遇到的报错</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>摸了好久终于搞定了，不知道下次更新是什么时候了。</p><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><h2 id="报错 -typeerror-argument-1-has-unexpected-type-nonetype"><a class="markdownIt-Anchor" href="# 报错 -typeerror-argument-1-has-unexpected-type-nonetype"></a> 报错 TypeError: argument 1 has unexpected type ‘NoneType’</h2><p>参考这个 StackOverFlow 上的 <a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener"> 回答</a>，将报错的函数改成直接调用即可。<br />比如之前的是</p><div class="hljs"><pre><code class="hljs python">self.action_genrate.triggered.connect(self.genrateWork())  <span class="hljs-comment"># 报错</span>self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-comment"># 正确</span></code></pre></div><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener">clicked.connect() Error</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习，Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>error</tag>
+      
+      <tag>pyqt</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Manjaro 开机自动打开 NumLock</title>
     <link href="/Manjaro%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80NumLock/"/>
     <url>/Manjaro%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80NumLock/</url>
@@ -227,11 +256,11 @@
       
       <tag>Python</tag>
       
+      <tag>算法</tag>
+      
       <tag>OpenCV</tag>
       
       <tag>中值滤波</tag>
-      
-      <tag>算法</tag>
       
     </tags>
     
@@ -455,9 +484,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>Python</tag>
+      
+      <tag>Linux</tag>
       
       <tag>虚拟环境</tag>
       
@@ -511,9 +540,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>Python</tag>
+      
+      <tag>Linux</tag>
       
       <tag>编译</tag>
       
@@ -955,9 +984,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>计算机图形学</tag>
+      
+      <tag>算法</tag>
       
     </tags>
     
