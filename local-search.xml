@@ -318,11 +318,11 @@
       
       <tag>Python</tag>
       
-      <tag>算法</tag>
-      
       <tag>OpenCV</tag>
       
       <tag>中值滤波</tag>
+      
+      <tag>算法</tag>
       
     </tags>
     
@@ -898,9 +898,9 @@
     
     <categories>
       
-      <category>学习</category>
-      
       <category>折腾</category>
+      
+      <category>学习</category>
       
       <category>计算机网络</category>
       
@@ -1046,9 +1046,9 @@
     
     <tags>
       
-      <tag>计算机图形学</tag>
-      
       <tag>算法</tag>
+      
+      <tag>计算机图形学</tag>
       
     </tags>
     
@@ -1079,9 +1079,9 @@
       
       <tag>Nginx</tag>
       
-      <tag>hexo</tag>
-      
       <tag>ssh</tag>
+      
+      <tag>hexo</tag>
       
       <tag>建站</tag>
       
