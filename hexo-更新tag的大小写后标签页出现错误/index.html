@@ -17,7 +17,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="博客,算法，技术">
-  <title>win10 更新后导致 manjaro 的引导文件失效的解决 ~ Yika`s Blog</title>
+  <title>hexo- 更新 tag 的大小写后标签页出现错误 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-07 13:52">
-      2020年8月7日 下午
+    <time datetime="2020-08-09 17:21">
+      2020年8月9日 下午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      786 字
+      501 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      5
        分钟
     </span>
   
@@ -213,113 +213,36 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月7日 下午
+                  本文最后更新于：2020年8月9日 下午
                 
               </p>
             
             <article class="markdown-body">
-              <p>windows bug 10, best windows 10!</p>
+              <p>大小写，永远的痛</p>
 <a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
-<p>更新了 Windows10 2004 的更新后发现 manjaro 的系统进不去了。进去了是 grub rescue 救援模式。<br />
-参考了救援模式的解决，但好像只看到了 <code>/boot</code> 的挂载点，没看到 <code>/boot/efi</code> 的挂载点，更别提 <code>/</code> 的挂载点了。</p>
-<p>所以没办法，就烧了个<code>manjaro</code> 的 livecd 进去修复 grub . 其中也踩了几个坑，这里记一下，方便遇到相同问题的人解决。</p>
+<p>在看自己的博客的时候，突然发现我的标签页面很多个 tag 页面打开都是 404 报错。<br />
+对多个 tag 查了之后才发现，问题应该是出现在大小写上。</p>
 <h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
-<h2 id="我的环境"><a class="markdownIt-Anchor" href="# 我的环境"></a> 我的环境</h2>
-<p>这里我列一下我的文件目录的挂载点。之前出错就是因为这里有问题。</p>
-<div class="hljs"><pre><code class="hljs angelscript">设备       启动       起点       末尾       扇区   大小 Id 类型
-/dev/sda1  *            <span class="hljs-number">64</span> <span class="hljs-number">1848663470</span> <span class="hljs-number">1848663407</span> <span class="hljs-number">881.5</span>G  <span class="hljs-number">7</span> HPFS/NTFS/exFAT
-/dev/sda2       <span class="hljs-number">1848664064</span> <span class="hljs-number">1893720063</span>   <span class="hljs-number">45056000</span>  <span class="hljs-number">21.5</span>G <span class="hljs-number">83</span> Linux
-/dev/sda3       <span class="hljs-number">1893720064</span> <span class="hljs-number">1934680063</span>   <span class="hljs-number">40960000</span>  <span class="hljs-number">19.5</span>G <span class="hljs-number">83</span> Linux
-/dev/sda4       <span class="hljs-number">1934680064</span> <span class="hljs-number">1953520064</span>   <span class="hljs-number">18840001</span>     <span class="hljs-number">9</span>G <span class="hljs-number">82</span> Linux swap / Solaris
-
-设备            起点      末尾      扇区   大小 类型
-/dev/sdb1       <span class="hljs-number">2048</span>   <span class="hljs-number">1085439</span>   <span class="hljs-number">1083392</span>   <span class="hljs-number">529</span>M Windows 恢复环境
-/dev/sdb2    <span class="hljs-number">1085440</span>   <span class="hljs-number">1290239</span>    <span class="hljs-number">204800</span>   <span class="hljs-number">100</span>M EFI 系统
-/dev/sdb3    <span class="hljs-number">1290240</span>   <span class="hljs-number">1323007</span>     <span class="hljs-number">32768</span>    <span class="hljs-number">16</span>M Microsoft 保留
-/dev/sdb4    <span class="hljs-number">1323008</span> <span class="hljs-number">244098048</span> <span class="hljs-number">242775041</span> <span class="hljs-number">115.8</span>G Microsoft 基本数据
-/dev/sdb5  <span class="hljs-number">244099072</span> <span class="hljs-number">245411839</span>   <span class="hljs-number">1312768</span>   <span class="hljs-number">641</span>M Windows 恢复环境
-/dev/sdb6  <span class="hljs-number">245413888</span> <span class="hljs-number">247463902</span>   <span class="hljs-number">2050015</span>  <span class="hljs-number">1001</span>M Linux 文件系统</code></pre></div>
-<p>这里我是因为用双硬盘装了 <code>Windows</code> 和<code>Manjaro</code>的双系统，所以看起来很麻烦。其实还好啦。</p>
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>挂载点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/dev/sda2</td>
-<td>/</td>
-</tr>
-<tr>
-<td>/dev/sdb6</td>
-<td>/boot</td>
-</tr>
-<tr>
-<td>/dev/sdb2</td>
-<td>/boot/efi</td>
-</tr>
-</tbody>
-</table>
-<p>和表格中显示的一样，我是分了三个分区分别用来挂载不同的目录的。</p>
+<h2 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h2>
+<ul>
+<li>本地: Windows10</li>
+<li>服务器: Debian10</li>
+</ul>
+<h2 id="现象"><a class="markdownIt-Anchor" href="# 现象"></a> 现象</h2>
+<p>本地运行 <code>hexo s</code> 查看到的 tag 页面是正常的，大小写的网址都能区分开，而在服务器上运行时则出现了 404 错误。</p>
 <h2 id="原理"><a class="markdownIt-Anchor" href="# 原理"></a> 原理</h2>
-<p>我们要做的，就是通过使用 <code>Manjaro</code> 的 livecd 来使用 <code>manjaro-chroot</code>进行 grub 的修复。</p>
-<p>我的操作是</p>
-<ol>
-<li>挂载 <code>/dev/sda2</code> 到 <code>/mnt</code></li>
-<li>挂载 <code>/dev/sdb6</code> 到 <code>/mnt/boot</code></li>
-<li>挂载 <code>/dev/sdb2</code> 到 <code>/mnt/boot/efi</code></li>
-</ol>
-<p>然后使用<code>manjaro-chroot /mnt</code> 进入系统进行修复。</p>
-<p>所以对于挂载点的情况一定要记得清楚！我的操作是针对我这种 <code>/boot</code> 和 <code>/boot/efi</code> 挂载在不同分区上的情况。操作时要按照自己的实际情况改变命令。</p>
-<p>下面就是具体的操作啦</p>
-<h2 id="具体操作"><a class="markdownIt-Anchor" href="# 具体操作"></a> 具体操作</h2>
-<p>用 <code>Manjaro</code> 的 LiveCD 进入系统，然后在 <code>root</code> 用户中输入以下命令</p>
-<ol start="0">
-<li>查看硬盘的挂载情况</li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">fdisk -l</code></pre></div>
-<p>用这个命令来查看你的文件系统的情况。如果你清楚了那就不用了。</p>
-<ol>
-<li>挂载实际系统中的 <code>/</code> 到 <code>/mnt</code><br />
-在这里我的硬盘是 <code>/dev/sda2</code></li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">mount /dev/sda2 /mnt</code></pre></div>
-<ol start="2">
-<li>挂载实际系统中的 <code>/boot</code> 到 <code>/mnt/boot</code><br />
-在这里我的硬盘是 <code>/dev/sdb6</code></li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">mount /dev/sdb6 /mnt/boot</code></pre></div>
-<ol start="3">
-<li>挂载实际系统中的 <code>/boot/efi</code> 到 <code>/mnt/boot/efi</code><br />
-在这里我的硬盘是 <code>/dev/sdb2</code></li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">mount /dev/sdb2 /mnt/boot/efi</code></pre></div>
-<ol start="4">
-<li>进入 <code>manjaro-chroot</code></li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">manjaro-chroot /mnt</code></pre></div>
-<ol start="5">
-<li>在 EFI 启动分区创建引导文件</li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">grub-install --recheck /dev/sda --efi-directory=/boot/efi</code></pre></div>
-<ol start="6">
-<li>生成 <code>grub</code> 的配置文件</li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash">grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div>
-<ol start="7">
-<li>重启试试能不能进入 manjaro</li>
-</ol>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">exit</span>
-reboot</code></pre></div>
-<p>记得拔掉 U 盘！</p>
-<h1 id="总结"><a class="markdownIt-Anchor" href="# 总结"></a> 总结</h1>
-<p>其实原理就是通过 <code>manjaro-chroot</code> 进入到实际的系统中，然后用 <code>grub-install</code> 修复引导文件。</p>
-<p>因此我们挂载操作的主要目的就是为了让 <code>manjaro-chroot</code> 工作，和 <code>grub-install</code> 能够用正确的方式来生成引导文件。</p>
+<p>参考这个 <code>issue</code>  <a href="https://github.com/hexojs/hexo/issues/818" target="_blank" rel="noopener">BUG 反馈：大写开头的标签出现 404 #818</a></p>
+<p>简单是说就是在 <code>Windows</code> 平台的 <code>Git</code> 是默认大小写不敏感的，因为 <code>Windows</code> 本身就是大小写不敏感的，于是 <code>Git</code> 便遵守了平台的规范，默认设置了大小写不敏感，因此当你在本地新建了一个 <code>a.txt</code> 的文件并提交后，又把这个文件重命名为了 <code>A.txt</code>。这个时候你就会出现无法提交的情况。因为<code>Git</code> 默认你的文件大小写不影响，所以你的服务器上只有一个 <code>a.txt</code> 存在。</p>
+<p>到了我们这个现实的例子上就是原本有个 tag 页面是 <code>git</code> 的，现在改名成了 <code>Git</code> 这个时候你会发现本地运行<code>hexo s</code>，查看这个<code>Git</code> 页面是没问题的，但是到了服务器上就会出现 <code>404</code> 错误。而在这个时候你查看 <code>git</code> 这个页面的时侯又没有问题了。</p>
+<p>知道了原理就好解决了。</p>
+<h2 id="解决"><a class="markdownIt-Anchor" href="# 解决"></a> 解决</h2>
+<p>到本地的 <code>hexo</code> 博客目录下，找到 <code>\.deploy_git\.git</code> 这个目录，把这个目录下的 <code>config</code> 中的 <code>[core]</code> 这一项下的 <code>ignorcase</code> 这一项从 <code>true</code> 修改为<code>false</code>。这样就解决了大小写不敏感的问题。</p>
+<p>简单地说就是改成这个样子</p>
+<div class="hljs"><pre><code class="hljs ini"><span class="hljs-attr">ignorecase</span> = <span class="hljs-literal">false</span></code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://blog.mynoee.com/archives/146/" target="_blank" rel="noopener">Manjaro UEFI 启动修复 - 云酱的笔记本</a></p>
+<p><a href="https://github.com/hexojs/hexo/issues/818" target="_blank" rel="noopener">BUG 反馈：大写开头的标签出现 404 #818</a></p>
+<p><a href="https://www.lovesofttech.com/general/hexoTagsAndCategories404Error.html#%E5%89%8D%E6%8F%90" target="_blank" rel="noopener">hexo 标签、分类，大小写问题导致 404 错误，原因分析和解决</a></p>
 
             </article>
             <hr>
@@ -337,13 +260,9 @@ reboot</code></pre></div>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
                     
-                      <a class="hover-with-bg" href="/tags/Manjaro/">Manjaro</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E9%97%AE%E9%A2%98/">问题</a>
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
                     
                   </div>
                 
@@ -356,18 +275,12 @@ reboot</code></pre></div>
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/hexo-%E6%9B%B4%E6%96%B0tag%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%8E%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo- 更新 tag 的大小写后标签页出现错误</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/%E5%9C%A8CentOS-%E4%B8%8B%E9%85%8D%E7%BD%AEHadoop%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
-                        <span class="hidden-mobile">在 CentOS 8 下配置 Hadoop 开发环境</span>
+                      <a href="/win10%E6%9B%B4%E6%96%B0%E5%90%8E%E5%AF%BC%E8%87%B4manjaro%E7%9A%84%E5%BC%95%E5%AF%BC%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3/">
+                        <span class="hidden-mobile">win10 更新后导致 manjaro 的引导文件失效的解决</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -532,7 +445,7 @@ reboot</code></pre></div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "win10 更新后导致 manjaro 的引导文件失效的解决&nbsp;",
+        "hexo- 更新 tag 的大小写后标签页出现错误&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 35,

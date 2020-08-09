@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>hexo- 更新 tag 的大小写后标签页出现错误</title>
+    <link href="/hexo-%E6%9B%B4%E6%96%B0tag%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%8E%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/"/>
+    <url>/hexo-%E6%9B%B4%E6%96%B0tag%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%8E%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/</url>
+    
+    <content type="html"><![CDATA[<p>大小写，永远的痛</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>在看自己的博客的时候，突然发现我的标签页面很多个 tag 页面打开都是 404 报错。<br />对多个 tag 查了之后才发现，问题应该是出现在大小写上。</p><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><h2 id="环境"><a class="markdownIt-Anchor" href="# 环境"></a> 环境</h2><ul><li>本地: Windows10</li><li>服务器: Debian10</li></ul><h2 id="现象"><a class="markdownIt-Anchor" href="# 现象"></a> 现象</h2><p>本地运行 <code>hexo s</code> 查看到的 tag 页面是正常的，大小写的网址都能区分开，而在服务器上运行时则出现了 404 错误。</p><h2 id="原理"><a class="markdownIt-Anchor" href="# 原理"></a> 原理</h2><p>参考这个 <code>issue</code>  <a href="https://github.com/hexojs/hexo/issues/818" target="_blank" rel="noopener">BUG 反馈：大写开头的标签出现 404 #818</a></p><p>简单是说就是在 <code>Windows</code> 平台的 <code>Git</code> 是默认大小写不敏感的，因为 <code>Windows</code> 本身就是大小写不敏感的，于是 <code>Git</code> 便遵守了平台的规范，默认设置了大小写不敏感，因此当你在本地新建了一个 <code>a.txt</code> 的文件并提交后，又把这个文件重命名为了 <code>A.txt</code>。这个时候你就会出现无法提交的情况。因为<code>Git</code> 默认你的文件大小写不影响，所以你的服务器上只有一个 <code>a.txt</code> 存在。</p><p>到了我们这个现实的例子上就是原本有个 tag 页面是 <code>git</code> 的，现在改名成了 <code>Git</code> 这个时候你会发现本地运行<code>hexo s</code>，查看这个<code>Git</code> 页面是没问题的，但是到了服务器上就会出现 <code>404</code> 错误。而在这个时候你查看 <code>git</code> 这个页面的时侯又没有问题了。</p><p>知道了原理就好解决了。</p><h2 id="解决"><a class="markdownIt-Anchor" href="# 解决"></a> 解决</h2><p>到本地的 <code>hexo</code> 博客目录下，找到 <code>\.deploy_git\.git</code> 这个目录，把这个目录下的 <code>config</code> 中的 <code>[core]</code> 这一项下的 <code>ignorcase</code> 这一项从 <code>true</code> 修改为<code>false</code>。这样就解决了大小写不敏感的问题。</p><p>简单地说就是改成这个样子</p><div class="hljs"><pre><code class="hljs ini"><span class="hljs-attr">ignorecase</span> = <span class="hljs-literal">false</span></code></pre></div><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://github.com/hexojs/hexo/issues/818" target="_blank" rel="noopener">BUG 反馈：大写开头的标签出现 404 #818</a></p><p><a href="https://www.lovesofttech.com/general/hexoTagsAndCategories404Error.html#%E5%89%8D%E6%8F%90" target="_blank" rel="noopener">hexo 标签、分类，大小写问题导致 404 错误，原因分析和解决</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>win10 更新后导致 manjaro 的引导文件失效的解决</title>
     <link href="/win10%E6%9B%B4%E6%96%B0%E5%90%8E%E5%AF%BC%E8%87%B4manjaro%E7%9A%84%E5%BC%95%E5%AF%BC%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
     <url>/win10%E6%9B%B4%E6%96%B0%E5%90%8E%E5%AF%BC%E8%87%B4manjaro%E7%9A%84%E5%BC%95%E5%AF%BC%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
@@ -1077,11 +1104,11 @@
       
       <tag>Git</tag>
       
+      <tag>hexo</tag>
+      
       <tag>Nginx</tag>
       
       <tag>ssh</tag>
-      
-      <tag>hexo</tag>
       
       <tag>建站</tag>
       
