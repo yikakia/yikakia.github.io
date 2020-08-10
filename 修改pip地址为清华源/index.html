@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p> 用 pip 装包的时候很慢，想了想修改到清华大学的源加速算了。</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="临时使用"><a class="markdownIt-Anchor" href="# 临时使用"></a> 临时使用 </h1>
 <div class="hljs"><pre><code class="hljs sql">pip <span class="hljs-keyword">install</span> -i https://pypi.tuna.tsinghua.edu.cn/simple <span class="hljs-keyword">some</span>-<span class="hljs-keyword">package</span></code></pre></div>
 <p> 注意，simple 不能少, 是 https 而不是 http</p>
@@ -228,7 +228,7 @@
 <div class="hljs"><pre><code class="hljs vim">pip install pip -U
 pip config <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span>.<span class="hljs-built_in">index</span>-url http<span class="hljs-variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/simple</code></pre></div>
 <h1 id="临时使用清华源升级 pip"><a class="markdownIt-Anchor" href="# 临时使用清华源升级 pip"></a> 临时使用清华源升级 pip</h1>
-<div class="hljs"><pre><code class="hljs groovy">pip install -i <span class="hljs-string">https:</span><span class="hljs-comment">//pypi.tuna.tsinghua.edu.cn/simple pip -U</span></code></pre></div>
+<div class="hljs"><pre><code class="hljs awk">pip install -i https:<span class="hljs-regexp">//</span>pypi.tuna.tsinghua.edu.cn/simple pip -U</code></pre></div>
             </article>
             <hr>
             <div>
@@ -253,7 +253,7 @@ pip config <span class="hljs-keyword">set</span> <span class="hljs-keyword">glob
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

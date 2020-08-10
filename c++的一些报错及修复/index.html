@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      262 字
+      264 字
     </span>
   
 
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p>做作业的时候遇到的 c++ 错误报错及其解决方法</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"><a class="markdownIt-Anchor" href="#error-c4430 缺少类型说明符 - 假定为 int- 注意 c- 不支持默认 -int"></a> error C4430: 缺少类型说明符 - 假定为 int。注意:C++ 不支持默认 int</h1>
 <p>我的错误是出现在没有把</p>
 <div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</code></pre></div>
@@ -229,7 +229,8 @@
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXNUM = <span class="hljs-number">10</span>;
 <span class="hljs-built_in">string</span> str[MAXNUM];
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</code></pre></div>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+</code></pre></div>
 <div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">// 正确</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
@@ -245,16 +246,17 @@
 <span class="hljs-comment">//a.h</span>
 只定义类不定义变量
 <span class="hljs-comment">//a.cpp</span>
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;</code></pre></div>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUMOFYEAR = <span class="hljs-number">0</span>;
+</code></pre></div>
 <h1 id="e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"><a class="markdownIt-Anchor" href="#e0304 没有与参数列表匹配的 - 重载函数 -strcpy_s- 实例"></a> E0304	没有与参数列表匹配的 重载函数 “strcpy_s” 实例</h1>
 <p>换成用<code>strcpy_s</code>，但是直接改有问题，因为函数定义不一样。所以要修改程序，示例如下。</p>
 <div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">// 正确写法</span>
-<span class="hljs-keyword">char</span> a[]=<span class="hljs-string">"hello"</span>
+<span class="hljs-keyword">char</span> a[]=<span class="hljs-string">&quot;hello&quot;</span>
 <span class="hljs-keyword">int</span> n=<span class="hljs-built_in">strlen</span>(a);
 <span class="hljs-keyword">char</span>* b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[a];
 strcpy_s(b,n,a);</code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://zh.cppreference.com/w/c/string/byte/strcpy" target="_blank" rel="noopener">strcpy, strcpy_s</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strcpy">strcpy, strcpy_s</a></p>
 
             </article>
             <hr>
@@ -280,7 +282,7 @@ strcpy_s(b,n,a);</code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

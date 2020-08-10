@@ -38,7 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -175,7 +175,13 @@
         
           
         
-        <div>这是我第一个全靠看官方文档搞懂的问题</div>
+        <div>这是我第一个全靠看官方文档搞懂的问题
+
+ 前言
+在从 git 上运行一些 Python 开源项目时，会发现有 requirements.txt 这样的文件。这个一般都存放着这个项目所需要的依赖项。通过这个文件，我们可以快速的搭建所需要的环境。
+ 使用
+其实很简单，到有 requirements.txt 这个文件的文件夹下，输入以下的指令就可以安装好了
+pip install -r requirem</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -217,7 +223,18 @@
         
           
         
-        <div>apt仓库罪大恶极，搞得民众怨声载道。</div>
+        <div>apt 仓库罪大恶极，搞得民众怨声载道。
+
+ 闲聊
+之所以会要这么干，主要就是因为 apt 仓库不提供 python3.8 的源。而我自己利用开源的 telegrambot 自己搞的一个入群验证 Bot 发现要求 Python 版本在 3.8 以上。所以想了想，还是把这个搞定吧。
+ 环境
+我的环境是
+
+系统版本 debian10
+
+ 安装编译依赖包
+apt update
+apt-get insta</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -261,7 +278,13 @@
         
           
         
-        <div>主要是vps上编译软件的时候需要这个参数。</div>
+        <div> 主要是 vps 上编译软件的时候需要这个参数。
+
+ 查看物理 CPU 个数 
+cat /proc/cpuinfo| grep &quot;physical id&quot;| sort| uniq| wc -l
+ 查看每个物理 CPU 中 core 的个数 (即核数)
+cat /proc/cpuinfo| grep &quot;cpu cores&quot;| uniq
+ 查看逻辑 CPU 的个</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -301,7 +324,19 @@
         
           
         
-        <div>需要后台运行程序时，就可以用到tmux了。</div>
+        <div>需要后台运行程序时，就可以用到 tmux 了。
+
+ 什么是 tmux
+简单的说 tmux 就是终端复用工具。使用的场景是你有希望跑在 Linux 服务器上的程序，而且这个程序不会因为你退出而结束。
+ tmux 的安装
+我的环境是 debian10，安装的话用下面的语句就行
+apt install tmux
+这样就安装好了 tmux
+ tmux 的启动与退出
+ 启动
+在终端输入
+tmux
+即可进入 </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -341,7 +376,19 @@
         
           
         
-        <div>主要是想从vps上拖文件下来</div>
+        <div> 主要是想从 vps 上拖文件下来 
+
+ 我的环境 
+
+debian10
+
+ 安装 vsftp
+apt install vsftp
+ 配置 vsftp
+ 输入以下命令 
+cp /etc/vsftpd.conf /etc/vsftpd.conf.bak # 备份配置文件 
+nano /etc/vsftpd.conf                    # 编辑配置文件 
+ 按照下面的填法，把对应的</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -385,7 +432,18 @@
         
           
         
-        <div>做作业的时候遇到的c++错误报错及其解决方法</div>
+        <div>做作业的时候遇到的 c++ 错误报错及其解决方法
+
+ error C4430: 缺少类型说明符 - 假定为 int。注意:C++ 不支持默认 int
+我的错误是出现在没有把
+using namespace std;
+放在用 STL 之前。
+举个例子
+// 错误
+#include &lt;string&gt;
+const int MAXNUM = 10;
+string str[MAXNUM];
+us</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -427,7 +485,20 @@
         
           
         
-        <div>先给结论，元组是不可变的，但是当元组指向可变的变量时，元组就可以改变了。</div>
+        <div> 先给结论， 元组是不可变的，但是当元组指向可变的变量时，元组就可以改变了。
+
+ 原理 
+ 我们定义这么一个元组，并且输出看看 
+a = ([1,2,3],[2,3])
+print(a)
+ 就会出现这样的结果 
+([1, 2, 3], [2, 3])
+ 然后我们尝试直接更改元组中的列表 
+a[1][0]=3
+print(a)
+ 就会出现下面这样的输出 
+([1, 2, 3], [3, 3])
+ 发</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -467,7 +538,15 @@
         
           
         
-        <div>主要是各种unused实在是太烦人了。</div>
+        <div> 主要是各种 unused 实在是太烦人了。
+
+ 新建 settings.json 文件 
+ 如果当前工作区没有这个文件的话，可以新建这样文件。
+ 编辑 settings.json 文件 
+ 然后就是配置 pylint 了 
+输入以下的配置 
+&#123;
+    &quot;python.linting.pylintArgs&quot;: [&quot;--disable=C,R,W, --en</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -511,7 +590,16 @@
         
           
         
-        <div>边学边更新吧，方便自己到时候找</div>
+        <div>边学边更新吧，方便自己到时候找
+
+ 报错 OpenGL.error.NullFunctionError
+我的环境是
+
+Windows10 1909 x64
+Python 3.8.1
+我用 pip 直接安装了 PyOpenGL 和PyOpenGL-accelerate，写好一个样例程序运行，发现报了如下的错误
+
+OpenGL.error.NullFunctionError: Attempt to c</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -557,7 +645,14 @@
         
           
         
-        <div>用pip装包的时候很慢，想了想修改到清华大学的源加速算了。</div>
+        <div> 用 pip 装包的时候很慢，想了想修改到清华大学的源加速算了。
+
+ 临时使用 
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+ 注意，simple 不能少, 是 https 而不是 http
+ 设为默认 
+ 升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：
+pip install pi</div>
       </a>
 
       <div class="index-btm post-metas">

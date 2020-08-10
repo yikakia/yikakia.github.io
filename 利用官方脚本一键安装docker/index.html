@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      574 字
+      578 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p> 我可以简单的理解 docker 为一个简便的应用封装器么？</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1>
 <p> 为了用 Olaindex 建一个分享网盘，我需要在服务器上配置 php 环境。我按照 Olaindex 的教程用 Oneinstack 安装了，结果是成功的失败了。<br />
 无奈只能把服务器回滚了。然后我想了想，不是说 docker 很方便么？于是就去搜了搜，结果还真找到了 Olaindex 的镜像。于是就安装了 docker 后试了试，还挺好用的。</p>
@@ -246,7 +246,7 @@ sudo systemctl start docker</code></pre></div>
 <p> 退出当前终端并重新登录，进行如下测试。</p>
 <h2 id="测试 -docker- 是否安装正确"><a class="markdownIt-Anchor" href="# 测试 -docker- 是否安装正确"></a> 测试 Docker 是否安装正确 </h2>
 <div class="hljs"><pre><code class="hljs bash">docker run hello-world</code></pre></div>
-<div class="hljs"><pre><code class="hljs livecodeserver">Unable <span class="hljs-built_in">to</span> find image <span class="hljs-string">'hello-world:latest'</span> locally
+<div class="hljs"><pre><code class="hljs livecodeserver">Unable <span class="hljs-built_in">to</span> find image <span class="hljs-string">&#x27;hello-world:latest&#x27;</span> locally
 latest: Pulling <span class="hljs-built_in">from</span> library/hello-world
 d1725b59e92d: Pull complete
 Digest: sha256:<span class="hljs-number">0</span>add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
@@ -257,7 +257,7 @@ This message shows that your installation appears <span class="hljs-built_in">to
 
 To generate this message, Docker took <span class="hljs-keyword">the</span> following steps:
  <span class="hljs-number">1.</span> The Docker client contacted <span class="hljs-keyword">the</span> Docker daemon.
- <span class="hljs-number">2.</span> The Docker daemon pulled <span class="hljs-keyword">the</span> <span class="hljs-string">"hello-world"</span> image <span class="hljs-built_in">from</span> <span class="hljs-keyword">the</span> Docker Hub.
+ <span class="hljs-number">2.</span> The Docker daemon pulled <span class="hljs-keyword">the</span> <span class="hljs-string">&quot;hello-world&quot;</span> image <span class="hljs-built_in">from</span> <span class="hljs-keyword">the</span> Docker Hub.
     (amd64)
  <span class="hljs-number">3.</span> The Docker daemon created <span class="hljs-keyword">a</span> <span class="hljs-built_in">new</span> container <span class="hljs-built_in">from</span> that image which runs <span class="hljs-keyword">the</span>
     executable that produces <span class="hljs-keyword">the</span> output you are currently reading.
@@ -274,8 +274,8 @@ For more examples <span class="hljs-keyword">and</span> ideas, visit:
  <span class="hljs-keyword">https</span>://docs.docker.com/<span class="hljs-built_in">get</span>-started/</code></pre></div>
 <p> 若能正常输出以上信息，则说明安装成功。</p>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
-<p><a href="https://yeasy.gitbooks.io/docker_practice/install/debian.html" target="_blank" rel="noopener">Debian 安装 Docker CE</a><br />
-<a href="https://docs.docker.com/engine/install/debian/" target="_blank" rel="noopener">Install Docker Engine on Debian</a> (<strong> 这个是官网 </strong>)</p>
+<p><a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/install/debian.html">Debian 安装 Docker CE</a><br />
+<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/debian/">Install Docker Engine on Debian</a> (<strong> 这个是官网 </strong>)</p>
 
             </article>
             <hr>
@@ -301,7 +301,7 @@ For more examples <span class="hljs-keyword">and</span> ideas, visit:
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

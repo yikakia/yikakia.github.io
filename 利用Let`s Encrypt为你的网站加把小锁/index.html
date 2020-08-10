@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -241,27 +241,28 @@ git <span class="hljs-built_in">clone</span> https://github.com/certbot/certbot
 2: Spin up a temporary webserver (standalone)
 3: Place files <span class="hljs-keyword">in</span> webroot directory (webroot)
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Select the appropriate number [1-3] then [enter] (press <span class="hljs-string">'c'</span> <span class="hljs-keyword">to</span> cancel):</code></pre></div>
+Select the appropriate number [1-3] then [enter] (press <span class="hljs-string">&#x27;c&#x27;</span> <span class="hljs-keyword">to</span> cancel):        
+</code></pre></div>
 <p>这句话就是说让你选一个办法去让 ACME 这个签发证书的人确定你就是这个域名的持有者。<br />
 现在我们就选第二个 standalone 吧 ，输入 2<br />
 然后就会跳出一堆信息，不用管它们。如果出现下面这种字样就说明成功了</p>
-<div class="hljs"><pre><code class="hljs groovy">IMPORTANT <span class="hljs-string">NOTES:</span>
- - Congratulations! Your certificate and chain have been saved <span class="hljs-string">at:</span>
+<div class="hljs"><pre><code class="hljs gradle">IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
    <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>q.yika.cf/fullchain.pem
-   Your key file has been saved <span class="hljs-string">at:</span>
+   Your key <span class="hljs-keyword">file</span> has been saved at:
    <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>q.yika.cf/privkey.pem
-   Your cert will expire on <span class="hljs-number">2020</span><span class="hljs-number">-06</span><span class="hljs-number">-02.</span> To obtain a <span class="hljs-keyword">new</span> or tweaked
-   version of <span class="hljs-keyword">this</span> certificate <span class="hljs-keyword">in</span> the future, simply run
+   Your cert will expire on <span class="hljs-number">2020</span>-<span class="hljs-number">06</span>-<span class="hljs-number">02</span>. To obtain a <span class="hljs-keyword">new</span> or tweaked
+   version of <span class="hljs-keyword">this</span> certificate in the future, simply run
    letsencrypt-auto again. To non-interactively renew *all* of your
-   certificates, run <span class="hljs-string">"letsencrypt-auto renew"</span>
- - If you like Certbot, please consider supporting our work <span class="hljs-string">by:</span>
+   certificates, run <span class="hljs-string">&quot;letsencrypt-auto renew&quot;</span>
+ - <span class="hljs-keyword">If</span> you like Certbot, please consider supporting our work by:
 
-   Donating to ISRG <span class="hljs-regexp">/ Let's Encrypt:   https:/</span><span class="hljs-regexp">/letsencrypt.org/</span>donate
-   Donating to <span class="hljs-string">EFF:</span>                    <span class="hljs-string">https:</span><span class="hljs-comment">//eff.org/donate-le</span></code></pre></div>
+   Donating to ISRG <span class="hljs-regexp">/ Let&#x27;s Encrypt:   https:/</span><span class="hljs-regexp">/letsencrypt.org/</span>donate
+   Donating to EFF:                    https:<span class="hljs-comment">//eff.org/donate-le</span></code></pre></div>
 <p>就像它提示的那样，取得的公钥和私钥都存放在 <code>/etc/letsencrypt/live/q.yika.cf/</code> 这个目录里面。</p>
 <h2 id="申请域名通配符的证书"><a class="markdownIt-Anchor" href="# 申请域名通配符的证书"></a> 申请域名通配符的证书</h2>
 <p>这个步骤就是调用的命令有点不同，现在是假设你在你的 /certbot 的目录下，输入以下命令</p>
-<div class="hljs"><pre><code class="hljs bash">./certbot-auto certonly  -d <span class="hljs-string">"*.yikakia.com"</span> --manual --preferred-challenges dns-01  --server https://acme-v02.api.letsencrypt.org/directory</code></pre></div>
+<div class="hljs"><pre><code class="hljs bash">./certbot-auto certonly  -d <span class="hljs-string">&quot;*.yikakia.com&quot;</span> --manual --preferred-challenges dns-01  --server https://acme-v02.api.letsencrypt.org/directory</code></pre></div>
 <p>输入这个命令以后会提示下面的信息</p>
 <div class="hljs"><pre><code class="hljs routeros">Saving <span class="hljs-builtin-name">debug</span> log <span class="hljs-keyword">to</span> /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
@@ -272,8 +273,8 @@ dns-01 challenge <span class="hljs-keyword">for</span> yikakia.com
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 NOTE: The<span class="hljs-built_in"> IP </span>of this machine will be publicly logged as having requested this
-certificate. <span class="hljs-keyword">If</span> you<span class="hljs-string">'re running certbot in manual mode on a machine that is not
-your server, please ensure you'</span>re okay with that.
+certificate. <span class="hljs-keyword">If</span> you<span class="hljs-string">&#x27;re running certbot in manual mode on a machine that is not</span>
+<span class="hljs-string">your server, please ensure you&#x27;</span>re okay with that.
 
 Are you OK with your<span class="hljs-built_in"> IP </span>being logged?
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -295,22 +296,24 @@ Waiting <span class="hljs-keyword">for</span> verification<span class="hljs-buil
 <p><img src="%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png" srcset="/img/loading.gif" alt="添加验证.png" /></p>
 <p>这样写好了之后，等一两分钟，然后回到客户端敲回车确定要验证你是这个网址的所有者。</p>
 <p>之后就会显示下面这样的字样。</p>
-<div class="hljs"><pre><code class="hljs groovy">
+<div class="hljs"><pre><code class="hljs gradle">
 Cleaning up challenges
 
-IMPORTANT <span class="hljs-string">NOTES:</span>
- - Congratulations! Your certificate and chain have been saved <span class="hljs-string">at:</span>
-   <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>yikakia.com/fullchain.pem
-   Your key file has been saved <span class="hljs-string">at:</span>
-   <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>yikakia.com/privkey.pem
-   Your cert will expire on <span class="hljs-number">2020</span><span class="hljs-number">-09</span><span class="hljs-number">-02.</span> To obtain a <span class="hljs-keyword">new</span> or tweaked
-   version of <span class="hljs-keyword">this</span> certificate <span class="hljs-keyword">in</span> the future, simply run certbot-auto
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/yi</span>kakia.com/fullchain.pem
+   Your key <span class="hljs-keyword">file</span> has been saved at:
+   <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/yi</span>kakia.com/privkey.pem
+   Your cert will expire on <span class="hljs-number">2020</span>-<span class="hljs-number">09</span>-<span class="hljs-number">02</span>. To obtain a <span class="hljs-keyword">new</span> or tweaked
+   version of <span class="hljs-keyword">this</span> certificate in the future, simply run certbot-auto
    again. To non-interactively renew *all* of your certificates, run
-   <span class="hljs-string">"certbot-auto renew"</span>
- - If you like Certbot, please consider supporting our work <span class="hljs-string">by:</span>
+   <span class="hljs-string">&quot;certbot-auto renew&quot;</span>
+ - <span class="hljs-keyword">If</span> you like Certbot, please consider supporting our work by:
 
-   Donating to ISRG <span class="hljs-regexp">/ Let's Encrypt:   https:/</span><span class="hljs-regexp">/letsencrypt.org/</span>donate
-   Donating to <span class="hljs-string">EFF:</span>                    <span class="hljs-string">https:</span><span class="hljs-comment">//eff.org/donate-le</span></code></pre></div>
+   Donating to ISRG <span class="hljs-regexp">/ Let&#x27;s Encrypt:   https:/</span><span class="hljs-regexp">/letsencrypt.org/</span>donate
+   Donating to EFF:                    https:<span class="hljs-comment">//eff.org/donate-le</span>
+
+</code></pre></div>
 <p>现在你的网站的域名通配符的证书就搞到手啦，以后不管是什么前缀的网址都可以用这同一个证书，非常方便。</p>
 <h1 id="添加监听以及开启强制 https"><a class="markdownIt-Anchor" href="# 添加监听以及开启强制 https"></a> 添加监听以及开启强制 https</h1>
 <h2 id="配置 nginx"><a class="markdownIt-Anchor" href="# 配置 nginx"></a> 配置 nginx</h2>
@@ -362,17 +365,17 @@ nano /etc/nginx/conf.d/hexo.conf</code></pre></div>
 <div class="hljs"><pre><code class="hljs bash">crontab -e
 <span class="hljs-comment"># 选择用你熟悉的编辑器编辑</span>
 <span class="hljs-comment"># 然后在后面添加</span>
-0 3 1 * * /root/cerbot/certbot-auto renew --renew-hook <span class="hljs-string">"sudo nginx -s reload"</span>
+0 3 1 * * /root/cerbot/certbot-auto renew --renew-hook <span class="hljs-string">&quot;sudo nginx -s reload&quot;</span>
 <span class="hljs-comment"># 现在保存了就可以了</span></code></pre></div>
 <p>这样你就可以高枕无忧了，自动化程序可以帮你搞定自动续期的问题。</p>
 <p>这是让你的机器每个月 1 号的凌晨 3 点自动更新所有的证书。</p>
 <h1 id="尾巴"><a class="markdownIt-Anchor" href="# 尾巴"></a> 尾巴</h1>
 <p>什么时候写下 HTTPS 和 RSA 的算法，来总结一下吧。爱丽丝和鲍勃以及伊娃的爱恨情仇~</p>
 <h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
-<p><a href="https://xiaozhou.net/be-quick-to-enable-ssl-for-your-blog-2016-07-13.html" target="_blank" rel="noopener">为你的 Blog 快速开启 https 支持</a><br />
-<a href="https://www.jianshu.com/p/509d2a240b7d" target="_blank" rel="noopener">Hexo 启用 https 加密连接</a><br />
-<a href="https://www.jianshu.com/p/6ea81a7b768f" target="_blank" rel="noopener">Certbot 自动化生成 https 证书</a><br />
-<a href="https://zhuanlan.zhihu.com/p/53407930" target="_blank" rel="noopener">certbot-auto 申请 https 证书，自动续期</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiaozhou.net/be-quick-to-enable-ssl-for-your-blog-2016-07-13.html">为你的 Blog 快速开启 https 支持</a><br />
+<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/509d2a240b7d">Hexo 启用 https 加密连接</a><br />
+<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6ea81a7b768f">Certbot 自动化生成 https 证书</a><br />
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/53407930">certbot-auto 申请 https 证书，自动续期</a></p>
 
             </article>
             <hr>
@@ -382,9 +385,9 @@ nano /etc/nginx/conf.d/hexo.conf</code></pre></div>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-                    
                       <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
                     
                       <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
                     
@@ -404,7 +407,7 @@ nano /etc/nginx/conf.d/hexo.conf</code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

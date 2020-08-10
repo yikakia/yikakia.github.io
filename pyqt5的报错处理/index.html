@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -213,23 +213,23 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月5日 晚上
+                  本文最后更新于：2020年8月10日 晚上
                 
               </p>
             
             <article class="markdown-body">
               <p>收集遇到的报错</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>摸了好久终于搞定了，不知道下次更新是什么时候了。</p>
 <h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
 <h2 id="报错 -typeerror-argument-1-has-unexpected-type-nonetype"><a class="markdownIt-Anchor" href="# 报错 -typeerror-argument-1-has-unexpected-type-nonetype"></a> 报错 TypeError: argument 1 has unexpected type ‘NoneType’</h2>
-<p>参考这个 StackOverFlow 上的 <a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener"> 回答</a>，将报错的函数改成直接调用即可。<br />
+<p>参考这个 StackOverFlow 上的 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45793966/clicked-connect-error"> 回答</a>，将报错的函数改成直接调用即可。<br />
 比如之前的是</p>
 <div class="hljs"><pre><code class="hljs python">self.action_genrate.triggered.connect(self.genrateWork())  <span class="hljs-comment"># 报错</span>
 self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-comment"># 正确</span></code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://stackoverflow.com/questions/45793966/clicked-connect-error" target="_blank" rel="noopener">clicked.connect() Error</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45793966/clicked-connect-error">clicked.connect() Error</a></p>
 
             </article>
             <hr>
@@ -239,7 +239,9 @@ self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-com
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%EF%BC%8CPython/">学习，Python</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/Python/">Python</a>
                     
                   </div>
                 
@@ -257,7 +259,7 @@ self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-com
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

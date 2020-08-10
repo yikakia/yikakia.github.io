@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p>下载，解压，设置环境变量，结束</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>生产实训来搞大数据，全是之前没用过的，就记录一下咯</p>
 <h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
@@ -232,9 +232,9 @@
 <li>hadoop-2.9.2</li>
 </ul>
 <h2 id="在 vmware- 中安装 -centos-8"><a class="markdownIt-Anchor" href="# 在 vmware- 中安装 -centos-8"></a> 在 Vmware 中安装 CentOS 8</h2>
-<p>简单的就是在 <a href="https://www.centos.org/download/" target="_blank" rel="noopener"> 官网 </a> 中下载镜像，然后在 Vmware 中依次选择 创建虚拟机 -&gt; 典型 -&gt; 安装程序光盘映像文件 然后输入账户密码，选择虚拟机文件的保存位置，选择磁盘大小，最后确认就行。</p>
+<p>简单的就是在 <a target="_blank" rel="noopener" href="https://www.centos.org/download/"> 官网 </a> 中下载镜像，然后在 Vmware 中依次选择 创建虚拟机 -&gt; 典型 -&gt; 安装程序光盘映像文件 然后输入账户密码，选择虚拟机文件的保存位置，选择磁盘大小，最后确认就行。</p>
 <p>但是有可能会遇到虚拟机在启动的时候卡住的情况，这个时候就查看那个光盘映像文件，看是不是被替换成了一个叫类似于 <code>autoXXX.iso</code> 的 iso 文件，如果是的话，就修改为你的 CentOS 8 的 iso 文件就可以了。</p>
-<p>当然，如果从官网下载速度慢的话可以从清华的镜像站 <a href="https://mirror.tuna.tsinghua.edu.cn/centos/8/isos/" target="_blank" rel="noopener"> 下载</a></p>
+<p>当然，如果从官网下载速度慢的话可以从清华的镜像站 <a target="_blank" rel="noopener" href="https://mirror.tuna.tsinghua.edu.cn/centos/8/isos/"> 下载</a></p>
 <p>一般来说是下载 <code>/x86_x64</code> 下面的 <code>CentOS-8.2.2004-x86_64-dvd1.iso</code> 文件</p>
 <p>然后在 CentOS 8 安装的时候一路下一步就行。如果需要 GUI 的话可以在安装需要的软件包的时候选择 GUI，软件包的选择上我是选了开发工具包<code>Development Tools</code></p>
 <p>其实安装过程基本就是一路下一步就行了。</p>
@@ -280,9 +280,10 @@ SELINUXTYPE=targeted</code></pre></div>
 <div class="hljs"><pre><code class="hljs bash">ssh-copy-id 你的主机名</code></pre></div>
 <p>然后输入你的密码，一路回车就行了。<br />
 这个时候如果弹出类似于</p>
-<div class="hljs"><pre><code class="hljs routeros">Now try<span class="hljs-built_in"> logging </span>into the machine, with <span class="hljs-string">"ssh'1.2.3.4'"</span>, <span class="hljs-keyword">and</span> check <span class="hljs-keyword">in</span>:.ssh/authorized_keys
+<div class="hljs"><pre><code class="hljs routeros">Now try<span class="hljs-built_in"> logging </span>into the machine, with <span class="hljs-string">&quot;ssh &#x27;1.2.3.4&#x27;&quot;</span>, <span class="hljs-keyword">and</span> check <span class="hljs-keyword">in</span>:.ssh/authorized_keys
 
-<span class="hljs-keyword">to</span> make sure we haven<span class="hljs-string">'t added extra keys that you weren'</span>t expecting.</code></pre></div>
+<span class="hljs-keyword">to</span> make sure we haven<span class="hljs-string">&#x27;t added extra keys that you weren&#x27;</span>t expecting.
+</code></pre></div>
 <p>这样的字样就是成功了。<br />
 你可以输入 <code>who</code> 来看是不是现在有两个登录用户</p>
 <h2 id="配置 -java- 环境"><a class="markdownIt-Anchor" href="# 配置 -java- 环境"></a> 配置 Java 环境</h2>
@@ -295,8 +296,8 @@ SELINUXTYPE=targeted</code></pre></div>
 <p>编辑 <code>/etc/profile</code> 文件</p>
 <div class="hljs"><pre><code class="hljs bash">nano /etc/profile</code></pre></div>
 <p>添加如下几行</p>
-<div class="hljs"><pre><code class="hljs crystal">export JAVA_HOME=<span class="hljs-regexp">/home/dev</span><span class="hljs-regexp">/java8
-export CLASSPATH=$JAVA_HOME/jre</span><span class="hljs-regexp">/lib/ext</span>:$JAVA_HOME/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">tools</span>.<span class="hljs-title">jar</span></span>
+<div class="hljs"><pre><code class="hljs crystal">export JAVA_HOME=<span class="hljs-regexp">/home/dev</span><span class="hljs-regexp">/java8</span>
+<span class="hljs-regexp">export CLASSPATH=$JAVA_HOME/jre</span><span class="hljs-regexp">/lib/ext</span>:$JAVA_HOME/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">tools</span>.<span class="hljs-title">jar</span></span>
 
 export PATH=$<span class="hljs-symbol">PATH:</span>$JAVA_HOME/bin</code></pre></div>
 <p>然后退出来刷新一下</p>
@@ -358,8 +359,9 @@ nano /etc/profile
 <span class="hljs-built_in">export</span> HADOOP_COMMON_LIB_NATIVE_DIR=<span class="hljs-variable">$HADOOP_HOME</span>/lib/native
 <span class="hljs-built_in">export</span> HADOOP_USER_NAME=root
 <span class="hljs-comment"># 刷新环境变量</span>
-<span class="hljs-built_in">source</span> /etc/profile</code></pre></div>
-<h3 id="配置 -envsh"><a class="markdownIt-Anchor" href="# 配置 -envsh"></a> 配置 <a href="http://env.sh" target="_blank" rel="noopener">env.sh</a></h3>
+<span class="hljs-built_in">source</span> /etc/profile
+</code></pre></div>
+<h3 id="配置 -envsh"><a class="markdownIt-Anchor" href="# 配置 -envsh"></a> 配置 <a target="_blank" rel="noopener" href="http://env.sh">env.sh</a></h3>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 到 hadoop 的目录</span>
 <span class="hljs-built_in">cd</span> /home/dev/hadoop-2.9.2
 <span class="hljs-comment"># 修改 hadoop-env.sh</span>
@@ -386,7 +388,8 @@ nano etc/hadoop/core-site.xml</code></pre></div>
 <span class="hljs-params">&lt;property&gt;</span>
         <span class="hljs-params">&lt;name&gt;</span>hadoop.tmp.dir<span class="hljs-params">&lt;/name&gt;</span>
         <span class="hljs-params">&lt;value&gt;</span><span class="hljs-meta-keyword">/home/</span>softwares/hadoop<span class="hljs-number">-2.9</span><span class="hljs-number">.1</span><span class="hljs-meta-keyword">/data/</span>tmp<span class="hljs-params">&lt;/value&gt;</span>
-<span class="hljs-params">&lt;/property&gt;</span></code></pre></div>
+<span class="hljs-params">&lt;/property&gt;</span>
+</code></pre></div>
 <h3 id="配置 -hdfs-sitexml"><a class="markdownIt-Anchor" href="# 配置 -hdfs-sitexml"></a> 配置 hdfs-site.xml</h3>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 到 hadoop 的目录</span>
 <span class="hljs-built_in">cd</span> /home/dev/hadoop-2.9.2
@@ -415,7 +418,8 @@ nano etc/hadoop/mapred-site.xml</code></pre></div>
         <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapreduce.framework.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>yarn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+</code></pre></div>
 <h3 id="配置 -yarn-sitexml"><a class="markdownIt-Anchor" href="# 配置 -yarn-sitexml"></a> 配置 yarn-site.xml</h3>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 到 hadoop 的目录</span>
 <span class="hljs-built_in">cd</span> /home/dev/hadoop-2.9.2
@@ -438,7 +442,7 @@ bash /home/softwares/hadoop-2.9.2/sbin/start-yarn.sh
 jps
 <span class="hljs-comment"># 这样来查看就知道是否配置正确了，正确的话应该会一共有五个进程。</span></code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://www.cnblogs.com/hanhaotian/p/11754393.html" target="_blank" rel="noopener">CENTOS 8 安装 HADOOP</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hanhaotian/p/11754393.html">CENTOS 8 安装 HADOOP</a></p>
 
             </article>
             <hr>
@@ -468,7 +472,7 @@ jps
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      130 字
+      136 字
     </span>
   
 
@@ -219,17 +219,17 @@
             
             <article class="markdown-body">
               <p> 主要是 vps 上编译软件的时候需要这个参数。</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="查看物理 cpu 个数"><a class="markdownIt-Anchor" href="# 查看物理 cpu 个数"></a> 查看物理 CPU 个数 </h1>
-<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">"physical id"</span>| sort| uniq| wc -l</code></pre></div>
+<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">&quot;physical id&quot;</span>| sort| uniq| wc -l</code></pre></div>
 <h1 id="查看每个物理 cpu 中 core 的个数即核数"><a class="markdownIt-Anchor" href="# 查看每个物理 cpu 中 core 的个数即核数"></a> 查看每个物理 CPU 中 core 的个数 (即核数)</h1>
-<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">"cpu cores"</span>| uniq</code></pre></div>
+<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">&quot;cpu cores&quot;</span>| uniq</code></pre></div>
 <h1 id="查看逻辑 cpu 的个数"><a class="markdownIt-Anchor" href="# 查看逻辑 cpu 的个数"></a> 查看逻辑 CPU 的个数 </h1>
-<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">"processor"</span>| wc -l</code></pre></div>
+<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">&quot;processor&quot;</span>| wc -l</code></pre></div>
 <p> 系统的总核数 = 物理 CPU 个数 * 每颗物理 CPU 的核数 <br />
 总逻辑 CPU 数 = 物理 CPU 个数 * 每颗物理 CPU 的核数 * 超线程数 </p>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
-<p><a href="https://www.cnblogs.com/emanlee/p/3587571.html" target="_blank" rel="noopener">Linux 查看物理 CPU 个数、核数、逻辑 CPU 个数 </a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/emanlee/p/3587571.html">Linux 查看物理 CPU 个数、核数、逻辑 CPU 个数 </a></p>
 
             </article>
             <hr>
@@ -253,7 +253,7 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

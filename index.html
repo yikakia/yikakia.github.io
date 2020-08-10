@@ -38,7 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -181,7 +181,21 @@
         
           
         
-        <div>大小写，永远的痛</div>
+        <div>大小写，永远的痛
+
+ 前言
+在看自己的博客的时候，突然发现我的标签页面很多个 tag 页面打开都是 404 报错。
+对多个 tag 查了之后才发现，问题应该是出现在大小写上。
+ 正文
+ 环境
+
+本地: Windows10
+服务器: Debian10
+
+ 现象
+本地运行 hexo s 查看到的 tag 页面是正常的，大小写的网址都能区分开，而在服务器上运行时则出现了 404 错误。
+ 原理
+参考这个</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -229,7 +243,12 @@
         
           
         
-        <div>windows bug 10, best windows 10!</div>
+        <div>windows bug 10, best windows 10!
+
+ 前言
+更新了 Windows10 2004 的更新后发现 manjaro 的系统进不去了。进去了是 grub rescue 救援模式。
+参考了救援模式的解决，但好像只看到了 /boot 的挂载点，没看到 /boot/efi 的挂载点，更别提 / 的挂载点了。
+所以没办法，就烧了个manjaro 的 livecd 进去修复 gru</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -281,7 +300,21 @@
         
           
         
-        <div>下载，解压，设置环境变量，结束</div>
+        <div>下载，解压，设置环境变量，结束
+
+ 前言
+生产实训来搞大数据，全是之前没用过的，就记录一下咯
+ 正文
+ 环境
+
+CentOS 8
+Java8(jdk1.8)
+findbugs-1.3.9
+protobuf-2.5.0
+hadoop-2.9.2
+
+ 在 Vmware 中安装 CentOS 8
+简单的就是在  官网  中下载镜像，然后在 Vmware 中依次选择 创建虚拟机 -&gt; 典型 -&gt</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -333,7 +366,15 @@
         
           
         
-        <div>针对 manjaro 日常使用过程中的 pacman 报错的处理</div>
+        <div> 针对 manjaro 日常使用过程中的 pacman 报错的处理 
+
+ 正文 
+ 错误：无法提交处理 (无效或已损坏的软件包)
+ 我的电脑上这个问题出现的时候是下载软件包的时候出错了，这个时候清除缓存即可。
+一般报错的时间是在检查完密钥之后。
+sudo pacman -Sc
+ 这个是清除所有的未安装软件包的缓存，仅保留当前软件包的版本。
+ 在几百个软件包等着更新的时候，你也没办法检查是哪个软件包</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -383,7 +424,15 @@
         
           
         
-        <div>点乘，叉乘，内积，外积，数量积，向量积。</div>
+        <div>点乘，叉乘，内积，外积，数量积，向量积。
+
+ 前言
+做数字图像处理的时候会需要卷积，虽然 OpenCV 自带了对应的函数 filter2D() 来进行卷积，
+不过实验嘛，还是自己动手理解原理才是最好的。不过 numpy 的各种乘法混着看不懂有啥区别啊，所以就看看咯。
+ 正文
+下面我会把满足条件的方法合并起来演示。
+ 点乘、内积、数量积
+简单地说就是将数组 a 中的每个元素与数组 b 中的每一个对应</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -433,7 +482,12 @@
         
           
         
-        <div>从入坑到入土</div>
+        <div>从入坑到入土
+
+ 前言
+数字图像处理的作业要求有图形化的设计。我都是用的 Python 来实现的代码的，感觉转成用 C 来写的话各种类型太麻烦了，还是直接用 Python 试试 GUI 开发。
+结果只能说差强人意。我也没用到什么槽函数感觉也可以写出来。不过打包成.exe 文件的时候却发现整个包太大了。估计是打包了 Python 运行环境的原因。所以要想开发小而美的软件还是得用 C 啊
+ 从 pip</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -483,7 +537,11 @@
         
           
         
-        <div>用 python 可以不用管数据类型，而用 .net 又可以方便的进行GUI开发。两者结合起来的话是多么的棒啊。可惜我太菜了结合不了。</div>
+        <div>用 python 可以不用管数据类型，而用 .net 又可以方便的进行 GUI 开发。两者结合起来的话是多么的棒啊。可惜我太菜了结合不了。
+
+ 前言
+这学期开的数字图像处理也有实验，实验项目是边缘检测和阈值开发。老师推荐的是用 .net 来做。但感觉太麻烦了，所以问了老师，得到了能用 python 的许可。
+不过看起来老师还是希望有个 GUI 界面的，那就试试 PyQt 怎么样咯。刚好也想折腾一下</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -537,7 +595,15 @@
         
           
         
-        <div>收集遇到的报错</div>
+        <div>收集遇到的报错
+
+ 前言
+摸了好久终于搞定了，不知道下次更新是什么时候了。
+ 正文
+ 报错 TypeError: argument 1 has unexpected type ‘NoneType’
+参考这个 StackOverFlow 上的  回答，将报错的函数改成直接调用即可。
+比如之前的是
+self.action_genrate.triggered.connect(self.genrateWo</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -550,7 +616,9 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%EF%BC%8CPython/">学习，Python</a>
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/Python/">Python</a>
             
           </div>
         
@@ -587,7 +655,18 @@
         
           
         
-        <div>安装Numlockx，配置/etc/sddm.conf，把None改成on</div>
+        <div>安装 Numlockx，配置 /etc/sddm.conf，把 None 改成 on
+
+ 前言
+每次登录 Manjaro 的时候因为密码里面有数字，而 Manjaro 又不会自动打开数字键，所以每次都得去手动打开，非常麻烦。于是就去搜了搜，发现解决方式还挺简单的。
+ 环境
+
+OS: Manjaro 20.0.1 Lysia
+numlockx: 1.2-5
+
+ 正文
+ 安装Numlockx
+这个我看</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -637,7 +716,15 @@
         
           
         
-        <div>原理简单，懂之前觉得麻烦。</div>
+        <div>原理简单，懂之前觉得麻烦。
+
+ 前言
+做数据库的大作业了，要求自己设计一个数据库。之前用的 HR 数据库姑且是通过改权限强行让 CDB 能够添加不以 C## 开头的用户名了。
+然而大作业也要求搞一个以自己名字命名的用户名，想了想还是试试 PDB 的结构吧。试了半天终于搞定了。
+ 正文
+我是默认就有了一个自带的叫 orclpdb 的 PDB 数据库了，所以就没有新建一个 PDB 数据库了。
+ 环境
+</div>
       </a>
 
       <div class="index-btm post-metas">

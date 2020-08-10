@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p>不作恶的谷歌扫硬盘搞毛。</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>今天发现电脑 CPU 占用很高，风扇在狂转。想了想我好像后台没开什么应用啊？于是打开了任务管理器看了看，发现有个叫 <code>software reporter tool</code> 的进程在后台使劲跑。觉得纳闷就上网搜了下，发现原来是谷歌 Chrome 的后台程序。下面简单的说下这个软件是干嘛的吧。</p>
 <p>这个 <code>software reporter tool</code> 会扫描你电脑的硬盘，然后把扫描的结果报告给谷歌，让谷歌分析这些结果，看是什么软件影响了用户的网页浏览体验。然后推荐用户删除这些软件。<br />
@@ -234,7 +234,7 @@
 <p>查了之后发现这个文件是就算你删除了，谷歌也可能会给你装回来的。是不是有点眼熟这个全家桶操作？😀<br />
 所以我们要做的就是禁止谷歌启动这个程序。</p>
 <p>这个软件的位置大概是在这里:</p>
-<div class="hljs"><pre><code class="hljs taggerscript">C:<span class="hljs-symbol">\U</span>sers<span class="hljs-symbol">\U</span>SERNAME<span class="hljs-symbol">\A</span>ppData<span class="hljs-symbol">\L</span>ocal<span class="hljs-symbol">\G</span>oogle<span class="hljs-symbol">\C</span>hrome<span class="hljs-symbol">\U</span>ser Data<span class="hljs-symbol">\S</span>wReporter<span class="hljs-symbol">\V</span>ERSION</code></pre></div>
+<div class="hljs"><pre><code class="hljs latex">C:<span class="hljs-tag">\<span class="hljs-name">Users</span></span><span class="hljs-tag">\<span class="hljs-name">USERNAME</span></span><span class="hljs-tag">\<span class="hljs-name">AppData</span></span><span class="hljs-tag">\<span class="hljs-name">Local</span></span><span class="hljs-tag">\<span class="hljs-name">Google</span></span><span class="hljs-tag">\<span class="hljs-name">Chrome</span></span><span class="hljs-tag">\<span class="hljs-name">User</span></span> Data<span class="hljs-tag">\<span class="hljs-name">SwReporter</span></span><span class="hljs-tag">\<span class="hljs-name">VERSION</span></span></code></pre></div>
 <p>把这里面的 <code>USERNAME</code> 改成你的用户名,<code>VERSION</code>改成你的 Chrome 版本。然后就可以看到这个文件了。<br />
 这里我的版本是 <code>81.233.200</code><br />
 <img src="%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" alt="" /></p>
@@ -264,14 +264,14 @@ Make sure its <span class="hljs-keyword">value</span> <span class="hljs-keyword"
 <span class="hljs-keyword">Right</span>-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> again <span class="hljs-keyword">and</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">New</span> &gt; Dword (<span class="hljs-number">32</span>-<span class="hljs-built_in">bit</span>) Value.
 <span class="hljs-keyword">Name</span> it ChromeCleanupReportingEnabled.
 Make sure its <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> <span class="hljs-number">0.</span>
-ChromeCleanupEnabled<span class="hljs-string">'s value determines whether the Software Reporter Tool may run on the system.
-
-A value of 0 means the tool is disabled and won'</span>t be run.
+ChromeCleanupEnabled<span class="hljs-string">&#x27;s value determines whether the Software Reporter Tool may run on the system.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">A value of 0 means the tool is disabled and won&#x27;</span>t be run.
 A <span class="hljs-keyword">value</span> <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> means the Software Reporter <span class="hljs-keyword">is</span> enabled <span class="hljs-keyword">and</span> will be run <span class="hljs-keyword">by</span> Chrome.
-ChromeCleanupReportingEnabled<span class="hljs-string">'s value determines whether the results are reported to Google.
-
-A value of 0 means the reporting is disabled.
-A value of 1 means the reporting is enabled.</span></code></pre></div>
+ChromeCleanupReportingEnabled<span class="hljs-string">&#x27;s value determines whether the results are reported to Google.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">A value of 0 means the reporting is disabled.</span>
+<span class="hljs-string">A value of 1 means the reporting is enabled.</span></code></pre></div>
 <p>简单地说就是打开注册表，在 <code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome</code> 这项下面新建叫做 <code>ChromeCleanupEnabled</code> 和<code>ChromeCleanupReportingEnabled</code>的键，它们的类型都是 <code>Dword</code>(32 位) 双字节数据类型，把它们都赋值为 0。<br />
 下面是不同键值的作用</p>
 <table>
@@ -308,7 +308,7 @@ A value of 1 means the reporting is enabled.</span></code></pre></div>
 不过我在这么搞的时候发现我的这个已经设置过了。看来谷歌这小子浓眉大眼的，结果还是不好好做事啊。</li>
 </ol>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/" target="_blank" rel="noopener">How to block the Chrome Software Reporter Tool (software_reporter_tool.exe)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/">How to block the Chrome Software Reporter Tool (software_reporter_tool.exe)</a></p>
 
             </article>
             <hr>
@@ -334,7 +334,7 @@ A value of 1 means the reporting is enabled.</span></code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

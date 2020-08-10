@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p> 先给结论，<strong> 元组是不可变的，但是当元组指向可变的变量时，元组就可以改变了。</strong></p>
-<a id="more"></a>
+<!---more--->
 <h1 id="原理"><a class="markdownIt-Anchor" href="# 原理"></a> 原理 </h1>
 <p> 我们定义这么一个元组，并且输出看看 </p>
 <div class="hljs"><pre><code class="hljs python">a = ([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
@@ -249,7 +249,7 @@ print(a)</code></pre></div>
 <p> 在这里，元组的本身依然时不可变的，因为它指向的内存地址没有发生改变。然而元组所指向的内存地址却不一定是不可变的。因为它可以是列表。在这种情况下，元组就会表现得可变了。</p>
 <p> 因此我们在使用多维元组时，如果不希望元组有一点的改变的话，就应该把其全部定义为元组，而不应该是元组嵌套列表。</p>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
-<p><a href="https://segmentfault.com/a/1190000010767068" target="_blank" rel="noopener">Python 中 tuple+= 赋值的四个问题 </a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010767068">Python 中 tuple+= 赋值的四个问题 </a></p>
 
             </article>
             <hr>
@@ -273,7 +273,7 @@ print(a)</code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -224,9 +224,9 @@
 <a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>在折腾博客的头图的时候，不小心将很大的，而且用不上的图片放在了 git 的提交历史里面。昨天还没想到有啥问题，虽然出现了问题的征兆，就是上传到服务器的时候速度很慢。不过我硬是靠设置 <code>git</code> 的 <code>postBuffer</code> 为 500M 而强行解决了问题。但今天突然想起这个问题，仔细思考了一下，不对啊，git 的特性决定了你提交了什么东西，他就会永远留在 git 仓库里面呀，那这个样子岂不是很不妙？</p>
-<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener"> 官方的文档 </a> 也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener"> 相关网页 </a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
+<p>于是我上网搜了下 git 的工作机制，发现还真是这样，这个怎么办？于是再搜了下，发现 git 早已对此有了预案，那就是 <code>git filter-branch</code> 命令。不过看了 <a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2"> 官方的文档 </a> 也没看出来该怎么用，试了下也没折腾出来，本来以为凉了，不过还好在 Github 的 <a target="_blank" rel="noopener" href="https://help.github.com/cn/github/authenticating-to-github/removing-sensitive-data-from-a-repository"> 相关网页 </a> 看到了还有别的工具，那就是本文的重点介绍 <strong><code>BFG</code></strong></p>
 <h1 id="bfg 的使用"><a class="markdownIt-Anchor" href="#bfg 的使用"></a> BFG 的使用</h1>
-<p>就先把 BFG 的官方网站放出来吧，<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">点这里</a>。</p>
+<p>就先把 BFG 的官方网站放出来吧，<a target="_blank" rel="noopener" href="https://rtyley.github.io/bfg-repo-cleaner/">点这里</a>。</p>
 <p>需要注意的是，该工具是.jar 格式的，也就是说你得安装一个 java 才能运行。虽然我学了 java，但对这个一窍不通，所以也没啥好说的，去官网下一个就行了。不过因为 Windows 的原因，所以得注销一下 java 才写进环境变量，具体的我在 <code> 建站心得 </code> 里面说过有兴趣的可以去看看。</p>
 <p>那么开始正文吧</p>
 <h2 id="删除大于 10m 的文件"><a class="markdownIt-Anchor" href="# 删除大于 10m 的文件"></a> 删除大于 10M 的文件</h2>
@@ -236,7 +236,7 @@
 <div class="hljs"><pre><code class="hljs routeros">BFG <span class="hljs-builtin-name">run</span> is complete! When ready, run: git reflog expire <span class="hljs-attribute">--expire</span>=now --all &amp;&amp; git gc <span class="hljs-attribute">--prune</span>=now --aggressive</code></pre></div>
 <p>不过就像他所提示的那样，还要再做点动作才能正式删除那就跟着他做呗。不过 Windows 下的命令貌似不支持用 &amp;&amp; 连接两条，所以就分开做吧。</p>
 <div class="hljs"><pre><code class="hljs powershell">git reflog expire -<span class="hljs-literal">-expire</span>=now -<span class="hljs-literal">-all</span>
-git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span></code></pre></div>
+git <span class="hljs-built_in">gc</span> -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span></code></pre></div>
 <p>现在就好了，彻底删除了大于 10M 文件，改写了提交的历史。现在你可以看看 <code>.deploy_git</code> 这个文件夹是不是比之前小了很多啊。<br />
 举一反三一下，把之前命令的 <code>10M</code> 换成 <code>50M</code> 也是可以的。</p>
 <p>不过每次都输 <code>.\bfg-1.13.0.jar</code>也太麻烦了，就算按 Tab 自动补全也是，还是把 <code>bfg-1.13.0.jar</code> 的名字改成 <code>bfg.jar</code> 吧。</p>
@@ -247,7 +247,7 @@ git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal"
 <div class="hljs"><pre><code class="hljs routeros">BFG <span class="hljs-builtin-name">run</span> is complete! When ready, run: git reflog expire <span class="hljs-attribute">--expire</span>=now --all &amp;&amp; git gc <span class="hljs-attribute">--prune</span>=now --aggressive</code></pre></div>
 <p>这样的提示的时候，说明就工作完成了，和之前一样输入两行命令删除掉他吧。</p>
 <div class="hljs"><pre><code class="hljs powershell">git reflog expire -<span class="hljs-literal">-expire</span>=now -<span class="hljs-literal">-all</span>
-git gc -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span></code></pre></div>
+git <span class="hljs-built_in">gc</span> -<span class="hljs-literal">-prune</span>=now -<span class="hljs-literal">-aggressive</span></code></pre></div>
 <h2 id="其他我没用过的指令"><a class="markdownIt-Anchor" href="# 其他我没用过的指令"></a> 其他我没用过的指令</h2>
 <p>看官方网站的 Usage 的话会发现其实还有些其他用法，不过我没用过，就在这里也一并列出来吧</p>
 <h3 id="替换指定文件的所有内容"><a class="markdownIt-Anchor" href="# 替换指定文件的所有内容"></a> 替换指定文件的所有内容</h3>
@@ -263,16 +263,16 @@ Remove all folders or files named ‘.git’ - a reserved filename in Git. These
 <h1 id="有趣的事"><a class="markdownIt-Anchor" href="# 有趣的事"></a> 有趣的事</h1>
 <p>现在是 2020/3/3 可能美国正在进行大选或者川普现在有啥丑闻？<br />
 总之我清理完了后 <code>bfg</code> 会弹出这么一个提示</p>
-<div class="hljs"><pre><code class="hljs asciidoc"><span class="hljs-bullet">--
-</span>You can rewrite history in Git - don't let Trump do it for real!
-Trump's administration has lied consistently, to make people give up on ever
-<span class="hljs-section">being told the truth. Don't give up: https://www.rescue.org/topic/refugees-america
---</span></code></pre></div>
-<p>不知道你用的时候会有这个提示么？</p>
+<h2 id="hexopostrenderescapeprecode-classhljs-asciidocyou-can-rewrite-history-in-git-dont-let-trump-do-it-for-realtrumps-administration-has-lied-consistently-to-make-people-give-up-on-everbeing-told-the-truth-dont-give-up-httpswwwrescueorgtopicrefugees-america"><a class="markdownIt-Anchor" href="#hexopostrenderescapeprecode-classhljs-asciidocyou-can-rewrite-history-in-git-dont-let-trump-do-it-for-realtrumps-administration-has-lied-consistently-to-make-people-give-up-on-everbeing-told-the-truth-dont-give-up-httpswwwrescueorgtopicrefugees-america"></a> &lt;!–hexoPostRenderEscape:<div class="hljs"><pre><code class="hljs asciidoc">–<br />
+You can rewrite history in Git - don’t let Trump do it for real!<br />
+Trump’s administration has lied consistently, to make people give up on ever<br />
+being told the truth. Don’t give up: <a target="_blank" rel="noopener" href="https://www.rescue.org/topic/refugees-america">https://www.rescue.org/topic/refugees-america</a></h2>
+<p></code></pre></div>:hexoPostRenderEscape–&gt;<br />
+不知道你用的时候会有这个提示么？</p>
 <h1 id="参考文章"><a class="markdownIt-Anchor" href="# 参考文章"></a> 参考文章</h1>
-<p><a href="http://openfibers.github.io/blog/2015/03/04/use-bfg-to-clean-big-blog-in-git/" target="_blank" rel="noopener">使用 BFG Repo-Cleaner 清除 git 的历史错误提交</a><br />
-<a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener">Git 工具 - 重写历史</a><br />
-<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">an alternative to git-filter-branch</a></p>
+<p><a target="_blank" rel="noopener" href="http://openfibers.github.io/blog/2015/03/04/use-bfg-to-clean-big-blog-in-git/">使用 BFG Repo-Cleaner 清除 git 的历史错误提交</a><br />
+<a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2">Git 工具 - 重写历史</a><br />
+<a target="_blank" rel="noopener" href="https://rtyley.github.io/bfg-repo-cleaner/">an alternative to git-filter-branch</a></p>
 
             </article>
             <hr>
@@ -298,7 +298,7 @@ Trump's administration has lied consistently, to make people give up on ever
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

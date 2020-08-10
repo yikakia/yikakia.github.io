@@ -38,7 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -181,7 +181,16 @@
         
           
         
-        <div>下载，运行，搞定</div>
+        <div>下载，运行，搞定
+
+ 前言
+看这个真的很不舒服，于是就这么搞了
+ 正文
+我这个是直接用的别人的工具，原帖在这里👉完美去除 Chrome「请停用以开发者模式运行的扩展程序」
+简单的说就是下载这个工具，然后放到 chrome 程序的文件夹中，然后以管理员程序运行这个工具就好。
+先下载这个工具，可以直接走我的  分流，也可以直接下载原帖的
+
+链接: https://pan.baidu.com/s/1n</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -227,7 +236,18 @@
         
           
         
-        <div>写完发现比opencv自带的慢了十倍。😂</div>
+        <div>写完发现比 opencv 自带的慢了十倍。😂
+
+ 前言
+原理倒是不难，但是对于优化而言就麻烦了。最开始看他们说利用直方图的时候我还没看懂，看了别人的源码才明白原来说的直方图就是桶排序嘛。
+但是在测试性能的时候发现比 opencv 自带的函数慢了十倍，还是用了优化过的算法。不知道是哪里出了问题。
+ 环境
+
+python 3.8.1
+opencv-python 4.2.0.34
+
+ 正文
+ 中值滤波</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -281,7 +301,10 @@
         
           
         
-        <div>一句话解决问题，--drive-shared-with-me</div>
+        <div>一句话解决问题，--drive-shared-with-me
+
+ 前言
+之前买了 Office365 的家庭版，感觉用着挺爽的。1T 的容量加上不限速，难道不香么？在 vps 上搞一个 Aria2 下载，下载好后调用 Rclone 直接上传到 OneDrive 上，那感觉简直爽翻了。于是我就开始了资源搬运的道路。毕竟 Google Drive 的资源那是真的多。最开始我是直接通过复制到我的网盘里面</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -331,7 +354,16 @@
         
           
         
-        <div>这三个集合是为了后期规约与分解方便</div>
+        <div> 这三个集合是为了后期规约与分解方便 
+
+ 前言 
+ 记录一下，方便以后查阅 
+ First 集 
+First 集表示对于非终结符 A，First(A) 表示这个非终结符转换为终结符形式后的第一个终结符的集合。
+ Follow 集 
+Follow 集表示对于非终结符 A，Follow(A) 表示这个终结符转换为终结符型时候的紧跟在它最后的第一个终结符的集合。
+ Select 集 
+Select 集</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -379,7 +411,11 @@
         
           
         
-        <div>不作恶的谷歌扫硬盘搞毛。</div>
+        <div>不作恶的谷歌扫硬盘搞毛。
+
+ 前言
+今天发现电脑 CPU 占用很高，风扇在狂转。想了想我好像后台没开什么应用啊？于是打开了任务管理器看了看，发现有个叫 software reporter tool 的进程在后台使劲跑。觉得纳闷就上网搜了下，发现原来是谷歌 Chrome 的后台程序。下面简单的说下这个软件是干嘛的吧。
+这个 software reporter tool 会扫描你电脑的硬盘，然后把扫描</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -427,7 +463,15 @@
         
           
         
-        <div>简单总结，改注册表。</div>
+        <div>简单总结，改注册表。
+
+ 前言
+为什么突然想到要搞这个呢？因为我突然发现我卸载了 Access 和 Publisher 之后，右键还是有这两位的新建方式。这明显就是没有卸载干净嘛！
+ 正文
+
+按下 Win+R，输入regedit 进入注册表编辑器。
+在上面的目录，输入  计算机 \HKEY_CLASSES_ROOT\.mdb进入相关项。
+这里我是用 Access 的 .mbd 格式举例。因为 Ac</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -477,7 +521,12 @@
         
           
         
-        <div>Manjaro自带的分区功能真是弱鸡</div>
+        <div>Manjaro 自带的分区功能真是弱鸡
+
+ 前言
+这次想起来搞这个双系统主要是我服务器端用的多了，感觉对 Linux 比较熟悉了，所以就想着搞搞双系统。
+而我以前又装过deepin，那个时候觉得引导界面太丑了于是就又搞了些事情想让 Windows10 的 Metro 引导来引导 Linux。结果最后失败了，还把引导搞坏了。所以最后还得重装一次系统。
+现在的话就知道了，这个引导界面是 Grub 的，</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -521,7 +570,12 @@
         
           
         
-        <div>吹爆docker!</div>
+        <div>吹爆docker!
+
+ 前言
+利用 Aria2 和 Rclone 成功地让我的小鸡实现了远程下载，下载完成后自动上传到 OneDrive 的功能。想知道的话可以看我的这篇博客。
+这个功能搞定后我又想整一个方便直接显示想分享的文件的列表。于是找了找，发现了 Oneindex。不过看别人说这个不好用，那就算了吧。于是尝试了 Olaindex。
+但是官网要求的 php 环境我不会搭啊，用了官网介绍的 O</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -565,7 +619,11 @@
         
           
         
-        <div>我可以简单的理解docker为一个简便的应用封装器么？</div>
+        <div> 我可以简单的理解 docker 为一个简便的应用封装器么？
+
+ 前言 
+ 为了用 Olaindex 建一个分享网盘，我需要在服务器上配置 php 环境。我按照 Olaindex 的教程用 Oneinstack 安装了，结果是成功的失败了。
+无奈只能把服务器回滚了。然后我想了想，不是说 docker 很方便么？于是就去搜了搜，结果还真找到了 Olaindex 的镜像。于是就安装了 docker 后</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -607,7 +665,14 @@
         
           
         
-        <div>为了开发的方便，所以得每个项目都有自己的库</div>
+        <div>为了开发的方便，所以得每个项目都有自己的库
+
+ 前言
+在开发的时候，有些项目之间的依赖项冲突，有的用的是老版，有的用的是新版。为了解决这问题，最好在开发的时候就针对每一个项目搞一个自己环境，互相之间隔离起来。这样会方便很多。
+ 创建虚拟环境
+在你喜欢的位置（最好是你的项目的根目录下），输入以下的指令
+python -m venv ProjectEnv
+这会新建一个叫 ProjectEnv 的目录，</div>
       </a>
 
       <div class="index-btm post-metas">

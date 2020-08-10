@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p>从入坑到入土</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>数字图像处理的作业要求有图形化的设计。我都是用的 Python 来实现的代码的，感觉转成用 C 来写的话各种类型太麻烦了，还是直接用 Python 试试 GUI 开发。</p>
 <p>结果只能说差强人意。我也没用到什么槽函数感觉也可以写出来。不过打包成.exe 文件的时候却发现整个包太大了。估计是打包了 Python 运行环境的原因。所以要想开发小而美的软件还是得用 C 啊</p>
@@ -230,8 +230,8 @@
 <div class="hljs"><pre><code class="hljs cmd">pip install pyqt5-tools</code></pre></div>
 <h1 id="汉化 qt-designer"><a class="markdownIt-Anchor" href="# 汉化 qt-designer"></a> 汉化 QT Designer</h1>
 <p>找到你的对应的包的地址，如下</p>
-<div class="hljs"><pre><code class="hljs taggerscript"><span class="hljs-symbol">\p</span>ython<span class="hljs-symbol">\p</span>ython381<span class="hljs-symbol">\L</span>ib<span class="hljs-symbol">\s</span>ite-packages<span class="hljs-symbol">\p</span>yqt5_tools<span class="hljs-symbol">\Q</span>t<span class="hljs-symbol">\b</span>in<span class="hljs-symbol">\t</span>ranslations</code></pre></div>
-<p>如果没有 <code>translations</code> 这个文件夹的话你可以自己新建一个。然后把 <a href="designer_zh_CN.qm">designer_zh_CN.qm</a> 这个文件放进去。还有下载地址是<a href="https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw" target="_blank" rel="noopener">https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw</a><br />
+<div class="hljs"><pre><code class="hljs latex"><span class="hljs-tag">\<span class="hljs-name">python</span></span><span class="hljs-tag">\<span class="hljs-name">python</span></span>381<span class="hljs-tag">\<span class="hljs-name">Lib</span></span><span class="hljs-tag">\<span class="hljs-name">site</span></span>-packages<span class="hljs-tag">\<span class="hljs-name">pyqt</span></span>5_tools<span class="hljs-tag">\<span class="hljs-name">Qt</span></span><span class="hljs-tag">\<span class="hljs-name">bin</span></span><span class="hljs-tag">\<span class="hljs-name">translations</span></span></code></pre></div>
+<p>如果没有 <code>translations</code> 这个文件夹的话你可以自己新建一个。然后把 <a href="designer_zh_CN.qm">designer_zh_CN.qm</a> 这个文件放进去。还有下载地址是<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw">https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw</a><br />
 大概的效果是这样的<br />
 <img src="%E6%B1%89%E5%8C%96%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" alt="汉化示例" /></p>
 <h1 id="设置环境变量"><a class="markdownIt-Anchor" href="# 设置环境变量"></a> 设置环境变量</h1>
@@ -246,16 +246,16 @@
 <p>编辑系统环境变量中的 Path 项，在里面添加如下的地址<br />
 <img src="%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" alt="添加环境变量.jpg" /><br />
 大概的就是这样的</p>
-<div class="hljs"><pre><code class="hljs taggerscript">你的 Python 地址<span class="hljs-symbol">\L</span>ib<span class="hljs-symbol">\s</span>ite-packages<span class="hljs-symbol">\P</span>yQt5<span class="hljs-symbol">\Q</span>t<span class="hljs-symbol">\p</span>lugins<span class="hljs-symbol">\p</span>latforms</code></pre></div>
+<div class="hljs"><pre><code class="hljs latex">你的 Python 地址<span class="hljs-tag">\<span class="hljs-name">Lib</span></span><span class="hljs-tag">\<span class="hljs-name">site</span></span>-packages<span class="hljs-tag">\<span class="hljs-name">PyQt</span></span>5<span class="hljs-tag">\<span class="hljs-name">Qt</span></span><span class="hljs-tag">\<span class="hljs-name">plugins</span></span><span class="hljs-tag">\<span class="hljs-name">platforms</span></span></code></pre></div>
 <p>然后再在系统变量中新建项，命名为<code>QT_PLUGIN_PATH</code><br />
 然后把值设置为</p>
-<div class="hljs"><pre><code class="hljs taggerscript">你的 Python 地址<span class="hljs-symbol">\L</span>ib<span class="hljs-symbol">\s</span>ite-packages<span class="hljs-symbol">\P</span>yQt5<span class="hljs-symbol">\Q</span>t<span class="hljs-symbol">\p</span>lugins</code></pre></div>
+<div class="hljs"><pre><code class="hljs latex">你的 Python 地址<span class="hljs-tag">\<span class="hljs-name">Lib</span></span><span class="hljs-tag">\<span class="hljs-name">site</span></span>-packages<span class="hljs-tag">\<span class="hljs-name">PyQt</span></span>5<span class="hljs-tag">\<span class="hljs-name">Qt</span></span><span class="hljs-tag">\<span class="hljs-name">plugins</span></span></code></pre></div>
 <p><img src="%E6%B7%BB%E5%8A%A0QT_Plugin_Path.jpg" srcset="/img/loading.gif" alt="添加 QT_Plugin_Path.jpg" /></p>
 <p>现在搞定后重启就可以了。</p>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://www.cnblogs.com/awakenedy/articles/9492017.html" target="_blank" rel="noopener">PyQt（pyqt-tools）中的 Qt Designer 改为中文界面</a><br />
-<a href="https://blog.csdn.net/lyzwjaa/article/details/79429901" target="_blank" rel="noopener">python3+PyQt5+Qt designer+pycharm 安装及配置 + 将 ui 文件转 py 文件</a><br />
-<a href="https://blog.csdn.net/Bingoooooo_/article/details/81535892" target="_blank" rel="noopener">如何将 PyQt（pyqt-tools）中的 Qt Designer 改为中文界面（汉化）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/awakenedy/articles/9492017.html">PyQt（pyqt-tools）中的 Qt Designer 改为中文界面</a><br />
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/lyzwjaa/article/details/79429901">python3+PyQt5+Qt designer+pycharm 安装及配置 + 将 ui 文件转 py 文件</a><br />
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/Bingoooooo_/article/details/81535892">如何将 PyQt（pyqt-tools）中的 Qt Designer 改为中文界面（汉化）</a></p>
 
             </article>
             <hr>
@@ -283,7 +283,7 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

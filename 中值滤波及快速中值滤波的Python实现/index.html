@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      21
        分钟
     </span>
   
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p>写完发现比 opencv 自带的慢了十倍。😂</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>原理倒是不难，但是对于优化而言就麻烦了。最开始看他们说利用直方图的时候我还没看懂，看了别人的源码才明白原来说的直方图就是桶排序嘛。</p>
 <p>但是在测试性能的时候发现比 opencv 自带的函数慢了十倍，还是用了优化过的算法。不知道是哪里出了问题。</p>
@@ -273,7 +273,7 @@ r = fastMedianBlurChannel(r)</code></pre></div>
 <span class="hljs-keyword">import</span> copy
 <span class="hljs-keyword">import</span> datetime
 <span class="hljs-comment"># 对于单一通道进行中值滤波</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">medianBlurChannel</span><span class="hljs-params">(channel)</span>:</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">medianBlurChannel</span>(<span class="hljs-params">channel</span>):</span>
     channel2 = copy.copy(channel)
     <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(channel)<span class="hljs-number">-1</span>):
         <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(channel[<span class="hljs-number">0</span>])<span class="hljs-number">-1</span>):
@@ -281,7 +281,7 @@ r = fastMedianBlurChannel(r)</code></pre></div>
     <span class="hljs-keyword">return</span> channel2
 
 <span class="hljs-comment"># 快速中值滤波</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fastMedianBlurChannel</span><span class="hljs-params">(channel)</span>:</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fastMedianBlurChannel</span>(<span class="hljs-params">channel</span>):</span>
     channel2 = copy.copy(channel)
     <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(channel)<span class="hljs-number">-1</span>):
         <span class="hljs-comment"># 初始化直方图</span>
@@ -326,10 +326,10 @@ r = fastMedianBlurChannel(r)</code></pre></div>
     <span class="hljs-keyword">return</span> channel2    
     
 <span class="hljs-comment"># 对图像进行中值滤波</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">medianBlur</span><span class="hljs-params">(image)</span>:</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">medianBlur</span>(<span class="hljs-params">image</span>):</span>
     shape = list(image.shape)
     <span class="hljs-keyword">if</span> len(shape) != <span class="hljs-number">3</span>:
-        print(<span class="hljs-string">"请输入三通道的图像!"</span>)
+        print(<span class="hljs-string">&quot; 请输入三通道的图像!&quot;</span>)
         <span class="hljs-keyword">return</span>
     <span class="hljs-keyword">else</span>:
         b,g,r=cv2.split(image)
@@ -341,20 +341,20 @@ r = fastMedianBlurChannel(r)</code></pre></div>
         r = fastMedianBlurChannel(r)
         <span class="hljs-keyword">return</span> cv2.merge([b,g,r])
 
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     start = datetime.datetime.now()
-    img = cv2.imread(<span class="hljs-string">'45-salt.jpg'</span>)
+    img = cv2.imread(<span class="hljs-string">&#x27;45-salt.jpg&#x27;</span>)
     img2 = medianBlur(img)
     img3 = cv2.medianBlur(img,<span class="hljs-number">3</span>)
-    cv2.imshow(<span class="hljs-string">'src'</span>,img)
-    cv2.imshow(<span class="hljs-string">'result'</span>,img2)
-    cv2.imshow(<span class="hljs-string">'standard'</span>,img3)
+    cv2.imshow(<span class="hljs-string">&#x27;src&#x27;</span>,img)
+    cv2.imshow(<span class="hljs-string">&#x27;result&#x27;</span>,img2)
+    cv2.imshow(<span class="hljs-string">&#x27;standard&#x27;</span>,img3)
     end = datetime.datetime.now()
     print(end-start)
     cv2.waitKey(<span class="hljs-number">0</span>)
     cv2.destroyAllWindows()</code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://blog.csdn.net/rocketeerLi/article/details/88017306" target="_blank" rel="noopener">快速中值滤波——Python 实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/rocketeerLi/article/details/88017306">快速中值滤波——Python 实现</a></p>
 
             </article>
             <hr>
@@ -386,7 +386,7 @@ r = fastMedianBlurChannel(r)</code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

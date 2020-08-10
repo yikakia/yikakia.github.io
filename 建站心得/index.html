@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -232,14 +232,14 @@
 <h2 id="windows- 环境"><a class="markdownIt-Anchor" href="#windows- 环境"></a> Windows 环境</h2>
 <h3 id="git"><a class="markdownIt-Anchor" href="#git"></a> git</h3>
 <h4 id="git 的下载"><a class="markdownIt-Anchor" href="#git 的下载"></a> git 的下载</h4>
-<p>你可以从 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener"> 这个页面 </a> 下载 git，并且安装。</p>
-<p>安装完成后，你如果想从 cmd 直接运行的 git 的话需要重启系统，因为 windows10 的环境变量不是实时更新的。更多相关资料可以点 <a href="https://blog.csdn.net/liufangbaishi2014/article/details/75330766" target="_blank" rel="noopener"><code> 这里</code></a></p>
+<p>你可以从 <a target="_blank" rel="noopener" href="https://git-scm.com/downloads"> 这个页面 </a> 下载 git，并且安装。</p>
+<p>安装完成后，你如果想从 cmd 直接运行的 git 的话需要重启系统，因为 windows10 的环境变量不是实时更新的。更多相关资料可以点 <a target="_blank" rel="noopener" href="https://blog.csdn.net/liufangbaishi2014/article/details/75330766"><code> 这里</code></a></p>
 <p>当然，不需要直接运行的话也可以按照下面的步骤来</p>
 <h4 id="git 的配置"><a class="markdownIt-Anchor" href="#git 的配置"></a> git 的配置</h4>
 <p>安装完成后，你可以在桌面右键，选择 Git Bash Here<br />
 <img src="https://i.loli.net/2019/07/19/5d31db111dafd66201.png" srcset="/img/loading.gif" alt="Git Bash Here" /></p>
 <p>然后输入下面两行代码</p>
-<div class="hljs"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">"John Doe"</span>
+<div class="hljs"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;John Doe&quot;</span>
 git config --global user.email johndoe@example.com</code></pre></div>
 <p>注意，在这里的 John Doe 是你的名字，johndoe@example.com 是你的邮箱。</p>
 <p>这两行表示你新建了一个用户名叫 John Doe 邮箱是 <a href="mailto:johndoe@example.com">johndoe@example.com</a> 的 git 账户。输错了不要急，可以修改的，具体怎么修改可以自行搜索。</p>
@@ -251,7 +251,7 @@ git config --global user.email johndoe@example.com</code></pre></div>
 <p>在这里的 <a href="mailto:johndoe@example.com">johndoe@example.com</a> 是你刚刚输入的邮箱，用了这条命令，你的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中会生成两个文件 <code>id_rsa</code> 和<code>id_rsa.pub</code>。其中 <code>id_rsa.pub</code> 这个文件中就存放着我们的公钥。</p>
 <p>现在 Windows 端的 git 基本配置好了。</p>
 <h3 id="nodejs"><a class="markdownIt-Anchor" href="#nodejs"></a> Node.js</h3>
-<p>在 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener"><code>Node.js 官网</code></a> 下载最新版本并安装。一路 next 默认安装即可。</p>
+<p>在 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/"><code>Node.js 官网</code></a> 下载最新版本并安装。一路 next 默认安装即可。</p>
 <h3 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> hexo</h3>
 <p>在任意位置新建文件夹，这个文件夹以后就是你的博客的根目录了。为方便说明，下面用 <code>D:\hexo</code> 这个文件夹做为演示。</p>
 <p><em>说明：如果这里你没有重启的话，会和之前的 git 一样 Windows 不会实时的更新环境变量，导致虽然安装好了但不能直接调用。不过如果用 Git Bash Here 在这个文件夹里面打开的话是可以直接调用的</em></p>
@@ -259,7 +259,8 @@ git config --global user.email johndoe@example.com</code></pre></div>
 <div class="hljs"><pre><code class="hljs bash">npm install hexo-cli -g
 hexo init
 npm install
-hexo s</code></pre></div>
+hexo s
+</code></pre></div>
 <p>在这里 第二行的 <code>hexo init</code> 这个地方可能会等很久，因为众所周知的原因，国内对外网的支持并不好，所以耐心等待即可。</p>
 <p>当你看到界面上弹出 <code>INFO Start blogging with Hexo!</code> 的字样时，说明 hexo 已经在这个文件夹里拷贝了一份基础的框架，这个时候就可以输第三行代码 <code>npm install</code> 了。</p>
 <p>现在基本的框架都搭好了，输入第四行代码<code>hexo s</code> 等到提示</p>
@@ -278,14 +279,14 @@ hexo s</code></pre></div>
 <p>我在直接用</p>
 <div class="hljs"><pre><code class="hljs bash">sudo apt-get install nginx</code></pre></div>
 <p>的时候发现我的搬瓦工的 debain9 不能安装上，最后是按官方的教程走的。</p>
-<p>官方的页面在 <a href="http://nginx.org/en/linux_packages.html#Debian" target="_blank" rel="noopener"> 这里</a></p>
+<p>官方的页面在 <a target="_blank" rel="noopener" href="http://nginx.org/en/linux_packages.html#Debian"> 这里</a></p>
 <p>安装好后可以通过</p>
 <div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">nginx -v</span></code></pre></div>
 <p>来查看是否安装成功。</p>
 <h3 id="新增 -git- 用户并添加 sudo 权限"><a class="markdownIt-Anchor" href="# 新增 -git- 用户并添加 sudo 权限"></a> 新增 git 用户并添加 sudo 权限</h3>
-<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">adduser</span> <span class="hljs-string">git</span>
-<span class="hljs-attr">chmod</span> <span class="hljs-string">740 /etc/sudoers</span>
-<span class="hljs-attr">nano</span> <span class="hljs-string">/etc/sudoers</span></code></pre></div>
+<div class="hljs"><pre><code class="hljs awk">adduser git
+chmod <span class="hljs-number">740</span> <span class="hljs-regexp">/etc/</span>sudoers
+nano <span class="hljs-regexp">/etc/</span>sudoers</code></pre></div>
 <p>这里用 nano 编辑器打开了 <code>sudoers</code> 这个文件。对初学者而言，nano 编辑器更为直观。</p>
 <p>在文件中找到如下内容</p>
 <div class="hljs"><pre><code class="hljs apache"><span class="hljs-comment"># User privilege specification</span>
@@ -294,7 +295,7 @@ hexo s</code></pre></div>
 <div class="hljs"><pre><code class="hljs ada">git   <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)     <span class="hljs-keyword">ALL</span></code></pre></div>
 <p>按 <code>Ctrl+X</code> 退出，这时会提醒你要不要保存，输入 <code>y</code> 确认保存，按下回车进行保存。</p>
 <p>保存后输入</p>
-<div class="hljs"><pre><code class="hljs angelscript">chmod <span class="hljs-number">440</span> /etc/sudoers</code></pre></div>
+<div class="hljs"><pre><code class="hljs awk">chmod <span class="hljs-number">440</span> <span class="hljs-regexp">/etc/</span>sudoers</code></pre></div>
 <p>恢复初始权限</p>
 <h3 id="创建 -git- 仓库并配置 -ssh- 登录"><a class="markdownIt-Anchor" href="# 创建 -git- 仓库并配置 -ssh- 登录"></a> 创建 git 仓库，并配置 ssh 登录</h3>
 <div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">su</span> <span class="hljs-string">git</span>
@@ -312,14 +313,14 @@ hexo s</code></pre></div>
 ssh <span class="hljs-symbol">git@</span><span class="hljs-number">123.234</span><span class="hljs-number">.123</span><span class="hljs-number">.234</span> -p <span class="hljs-number">12345</span></code></pre></div>
 <p>为了避免以后麻烦需要添加配置文件方便登录。</p>
 <p>到你的电脑的 <code>C:\Users\&lt; 用户名 &gt;\.ssh</code> 文件夹中，新建一个叫 <code>config</code> 的文件。<strong>没有后缀名</strong>。打开它，输入</p>
-<div class="hljs"><pre><code class="hljs routeros">Host 你的 vps 的 <span class="hljs-built_in"> ip </span> 地址<span class="hljs-built_in">
-User </span>git<span class="hljs-built_in">
-Port </span>你的 vps 的 ssh 端口
+<div class="hljs"><pre><code class="hljs routeros">Host 你的 vps 的 <span class="hljs-built_in"> ip </span> 地址
+User git
+Port 你的 vps 的 ssh 端口
 IdentityFile ~/.ssh/id_rsa
 <span class="hljs-comment"># 下面举个例子说明</span>
-Host 123.234.123.234<span class="hljs-built_in">
-User </span>git<span class="hljs-built_in">
-Port </span>12345
+Host 123.234.123.234
+User git
+Port 12345
 IdentityFile ~/.ssh/id_rsa</code></pre></div>
 <p>这里遇到了小坑. 就是第四行的那个 IdentityFile 有些人的教程上写的是 IdentifyFile，这个简单的错误导致我查了半天错都没搞出来。英语真的很重要。</p>
 <p>现在我们通过 git bash ，利用公钥文件登陆到了 vps。</p>
@@ -339,9 +340,9 @@ chown git:git -R /var/www/hexo</code></pre></div>
 </blockquote>
 <p>简单地说就是在 git 操作之后的自动化操作。在我们这里就是利用它实现当 vps 上的 <code>hexo.git</code> 这个仓库被推送了新的 post 之后，我们把推送上来的 hexo 博客的源文件转化为可以被访问的网页文件并且放置在我们设定的网站目录中。</p>
 <p>下面开始配置当接收到 post 后的自动操作</p>
-<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">su</span> <span class="hljs-string">git</span>
-<span class="hljs-attr">cd</span> <span class="hljs-string">/home/git/hexo.git/hooks</span>
-<span class="hljs-attr">nano</span> <span class="hljs-string">post-receive</span></code></pre></div>
+<div class="hljs"><pre><code class="hljs awk">su git
+cd <span class="hljs-regexp">/home/gi</span>t<span class="hljs-regexp">/hexo.git/</span>hooks
+nano post-receive</code></pre></div>
 <p>现在打开了名为 <code>post-receive</code> 的配置文件。在文件中输入以下内容并保存退出。</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
 GIT_REPO=/home/git/hexo.git <span class="hljs-comment">#git 仓库</span>
@@ -399,22 +400,21 @@ cp -rf <span class="hljs-variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span cla
 <p>现在，我们的 vps 上的仓库就有了我们的文件。它收到了 post 后就会启动 <code>post-receive</code> 脚本，把我们的网站放到指定的目录里面。现在，你就可以通过 直接访问你的 vps 的地址来查看你的博客了。</p>
 <h1 id="hexo- 相关"><a class="markdownIt-Anchor" href="#hexo- 相关"></a> hexo 相关</h1>
 <h2 id="更新博客"><a class="markdownIt-Anchor" href="# 更新博客"></a> 更新博客</h2>
-<p>hexo 是通过你的 <code>~\source\_posts</code> 文件夹里面的 <code>.md</code> 文件来生成页面的。所以要会 markdown 语法。可以看 <a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener"> 这个网页</a> 来学习基本的 markdown 语法。</p>
+<p>hexo 是通过你的 <code>~\source\_posts</code> 文件夹里面的 <code>.md</code> 文件来生成页面的。所以要会 markdown 语法。可以看 <a target="_blank" rel="noopener" href="https://coding.net/help/doc/project/markdown.html"> 这个网页</a> 来学习基本的 markdown 语法。</p>
 <p>每篇文章抬头都要有这篇文章的基本信息 ，注意在 冒号<code>:</code> 后面要有一个空格隔开。</p>
-<div class="hljs"><pre><code class="hljs vala">title: title
-date: yyyy-mm-dd
-categories: category  
-tags: tag
-<span class="hljs-meta"># 多标签请这样写：  </span>
-<span class="hljs-meta">#tags: [tag1,tag2,tag3]</span>
-<span class="hljs-meta"># 或者这样写： </span>
-<span class="hljs-meta">#tags:</span>
-<span class="hljs-meta">#- tag1 </span>
-<span class="hljs-meta">#- tag2  </span>
-<span class="hljs-meta">#- tag3  </span>
----  
-正文</code></pre></div>
-<p>完成后你只需要在 <code>cmd</code> 或者 <code>git bash</code> 里面运行</p>
+<h2 id="hexopostrenderescapeprecode-classhljs-valatitle-titledate-yyyy-mm-ddcategories-categorytags-tagspan-classhljs-meta 多标签请这样写 -spanspan-classhljs-metatags-tag1tag2tag3spanspan-classhljs-meta 或者这样写 -spanspan-classhljs-metatagsspanspan-classhljs-meta-tag1-spanspan-classhljs-meta-tag2-spanspan-classhljs-meta-tag3-span"><a class="markdownIt-Anchor" href="#hexopostrenderescapeprecode-classhljs-valatitle-titledate-yyyy-mm-ddcategories-categorytags-tagspan-classhljs-meta 多标签请这样写 -spanspan-classhljs-metatags-tag1tag2tag3spanspan-classhljs-meta 或者这样写 -spanspan-classhljs-metatagsspanspan-classhljs-meta-tag1-spanspan-classhljs-meta-tag2-spanspan-classhljs-meta-tag3-span"></a> &lt;!–hexoPostRenderEscape:<div class="hljs"><pre><code class="hljs vala">title: title<br />
+date: yyyy-mm-dd<br />
+categories: category<br />
+tags: tag<br />
+<span class="hljs-meta"># 多标签请这样写：  </span><br />
+<span class="hljs-meta">#tags: [tag1,tag2,tag3]</span><br />
+<span class="hljs-meta"># 或者这样写： </span><br />
+<span class="hljs-meta">#tags:</span><br />
+<span class="hljs-meta">#- tag1 </span><br />
+<span class="hljs-meta">#- tag2  </span><br />
+<span class="hljs-meta">#- tag3  </span></h2>
+<p>正文</code></pre></div>:hexoPostRenderEscape–&gt;<br />
+完成后你只需要在 <code>cmd</code> 或者 <code>git bash</code> 里面运行</p>
 <div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean</span>
 <span class="hljs-attr">hexo</span> <span class="hljs-string">g</span>
 <span class="hljs-attr">hexo</span> <span class="hljs-string">d</span></code></pre></div>
@@ -432,15 +432,15 @@ theme: Material-T</code></pre></div>
 <div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean </span>
 <span class="hljs-attr">hexo</span> <span class="hljs-string">s</span></code></pre></div>
 <p>就能看你的新主题了。</p>
-<p>对于主题的配置，我们需要看官方文档，因为可能有很多需要修改的地方。可以看看 <a href="https://easyhexo.com/" target="_blank" rel="noopener"> 这个网站</a>，来找到你喜欢的主题并且配置到本地。</p>
+<p>对于主题的配置，我们需要看官方文档，因为可能有很多需要修改的地方。可以看看 <a target="_blank" rel="noopener" href="https://easyhexo.com/"> 这个网站</a>，来找到你喜欢的主题并且配置到本地。</p>
 <h1 id="尾巴"><a class="markdownIt-Anchor" href="# 尾巴"></a> 尾巴</h1>
 <p>这次建站主要是没有相关的知识，所以两眼一抹瞎，只能走一步看一步，走一步学一步。遇到了问题就上网查，最关键的是找官方的文档来看，就比如我写的下载 nginx 的那个，最开始我直接用的 <code>apt-get</code> 下载的，根本没办法用，用 <code>nginx -v</code> 一点反应都没有。没办法只能去官方网站看看。所幸跟它一步步走了之后的确安装好了 nginx 。不过背后有什么问题还是不清楚。</p>
 <h1 id="参考链接"><a class="markdownIt-Anchor" href="# 参考链接"></a> 参考链接</h1>
 <p>能建好网站，能写出这篇文章，离不开这些文章的指导。</p>
-<p><a href="https://leihungjyu.com/post/hexo-blog-git-to-vps.html" target="_blank" rel="noopener">https://leihungjyu.com/post/hexo-blog-git-to-vps.html</a></p>
-<p><a href="https://mystery0.vip/2017/01/11/%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%E7%AF%87%EF%BC%89/" target="_blank" rel="noopener">https://mystery0.vip/2017/01/11/ 个人服务器搭建 Hexo 博客（Windows 篇）/</a></p>
-<p><a href="https://tiktoking.github.io/2016/01/26/hexo/" target="_blank" rel="noopener">https://tiktoking.github.io/2016/01/26/hexo/</a></p>
-<p><a href="https://segmentfault.com/a/1190000006745478" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006745478</a></p>
+<p><a target="_blank" rel="noopener" href="https://leihungjyu.com/post/hexo-blog-git-to-vps.html">https://leihungjyu.com/post/hexo-blog-git-to-vps.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://mystery0.vip/2017/01/11/%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%E7%AF%87%EF%BC%89/">https://mystery0.vip/2017/01/11/ 个人服务器搭建 Hexo 博客（Windows 篇）/</a></p>
+<p><a target="_blank" rel="noopener" href="https://tiktoking.github.io/2016/01/26/hexo/">https://tiktoking.github.io/2016/01/26/hexo/</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000006745478">https://segmentfault.com/a/1190000006745478</a></p>
 <p>还有很多的文章没在收藏夹里，所以找不到了。再次对所有参考过的教程表示感谢！</p>
 
             </article>
@@ -475,7 +475,7 @@ theme: Material-T</code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

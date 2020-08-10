@@ -47,7 +47,7 @@
 
 
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
 <body>
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      633 字
+      639 字
     </span>
   
 
@@ -219,7 +219,7 @@
             
             <article class="markdown-body">
               <p>原理简单，懂之前觉得麻烦。</p>
-<a id="more"></a>
+<!---more--->
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
 <p>做数据库的大作业了，要求自己设计一个数据库。之前用的 HR 数据库姑且是通过改权限强行让 CDB 能够添加不以 C## 开头的用户名了。<br />
 然而大作业也要求搞一个以自己名字命名的用户名，想了想还是试试 PDB 的结构吧。试了半天终于搞定了。</p>
@@ -251,7 +251,7 @@
 <div class="hljs"><pre><code class="hljs sql">SQL&gt; show pdbs;
 
     CON_ID CON_NAME                       OPEN MODE  RESTRICTED
----------- ------------------------------ ---------- ----------
+<span class="hljs-comment">---------- ------------------------------ ---------- ----------</span>
          3 ORCLPDB                        READ WRITE NO</code></pre></div>
 <p>然后就把这个 PDB 打开吧</p>
 <div class="hljs"><pre><code class="hljs abnf">SQL&gt; startup<span class="hljs-comment">;</span></code></pre></div>
@@ -259,7 +259,8 @@
 <p>下面我们来创建用于专门连接这个 PDB 的用户。</p>
 <div class="hljs"><pre><code class="hljs sql">SQL&gt; create user test identified by pswd;  
 
-用户已创建。</code></pre></div>
+用户已创建。
+</code></pre></div>
 <h2 id="授予用户该 pdb 的 dba 权限"><a class="markdownIt-Anchor" href="# 授予用户该 pdb 的 dba 权限"></a> 授予用户该 PDB 的 DBA 权限</h2>
 <div class="hljs"><pre><code class="hljs sql">SQL&gt; grant dba to test;
 
@@ -273,7 +274,7 @@
       (<span class="hljs-name">SID_NAME</span> = CLRExtProc)
       (<span class="hljs-name">ORACLE_HOME</span> = D:\Oracle\WINDOWS.X64_193000_db_home)
       (<span class="hljs-name">PROGRAM</span> = extproc)
-      (<span class="hljs-name">ENVS</span> = <span class="hljs-string">"EXTPROC_DLLS=ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll"</span>)
+      (<span class="hljs-name">ENVS</span> = <span class="hljs-string">&quot;EXTPROC_DLLS=ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll&quot;</span>)
     )
   )</code></pre></div>
 <p>然后加上这样一段配置就行了</p>
@@ -288,7 +289,7 @@
       (<span class="hljs-name">SID_NAME</span> = CLRExtProc)
       (<span class="hljs-name">ORACLE_HOME</span> = D:\Oracle\WINDOWS.X64_193000_db_home)
       (<span class="hljs-name">PROGRAM</span> = extproc)
-      (<span class="hljs-name">ENVS</span> = <span class="hljs-string">"EXTPROC_DLLS=ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll"</span>)
+      (<span class="hljs-name">ENVS</span> = <span class="hljs-string">&quot;EXTPROC_DLLS=ONLY:D:\Oracle\WINDOWS.X64_193000_db_home\bin\oraclr19.dll&quot;</span>)
     )
     (<span class="hljs-name">SID_DESC</span> =
     (<span class="hljs-name">GLOBAL_DBNAME</span> = orclpdb)
@@ -299,17 +300,17 @@
 <h2 id="设置 pdb 自动启动"><a class="markdownIt-Anchor" href="# 设置 pdb 自动启动"></a> 设置 PDB 自动启动</h2>
 <p>每次要用 PDB 的时候都得从 CDB 切换到 PDB 然后打开，为了简单我们就用触发器来自动打开吧。</p>
 <div class="hljs"><pre><code class="hljs sql">SQL&gt;
-CREATE OR REPLACE TRIGGER open_pdbs
-AFTER STARTUP ON DATABASE
-BEGIN
-EXECUTE IMMEDIATE 'ALTER PLUGGABLE DATABASE ALL OPEN';
-END open_pdbs;
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TRIGGER</span> open_pdbs
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">STARTUP</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DATABASE</span>
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">IMMEDIATE</span> <span class="hljs-string">&#x27;ALTER PLUGGABLE DATABASE ALL OPEN&#x27;</span>;
+<span class="hljs-keyword">END</span> open_pdbs;
 /</code></pre></div>
 <p>这样就搞定了。</p>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a href="https://www.cnblogs.com/ray-bk/p/9711757.html" target="_blank" rel="noopener">Oracle 12c 中新建 pdb 用户登录问题分析</a></p>
-<p><a href="https://www.cnblogs.com/zhjh256/p/9353579.html" target="_blank" rel="noopener">oracle 12c 多租户下的日常操作变化</a></p>
-<p><a href="https://www.cnblogs.com/polestar/p/5892410.html" target="_blank" rel="noopener">Oracle 12C 创建用户连接 pdb</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ray-bk/p/9711757.html">Oracle 12c 中新建 pdb 用户登录问题分析</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhjh256/p/9353579.html">oracle 12c 多租户下的日常操作变化</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/polestar/p/5892410.html">Oracle 12C 创建用户连接 pdb</a></p>
 
             </article>
             <hr>
@@ -337,7 +338,7 @@ END open_pdbs;
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
