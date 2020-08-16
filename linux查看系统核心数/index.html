@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -26,6 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
     <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
   
 
@@ -34,7 +35,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -47,6 +48,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.0.2"></head>
 
 
@@ -129,8 +131,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,12 +146,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/static/post.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -152,7 +160,7 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-04-08 19:53">
+    <time datetime="2020-04-08 19:53" pubdate>
       2020年4月8日 晚上
     </time>
   </div>
@@ -209,17 +217,19 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">linux 查看系统核心数</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年5月13日 晚上
+                  本文最后更新于：2020年8月16日 下午
                 
               </p>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p> 主要是 vps 上编译软件的时候需要这个参数。</p>
-<!---more--->
+<a id="more"></a>
 <h1 id="查看物理 cpu 个数"><a class="markdownIt-Anchor" href="# 查看物理 cpu 个数"></a> 查看物理 CPU 个数 </h1>
 <div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo| grep <span class="hljs-string">&quot;physical id&quot;</span>| sort| uniq| wc -l</code></pre></div>
 <h1 id="查看每个物理 cpu 中 core 的个数即核数"><a class="markdownIt-Anchor" href="# 查看每个物理 cpu 中 core 的个数即核数"></a> 查看每个物理 CPU 中 core 的个数 (即核数)</h1>
@@ -231,7 +241,7 @@
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/emanlee/p/3587571.html">Linux 查看物理 CPU 个数、核数、逻辑 CPU 个数 </a></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -257,7 +267,7 @@
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8/">
@@ -266,8 +276,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
@@ -276,13 +286,13 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -412,7 +422,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',

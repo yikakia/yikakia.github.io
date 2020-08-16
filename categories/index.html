@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.0.2"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/static/categories.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -175,7 +182,7 @@
     <div class="category row">
       <a
         class="category-item  list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9kl00088sgb5dvog2zs" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9kl00088sgb5dvog2zs"
+        id="heading-ckdwwd1mk0008i0gbhfa9bmvr" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1mk0008i0gbhfa9bmvr"
         aria-expanded="true"
       >
         学习
@@ -188,8 +195,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9kl00088sgb5dvog2zs" class="collapse in show" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9kl00088sgb5dvog2zs">
+  <div id="collapse-ckdwwd1mk0008i0gbhfa9bmvr" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1mk0008i0gbhfa9bmvr">
     
   
   
@@ -198,7 +205,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9l6001a8sgb856ubouh" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9l6001a8sgb856ubouh"
+        id="heading-ckdwwd1n8001ai0gbgqikgv4n" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1n8001ai0gbgqikgv4n"
         aria-expanded="false"
       >
         Python
@@ -211,8 +218,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9l6001a8sgb856ubouh" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9l6001a8sgb856ubouh">
+  <div id="collapse-ckdwwd1n8001ai0gbgqikgv4n" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1n8001ai0gbgqikgv4n">
     
     
     
@@ -248,7 +255,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9kz000v8sgbh0ti4lqy" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9kz000v8sgbh0ti4lqy"
+        id="heading-ckdwwd1n0000vi0gbgcw1f2mt" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1n0000vi0gbgcw1f2mt"
         aria-expanded="false"
       >
         Git
@@ -261,8 +268,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9kz000v8sgbh0ti4lqy" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9kz000v8sgbh0ti4lqy">
+  <div id="collapse-ckdwwd1n0000vi0gbgcw1f2mt" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1n0000vi0gbgcw1f2mt">
     
     
     
@@ -291,7 +298,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9lp001y8sgb7cga6iqv" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9lp001y8sgb7cga6iqv"
+        id="heading-ckdwwd1nn001yi0gbbuo2hwd5" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1nn001yi0gbbuo2hwd5"
         aria-expanded="false"
       >
         数字图像处理
@@ -304,8 +311,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9lp001y8sgb7cga6iqv" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9lp001y8sgb7cga6iqv">
+  <div id="collapse-ckdwwd1nn001yi0gbbuo2hwd5" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1nn001yi0gbbuo2hwd5">
     
     
     
@@ -334,7 +341,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9lv002b8sgbdnq29tuu" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9lv002b8sgbdnq29tuu"
+        id="heading-ckdwwd1nu002bi0gb5dwd7o8k" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1nu002bi0gb5dwd7o8k"
         aria-expanded="false"
       >
         OracleDatabase
@@ -347,8 +354,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9lv002b8sgbdnq29tuu" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9lv002b8sgbdnq29tuu">
+  <div id="collapse-ckdwwd1nu002bi0gb5dwd7o8k" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1nu002bi0gb5dwd7o8k">
     
     
     
@@ -377,7 +384,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9kv000n8sgb385bal0v" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9kv000n8sgb385bal0v"
+        id="heading-ckdwwd1mw000ni0gb6q49gjaj" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1mw000ni0gb6q49gjaj"
         aria-expanded="false"
       >
         编译原理
@@ -390,8 +397,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9kv000n8sgb385bal0v" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9kv000n8sgb385bal0v">
+  <div id="collapse-ckdwwd1mw000ni0gb6q49gjaj" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1mw000ni0gb6q49gjaj">
     
     
     
@@ -413,7 +420,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9lr00248sgbgvrxb7vo" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9lr00248sgbgvrxb7vo"
+        id="heading-ckdwwd1nr0024i0gbbbjn1rfg" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1nr0024i0gbbbjn1rfg"
         aria-expanded="false"
       >
         计算机图形学
@@ -426,8 +433,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9lr00248sgbgvrxb7vo" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9lr00248sgbgvrxb7vo">
+  <div id="collapse-ckdwwd1nr0024i0gbbbjn1rfg" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1nr0024i0gbbbjn1rfg">
     
     
     
@@ -449,7 +456,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9m1002r8sgb40547lav" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9m1002r8sgb40547lav"
+        id="heading-ckdwwd1o2002ri0gbf1q0hm8x" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1o2002ri0gbf1q0hm8x"
         aria-expanded="false"
       >
         计算机网络
@@ -462,8 +469,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9m1002r8sgb40547lav" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9m1002r8sgb40547lav">
+  <div id="collapse-ckdwwd1o2002ri0gbf1q0hm8x" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1o2002ri0gbf1q0hm8x">
     
     
     
@@ -485,7 +492,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9m500328sgb9ibl1krg" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9m500328sgb9ibl1krg"
+        id="heading-ckdwwd1o80032i0gb12he16f8" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1o80032i0gb12he16f8"
         aria-expanded="false"
       >
         大数据
@@ -498,8 +505,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9m500328sgb9ibl1krg" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9m500328sgb9ibl1krg">
+  <div id="collapse-ckdwwd1o80032i0gb12he16f8" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1o80032i0gb12he16f8">
     
     
     
@@ -521,7 +528,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9ns007o8sgb98snee37" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9ns007o8sgb98snee37"
+        id="heading-ckdwwd1ps007oi0gbgu7y7fha" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1ps007oi0gbgu7y7fha"
         aria-expanded="false"
       >
         Linux
@@ -534,8 +541,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9ns007o8sgb98snee37" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9ns007o8sgb98snee37">
+  <div id="collapse-ckdwwd1ps007oi0gbgu7y7fha" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1ps007oi0gbgu7y7fha">
     
     
     
@@ -563,7 +570,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9ko000c8sgbg0fb8j15" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9ko000c8sgbg0fb8j15"
+        id="heading-ckdwwd1mp000ci0gb9bn33fmj" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1mp000ci0gb9bn33fmj"
         aria-expanded="false"
       >
         折腾
@@ -576,8 +583,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9ko000c8sgbg0fb8j15" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9ko000c8sgbg0fb8j15">
+  <div id="collapse-ckdwwd1mp000ci0gb9bn33fmj" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1mp000ci0gb9bn33fmj">
     
     
     
@@ -668,7 +675,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdwvu9lk001q8sgb6ucq3kkd" role="tab" data-toggle="collapse" href="#collapse-ckdwvu9lk001q8sgb6ucq3kkd"
+        id="heading-ckdwwd1nk001qi0gb9k6bh3d5" role="tab" data-toggle="collapse" href="#collapse-ckdwwd1nk001qi0gb9k6bh3d5"
         aria-expanded="false"
       >
         建站
@@ -681,8 +688,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdwvu9lk001q8sgb6ucq3kkd" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdwvu9lk001q8sgb6ucq3kkd">
+  <div id="collapse-ckdwwd1nk001qi0gb9k6bh3d5" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckdwwd1nk001qi0gb9k6bh3d5">
     
     
     

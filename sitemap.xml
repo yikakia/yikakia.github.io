@@ -2,163 +2,254 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.yikakia.com/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E8%A7%A3%E6%B3%95%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://www.yikakia.com/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
     
-    <lastmod>2020-08-16T09:23:52.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/pyqt5%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</loc>
-    
-    <lastmod>2020-08-10T15:31:26.381Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/</loc>
-    
-    <lastmod>2020-08-09T10:31:20.256Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/hexo-%E6%9B%B4%E6%96%B0tag%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%8E%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/</loc>
-    
-    <lastmod>2020-08-09T09:56:52.280Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/pacman%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</loc>
-    
-    <lastmod>2020-08-09T09:18:54.277Z</lastmod>
+    <lastmod>2020-08-16T09:37:41.770Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/win10%E6%9B%B4%E6%96%B0%E5%90%8E%E5%AF%BC%E8%87%B4manjaro%E7%9A%84%E5%BC%95%E5%AF%BC%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3/</loc>
     
-    <lastmod>2020-08-07T06:45:16.683Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%9C%A8CentOS-%E4%B8%8B%E9%85%8D%E7%BD%AEHadoop%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
-    
-    <lastmod>2020-07-14T15:29:55.819Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/</loc>
-    
-    <lastmod>2020-06-05T04:03:05.580Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/numpy%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E4%B9%98%E6%B3%95/</loc>
-    
-    <lastmod>2020-06-02T03:58:05.177Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/</loc>
-    
-    <lastmod>2020-05-31T13:53:56.745Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
-    
-    <lastmod>2020-05-31T05:48:11.105Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/Manjaro%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80NumLock/</loc>
-    
-    <lastmod>2020-05-28T08:04:19.239Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E4%B8%BAOracleDatabase%E9%85%8D%E7%BD%AEPDB%E7%99%BB%E5%BD%95/</loc>
-    
-    <lastmod>2020-05-25T05:45:08.344Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/</loc>
-    
-    <lastmod>2020-05-14T03:49:57.374Z</lastmod>
+    <lastmod>2020-08-16T09:37:36.319Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/vsftp%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2020-05-13T11:54:59.458Z</lastmod>
+    <lastmod>2020-08-16T09:37:33.479Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/vscode-pylint-%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2020-05-13T11:54:38.721Z</lastmod>
+    <lastmod>2020-08-16T09:37:30.814Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/tmux%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     
-    <lastmod>2020-05-13T11:53:56.323Z</lastmod>
+    <lastmod>2020-08-16T09:37:27.175Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/python%E4%B8%AD%E7%9A%84%E5%85%83%E7%BB%84%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E5%AE%9A%E4%B8%8D%E5%8F%AF%E5%8F%98%EF%BC%9F/</loc>
     
-    <lastmod>2020-05-13T11:53:28.623Z</lastmod>
+    <lastmod>2020-08-16T09:37:24.311Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     
-    <lastmod>2020-05-13T11:53:21.722Z</lastmod>
+    <lastmod>2020-08-16T09:37:19.712Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/pyqt5%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</loc>
+    
+    <lastmod>2020-08-16T09:37:16.911Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/pip%E7%9A%84requirements-txt%E6%80%8E%E4%B9%88%E7%94%A8/</loc>
     
-    <lastmod>2020-05-13T11:52:55.096Z</lastmod>
+    <lastmod>2020-08-16T09:37:08.167Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/pacman%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</loc>
+    
+    <lastmod>2020-08-16T09:37:04.447Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/OpenGL%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D/</loc>
     
-    <lastmod>2020-05-13T11:52:50.035Z</lastmod>
+    <lastmod>2020-08-16T09:37:01.767Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/numpy%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E4%B9%98%E6%B3%95/</loc>
+    
+    <lastmod>2020-08-16T09:36:58.141Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/Manjaro%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80NumLock/</loc>
+    
+    <lastmod>2020-08-16T09:36:55.264Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83%E6%95%B0/</loc>
     
-    <lastmod>2020-05-13T11:52:30.075Z</lastmod>
+    <lastmod>2020-08-16T09:36:52.304Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/hexo-%E6%9B%B4%E6%96%B0tag%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%8E%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/</loc>
+    
+    <lastmod>2020-08-16T09:36:49.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.yikakia.com/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/</loc>
     
-    <lastmod>2020-05-13T11:52:21.557Z</lastmod>
+    <lastmod>2020-08-16T09:36:42.768Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/</loc>
+    
+    <lastmod>2020-08-16T09:36:37.582Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8/</loc>
+    
+    <lastmod>2020-08-16T09:36:34.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/c++%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D/</loc>
+    
+    <lastmod>2020-08-16T09:36:31.403Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/</loc>
+    
+    <lastmod>2020-08-16T09:36:27.671Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2020-08-16T09:36:19.757Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90/</loc>
+    
+    <lastmod>2020-08-16T09:36:08.675Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E4%B8%BAOracleDatabase%E9%85%8D%E7%BD%AEPDB%E7%99%BB%E5%BD%95/</loc>
+    
+    <lastmod>2020-08-16T09:36:06.124Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    
+    <lastmod>2020-08-16T09:36:01.451Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/</loc>
+    
+    <lastmod>2020-08-16T09:35:55.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/</loc>
+    
+    <lastmod>2020-08-16T09:35:51.824Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/</loc>
+    
+    <lastmod>2020-08-16T09:35:45.905Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/</loc>
+    
+    <lastmod>2020-08-16T09:35:42.198Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/</loc>
+    
+    <lastmod>2020-08-16T09:35:38.276Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/</loc>
+    
+    <lastmod>2020-08-16T09:35:16.641Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/</loc>
+    
+    <lastmod>2020-08-16T09:35:06.800Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/</loc>
+    
+    <lastmod>2020-08-16T09:35:02.087Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/</loc>
+    
+    <lastmod>2020-08-16T09:34:50.270Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/</loc>
+    
+    <lastmod>2020-08-16T09:34:48.030Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%9C%A8CentOS-%E4%B8%8B%E9%85%8D%E7%BD%AEHadoop%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
+    
+    <lastmod>2020-08-16T09:33:56.698Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E8%A7%A3%E6%B3%95%E5%8E%9F%E7%90%86/</loc>
+    
+    <lastmod>2020-08-16T09:33:11.615Z</lastmod>
     
   </url>
   
@@ -170,62 +261,6 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/debian10%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91python3-8/</loc>
-    
-    <lastmod>2020-05-13T11:51:39.329Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/c++%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99%E5%8F%8A%E4%BF%AE%E5%A4%8D/</loc>
-    
-    <lastmod>2020-05-13T11:51:30.523Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/</loc>
-    
-    <lastmod>2020-05-13T11:51:13.776Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/</loc>
-    
-    <lastmod>2020-05-13T11:51:08.481Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90/</loc>
-    
-    <lastmod>2020-05-13T11:50:51.538Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    
-    <lastmod>2020-05-13T11:50:33.890Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/</loc>
-    
-    <lastmod>2020-05-13T11:49:24.626Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/</loc>
-    
-    <lastmod>2020-05-13T11:46:54.907Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/</loc>
     
     <lastmod>2020-05-13T11:46:13.916Z</lastmod>
@@ -233,44 +268,9 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/%E5%8E%BB%E9%99%A4Chrome%E8%AF%B7%E5%81%9C%E7%94%A8%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/</loc>
-    
-    <lastmod>2020-05-12T10:28:05.636Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%88%A9%E7%94%A8rclone-%E5%B0%86%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84GoogleDrive%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0OneDrive%E4%B8%AD/</loc>
-    
-    <lastmod>2020-04-29T11:11:15.377Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/</loc>
-    
-    <lastmod>2020-04-19T04:02:42.589Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/</loc>
-    
-    <lastmod>2020-04-16T13:53:05.344Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/about/index.html</loc>
     
     <lastmod>2020-04-07T06:53:00.143Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/</loc>
-    
-    <lastmod>2020-03-06T10:33:28.713Z</lastmod>
     
   </url>
   

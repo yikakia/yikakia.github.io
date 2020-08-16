@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.0.2"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/static/index.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -167,28 +174,28 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90/">修改 pip 地址为清华源</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90/">修改 pip 地址为清华源</a>
+      </h1>
 
-      <a href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E4%BF%AE%E6%94%B9pip%E5%9C%B0%E5%9D%80%E4%B8%BA%E6%B8%85%E5%8D%8E%E6%BA%90/">
           
-        
-        <div> 用 pip 装包的时候很慢，想了想修改到清华大学的源加速算了。
-
- 临时使用 
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
- 注意，simple 不能少, 是 https 而不是 http
- 设为默认 
- 升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：
-pip install pi</div>
-      </a>
+          
+            
+          
+          用pip装包的时候很慢，想了想修改到清华大学的源加速算了。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-01
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-01 18:03" pubdate>
+              2020-04-01
+            </time>
           </div>
         
         
@@ -210,27 +217,34 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/">配置 SSH 只能使用密钥登录</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/">配置 SSH 只能使用密钥登录</a>
+      </h1>
 
-      <a href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E9%85%8D%E7%BD%AESSH%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/">
           
-        
-        <div>为了避免被暴躁老哥用暴力穷举出密码。</div>
-      </a>
+          
+            
+          
+          为了避免被暴躁老哥用暴力穷举出密码。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-06
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-06 17:40" pubdate>
+              2020-03-06
+            </time>
           </div>
         
         
@@ -252,27 +266,34 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">为 oracle19c 创建 hr 样例数据库</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">为 oracle19c 创建 hr 样例数据库</a>
+      </h1>
 
-      <a href="/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E4%B8%BAoracle19c%E5%88%9B%E5%BB%BAhr%E6%A0%B7%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">
           
-        
-        <div>报了ORA-20000: Schema “HR” does not exist or insufficient privileges错找了半天才找到解决方法。</div>
-      </a>
+          
+            
+          
+          报了ORA-20000: Schema “HR” does not exist or insufficient privileges错找了半天才找到解决方法。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-05
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-05 09:38" pubdate>
+              2020-03-05
+            </time>
           </div>
         
         
@@ -296,27 +317,34 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/">利用 Let`s Encrypt 为你的网站加把小锁</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/">利用 Let`s Encrypt 为你的网站加把小锁</a>
+      </h1>
 
-      <a href="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/">
           
-        
-        <div>爱丽丝和鲍勃以及伊娃哪些不得不说的事</div>
-      </a>
+          
+            
+          
+          爱丽丝和鲍勃以及伊娃哪些不得不说的事
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-04
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-04 16:57" pubdate>
+              2020-03-04
+            </time>
           </div>
         
         
@@ -344,31 +372,38 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/">给你博客的中英文之间加空格~</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/">给你博客的中英文之间加空格~</a>
+      </h1>
 
-      <a href="/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/">
           
-        
-        <div>引用作者的话：
+          
+            
+          
+          引用作者的话：
 
 為什麼你們就是不能加個空格呢？
 如果你跟我一樣，每次看到網頁上的中文字和英文、數字、符號擠在一塊，就會坐立難安，忍不住想在它們之間加個空格。這個外掛（支援 Chrome 和 Firefox）正是你在網路世界走跳所需要的東西，它會自動替你在網頁中所有的中文字和半形的英文、數字、符號之間插入空白。
-漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。另有研究顯示</div>
-      </a>
+漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。另有研究顯示
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-03 20:43" pubdate>
+              2020-03-03
+            </time>
           </div>
         
         
@@ -388,27 +423,34 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/">自定义微软拼音的快速时间输入</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/">自定义微软拼音的快速时间输入</a>
+      </h1>
 
-      <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E8%BD%AF%E6%8B%BC%E9%9F%B3%E7%9A%84%E5%BF%AB%E9%80%9F%E6%97%B6%E9%97%B4%E8%BE%93%E5%85%A5/">
           
-        
-        <div>这地址隐藏的好深~</div>
-      </a>
+          
+            
+          
+          这地址隐藏的好深~
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-03 18:55" pubdate>
+              2020-03-03
+            </time>
           </div>
         
         
@@ -428,29 +470,36 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/git%E5%88%A0%E9%99%A4%E5%A4%A7%E6%96%87%E4%BB%B6/">git 删除大文件怎么办？BFG 帮你忙</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/git%E5%88%A0%E9%99%A4%E5%A4%A7%E6%96%87%E4%BB%B6/">git 删除大文件怎么办？BFG 帮你忙</a>
+      </h1>
 
-      <a href="/git%E5%88%A0%E9%99%A4%E5%A4%A7%E6%96%87%E4%BB%B6/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/git%E5%88%A0%E9%99%A4%E5%A4%A7%E6%96%87%E4%BB%B6/">
           
-        
-        <div>
+          
+            
+          
+          
 谁掌控了过去谁就掌控了未来
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-03 17:37" pubdate>
+              2020-03-03
+            </time>
           </div>
         
         
@@ -472,27 +521,34 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">git 代理设置</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">git 代理设置</a>
+      </h1>
 
-      <a href="/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">
           
-        
-        <div>让git的速度变快。</div>
-      </a>
+          
+            
+          
+          让git的速度变快。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-02
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-02 21:54" pubdate>
+              2020-03-02
+            </time>
           </div>
         
         
@@ -516,27 +572,34 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E4%B8%AD%E7%82%B9%E7%94%BB%E7%BA%BF%E6%B3%95/">计算机图形学（一）中点画线法</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E4%B8%AD%E7%82%B9%E7%94%BB%E7%BA%BF%E6%B3%95/">计算机图形学（一）中点画线法</a>
+      </h1>
 
-      <a href="/%E4%B8%AD%E7%82%B9%E7%94%BB%E7%BA%BF%E6%B3%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E4%B8%AD%E7%82%B9%E7%94%BB%E7%BA%BF%E6%B3%95/">
           
-        
-        <div>中点画线是比较基础的画线法，重点是确定递推公式。</div>
-      </a>
+          
+            
+          
+          中点画线是比较基础的画线法，重点是确定递推公式。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-02
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-02 16:02" pubdate>
+              2020-03-02
+            </time>
           </div>
         
         
@@ -560,29 +623,36 @@ pip install pi</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/">建站心得</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/">建站心得</a>
+      </h1>
 
-      <a href="/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/">
           
-        
-        <div>
+          
+            
+          
+          
 Hexo 是一个基于 Node.js 的开源静态博客平台，可以在数秒内渲染上千个页面，并且一键部署到 GitHub 等平台。
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-07-19
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-07-19 22:05" pubdate>
+              2019-07-19
+            </time>
           </div>
         
         
@@ -612,7 +682,7 @@ Hexo 是一个基于 Node.js 的开源静态博客平台，可以在数秒内渲
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 

@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.0.2"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/static/categories.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -169,61 +176,61 @@
     
     <a href="/%E5%9C%A8CentOS-%E4%B8%8B%E9%85%8D%E7%BD%AEHadoop%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">在 CentOS 8 下配置 Hadoop 开发环境</span>
-      <span style="float: right;">07-05</span>
+      <time style="float: right;">07-05</time>
     </a>
   
     
     <a href="/numpy%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E4%B9%98%E6%B3%95/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">numpy 中的各种乘法</span>
-      <span style="float: right;">06-02</span>
+      <time style="float: right;">06-02</time>
     </a>
   
     
     <a href="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">PyQt5 的安装指南</span>
-      <span style="float: right;">05-31</span>
+      <time style="float: right;">05-31</time>
     </a>
   
     
     <a href="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">数字图像处理大作业记录 - 边缘检测与阈值分割的 Python 实现及利用 PyQt5 的 GUI 开发</span>
-      <span style="float: right;">05-28</span>
+      <time style="float: right;">05-28</time>
     </a>
   
     
     <a href="/pyqt5%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">pyqt5 的报错处理</span>
-      <span style="float: right;">05-28</span>
+      <time style="float: right;">05-28</time>
     </a>
   
     
     <a href="/%E4%B8%BAOracleDatabase%E9%85%8D%E7%BD%AEPDB%E7%99%BB%E5%BD%95/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">为 OracleDatabase 配置 PDB 登录</span>
-      <span style="float: right;">05-17</span>
+      <time style="float: right;">05-17</time>
     </a>
   
     
     <a href="/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E7%9A%84Python%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">中值滤波及快速中值滤波的 Python 实现</span>
-      <span style="float: right;">05-06</span>
+      <time style="float: right;">05-06</time>
     </a>
   
     
     <a href="/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">First 集 Follow 集 Select 集分别有什么意义</span>
-      <span style="float: right;">04-19</span>
+      <time style="float: right;">04-19</time>
     </a>
   
     
     <a href="/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">python 虚拟环境的使用</span>
-      <span style="float: right;">04-08</span>
+      <time style="float: right;">04-08</time>
     </a>
   
     
     <a href="/pip%E7%9A%84requirements-txt%E6%80%8E%E4%B9%88%E7%94%A8/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">pip 的 requirements.txt 怎么用</span>
-      <span style="float: right;">04-08</span>
+      <time style="float: right;">04-08</time>
     </a>
   
 </div>
