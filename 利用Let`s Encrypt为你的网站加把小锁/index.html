@@ -223,7 +223,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月16日 下午
+                  本文最后更新于：2020年8月21日 晚上
                 
               </p>
             
@@ -375,7 +375,7 @@ nano /etc/nginx/conf.d/hexo.conf</code></pre></div>
 <div class="hljs"><pre><code class="hljs bash">crontab -e
 <span class="hljs-comment"># 选择用你熟悉的编辑器编辑</span>
 <span class="hljs-comment"># 然后在后面添加</span>
-0 3 1 * * /root/cerbot/certbot-auto renew --renew-hook <span class="hljs-string">&quot;sudo nginx -s reload&quot;</span>
+0 3 1 * * /root/certbot/certbot-auto renew --renew-hook <span class="hljs-string">&quot;sudo nginx -s reload&quot;</span>
 <span class="hljs-comment"># 现在保存了就可以了</span></code></pre></div>
 <p>这样你就可以高枕无忧了，自动化程序可以帮你搞定自动续期的问题。</p>
 <p>这是让你的机器每个月 1 号的凌晨 3 点自动更新所有的证书。</p>
