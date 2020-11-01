@@ -4,6 +4,55 @@
   
   
   <entry>
+    <title>Windows10- 下的 -Tensorflow- 环境配置</title>
+    <link href="/Windows10-%E4%B8%8B%E7%9A%84-Tensorflow-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <url>/Windows10-%E4%B8%8B%E7%9A%84-Tensorflow-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文 </h1><h2 id="安装 -tensorflow"><a class="markdownIt-Anchor" href="# 安装 -tensorflow"></a> 安装 tensorflow</h2><h3 id="通过 -pip- 安装"><a class="markdownIt-Anchor" href="# 通过 -pip- 安装"></a> 通过 pip 安装 </h3><h2 id="开启 -gpu- 支持"><a class="markdownIt-Anchor" href="# 开启 -gpu- 支持"></a> 开启 GPU 支持 </h2><h3 id="找到对应版本的 cuda-cudnn"><a class="markdownIt-Anchor" href="# 找到对应版本的 cuda-cudnn"></a> 找到对应版本的 CUDA、cuDNN</h3><p> 查看官方的页面 <a href="https://tensorflow.google.cn/install/gpu#software_requirements">GPU 支持  |  TensorFlow</a> 可以得到 CUDA 和 cuDNN 的版本 </p><h3 id="下载 -cuda"><a class="markdownIt-Anchor" href="# 下载 -cuda"></a> 下载 CUDA</h3><h3 id="安装 -cuda"><a class="markdownIt-Anchor" href="# 安装 -cuda"></a> 安装 CUDA</h3><h3 id="下载 -cudnn"><a class="markdownIt-Anchor" href="# 下载 -cudnn"></a> 下载 cuDNN</h3><h3 id="放置 -cudnn"><a class="markdownIt-Anchor" href="# 放置 -cudnn"></a> 放置 cuDNN</h3><h3 id="配置环境变量"><a class="markdownIt-Anchor" href="# 配置环境变量"></a> 配置环境变量 </h3><pre><code class="hljs latex">C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">bin</span></span>C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">extras</span></span><span class="hljs-tag">\<span class="hljs-name">CUPTI</span></span><span class="hljs-tag">\<span class="hljs-name">lib</span></span>64C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">lib</span></span><span class="hljs-tag">\<span class="hljs-name">x</span></span>64C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">libnvvp</span></span></code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://tensorflow.google.cn/install/gpu">GPU 支持  |  TensorFlow</a><br /><a href="https://juejin.im/post/6844903982243151879#heading-7">Windows TensorFlow 安装教程（gpu 和 cpu）</a><br /><a href="https://blog.csdn.net/m0_38088084/article/details/108018957">Windows10+Cuda10.0+cuDNN+Anaconda+Tensorflow-gpu+Keras 安装教程 </a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>Windows</tag>
+      
+      <tag>Tensorflow</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>为 -Windows-10- 配置 -ssh-server</title>
+    <link href="/%E4%B8%BA-Windows-10-%E9%85%8D%E7%BD%AE-ssh-server/"/>
+    <url>/%E4%B8%BA-Windows-10-%E9%85%8D%E7%BD%AE-ssh-server/</url>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><h2 id="安装 -openssh"><a class="markdownIt-Anchor" href="# 安装 -openssh"></a> 安装 OpenSSH</h2><h3 id="通过 -windows- 的设置面板安装"><a class="markdownIt-Anchor" href="# 通过 -windows- 的设置面板安装"></a> 通过 Windows 的设置面板安装</h3><h3 id="通过脚本安装"><a class="markdownIt-Anchor" href="# 通过脚本安装"></a> 通过脚本安装</h3><h2 id="添加公钥"><a class="markdownIt-Anchor" href="# 添加公钥"></a> 添加公钥</h2><h3 id="非管理员账户"><a class="markdownIt-Anchor" href="# 非管理员账户"></a> 非管理员账户</h3><h3 id="管理员账户"><a class="markdownIt-Anchor" href="# 管理员账户"></a> 管理员账户</h3><h2 id="配置访问权限"><a class="markdownIt-Anchor" href="# 配置访问权限"></a> 配置访问权限</h2><p>参考这个 <a href="https://github.com/PowerShell/Win32-OpenSSH/issues/1630">issue</a> 中的这个 <a href="https://github.com/PowerShell/Win32-OpenSSH/issues/1630#issuecomment-652756097"> 回复</a></p><blockquote><p>feelingfrance: you need run the code in powershell</p></blockquote><p>在 powershell 中运行下面的命令。记得要管理员权限</p><pre><code class="hljs php">$acl = Get-Acl C:\ProgramData\ssh\administrators_authorized_keys$acl.SetAccessRuleProtection($true, $false)$administratorsRule = <span class="hljs-keyword">New</span>-<span class="hljs-keyword">Object</span> system.security.accesscontrol.filesystemaccessrule(<span class="hljs-string">&quot;Administrators&quot;</span>,<span class="hljs-string">&quot;FullControl&quot;</span>,<span class="hljs-string">&quot;Allow&quot;</span>)$systemRule = <span class="hljs-keyword">New</span>-<span class="hljs-keyword">Object</span> system.security.accesscontrol.filesystemaccessrule(<span class="hljs-string">&quot;SYSTEM&quot;</span>,<span class="hljs-string">&quot;FullControl&quot;</span>,<span class="hljs-string">&quot;Allow&quot;</span>)$acl.SetAccessRule($administratorsRule)$acl.SetAccessRule($systemRule)$acl | Set-Acl</code></pre><p>然后就可以通过公钥登录了</p><h2 id="自动启动"><a class="markdownIt-Anchor" href="# 自动启动"></a> 自动启动</h2><p>我们可以通过下面的命令让 ssh-server 自动启动</p><pre><code class="hljs powershell"><span class="hljs-built_in">Set-Service</span> sshd <span class="hljs-literal">-StartupType</span> Automatic</code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>利用官方工具将 python2 的代码转换为 python3 的代码</title>
+    <link href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E5%B0%86python2%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BApython3%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
+    <url>/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E5%B0%86python2%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BApython3%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文 </h1><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\DevEnv\Python\Python38\Tools\scriptspython .\<span class="hljs-number">2</span>to3.py <span class="hljs-literal">-w</span> <span class="hljs-string">&quot;D:\Codes\Chapter 7_Code&quot;</span></code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://docs.python.org/zh-cn/3/library/2to3.html">2to3 - 自动将 Python 2 代码转为 Python 3 代码 </a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Sleep Sort 的 Golang 实现</title>
     <link href="/sleep-sort-%E7%9A%84-golang-%E5%AE%9E%E7%8E%B0/"/>
     <url>/sleep-sort-%E7%9A%84-golang-%E5%AE%9E%E7%8E%B0/</url>

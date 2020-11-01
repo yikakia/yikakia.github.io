@@ -17,7 +17,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="博客,算法，技术">
-  <title>Sleep Sort 的 Golang 实现 ~ Yika`s Blog</title>
+  <title>Windows10- 下的 -Tensorflow- 环境配置 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -160,8 +160,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-22 21:42" pubdate>
-      2020年8月22日 晚上
+    <time datetime="2020-10-02 20:35" pubdate>
+      2020年10月2日 晚上
     </time>
   </div>
 
@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      518 字
+      139 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      2
        分钟
     </span>
   
@@ -219,100 +219,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Sleep Sort 的 Golang 实现</h1>
+            <h1 style="display: none">Windows10- 下的 -Tensorflow- 环境配置</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月22日 晚上
+                  本文最后更新于：2020年10月2日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <p> 多线程排序的蛋疼算法 </p>
-<a id="more"></a>
+              <a id="more"></a>
 <h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1>
-<p> 在网上乱逛的时候看到了这个 sleep-sort 的算法，感觉很有趣。刚好在学 golang, 就用这个来实践一下并发操作吧。</p>
-<p> 这个算法原本是来自 4chan 的一个帖子，不过好像原帖早就被冲水了？只能说 4chan 老哥欢乐多。</p>
-<p> 原本是给的一个 shell 脚本 </p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
-<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">f</span></span>() &#123;
-    sleep <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>
-&#125;
-<span class="hljs-keyword">while</span> [-n <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]
-<span class="hljs-keyword">do</span>
-    f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> &amp;
-    <span class="hljs-built_in">shift</span>
-<span class="hljs-keyword">done</span>
-<span class="hljs-built_in">wait</span></code></pre></div>
 <h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文 </h1>
-<p> 先上源代码 </p>
-<div class="hljs"><pre><code class="hljs golang"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> (<span class="hljs-string">&quot;fmt&quot;</span>
-	<span class="hljs-string">&quot;log&quot;</span>
-	<span class="hljs-string">&quot;os&quot;</span>
-	<span class="hljs-string">&quot;path/filepath&quot;</span>
-	<span class="hljs-string">&quot;strconv&quot;</span>
-	<span class="hljs-string">&quot;time&quot;</span>
-)
-
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;
-	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(os.Args) &lt; <span class="hljs-number">2</span> || os.Args[<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;-h&quot;</span> || os.Args[<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;--help&quot;</span> &#123;
-		fmt.Printf(<span class="hljs-string">&quot; 使用方法： %s [需要排序的数组 空格隔开]\n&quot;</span>, filepath.Base(os.Args[<span class="hljs-number">0</span>]))
-		fmt.Printf(<span class="hljs-string">&quot; 如： %s 2 2 1 3 4\n&quot;</span>, filepath.Base(os.Args[<span class="hljs-number">0</span>]))
-		os.Exit(<span class="hljs-number">1</span>)
-	&#125;
-	answer := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">int</span>, <span class="hljs-built_in">len</span>(os.Args)<span class="hljs-number">-1</span>)
-	<span class="hljs-keyword">defer</span> <span class="hljs-built_in">close</span>(answer)
-	<span class="hljs-keyword">for</span> _, num := <span class="hljs-keyword">range</span> os.Args[<span class="hljs-number">1</span>:] &#123;
-		<span class="hljs-keyword">if</span> sleeptime, err := strconv.Atoi(num); err != <span class="hljs-literal">nil</span> &#123;
-			log.Fatal(err)
-		&#125; <span class="hljs-keyword">else</span> &#123;
-			<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;
-				time.Sleep(time.Duration(sleeptime) * time.Millisecond * <span class="hljs-number">120</span>)
-				answer &lt;- sleeptime
-			&#125;()
-		&#125;
-	&#125;
-DONE:
-	<span class="hljs-keyword">for</span> &#123;
-		<span class="hljs-keyword">switch</span> <span class="hljs-built_in">len</span>(answer) &#123;
-		<span class="hljs-keyword">case</span> <span class="hljs-built_in">len</span>(os.Args) - <span class="hljs-number">1</span>:
-			<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(os.Args)<span class="hljs-number">-1</span>; i++ &#123;
-				output := &lt;-answer
-				fmt.Print(output, <span class="hljs-string">&quot; &quot;</span>)
-			&#125;
-			<span class="hljs-keyword">break</span> DONE
-		&#125;
-	&#125;
-&#125;</code></pre></div>
-<p> 我这边倒没有专门写一个排序的包，不过单独摘出来其实也很简单的。改成输入的参数是一个 int 类型的函数就好了。</p>
-<p> 我这个主要是通过命令行的方式来调用，所以也顺便练习了一下 os.Args 的使用。</p>
-<p> 算法的实现其实很简单，就是对要排序的每个数字开一个 goroutine 然后等待对应的时长。在时间到了之后就把结果放到 answer 这个通道里面。</p>
-<p> 然后主函数中就是等所有的数字处理好之后就可以开始一个一个输出了。因为不知道要等待的时长，所以就是用了一个无限循环的函数来检测 answer 的长度。</p>
+<h2 id="安装 -tensorflow"><a class="markdownIt-Anchor" href="# 安装 -tensorflow"></a> 安装 tensorflow</h2>
+<h3 id="通过 -pip- 安装"><a class="markdownIt-Anchor" href="# 通过 -pip- 安装"></a> 通过 pip 安装 </h3>
+<h2 id="开启 -gpu- 支持"><a class="markdownIt-Anchor" href="# 开启 -gpu- 支持"></a> 开启 GPU 支持 </h2>
+<h3 id="找到对应版本的 cuda-cudnn"><a class="markdownIt-Anchor" href="# 找到对应版本的 cuda-cudnn"></a> 找到对应版本的 CUDA、cuDNN</h3>
+<p> 查看官方的页面 <a target="_blank" rel="noopener" href="https://tensorflow.google.cn/install/gpu#software_requirements">GPU 支持  |  TensorFlow</a> 可以得到 CUDA 和 cuDNN 的版本 </p>
+<h3 id="下载 -cuda"><a class="markdownIt-Anchor" href="# 下载 -cuda"></a> 下载 CUDA</h3>
+<h3 id="安装 -cuda"><a class="markdownIt-Anchor" href="# 安装 -cuda"></a> 安装 CUDA</h3>
+<h3 id="下载 -cudnn"><a class="markdownIt-Anchor" href="# 下载 -cudnn"></a> 下载 cuDNN</h3>
+<h3 id="放置 -cudnn"><a class="markdownIt-Anchor" href="# 放置 -cudnn"></a> 放置 cuDNN</h3>
+<h3 id="配置环境变量"><a class="markdownIt-Anchor" href="# 配置环境变量"></a> 配置环境变量 </h3>
+<div class="hljs"><pre><code class="hljs latex">C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">bin</span></span>
+C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">extras</span></span><span class="hljs-tag">\<span class="hljs-name">CUPTI</span></span><span class="hljs-tag">\<span class="hljs-name">lib</span></span>64
+C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">lib</span></span><span class="hljs-tag">\<span class="hljs-name">x</span></span>64
+C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">NVIDIA</span></span> GPU Computing Toolkit<span class="hljs-tag">\<span class="hljs-name">CUDA</span></span><span class="hljs-tag">\<span class="hljs-name">v</span></span>10.1<span class="hljs-tag">\<span class="hljs-name">libnvvp</span></span></code></pre></div>
 <h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
-<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/golang/comments/2qg4ey/sleep_sort_with_goroutines/">Sleep sort with goroutines</a></p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/install/gpu">GPU 支持  |  TensorFlow</a><br />
+<a target="_blank" rel="noopener" href="https://juejin.im/post/6844903982243151879#heading-7">Windows TensorFlow 安装教程（gpu 和 cpu）</a><br />
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38088084/article/details/108018957">Windows10+Cuda10.0+cuDNN+Anaconda+Tensorflow-gpu+Keras 安装教程 </a></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Golang/">Golang</a>
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Tensorflow/">Tensorflow</a>
                     
                   </div>
                 
@@ -325,18 +276,12 @@ DONE:
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E5%B0%86python2%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BApython3%E7%9A%84%E4%BB%A3%E7%A0%81/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">利用官方工具将 python2 的代码转换为 python3 的代码</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Lets-Encrypt-%E6%9B%B4%E6%96%B0%E6%8A%A5%E9%94%99/">
-                        <span class="hidden-mobile">Lets-Encrypt- 更新报错</span>
+                      <a href="/%E4%B8%BA-Windows-10-%E9%85%8D%E7%BD%AE-ssh-server/">
+                        <span class="hidden-mobile">为 -Windows-10- 配置 -ssh-server</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -501,7 +446,7 @@ DONE:
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Sleep Sort 的 Golang 实现&nbsp;",
+        "Windows10- 下的 -Tensorflow- 环境配置&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 35,
