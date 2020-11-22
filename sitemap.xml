@@ -340,6 +340,20 @@
 
   
   <url>
+    <loc>https://www.yikakia.com/tags/error/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/SSL/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -362,20 +376,6 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/Numlockx/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/error/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/SSL/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -410,20 +410,6 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/PyQt5/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/QT-Designer/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/tags/c/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -439,6 +425,20 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/Tensorflow/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/PyQt5/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/QT-Designer/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -473,6 +473,13 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/pacman/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/numpy/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -494,20 +501,6 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/pacman/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/tags/Golang/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -522,14 +515,7 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/VSCode/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/Pylint/</loc>
+    <loc>https://www.yikakia.com/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -557,6 +543,20 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/VSCode/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/Pylint/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/FTP/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -571,13 +571,6 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/tags/OpenCV/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -586,6 +579,13 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -727,14 +727,14 @@
 
   
   <url>
-    <loc>https://www.yikakia.com/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://www.yikakia.com/categories/%E6%8A%98%E8%85%BE/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/categories/%E6%8A%98%E8%85%BE/</loc>
+    <loc>https://www.yikakia.com/categories/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
