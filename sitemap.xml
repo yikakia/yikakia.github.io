@@ -347,20 +347,6 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/error/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/SSL/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/tags/Linux/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -376,6 +362,20 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/Numlockx/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/error/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/SSL/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -424,6 +424,13 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/c/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/Windows/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -439,13 +446,6 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/%E7%BC%96%E8%AF%91/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/c/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -487,6 +487,13 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/pyqt/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/pacman/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
@@ -495,34 +502,6 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/pyqt/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/unicode/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/golang/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/utf-8/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -551,6 +530,27 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/Pylint/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/unicode/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/golang/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/utf-8/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -634,21 +634,14 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/rclone/</loc>
+    <loc>https://www.yikakia.com/tags/ssl/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/OneDrive/</loc>
-    <lastmod>2020-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/GoogleDrive/</loc>
+    <loc>https://www.yikakia.com/tags/Nginx/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -669,14 +662,21 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/ssl/</loc>
+    <loc>https://www.yikakia.com/tags/rclone/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/Nginx/</loc>
+    <loc>https://www.yikakia.com/tags/OneDrive/</loc>
+    <lastmod>2020-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/GoogleDrive/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
