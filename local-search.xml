@@ -33,7 +33,7 @@
   
   
   <entry>
-    <title>Windows10- 下的 -Tensorflow- 环境配置</title>
+    <title>Windows10 下的 Tensorflow 环境配置</title>
     <link href="/Windows10-%E4%B8%8B%E7%9A%84-Tensorflow-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <url>/Windows10-%E4%B8%8B%E7%9A%84-Tensorflow-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     
@@ -56,7 +56,7 @@
   
   
   <entry>
-    <title>为 -Windows-10- 配置 -ssh-server</title>
+    <title>为 Windows10 配置 ssh server</title>
     <link href="/%E4%B8%BA-Windows-10-%E9%85%8D%E7%BD%AE-ssh-server/"/>
     <url>/%E4%B8%BA-Windows-10-%E9%85%8D%E7%BD%AE-ssh-server/</url>
     
@@ -73,9 +73,21 @@
     <link href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E5%B0%86python2%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BApython3%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
     <url>/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E5%B0%86python2%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BApython3%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
     
-    <content type="html"><![CDATA[<a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文 </h1><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\DevEnv\Python\Python38\Tools\scriptspython .\<span class="hljs-number">2</span>to3.py <span class="hljs-literal">-w</span> <span class="hljs-string">&quot;D:\Codes\Chapter 7_Code&quot;</span></code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1><p><a href="https://docs.python.org/zh-cn/3/library/2to3.html">2to3 - 自动将 Python 2 代码转为 Python 3 代码 </a></p>]]></content>
+    <content type="html"><![CDATA[<p>一键搞定</p><a id="more"></a><h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1><p>简单地说教材上给的代码是 py2 的，但我的环境只有 py3。所以找了找，发现还真的有转换的代码</p><h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1><p>先定位到你的 <code>python3</code> 的安装路径，我这里是 <code>D:\DevEnv\Python\Python38</code>，然后到它下面的<code>.\Tools\scripts</code> 中去，然后执行其中的 <code>2to3.py</code> 脚本。这个脚本接受路径后会显示如果把路径下的所有 <code>py2</code> 格式的文件转换为 <code>py3</code> 格式的文件后两者的区别。而要直接转换成 <code>py3</code> 的文件的话则需要再传入参数 <code>-w</code>，接受这个参数后脚本会完成转换，并且保存原来的 <code>py2</code> 的脚本的副本。</p><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\DevEnv\Python\Python38\Tools\scriptspython .\<span class="hljs-number">2</span>to3.py <span class="hljs-literal">-w</span> <span class="hljs-string">&quot;D:\Codes\Chapter 7_Code&quot;</span></code></pre><h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1><p><a href="https://docs.python.org/zh-cn/3/library/2to3.html">2to3 - 自动将 Python 2 代码转为 Python 3 代码</a></p>]]></content>
     
     
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
     
   </entry>
   
@@ -1072,9 +1084,9 @@
     
     <categories>
       
-      <category>折腾</category>
-      
       <category>学习</category>
+      
+      <category>折腾</category>
       
       <category>计算机网络</category>
       
@@ -1100,7 +1112,7 @@
     <link href="/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/"/>
     <url>/%E7%BB%99%E4%BD%A0%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%97%B4%E5%8A%A0%E7%A9%BA%E6%A0%BC/</url>
     
-    <content type="html"><![CDATA[<p>引用作者的话：</p><blockquote><p><strong>為什麼你們就是不能加個空格呢？</strong><br />如果你跟我一樣，每次看到網頁上的中文字和英文、數字、符號擠在一塊，就會坐立難安，忍不住想在它們之間加個空格。這個外掛（支援 Chrome 和 Firefox）正是你在網路世界走跳所需要的東西，它會自動替你在網頁中所有的中文字和半形的英文、數字、符號之間插入空白。</p><p>漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。另有研究顯示，打字的時候不喜歡在中文和英文之間加空格的人，感情路都走得很辛苦，有七成的比例會在 34 歲的時候跟自己不愛的人結婚，而其餘三成的人最後只能把遺產留給自己的貓。畢竟愛情跟書寫都需要適時地留白。</p><p>與大家共勉之。</p></blockquote><p><a href="https://github.com/vinta/pangu.js">作者的页面</a></p><p>很有趣，那试试呗，不过这是 js 的实现，幸好有人做好了 hexo 的插件，叫 <code>hexo-filter-auto-spacing</code> 像我这种懒人就直接用别人做好的吧。</p><p>打开终端，输入如下的代码</p><pre><code class="hljs bash">npm install hexo-filter-auto-spacing --save</code></pre><p>即可安装好。</p><p>之后在你的博客的根目录运行</p><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean</span><span class="hljs-attr">hexo</span> <span class="hljs-string">g</span><span class="hljs-attr">hexo</span> <span class="hljs-string">s</span></code></pre><p>来预览下效果吧。</p><p>需要说一下，另外一个插件 <code>hexo-pangu-spacing</code> 是有 BUG 的，比如你引用文章的时候的文章的网址里面有中文和英文，这个时候它也会把它给隔开。所以就用 <code>hexo-filter-auto-spacing</code> 吧。</p>]]></content>
+    <content type="html"><![CDATA[<p>下载，安装，搞定</p><a id="more"></a><p>引用作者的话：</p><blockquote><p><strong>為什麼你們就是不能加個空格呢？</strong><br />如果你跟我一樣，每次看到網頁上的中文字和英文、數字、符號擠在一塊，就會坐立難安，忍不住想在它們之間加個空格。這個外掛（支援 Chrome 和 Firefox）正是你在網路世界走跳所需要的東西，它會自動替你在網頁中所有的中文字和半形的英文、數字、符號之間插入空白。</p><p>漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。另有研究顯示，打字的時候不喜歡在中文和英文之間加空格的人，感情路都走得很辛苦，有七成的比例會在 34 歲的時候跟自己不愛的人結婚，而其餘三成的人最後只能把遺產留給自己的貓。畢竟愛情跟書寫都需要適時地留白。</p><p>與大家共勉之。</p></blockquote><p><a href="https://github.com/vinta/pangu.js">作者的页面</a></p><p>很有趣，那试试呗，不过这是 js 的实现，幸好有人做好了 hexo 的插件，叫 <code>hexo-filter-auto-spacing</code> 像我这种懒人就直接用别人做好的吧。</p><p>打开终端，输入如下的代码</p><pre><code class="hljs bash">npm install hexo-filter-auto-spacing --save</code></pre><p>即可安装好。</p><p>之后在你的博客的根目录运行</p><pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean</span><span class="hljs-attr">hexo</span> <span class="hljs-string">g</span><span class="hljs-attr">hexo</span> <span class="hljs-string">s</span></code></pre><p>来预览下效果吧。</p><p>需要说一下，另外一个插件 <code>hexo-pangu-spacing</code> 是有 BUG 的，比如你引用文章的时候的文章的网址里面有中文和英文，这个时候它也会把它给隔开。所以就用 <code>hexo-filter-auto-spacing</code> 吧。</p>]]></content>
     
     
     <categories>

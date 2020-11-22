@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      37 字
+      213 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -223,24 +223,41 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年9月20日 上午
+                  本文最后更新于：2020年11月22日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <a id="more"></a>
-<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1>
-<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文 </h1>
+              <p>一键搞定</p>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
+<p>简单地说教材上给的代码是 py2 的，但我的环境只有 py3。所以找了找，发现还真的有转换的代码</p>
+<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
+<p>先定位到你的 <code>python3</code> 的安装路径，我这里是 <code>D:\DevEnv\Python\Python38</code>，然后到它下面的<code>.\Tools\scripts</code> 中去，然后执行其中的 <code>2to3.py</code> 脚本。这个脚本接受路径后会显示如果把路径下的所有 <code>py2</code> 格式的文件转换为 <code>py3</code> 格式的文件后两者的区别。而要直接转换成 <code>py3</code> 的文件的话则需要再传入参数 <code>-w</code>，接受这个参数后脚本会完成转换，并且保存原来的 <code>py2</code> 的脚本的副本。</p>
 <div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\DevEnv\Python\Python38\Tools\scripts
 python .\<span class="hljs-number">2</span>to3.py <span class="hljs-literal">-w</span> <span class="hljs-string">&quot;D:\Codes\Chapter 7_Code&quot;</span></code></pre></div>
-<h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
-<p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/2to3.html">2to3 - 自动将 Python 2 代码转为 Python 3 代码 </a></p>
+<h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/2to3.html">2to3 - 自动将 Python 2 代码转为 Python 3 代码</a></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                  </div>
                 
               </div>
               
@@ -253,7 +270,7 @@ python .\<span class="hljs-number">2</span>to3.py <span class="hljs-literal">-w<
                     
                       <a href="/%E4%B8%BA-Windows-10-%E9%85%8D%E7%BD%AE-ssh-server/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">为 -Windows-10- 配置 -ssh-server</span>
+                        <span class="hidden-mobile">为 Windows10 配置 ssh server</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
