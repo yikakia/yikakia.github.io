@@ -243,13 +243,13 @@
 <p>feelingfrance: you need run the code in powershell</p>
 </blockquote>
 <p>在 powershell 中运行下面的命令。记得要管理员权限</p>
-<div class="hljs"><pre><code class="hljs php">$acl = Get-Acl C:\ProgramData\ssh\administrators_authorized_keys
-$acl.SetAccessRuleProtection($true, $false)
-$administratorsRule = <span class="hljs-keyword">New</span>-<span class="hljs-keyword">Object</span> system.security.accesscontrol.filesystemaccessrule(<span class="hljs-string">&quot;Administrators&quot;</span>,<span class="hljs-string">&quot;FullControl&quot;</span>,<span class="hljs-string">&quot;Allow&quot;</span>)
-$systemRule = <span class="hljs-keyword">New</span>-<span class="hljs-keyword">Object</span> system.security.accesscontrol.filesystemaccessrule(<span class="hljs-string">&quot;SYSTEM&quot;</span>,<span class="hljs-string">&quot;FullControl&quot;</span>,<span class="hljs-string">&quot;Allow&quot;</span>)
-$acl.SetAccessRule($administratorsRule)
-$acl.SetAccessRule($systemRule)
-$acl | Set-Acl</code></pre></div>
+<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-variable">$acl</span> = <span class="hljs-built_in">Get-Acl</span> C:\ProgramData\ssh\administrators_authorized_keys
+<span class="hljs-variable">$acl</span>.SetAccessRuleProtection(<span class="hljs-variable">$true</span>, <span class="hljs-variable">$false</span>)
+<span class="hljs-variable">$administratorsRule</span> = <span class="hljs-built_in">New-Object</span> system.security.accesscontrol.filesystemaccessrule(<span class="hljs-string">&quot;Administrators&quot;</span>,<span class="hljs-string">&quot;FullControl&quot;</span>,<span class="hljs-string">&quot;Allow&quot;</span>)
+<span class="hljs-variable">$systemRule</span> = <span class="hljs-built_in">New-Object</span> system.security.accesscontrol.filesystemaccessrule(<span class="hljs-string">&quot;SYSTEM&quot;</span>,<span class="hljs-string">&quot;FullControl&quot;</span>,<span class="hljs-string">&quot;Allow&quot;</span>)
+<span class="hljs-variable">$acl</span>.SetAccessRule(<span class="hljs-variable">$administratorsRule</span>)
+<span class="hljs-variable">$acl</span>.SetAccessRule(<span class="hljs-variable">$systemRule</span>)
+<span class="hljs-variable">$acl</span> | <span class="hljs-built_in">Set-Acl</span></code></pre></div>
 <p>然后就可以通过公钥登录了</p>
 <h2 id="自动启动"><a class="markdownIt-Anchor" href="# 自动启动"></a> 自动启动</h2>
 <p>我们可以通过下面的命令让 ssh-server 自动启动</p>

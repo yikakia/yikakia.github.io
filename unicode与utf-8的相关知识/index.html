@@ -293,8 +293,8 @@
 <h2 id="golang- 对 -unicode- 的支持"><a class="markdownIt-Anchor" href="#golang- 对 -unicode- 的支持"></a> golang 对 unicode 的支持</h2>
 <p>golang 默认采取的是 <code>utf-8</code> 编码（顺便插一句，Go 语言的发明者之一 Ken Thompson 正是 UTF-8 的发明人，而他也同时是 C,Unix,Plan9 等的创始人），不同于 c 语言中的 <code>char</code> 作为字符的基本单位，golang 中是用 <code>rune</code> 作为基本单位，其对应的是用 <code>utf-8</code> 编码后的 <code>byte</code> 数组 (<code>byte</code> 可以认为是<code>uint8</code>)。这里用别人的一张图可能更加直观</p>
 <p><img src="./bgbiao.jpg" srcset="/img/loading.gif" alt="" /></p>
-<p><code>人 </code> 的码位是 <code>4eba</code>，将其转换成<code>utf-8</code> 后就是 <code>e4 ba ba</code>。所以我们平时对 <code>string</code> 数组进行遍历的时候，如果按照下标进行遍历，其实是遍历<code>4e</code> 和<code>ba</code>，而不是将其作为整体 <code>4eba</code>，这个时候就会出现错误。因此我们可以知道<code>rune</code> 储存的是码点 <code>4eba</code> 读取，而将 <code>string('人')</code>, 转换为<code>byte</code> 数组 <code>[]byte(string('人'))</code> 则为 <code>e4 ba ba</code>，这正是<code>utf-8</code> 的编码方式，也就是实际进行储存和传输时的格式。</p>
-<p>因此我们可以知道，平时遍历的时候取到的值只是 <code>unicdoe</code> 而已，对于需要修改储存方式或者是加密字符串的时候，就要对实际储存的数值进行修改了，这里再用我做的一个图来看看就知道了。<br />
+<p><code>人 </code> 的码位是 <code>4eba</code>，将其转换成<code>utf-8</code> 后就是 <code>e4 ba ba</code>。所以我们平时对 <code>string</code> 数组进行遍历的时候，如果按照下标进行遍历，其实是遍历<code>4e</code> 和<code>ba</code>，而不是将其作为整体 <code>4eba</code>，这个时候就会出现错误。因此我们可以知道<code>rune</code> 储存的是码点 <code>4eba</code>，而将<code>string('人')</code>, 转换为<code>byte</code> 数组 <code>[]byte(string('人'))</code> 则为 <code>e4 ba ba</code>，这正是<code>utf-8</code> 的编码方式，也就是实际进行储存和传输时的格式。</p>
+<p>于是我们可以知道，平时遍历的时候取到的值只是 <code>unicdoe</code> 而已，对于需要修改储存方式或者是加密字符串的时候，就要对实际储存的数值进行修改了，这里再用我做的一个图来看看就知道了。<br />
 <img src="%E6%88%91.png" srcset="/img/loading.gif" alt="" /></p>
 <p>这里 <code>rune</code> 表示的是 <code>a:=rune(&quot; 我 &quot;)</code>中的 <code>a</code> 用二进制表示的时候值。</p>
 <p>而 <code>byte1,2,3</code> 则是则是转换成 <code>utf-8</code> 编码之后的表现形式。也就是实际储存和传输的值。<code>b:=[]byte(&quot; 我 &quot;)</code></p>
