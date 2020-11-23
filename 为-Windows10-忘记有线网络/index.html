@@ -17,7 +17,7 @@
   <meta name="description" content="一个新晋程序员的博客">
   <meta name="author" content="Yika">
   <meta name="keywords" content="博客,算法，技术">
-  <title>pyqt5 的报错处理 ~ Yika`s Blog</title>
+  <title>为 &#34;Windows 10&#34; 忘记有线网络 ~ Yika`s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -160,8 +160,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-05-28 19:02" pubdate>
-      2020年5月28日 晚上
+    <time datetime="2020-11-23 10:13" pubdate>
+      2020年11月23日 上午
     </time>
   </div>
 
@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      92 字
+      244 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -219,27 +219,36 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">pyqt5 的报错处理</h1>
+            <h1 style="display: none">为 &#34;Windows 10&#34; 忘记有线网络</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月16日 下午
+                  本文最后更新于：2020年11月23日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <p>收集遇到的报错</p>
+              <p> 注册表，永远滴神 </p>
 <a id="more"></a>
-<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
-<p>摸了好久终于搞定了，不知道下次更新是什么时候了。</p>
-<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
-<h2 id="报错 -typeerror-argument-1-has-unexpected-type-nonetype"><a class="markdownIt-Anchor" href="# 报错 -typeerror-argument-1-has-unexpected-type-nonetype"></a> 报错 TypeError: argument 1 has unexpected type ‘NoneType’</h2>
-<p>参考这个 StackOverFlow 上的 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45793966/clicked-connect-error"> 回答</a>，将报错的函数改成直接调用即可。<br />
-比如之前的是</p>
-<div class="hljs"><pre><code class="hljs python">self.action_genrate.triggered.connect(self.genrateWork())  <span class="hljs-comment"># 报错</span>
-self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-comment"># 正确</span></code></pre></div>
-<h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45793966/clicked-connect-error">clicked.connect() Error</a></p>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言 </h1>
+<p> 折腾 openwrt 的时候重置了很多次系统，每次都记住了网络，结果就是网络 id 越来越多，最多到了 <code> 网络 34</code> 的地步。终于忍不住了，想要把没用的删掉。</p>
+<p> 大概就像下面这个样子：<br />
+<img src="./%E7%BD%91%E7%BB%9C%E7%A4%BA%E4%BE%8B.png" srcset="/img/loading.gif" alt="示例" /></p>
+<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文 </h1>
+<p> 这个竟然不像 <strong>wifi</strong> 一样可以直接忘记，而是必须得到注册表里面去删除，很奇怪。</p>
+<h2 id="通过注册表删除"><a class="markdownIt-Anchor" href="# 通过注册表删除"></a> 通过注册表删除 </h2>
+<p> 打开注册表 </p>
+<ul>
+<li><code>Ctrl + R</code> 然后输入 <code>regedit</code></li>
+<li> 或者 <code>Win</code> 然后输入 <code>regedit</code></li>
+</ul>
+<p> 找到如下路径 </p>
+<div class="hljs"><pre><code class="hljs latex"> 计算机 <span class="hljs-tag">\<span class="hljs-name">HKEY</span></span>_LOCAL_MACHINE<span class="hljs-tag">\<span class="hljs-name">SOFTWARE</span></span><span class="hljs-tag">\<span class="hljs-name">Microsoft</span></span><span class="hljs-tag">\<span class="hljs-name">Windows</span></span> NT<span class="hljs-tag">\<span class="hljs-name">CurrentVersion</span></span><span class="hljs-tag">\<span class="hljs-name">NetworkList</span></span><span class="hljs-tag">\<span class="hljs-name">Profiles</span></span><span class="hljs-tag">\</span></code></pre></div>
+<p> 这个时候我们就可以看到所有保存的网络了，选择不需要的删除掉即可。</p>
+<p> 哦对了，在删除之前记得先备份好这个 <code>\Profiles</code> 下的东西，避免删除到不该删除的东西。</p>
+<h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考 </h1>
+<p><a target="_blank" rel="noopener" href="https://www.howtogeek.com/176148/how-to-%E2%80%9Cforget%E2%80%9D-a-wired-or-wireless-network-in-windows-8.1/">How to “Forget” a Wired (or Wireless) Network in Windows 8.1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.howtogeek.com/364291/how-to-change-or-rename-the-active-network-profile-name-in-windows-10/">How to Change or Rename the Active Network Profile Name in Windows 10</a></p>
 
             </div>
             <hr>
@@ -249,9 +258,7 @@ self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-com
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/Python/">Python</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
                     
                   </div>
                 
@@ -259,11 +266,7 @@ self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-com
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
-                    
-                      <a class="hover-with-bg" href="/tags/error/">error</a>
-                    
-                      <a class="hover-with-bg" href="/tags/pyqt/">pyqt</a>
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
                     
                   </div>
                 
@@ -276,18 +279,12 @@ self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-com
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数字图像处理大作业记录 - 边缘检测与阈值分割的 Python 实现及利用 PyQt5 的 GUI 开发</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Manjaro%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80NumLock/">
-                        <span class="hidden-mobile">Manjaro 开机自动打开 NumLock</span>
+                      <a href="/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">
+                        <span class="hidden-mobile">unicode 与 utf-8 的相关知识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -452,7 +449,7 @@ self.action_genrate.triggered.connect(self.genrateWork)    <span class="hljs-com
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "pyqt5 的报错处理&nbsp;",
+        "为 "Windows 10" 忘记有线网络&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 35,
