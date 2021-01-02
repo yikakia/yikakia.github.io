@@ -33,7 +33,7 @@
   
   
   <entry>
-    <title>golang- 交叉编译</title>
+    <title>golang 交叉编译</title>
     <link href="/golang-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/"/>
     <url>/golang-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
     
@@ -1161,9 +1161,9 @@
     
     <tags>
       
-      <tag>OracleDatabase</tag>
-      
       <tag>Oracle</tag>
+      
+      <tag>OracleDatabase</tag>
       
     </tags>
     
@@ -1181,9 +1181,9 @@
     
     <categories>
       
-      <category>学习</category>
-      
       <category>折腾</category>
+      
+      <category>学习</category>
       
       <category>计算机网络</category>
       

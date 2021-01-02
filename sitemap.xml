@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/</loc>
+    <loc>https://www.yikakia.com/golang-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</loc>
     
     <lastmod>2021-01-02</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/golang-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</loc>
+    <loc>https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/</loc>
     
-    <lastmod>2020-12-17</lastmod>
+    <lastmod>2021-01-02</lastmod>
     
   </url>
   
@@ -361,13 +361,6 @@
 
   
   <url>
-    <loc>https://www.yikakia.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2021-01-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/tags/error/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
@@ -376,6 +369,13 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/SSL/</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -431,27 +431,6 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/PyQt5/</loc>
-    <lastmod>2021-01-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/QT-Designer/</loc>
-    <lastmod>2021-01-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/c/</loc>
-    <lastmod>2021-01-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yikakia.com/tags/Windows/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
@@ -466,6 +445,27 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/c/</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/PyQt5/</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yikakia.com/tags/QT-Designer/</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/%E7%BC%96%E8%AF%91/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
@@ -474,13 +474,6 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/Git/</loc>
-    <lastmod>2021-01-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -522,6 +515,13 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/hexo/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
@@ -543,14 +543,14 @@
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/pip/</loc>
+    <loc>https://www.yikakia.com/tags/pyqt/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/tags/pyqt/</loc>
+    <loc>https://www.yikakia.com/tags/pip/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -648,6 +648,13 @@
   </url>
   
   <url>
+    <loc>https://www.yikakia.com/tags/Oracle/</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yikakia.com/tags/OracleDatabase/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
@@ -656,13 +663,6 @@
   
   <url>
     <loc>https://www.yikakia.com/tags/PDB/</loc>
-    <lastmod>2021-01-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yikakia.com/tags/Oracle/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -804,14 +804,14 @@
 
   
   <url>
-    <loc>https://www.yikakia.com/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://www.yikakia.com/categories/%E6%8A%98%E8%85%BE/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yikakia.com/categories/%E6%8A%98%E8%85%BE/</loc>
+    <loc>https://www.yikakia.com/categories/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
