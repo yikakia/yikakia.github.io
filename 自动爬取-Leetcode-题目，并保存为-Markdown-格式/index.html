@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" type="image/png" href="/static/logo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个新晋程序员的博客">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,算法，技术">
+  <title>自动爬取 Leetcode 题目，并保存为 Markdown 格式 ~ Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yika`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/static/post.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2021-01-09 21:55" pubdate>
+      2021年1月9日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">自动爬取 Leetcode 题目，并保存为 Markdown 格式</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年1月9日 晚上
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <p>复制，粘贴，运行</p>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="# 前言"></a> 前言</h1>
+<p>在 <strong>leetcode</strong> 刷题的时候我习惯在本地写好题解，不过每题都复制就太麻烦了，而且也不是 <strong>Markdown</strong> 格式的。于是想能不能爬取内容，然后自动转换格式。</p>
+<h1 id="正文"><a class="markdownIt-Anchor" href="# 正文"></a> 正文</h1>
+<p>自己来写的话因为对爬虫并不是很熟悉（主要是对于抓包并不熟），所以直接搜索，于是发现了一个 <a target="_blank" rel="noopener" href="https://wanakiki.github.io/2020/leetcode-spider/"> 博客 </a> 写这个事情。看起来挺不错的，那我就直接用 <strong>CV</strong> 大法了。这里主要是用了转换格式和爬取内容的方法。</p>
+<h2 id="原理"><a class="markdownIt-Anchor" href="# 原理"></a> 原理</h2>
+<p><strong>leetcode</strong> 的请求都是用的 <strong>GraphQL</strong> 技术。相比起 <strong>RESTful</strong> 格式而言，它更加灵活，能够减少请求数（一次就能查询多个数据）。查询的时候可以只请求部分内容。</p>
+<p>对于本例而言，用 <strong>F12</strong> ，然后看 <strong>Network</strong>，搜索 <strong>graphql</strong> 的请求后，筛选一下就能得到合适的结果</p>
+<div class="hljs"><pre><code class="hljs bash">curl <span class="hljs-string">&#x27;https://leetcode-cn.com/graphql/&#x27;</span> \
+  -H <span class="hljs-string">&#x27;authority: leetcode-cn.com&#x27;</span> \
+  -H <span class="hljs-string">&#x27;x-timezone: undefined&#x27;</span> \
+  -H <span class="hljs-string">&#x27;x-operation-name: questionData&#x27;</span> \
+  -H <span class="hljs-string">&#x27;accept-language: zh-CN&#x27;</span> \
+  -H <span class="hljs-string">&#x27;user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&#x27;</span> \
+  -H <span class="hljs-string">&#x27;content-type: application/json&#x27;</span> \
+  -H <span class="hljs-string">&#x27;accept: */*&#x27;</span> \
+  -H <span class="hljs-string">&#x27;x-csrftoken: balabalabala&#x27;</span> \
+  -H <span class="hljs-string">&#x27;dnt: 1&#x27;</span> \
+  -H <span class="hljs-string">&#x27;x-definition-name: question&#x27;</span> \
+  -H <span class="hljs-string">&#x27;origin: https://leetcode-cn.com&#x27;</span> \
+  -H <span class="hljs-string">&#x27;sec-fetch-site: same-origin&#x27;</span> \
+  -H <span class="hljs-string">&#x27;sec-fetch-mode: cors&#x27;</span> \
+  -H <span class="hljs-string">&#x27;sec-fetch-dest: empty&#x27;</span> \
+  -H <span class="hljs-string">&#x27;referer: https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/&#x27;</span> \
+  -H <span class="hljs-string">&#x27;cookie: gbalabalabala&#x27;</span> \
+  --data-binary $<span class="hljs-string">&#x27;&#123;&quot;operationName&quot;:&quot;questionData&quot;,&quot;variables&quot;:&#123;&quot;titleSlug&quot;:&quot;best-time-to-buy-and-sell-stock-iii&quot;&#125;,&quot;query&quot;:&quot;query questionData($titleSlug: String\u0021) &#123;\\n  question(titleSlug: $titleSlug) &#123;\\n    questionId\\n    questionFrontendId\\n    boundTopicId\\n    title\\n    titleSlug\\n    content\\n    translatedTitle\\n    translatedContent\\n    isPaidOnly\\n    difficulty\\n    likes\\n    dislikes\\n    isLiked\\n    similarQuestions\\n    contributors &#123;\\n      username\\n      profileUrl\\n      avatarUrl\\n      __typename\\n    &#125;\\n    langToValidPlayground\\n    topicTags &#123;\\n      name\\n      slug\\n      translatedName\\n      __typename\\n    &#125;\\n    companyTagStats\\n    codeSnippets &#123;\\n      lang\\n      langSlug\\n      code\\n      __typename\\n    &#125;\\n    stats\\n    hints\\n    solution &#123;\\n      id\\n      canSeeDetail\\n      __typename\\n    &#125;\\n    status\\n    sampleTestCase\\n    metaData\\n    judgerAvailable\\n    judgeType\\n    mysqlSchemas\\n    enableRunCode\\n    envInfo\\n    book &#123;\\n      id\\n      bookName\\n      pressName\\n      source\\n      shortDescription\\n      fullDescription\\n      bookImgUrl\\n      pressImgUrl\\n      productUrl\\n      __typename\\n    &#125;\\n    isSubscribed\\n    isDailyQuestion\\n    dailyRecordStatus\\n    editorType\\n    ugcQuestionId\\n    style\\n    __typename\\n  &#125;\\n&#125;\\n&quot;&#125;&#x27;</span> \
+  --compressed</code></pre></div>
+<p>可以看到还是蛮多的请求项的，不过这样太花眼了，转换一下格式吧。</p>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">&#123;</span>
+  <span class="hljs-attr">operationName</span>: <span class="hljs-string">&quot;questionData&quot;</span>
+  <span class="hljs-attr">query</span>: <span class="hljs-string">&quot;query questionData($titleSlug: String!) &#123;</span>
+  <span class="hljs-meta">question(titleSlug</span>: <span class="hljs-string">$titleSlug) &#123;</span>
+    <span class="hljs-attr">questionId</span>
+    <span class="hljs-attr">questionFrontendId</span>
+    <span class="hljs-attr">boundTopicId</span>
+    <span class="hljs-attr">title</span>
+    <span class="hljs-attr">titleSlug</span>
+    <span class="hljs-attr">content</span>
+    <span class="hljs-attr">translatedTitle</span>
+    <span class="hljs-attr">translatedContent</span>
+    <span class="hljs-attr">isPaidOnly</span>
+    <span class="hljs-attr">difficulty</span>
+    <span class="hljs-attr">likes</span>
+    <span class="hljs-attr">dislikes</span>
+    <span class="hljs-attr">isLiked</span>
+    <span class="hljs-attr">similarQuestions</span>
+    <span class="hljs-attr">contributors</span> <span class="hljs-string">&#123;</span>
+      <span class="hljs-attr">username</span>
+      <span class="hljs-attr">profileUrl</span>
+      <span class="hljs-attr">avatarUrl</span>
+      <span class="hljs-attr">__typename</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">langToValidPlayground</span>
+    <span class="hljs-attr">topicTags</span> <span class="hljs-string">&#123;</span>
+      <span class="hljs-attr">name</span>
+      <span class="hljs-attr">slug</span>
+      <span class="hljs-attr">translatedName</span>
+      <span class="hljs-attr">__typename</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">companyTagStats</span>
+    <span class="hljs-attr">codeSnippets</span> <span class="hljs-string">&#123;</span>
+      <span class="hljs-attr">lang</span>
+      <span class="hljs-attr">langSlug</span>
+      <span class="hljs-attr">code</span>
+      <span class="hljs-attr">__typename</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">stats</span>
+    <span class="hljs-attr">hints</span>
+    <span class="hljs-attr">solution</span> <span class="hljs-string">&#123;</span>
+      <span class="hljs-attr">id</span>
+      <span class="hljs-attr">canSeeDetail</span>
+      <span class="hljs-attr">__typename</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">status</span>
+    <span class="hljs-attr">sampleTestCase</span>
+    <span class="hljs-attr">metaData</span>
+    <span class="hljs-attr">judgerAvailable</span>
+    <span class="hljs-attr">judgeType</span>
+    <span class="hljs-attr">mysqlSchemas</span>
+    <span class="hljs-attr">enableRunCode</span>
+    <span class="hljs-attr">envInfo</span>
+    <span class="hljs-attr">book</span> <span class="hljs-string">&#123;</span>
+      <span class="hljs-attr">id</span>
+      <span class="hljs-attr">bookName</span>
+      <span class="hljs-attr">pressName</span>
+      <span class="hljs-attr">source</span>
+      <span class="hljs-attr">shortDescription</span>
+      <span class="hljs-attr">fullDescription</span>
+      <span class="hljs-attr">bookImgUrl</span>
+      <span class="hljs-attr">pressImgUrl</span>
+      <span class="hljs-attr">productUrl</span>
+      <span class="hljs-attr">__typename</span>
+    <span class="hljs-attr">&#125;</span>
+    <span class="hljs-attr">isSubscribed</span>
+    <span class="hljs-attr">isDailyQuestion</span>
+    <span class="hljs-attr">dailyRecordStatus</span>
+    <span class="hljs-attr">editorType</span>
+    <span class="hljs-attr">ugcQuestionId</span>
+    <span class="hljs-attr">__typename</span>
+  <span class="hljs-attr">&#125;</span>
+<span class="hljs-attr">&#125;</span>
+<span class="hljs-attr">&quot;</span>
+  <span class="hljs-attr">variables</span>: <span class="hljs-string">&#123;titleSlug: &quot;merge-two-sorted-lists&quot;&#125;</span>
+<span class="hljs-attr">&#125;</span></code></pre></div>
+<p>而转换成 Python 代码的就大概是这个样子</p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_all</span>(<span class="hljs-params">slug</span>):</span>
+    user_agent = <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36&quot;</span>
+    session = requests.Session()
+    url = <span class="hljs-string">&quot;https://leetcode-cn.com/graphql&quot;</span>
+    params = &#123;
+        <span class="hljs-string">&#x27;operationName&#x27;</span>:
+        <span class="hljs-string">&quot;getQuestionDetail&quot;</span>,
+        <span class="hljs-string">&#x27;variables&#x27;</span>: &#123;
+            <span class="hljs-string">&#x27;titleSlug&#x27;</span>: slug
+        &#125;,
+        <span class="hljs-string">&#x27;query&#x27;</span>:
+        <span class="hljs-string">&#x27;&#x27;&#x27;query getQuestionDetail($titleSlug: String!) &#123;</span>
+<span class="hljs-string">            question(titleSlug: $titleSlug) &#123;</span>
+<span class="hljs-string">                questionId</span>
+<span class="hljs-string">                questionFrontendId</span>
+<span class="hljs-string">                title</span>
+<span class="hljs-string">                titleSlug</span>
+<span class="hljs-string">                content</span>
+<span class="hljs-string">                translatedTitle</span>
+<span class="hljs-string">                translatedContent</span>
+<span class="hljs-string">                difficulty</span>
+<span class="hljs-string">                topicTags &#123;</span>
+<span class="hljs-string">                    name</span>
+<span class="hljs-string">                    slug</span>
+<span class="hljs-string">                    translatedName</span>
+<span class="hljs-string">                    __typename</span>
+<span class="hljs-string">                &#125;</span>
+<span class="hljs-string">                codeSnippets &#123;</span>
+<span class="hljs-string">                    lang</span>
+<span class="hljs-string">                    langSlug</span>
+<span class="hljs-string">                    code</span>
+<span class="hljs-string">                    __typename</span>
+<span class="hljs-string">                &#125;</span>
+<span class="hljs-string">                __typename</span>
+<span class="hljs-string">            &#125;</span>
+<span class="hljs-string">        &#125;&#x27;&#x27;&#x27;</span>
+    &#125;
+    json_data = json.dumps(params).encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)
+    headers = &#123;
+        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: user_agent,
+        <span class="hljs-string">&#x27;Connection&#x27;</span>: <span class="hljs-string">&#x27;keep-alive&#x27;</span>,
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+        <span class="hljs-string">&#x27;Referer&#x27;</span>: <span class="hljs-string">&#x27;https://leetcode-cn.com/problems/&#x27;</span> + slug
+    &#125;
+    resp = session.post(url, data=json_data, headers=headers, timeout=<span class="hljs-number">10</span>)
+    resp.encoding = <span class="hljs-string">&#x27;utf8&#x27;</span>
+    content = resp.json()
+    <span class="hljs-comment"># 题目详细信息</span>
+    <span class="hljs-comment"># print(content)</span>
+    question = content[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;question&#x27;</span>]
+    <span class="hljs-keyword">return</span> question</code></pre></div>
+<p>把它们格式化成 <strong>json</strong> 格式的内容即可。而后把响应按 <strong>json</strong> 进行解析，直接获取 <code>data:question:</code> 里面的项即可。</p>
+<h2 id="代码"><a class="markdownIt-Anchor" href="# 代码"></a> 代码</h2>
+<p>直接复制粘贴，然后运行就可以啦。哦对了，记得改一下 <strong>url</strong></p>
+<details>
+    <summary>给一个 <strong>GitHub Gist</strong></summary>
+    <script src="https://gist.github.com/yikakia/5b8112706c28570a63a1ec14866fa031.js"></script>
+</details>
+<details>
+    <summary>刷不出 <strong>GitHub Gist</strong> 的话看 <strong>gitee</strong> 的</summary>
+    <script src='https://gitee.com/yikakia/codes/tdav6w7m903i1s2cugzxk76/widget_preview?title=%E4%BF%AE%E6%94%B9+url+%E5%8D%B3%E5%8F%AF'></script>
+</details>
+<h1 id="参考"><a class="markdownIt-Anchor" href="# 参考"></a> 参考</h1>
+<p><a target="_blank" rel="noopener" href="https://wanakiki.github.io/2020/leetcode-spider/">爬虫获取力扣题目信息并转为 Markdown</a><br />
+<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ZhaoxiCheung/p/9333476.html">爬取 LeetCode 题目——如何发送 GraphQL Query 获取数据</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Markdown/">Markdown</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/">
+                        <span class="hidden-mobile">单线复用 iptv</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "自动爬取 Leetcode 题目，并保存为 Markdown 格式&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 35,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "❡"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
