@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Yika&#96;s Blog">
 <meta property="og:description" content="爱丽丝和鲍勃以及伊娃哪些不得不说的事">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yikakia.com/%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png">
 <meta property="article:published_time" content="2020-03-04T08:57:34.000Z">
-<meta property="article:modified_time" content="2022-07-17T12:16:39.912Z">
+<meta property="article:modified_time" content="2022-07-17T15:09:02.901Z">
 <meta property="article:author" content="Yika">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="ssl">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.yikakia.com/%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png">
+<meta name="twitter:image" content="https://www.yikakia.com/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -326,7 +326,9 @@
 <p>简单地说就是把这个证书和你的机器绑定，你有固定的公网IP的话同意就是了。输入y 然后回车。<br>然后会显示下面这样的字样</p>
 <figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs delphi">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>Please deploy a DNS TXT <span class="hljs-keyword">record</span> under the <span class="hljs-keyword">name</span><br>_acme-challenge.你的域名 <span class="hljs-keyword">with</span> the following value:<br><br>fAap48jPpKKyS8ntHv9lIoAhGleXpdifuZdz0hhUcCS # 这是一串用于验证所有者的字符。为了隐私和安全我就随便乱打一串相同长度的表示吧<br><br>Before continuing, verify the <span class="hljs-keyword">record</span> <span class="hljs-keyword">is</span> deployed.<br>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>Press Enter <span class="hljs-keyword">to</span> <span class="hljs-keyword">Continue</span><br>Waiting <span class="hljs-keyword">for</span> verification...<br></code></pre></td></tr></table></figure>
 <p>这里就是让你在 DNS 界面新加一个TXT记录，域名是<code>_acme-challenge.你的域名</code>，记录值为那一串字符。<br>下面我用 CloudFlare 的 DNS 界面做演示。</p>
-<p><img src="/%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png" srcset="/img/loading.gif" lazyload alt="添加验证.png"></p>
+<img src="/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81/%E6%B7%BB%E5%8A%A0%E9%AA%8C%E8%AF%81.png" srcset="/img/loading.gif" lazyload class="" title="添加验证.png">
+
+
 <p>这样写好了之后，等一两分钟，然后回到客户端敲回车确定要验证你是这个网址的所有者。</p>
 <p>之后就会显示下面这样的字样。</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><br>Cleaning up challenges<br><br>IMPORTANT NOTES:<br> - Congratulations! Your certificate and chain have been saved at:<br>   <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/yi</span>kakia.com/fullchain.pem<br>   Your key <span class="hljs-keyword">file</span> has been saved at:<br>   <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/yi</span>kakia.com/privkey.pem<br>   Your cert will expire on <span class="hljs-number">2020</span>-<span class="hljs-number">09</span>-<span class="hljs-number">02</span>. To obtain a <span class="hljs-keyword">new</span> or tweaked<br>   version of <span class="hljs-keyword">this</span> certificate in the future, simply run certbot-auto<br>   again. To non-interactively renew *all* of your certificates, run<br>   <span class="hljs-string">&quot;certbot-auto renew&quot;</span><br> - <span class="hljs-keyword">If</span> you like Certbot, please consider supporting our work by:<br><br>   Donating to ISRG <span class="hljs-regexp">/ Let&#x27;s Encrypt:   https:/</span><span class="hljs-regexp">/letsencrypt.org/</span>donate<br>   Donating to EFF:                    https:<span class="hljs-comment">//eff.org/donate-le</span><br><br><br></code></pre></td></tr></table></figure>
@@ -361,6 +363,16 @@
     
       <span class="category-chain">
         
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
   <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
   
   
@@ -370,16 +382,6 @@
   
   
 
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
   
 
       </span>

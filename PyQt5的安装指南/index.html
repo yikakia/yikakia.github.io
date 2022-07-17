@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yikakia.com/img/banner/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.png">
 <meta property="article:published_time" content="2020-05-31T02:45:27.000Z">
-<meta property="article:modified_time" content="2022-07-17T12:16:39.860Z">
+<meta property="article:modified_time" content="2022-07-17T15:09:45.338Z">
 <meta property="article:author" content="Yika">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="PyQt5">
@@ -318,17 +318,36 @@
 
 <h1 id="汉化QT-Designer"><a href="#汉化QT-Designer" class="headerlink" title="汉化QT Designer"></a>汉化QT Designer</h1><p>找到你的对应的包的地址，如下</p>
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">\python\python381\Lib\site-packages\pyqt5_tools\Qt\bin\translations<br></code></pre></td></tr></table></figure>
-<p>如果没有 <code>translations</code> 这个文件夹的话你可以自己新建一个。然后把<a href="designer_zh_CN.qm">designer_zh_CN.qm</a>这个文件放进去。还有下载地址是<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw">https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw</a><br>大概的效果是这样的<br><img src="/%E6%B1%89%E5%8C%96%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" lazyload alt="汉化示例"></p>
+<p>如果没有 <code>translations</code> 这个文件夹的话你可以自己新建一个。然后把<a href="designer_zh_CN.qm">designer_zh_CN.qm</a>这个文件放进去。还有下载地址是<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw">https://pan.baidu.com/s/1jzkumqjw-3VQiJxvo4V6Xw</a><br>大概的效果是这样的</p>
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E6%B1%89%E5%8C%96%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" lazyload class="" title="汉化示例">
+
+
 <h1 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h1><p>这是为了避免到时候如下报错</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">this application failed <span class="hljs-built_in">to</span> <span class="hljs-built_in">start</span> because no Qt <span class="hljs-built_in">platform</span> plugin could be initialized, Reinstalling <span class="hljs-keyword">the</span> application may fix this problem, available <span class="hljs-built_in">platform</span><br></code></pre></td></tr></table></figure>
-<p>打开<code>我的电脑</code>，在上方的<code>文件</code>选项卡里面选择<code>系统属性</code>，然后在弹出来的界面的<code>相关设置</code>栏中选择<code>系统信息</code>。<br><img src="/%E6%96%87%E4%BB%B6%E9%80%89%E9%A1%B9%E5%8D%A1.jpg" srcset="/img/loading.gif" lazyload alt="文件选项卡.jpg"><br><img src="/%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF.jpg" srcset="/img/loading.gif" lazyload alt="系统信息.jpg"></p>
-<p>在弹出的页面中选择<code>高级系统设置</code>，然后点击<code>环境变量</code><br><img src="/%E9%AB%98%E7%BA%A7%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE.jpg" srcset="/img/loading.gif" lazyload alt="高级系统设置.jpg"><br><img src="/%E7%82%B9%E5%87%BB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" lazyload alt="点击环境变量.jpg"></p>
-<p>编辑系统环境变量中的Path项，在里面添加如下的地址<br><img src="/%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" lazyload alt="添加环境变量.jpg"><br>大概的就是这样的</p>
+<p>打开<code>我的电脑</code>，在上方的<code>文件</code>选项卡里面选择<code>系统属性</code>，然后在弹出来的界面的<code>相关设置</code>栏中选择<code>系统信息</code>。</p>
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E6%96%87%E4%BB%B6%E9%80%89%E9%A1%B9%E5%8D%A1.jpg" srcset="/img/loading.gif" lazyload class="" title="文件选项卡.jpg">
+
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF.jpg" srcset="/img/loading.gif" lazyload class="" title="系统信息.jpg">
+
+
+<p>在弹出的页面中选择<code>高级系统设置</code>，然后点击<code>环境变量</code></p>
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE.jpg" srcset="/img/loading.gif" lazyload class="" title="高级系统设置.jpg">
+
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E7%82%B9%E5%87%BB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" lazyload class="" title="点击环境变量.jpg">
+
+
+
+<p>编辑系统环境变量中的Path项，在里面添加如下的地址</p>
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg" srcset="/img/loading.gif" lazyload class="" title="添加环境变量.jpg">
+
+<p>大概的就是这样的</p>
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">你的Python地址\Lib\site-packages\PyQt5\Qt\plugins\platforms<br></code></pre></td></tr></table></figure>
 <p>然后再在系统变量中新建项，命名为<code>QT_PLUGIN_PATH</code><br>然后把值设置为</p>
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">你的Python地址\Lib\site-packages\PyQt5\Qt\plugins<br></code></pre></td></tr></table></figure>
 
-<p><img src="/%E6%B7%BB%E5%8A%A0QT_Plugin_Path.jpg" srcset="/img/loading.gif" lazyload alt="添加QT_Plugin_Path.jpg"></p>
+<img src="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E6%B7%BB%E5%8A%A0QT_Plugin_Path.jpg" srcset="/img/loading.gif" lazyload class="" title="添加QT_Plugin_Path.jpg">
+
+
 <p>现在搞定后重启就可以了。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/awakenedy/articles/9492017.html">PyQt（pyqt-tools）中的Qt Designer改为中文界面</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lyzwjaa/article/details/79429901">python3+PyQt5+Qt designer+pycharm安装及配置+将ui文件转py文件</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Bingoooooo_/article/details/81535892">如何将PyQt（pyqt-tools）中的Qt Designer改为中文界面（汉化）</a></p>
 

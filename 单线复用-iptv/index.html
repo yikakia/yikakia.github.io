@@ -23,20 +23,20 @@
 <meta property="og:site_name" content="Yika&#96;s Blog">
 <meta property="og:description" content="有两个支持 vlan 的设备就可以了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yikakia.com/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png">
-<meta property="og:image" content="https://www.yikakia.com/vlan1.png">
-<meta property="og:image" content="https://www.yikakia.com/pvid1.png">
-<meta property="og:image" content="https://www.yikakia.com/vlan2.png">
-<meta property="og:image" content="https://www.yikakia.com/pvid2.png">
-<meta property="og:image" content="https://www.yikakia.com/%E7%BD%91%E9%80%9F.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/vlan1.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/pvid1.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/vlan2.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/pvid2.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/%E7%BD%91%E9%80%9F.png">
 <meta property="article:published_time" content="2021-01-01T13:28:25.000Z">
-<meta property="article:modified_time" content="2022-07-17T12:16:39.919Z">
+<meta property="article:modified_time" content="2022-07-17T15:07:40.648Z">
 <meta property="article:author" content="Yika">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="iptv">
 <meta property="article:tag" content="vlan">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.yikakia.com/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png">
+<meta name="twitter:image" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -335,7 +335,10 @@
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">|<span class="hljs-string"> vlan 1</span>|<span class="hljs-string">  </span>|<span class="hljs-string"> vlan 2</span>|<br>|<span class="hljs-string"> 1 </span>|<span class="hljs-string"> 2 </span>|<span class="hljs-string">  </span>|<span class="hljs-string"> 3 </span>|<span class="hljs-string"> 4 </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>[_______|<span class="hljs-string">  </span>|<span class="hljs-string">_______]</span><br></code></pre></td></tr></table></figure>
 
 <p>这个时候就是划分了两个 <strong>vlan</strong> 了。1,2车道的货物可以互相传递，而不能和3,4车道进行互联互通。遇到了 <strong>BUM</strong>流量也只在自己的广播域 <strong>vlan1</strong>，<strong>vlan2</strong> 中进行广播。在端口收到了数据后，如果自己不属于这个数据的<strong>vlan</strong> 那么就会直接进行舍弃，相对与子网划分而言安全性更高，隔离性更好。</p>
-<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><p>下面我给一张我家的拓扑图<br><img src="/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="iptv 单线复用 家庭网络拓扑图.png"></p>
+<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><p>下面我给一张我家的拓扑图</p>
+<img src="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png" srcset="/img/loading.gif" lazyload class="" title="iptv 单线复用 家庭网络拓扑图.png">
+
+
 <p>我这种拓扑图的需求是</p>
 <ol>
 <li>光猫桥接，路由器拨号</li>
@@ -348,9 +351,16 @@
 </li>
 <li><p>在两个交换机中分别划分好 <strong>vlan</strong></p>
 <ul>
-<li>第一个交换机<br> <img src="/vlan1.png" srcset="/img/loading.gif" lazyload alt="vlan1"><br> <img src="/pvid1.png" srcset="/img/loading.gif" lazyload alt="pvid1"></li>
-<li>第二个交换机<br> <img src="/vlan2.png" srcset="/img/loading.gif" lazyload alt="vlan2"><br> <img src="/pvid2.png" srcset="/img/loading.gif" lazyload alt="pvid2"><br> 这里我是把第一个交换机的第五个端口作为汇聚端口，可以同时传输<strong>vlan2</strong>和<strong>vlan3</strong>的数据。<br> 然后第一个交换机的第一个端口作为iptv的端口 即 <strong>vlan2</strong> 而第二到第四端口作为网络的端口 即 <strong>vlan3</strong><br> 而第二个交换机的第八个端口作为汇聚端口，同时传输 <strong>vlan2</strong> 和 <strong>vlan3</strong> 的数据。<br> 然后第二个交换机的第七个端口作为iptv的端口 即 <strong>vlan2</strong> 而第一到第六端口作为网络的端口 即 <strong>vlan3</strong></li>
+<li>第一个交换机 <img src="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/vlan1.png" srcset="/img/loading.gif" lazyload class="" title="vlan1"></li>
 </ul>
+ <img src="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/pvid1.png" srcset="/img/loading.gif" lazyload class="" title="pvid1">
+
+<ul>
+<li>第二个交换机 <img src="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/vlan2.png" srcset="/img/loading.gif" lazyload class="" title="vlan2"></li>
+</ul>
+ <img src="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/pvid2.png" srcset="/img/loading.gif" lazyload class="" title="pvid2">
+
+<p> 这里我是把第一个交换机的第五个端口作为汇聚端口，可以同时传输<strong>vlan2</strong>和<strong>vlan3</strong>的数据。<br> 然后第一个交换机的第一个端口作为iptv的端口 即 <strong>vlan2</strong> 而第二到第四端口作为网络的端口 即 <strong>vlan3</strong><br> 而第二个交换机的第八个端口作为汇聚端口，同时传输 <strong>vlan2</strong> 和 <strong>vlan3</strong> 的数据。<br> 然后第二个交换机的第七个端口作为iptv的端口 即 <strong>vlan2</strong> 而第一到第六端口作为网络的端口 即 <strong>vlan3</strong></p>
 <p> 下面简单说明一下tag和untag的作用</p>
 <ul>
 <li>普通终端设备网卡（itv，电脑，电视）只能接收到无<strong>vlan</strong>标识的数据包</li>
@@ -408,7 +418,10 @@
 </tbody></table>
 </li>
 </ol>
-<h2 id="最后跑一下网速"><a href="#最后跑一下网速" class="headerlink" title="最后跑一下网速"></a>最后跑一下网速</h2><p><img src="/%E7%BD%91%E9%80%9F.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="最后跑一下网速"><a href="#最后跑一下网速" class="headerlink" title="最后跑一下网速"></a>最后跑一下网速</h2><img src="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/%E7%BD%91%E9%80%9F.png" srcset="/img/loading.gif" lazyload class="">
+
+
+
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/alpozp40/">不改光猫任何配置，水星SG105 Pro完美解决电信ITV、网络单线复用</a><br><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/alpzdxpo/">网络设备 篇一：家庭网络改造-单线复用实践总结</a></p>
 
                 

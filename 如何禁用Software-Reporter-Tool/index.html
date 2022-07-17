@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yikakia.com/img/banner/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png">
 <meta property="article:published_time" content="2020-04-16T13:48:48.000Z">
-<meta property="article:modified_time" content="2022-07-17T12:16:39.935Z">
+<meta property="article:modified_time" content="2022-07-17T15:02:33.361Z">
 <meta property="article:author" content="Yika">
 <meta property="article:tag" content="Windows">
 <meta property="article:tag" content="Chrome">
@@ -317,14 +317,31 @@
 <h1 id="通过修改权限禁用"><a href="#通过修改权限禁用" class="headerlink" title="通过修改权限禁用"></a>通过修改权限禁用</h1><p>查了之后发现这个文件是就算你删除了，谷歌也可能会给你装回来的。是不是有点眼熟这个全家桶操作？😀<br>所以我们要做的就是禁止谷歌启动这个程序。</p>
 <p>这个软件的位置大概是在这里:</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">C:\Users\USERNAME\AppData\Local\Google\Chrome\<span class="hljs-keyword">User</span> <span class="hljs-title">Data</span>\SwReporter\<span class="hljs-keyword">VERSION</span><br></code></pre></td></tr></table></figure>
-<p>把这里面的<code>USERNAME</code>改成你的用户名,<code>VERSION</code>改成你的Chrome版本。然后就可以看到这个文件了。<br>这里我的版本是 <code>81.233.200</code><br><img src="/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" lazyload></p>
+<p>把这里面的<code>USERNAME</code>改成你的用户名,<code>VERSION</code>改成你的Chrome版本。然后就可以看到这个文件了。<br>这里我的版本是 <code>81.233.200</code></p>
+<img src="/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" lazyload class="">
+
 <ol>
-<li>在这里我们往上退两步，到<code>C:\Users\USERNAME\AppData\Local\Google\Chrome\User Data\</code>这一层，然后右键<code>SwReporter</code>这个文件夹,选择属性。<br><img src="/%E5%8F%B3%E9%94%AESwReporter.png" srcset="/img/loading.gif" lazyload></li>
-<li>选择<code>安全</code>选项卡</li>
-<li>点击<code>高级</code><br><img src="/%E7%82%B9%E5%87%BB%E9%AB%98%E7%BA%A7.png" srcset="/img/loading.gif" lazyload></li>
-<li>点击<code>禁用继承</code><br><img src="/%E7%82%B9%E5%87%BB%E7%A6%81%E7%94%A8%E7%BB%A7%E6%89%BF.png" srcset="/img/loading.gif" lazyload></li>
-<li>选择<code>从此对象中删除所有继承的权限</code>,之后一路确定。<br><img src="/%E9%98%BB%E6%AD%A2%E7%BB%A7%E6%89%BF.png" srcset="/img/loading.gif" lazyload><br>这样就没有人可以访问<code>SwReporter</code>文件夹并启动<code>software reporter tool</code>了。</li>
+<li>在这里我们往上退两步，到<code>C:\Users\USERNAME\AppData\Local\Google\Chrome\User Data\</code>这一层，然后右键<code>SwReporter</code>这个文件夹,选择属性。</li>
 </ol>
+<img src="/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/%E5%8F%B3%E9%94%AESwReporter.png" srcset="/img/loading.gif" lazyload class="">
+
+<ol start="2">
+<li>选择<code>安全</code>选项卡</li>
+<li>点击<code>高级</code></li>
+</ol>
+
+
+<ol start="4">
+<li>点击<code>禁用继承</code></li>
+</ol>
+
+
+<ol start="5">
+<li>选择<code>从此对象中删除所有继承的权限</code>,之后一路确定。</li>
+</ol>
+
+
+<p>这样就没有人可以访问<code>SwReporter</code>文件夹并启动<code>software reporter tool</code>了。</p>
 <h1 id="通过修改注册表禁用"><a href="#通过修改注册表禁用" class="headerlink" title="通过修改注册表禁用"></a>通过修改注册表禁用</h1><p>不推荐，修改注册表前请做好备份工作。<br>这里先给一段原文</p>
 <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs vbnet">Google introduced support <span class="hljs-keyword">for</span> policies that administrators may use <span class="hljs-keyword">to</span> configure certain Chrome features; one <span class="hljs-keyword">of</span> the available policies manages the Software Reporter Tool <span class="hljs-keyword">of</span> the browser.<br><br>Open the Registry Editor <span class="hljs-keyword">on</span> Windows, e.g. <span class="hljs-keyword">by</span> opening the Start Menu, typing regedit.exe, <span class="hljs-built_in">and</span> selecting the item <span class="hljs-keyword">from</span> the list <span class="hljs-keyword">of</span> results.<br>Go <span class="hljs-keyword">to</span> HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome.<br><span class="hljs-symbol">Note:</span> <span class="hljs-keyword">if</span> one <span class="hljs-keyword">of</span> the keys does <span class="hljs-built_in">not</span> exist create it <span class="hljs-keyword">with</span> a right-click <span class="hljs-keyword">on</span> the previous <span class="hljs-keyword">key</span> <span class="hljs-built_in">and</span> the selection <span class="hljs-keyword">of</span> <span class="hljs-built_in">New</span> &gt; <span class="hljs-keyword">Key</span>.<br>Right-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> <span class="hljs-built_in">and</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">New</span> &gt; Dword (<span class="hljs-number">32</span>-bit) Value.<br>Name the <span class="hljs-built_in">new</span> Dword ChromeCleanupEnabled.<br>Make sure its value <span class="hljs-built_in">is</span> <span class="hljs-number">0</span>.<br>Right-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> again <span class="hljs-built_in">and</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">New</span> &gt; Dword (<span class="hljs-number">32</span>-bit) Value.<br>Name it ChromeCleanupReportingEnabled.<br>Make sure its value <span class="hljs-built_in">is</span> <span class="hljs-number">0</span>.<br>ChromeCleanupEnabled<span class="hljs-comment">&#x27;s value determines whether the Software Reporter Tool may run on the system.</span><br><br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">0</span> means the tool <span class="hljs-built_in">is</span> disabled <span class="hljs-built_in">and</span> won<span class="hljs-comment">&#x27;t be run.</span><br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> means the Software Reporter <span class="hljs-built_in">is</span> enabled <span class="hljs-built_in">and</span> will be run <span class="hljs-keyword">by</span> Chrome.<br>ChromeCleanupReportingEnabled<span class="hljs-comment">&#x27;s value determines whether the results are reported to Google.</span><br><br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">0</span> means the reporting <span class="hljs-built_in">is</span> disabled.<br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> means the reporting <span class="hljs-built_in">is</span> enabled.<br></code></pre></td></tr></table></figure>
 <p>简单地说就是打开注册表，在<code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome</code>这项下面新建叫做<code>ChromeCleanupEnabled</code>和<code>ChromeCleanupReportingEnabled</code>的键，它们的类型都是<code>Dword</code>(32位)双字节数据类型，把它们都赋值为0。<br>下面是不同键值的作用</p>
@@ -355,8 +372,12 @@
 <h1 id="通过Chrome浏览器来设置"><a href="#通过Chrome浏览器来设置" class="headerlink" title="通过Chrome浏览器来设置"></a>通过Chrome浏览器来设置</h1><p>这个我觉得是不行的，不过看到网上说有用的，那就也一并记录下来吧。</p>
 <ol>
 <li>进入Chrome的设置界面-&gt;高级-&gt;系统<br>在这个选项下的<code>关闭 Google Chrome 后继续运行后台应用</code>关闭掉。</li>
-<li>把<code>向Google报告在此次清理期间，在您计算机中发现的有害软件、系统设置和进程的相关详情</code>反选掉。<br><img src="/chrome%E8%AE%BE%E7%BD%AE1.png" srcset="/img/loading.gif" lazyload><br><img src="/chrome%E8%AE%BE%E7%BD%AE2.png" srcset="/img/loading.gif" lazyload><br>这样就好了。<br>不过我在这么搞的时候发现我的这个已经设置过了。看来谷歌这小子浓眉大眼的，结果还是不好好做事啊。</li>
+<li>把<code>向Google报告在此次清理期间，在您计算机中发现的有害软件、系统设置和进程的相关详情</code>反选掉。</li>
 </ol>
+
+
+
+<p>这样就好了。<br>不过我在这么搞的时候发现我的这个已经设置过了。看来谷歌这小子浓眉大眼的，结果还是不好好做事啊。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/">How to block the Chrome Software Reporter Tool (software_reporter_tool.exe)</a></p>
 
                 

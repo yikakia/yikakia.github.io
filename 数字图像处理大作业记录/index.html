@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yikakia.com/img/banner/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95.png">
 <meta property="article:published_time" content="2020-05-28T11:06:34.000Z">
-<meta property="article:modified_time" content="2022-07-17T12:16:39.957Z">
+<meta property="article:modified_time" content="2022-07-17T15:09:16.748Z">
 <meta property="article:author" content="Yika">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="PyQt5">
@@ -315,11 +315,18 @@
 <h2 id="安装库"><a href="#安装库" class="headerlink" title="安装库"></a>安装库</h2><p>用的包方面看我的那个 <code>requirements.txt</code>就行了。</p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">qimage2ndarray</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">1.8</span>.<span class="hljs-number">3</span><br>opencv_python<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">4.2</span>.<span class="hljs-number">0.34</span><br><span class="hljs-attribute">numpy</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">1.18</span>.<span class="hljs-number">2</span><br><span class="hljs-attribute">PyQt5</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">5.14</span>.<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="用QT-Designer设计UI"><a href="#用QT-Designer设计UI" class="headerlink" title="用QT Designer设计UI"></a>用QT Designer设计UI</h2><p>在GUI方面我用的是QT Designer来辅助设计，这样所见即所得的体验很好。<br>哦对了，要QT Desinger的安装使用和汉化如果有需求的话可以参考我的<a href="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="这篇文章">这篇文章</a>。<br>打开后大概是这个样子的，这里我们一般用 <code>Main Window</code> 这一项，因为这个会自动附带上工具栏和状态栏，一般还是比较好用的<br><img src="/QTDesigner%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="用QT-Designer设计UI"><a href="#用QT-Designer设计UI" class="headerlink" title="用QT Designer设计UI"></a>用QT Designer设计UI</h2><p>在GUI方面我用的是QT Designer来辅助设计，这样所见即所得的体验很好。<br>哦对了，要QT Desinger的安装使用和汉化如果有需求的话可以参考我的<a href="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="这篇文章">这篇文章</a>。<br>打开后大概是这个样子的，这里我们一般用 <code>Main Window</code> 这一项，因为这个会自动附带上工具栏和状态栏，一般还是比较好用的</p>
+<img src="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/QTDesigner%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload class="">
+
 <p>然后就是实际使用啦，实际上的话和利用VS开发差不了多少，都是拖控件然后命名控件，设置控件的各种属性。</p>
 <p>对于开发的话有个小的建议就是把UI界面和实际的业务逻辑分开。就是说UI界面只管各种界面的属性，而不涉及实际的操作的函数。这样在维护的时候很方便。</p>
-<p>总之最后我是设计成了这样，能用就行了。<br><img src="/UI%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" lazyload></p>
-<p>实际运行时的效果大概是这样的。<br><img src="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95.png" srcset="/img/loading.gif" lazyload></p>
+<p>总之最后我是设计成了这样，能用就行了。</p>
+<img src="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/UI%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>实际运行时的效果大概是这样的。</p>
+<img src="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95.png" srcset="/img/loading.gif" lazyload class="">
+
 <p>最后保存你设计的UI文件就可以了，现在我们保存的是.ui文件，并不能直接用于python编程，所以需要使用PyQt自带的程序<code>pyuic5.exe</code>来实现将.ui文件转换为.py文件。</p>
 <p>具体的方法如下，打开终端然后输入以下命令</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">你的Python的文件夹\Scripts\pyuic5.exe -o 目标文件保存地址 UI文件保存路径<br></code></pre></td></tr></table></figure>
@@ -405,7 +412,9 @@
 
 
 <h2 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h2><p>我试了下，基本就是找到一个大概的阈值。然后通过这个阈值我就可以将图像从原图中分离出来。可以是背景也可以前景主体。</p>
-<h3 id="利用-迭代阈值法-进行阈值分割"><a href="#利用-迭代阈值法-进行阈值分割" class="headerlink" title="利用 迭代阈值法 进行阈值分割"></a>利用 迭代阈值法 进行阈值分割</h3><p><img src="/%E8%BF%AD%E4%BB%A3%E9%98%88%E5%80%BC%E6%B3%95%E5%8E%9F%E7%90%86.jpg" srcset="/img/loading.gif" lazyload alt="迭代阈值法原理"><br>迭代阈值法主要思想就是</p>
+<h3 id="利用-迭代阈值法-进行阈值分割"><a href="#利用-迭代阈值法-进行阈值分割" class="headerlink" title="利用 迭代阈值法 进行阈值分割"></a>利用 迭代阈值法 进行阈值分割</h3><img src="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/%E8%BF%AD%E4%BB%A3%E9%98%88%E5%80%BC%E6%B3%95%E5%8E%9F%E7%90%86.jpg" srcset="/img/loading.gif" lazyload class="" title="迭代阈值法原理">
+
+<p>迭代阈值法主要思想就是</p>
 <ol>
 <li>先假定一个阈值</li>
 <li>然后不停的计算低于阈值的像素的平均值T1和高于阈值的像素的平均值T2。</li>

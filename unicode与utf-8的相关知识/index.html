@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yikakia.com/img/banner/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86.png">
 <meta property="article:published_time" content="2020-11-22T09:13:37.000Z">
-<meta property="article:modified_time" content="2022-07-17T14:42:24.656Z">
+<meta property="article:modified_time" content="2022-07-17T15:00:05.535Z">
 <meta property="article:author" content="Yika">
 <meta property="article:tag" content="golang">
 <meta property="article:tag" content="unicode">
@@ -360,9 +360,12 @@
 <p>后面的三个字节如法炮制即可，我们可以发现后面三个字节得到的数字 <code>0101 100101 111101</code> 转换成十进制是 <code>22909</code>，查询<code>unicode</code>的定义发现是<code>好</code>这个字符。因此，我们之前传输的这六个字节表示<code>你好</code>这个字符串。</p>
 <h3 id="如果格式不匹配呢"><a href="#如果格式不匹配呢" class="headerlink" title="如果格式不匹配呢"></a>如果格式不匹配呢</h3><p>这个时候我们就有问题了，当我们读这个0,1序列的时候，如果发现部分满足<code>utf-8</code>格式，部分不满足的时候该怎么办呢？这个时候出现的情形就是乱码。即程序会把能够匹配<code>utf-8</code>规则的字符显示出来，而不能成功解码的则会显示为󴚌或者�这种符号。这时候我们就可以考虑是文档损坏了，还是这个文档的编码方式有问题，可能不是<code>utf-8</code>格式而是其他的格式，比如说<code>gbk</code>。</p>
 <h2 id="golang-对-unicode-的支持"><a href="#golang-对-unicode-的支持" class="headerlink" title="golang 对 unicode 的支持"></a>golang 对 unicode 的支持</h2><p>golang 默认采取的是<code>utf-8</code>编码（顺便插一句，Go语言的发明者之一Ken Thompson正是UTF-8的发明人，而他也同时是C,Unix,Plan9等的创始人），不同于 c 语言中的<code>char</code>作为字符的基本单位，golang中是用<code>rune</code>作为基本单位，其对应的是用<code>utf-8</code>编码后的<code>byte</code>数组(<code>byte</code>可以认为是<code>uint8</code>)。这里用别人的一张图可能更加直观</p>
-<p><img src="/./bgbiao.jpg" srcset="/img/loading.gif" lazyload></p>
+<img src="/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/bgbiao.jpg" srcset="/img/loading.gif" lazyload class="">
+
 <p><code>人</code>的码位是<code>4eba</code>，将其转换成<code>utf-8</code>后就是<code>e4 ba ba</code>。所以我们平时对 <code>string</code> 数组进行遍历的时候，如果按照下标进行遍历，其实是遍历<code>4e</code>和<code>ba</code>，而不是将其作为整体<code>4eba</code>，这个时候就会出现错误。因此我们可以知道<code>rune</code>储存的是码点<code>4eba</code>，而将<code>string(&#39;人&#39;)</code>,转换为<code>byte</code>数组<code>[]byte(string(&#39;人&#39;))</code>则为<code>e4 ba ba</code>，这正是<code>utf-8</code>的编码方式，也就是实际进行储存和传输时的格式。</p>
-<p>于是我们可以知道，平时遍历的时候取到的值只是<code>unicdoe</code>而已，对于需要修改储存方式或者是加密字符串的时候，就要对实际储存的数值进行修改了，这里再用我做的一个图来看看就知道了。<br><img src="/./%E6%88%91.png" srcset="/img/loading.gif" lazyload></p>
+<p>于是我们可以知道，平时遍历的时候取到的值只是<code>unicdoe</code>而已，对于需要修改储存方式或者是加密字符串的时候，就要对实际储存的数值进行修改了，这里再用我做的一个图来看看就知道了。</p>
+<img src="/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%88%91.png" srcset="/img/loading.gif" lazyload class="">
+
 <p>这里 <code>rune</code> 表示的是 <code>a:=rune(&quot;我&quot;)</code>中的 <code>a</code> 用二进制表示的时候值。</p>
 <p>而<code>byte1,2,3</code>则是则是转换成<code>utf-8</code>编码之后的表现形式。也就是实际储存和传输的值。<code>b:=[]byte(&quot;我&quot;)</code></p>
 <p>这里为了方便看到对齐的效果，我将<code>rune</code>位上的值为 1 的部分表现为绿色，值为<code>0</code>的部分表现为红色，而<code>byte</code>数组中用于标注的部分表现为蓝色，这样我们就可以清楚地看到这个是怎么对齐的了。</p>
