@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="用 python 可以不用管数据类型，而用 .net 又可以方便的进行GUI开发。两者结合起来的话是多么的棒啊。可惜我太菜了结合不了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字图像处理大作业记录-边缘检测与阈值分割的Python实现及利用PyQt5的GUI开发">
+<meta property="og:url" content="https://www.yikakia.com/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="用 python 可以不用管数据类型，而用 .net 又可以方便的进行GUI开发。两者结合起来的话是多么的棒啊。可惜我太菜了结合不了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yikakia.com/img/banner/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95.png">
+<meta property="article:published_time" content="2020-05-28T11:06:34.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.957Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="PyQt5">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="数字图像处理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.yikakia.com/img/banner/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95.png">
+  
+  
+  
+  <title>数字图像处理大作业记录-边缘检测与阈值分割的Python实现及利用PyQt5的GUI开发 - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数字图像处理大作业记录-边缘检测与阈值分割的Python实现及利用PyQt5的GUI开发"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-05-28 19:06" pubdate>
+          2020年5月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          93 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字图像处理大作业记录-边缘检测与阈值分割的Python实现及利用PyQt5的GUI开发</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>用 python 可以不用管数据类型，而用 .net 又可以方便的进行GUI开发。两者结合起来的话是多么的棒啊。可惜我太菜了结合不了。</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这学期开的数字图像处理也有实验，实验项目是边缘检测和阈值开发。老师推荐的是用 .net 来做。但感觉太麻烦了，所以问了老师，得到了能用 python 的许可。</p>
+<p>不过看起来老师还是希望有个 GUI 界面的，那就试试 PyQt 怎么样咯。刚好也想折腾一下。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>写的代码各种文盲，格式乱飞希望不要介意，有疑问的地方可以和我交流。<br>这个作业的项目地址 ：<br><a class="btn" target="_blank" rel="noopener" href="https://github.com/yikakia/DigtalPicHomework" title="Github地址">数字图像处理作业</a></p>
+<h2 id="安装库"><a href="#安装库" class="headerlink" title="安装库"></a>安装库</h2><p>用的包方面看我的那个 <code>requirements.txt</code>就行了。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">qimage2ndarray</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">1.8</span>.<span class="hljs-number">3</span><br>opencv_python<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">4.2</span>.<span class="hljs-number">0.34</span><br><span class="hljs-attribute">numpy</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">1.18</span>.<span class="hljs-number">2</span><br><span class="hljs-attribute">PyQt5</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">5.14</span>.<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="用QT-Designer设计UI"><a href="#用QT-Designer设计UI" class="headerlink" title="用QT Designer设计UI"></a>用QT Designer设计UI</h2><p>在GUI方面我用的是QT Designer来辅助设计，这样所见即所得的体验很好。<br>哦对了，要QT Desinger的安装使用和汉化如果有需求的话可以参考我的<a href="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="这篇文章">这篇文章</a>。<br>打开后大概是这个样子的，这里我们一般用 <code>Main Window</code> 这一项，因为这个会自动附带上工具栏和状态栏，一般还是比较好用的<br><img src="/QTDesigner%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>然后就是实际使用啦，实际上的话和利用VS开发差不了多少，都是拖控件然后命名控件，设置控件的各种属性。</p>
+<p>对于开发的话有个小的建议就是把UI界面和实际的业务逻辑分开。就是说UI界面只管各种界面的属性，而不涉及实际的操作的函数。这样在维护的时候很方便。</p>
+<p>总之最后我是设计成了这样，能用就行了。<br><img src="/UI%E7%A4%BA%E4%BE%8B.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>实际运行时的效果大概是这样的。<br><img src="/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AE%B0%E5%BD%95.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后保存你设计的UI文件就可以了，现在我们保存的是.ui文件，并不能直接用于python编程，所以需要使用PyQt自带的程序<code>pyuic5.exe</code>来实现将.ui文件转换为.py文件。</p>
+<p>具体的方法如下，打开终端然后输入以下命令</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">你的Python的文件夹\Scripts\pyuic5.exe -o 目标文件保存地址 UI文件保存路径<br></code></pre></td></tr></table></figure>
+<p>在实例中大概是这个样子的，我这里是在.ui文件所在的文件夹启动了终端，然后把生成的.py文件保存在了和.ui文件相同的文件夹里面并且命名为<code>MainWindow.py</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">D:\<span class="hljs-title">DevEnv</span>\<span class="hljs-title">python</span>\<span class="hljs-title">python381</span>\<span class="hljs-title">Scripts</span>\<span class="hljs-title">pyuic5.exe</span> -<span class="hljs-title">o</span> <span class="hljs-title">MainWindow.py</span> .\<span class="hljs-title">UI.ui</span></span><br></code></pre></td></tr></table></figure>
+<p>我推荐把这个写成.bat或者.sh的脚本文件，来方便每次修改完UI之后都可以通过直接调用脚本来进行转换。</p>
+<h2 id="注册响应函数"><a href="#注册响应函数" class="headerlink" title="注册响应函数"></a>注册响应函数</h2><p>在设计完UI之后，我们就新建一个.py程序来实现业务逻辑吧。新建一个类继承之前的UI文件的类和QMainWindow这个类。</p>
+<p>继承完了之后写一个初始化，然后在这个初始化的函数里面注册响应函数。</p>
+<p>注册响应函数的大概格式是这样的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">self.控件名.触发的消息类型.connect(响应消息的函数)<br></code></pre></td></tr></table></figure>
+
+<p>实际写的话大概是这样的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">self.actionOpen_File.triggered.connect(self.openfile)<br></code></pre></td></tr></table></figure>
+
+<p>这里的话我是在这个类里面写了一个 openfile 的函数来实现相应的功能。要注意这里调用函数的时候不需要写括号，就是如同下面这样的形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">self.actionOpen_File.triggered.connect(self.openfile())<br></code></pre></td></tr></table></figure>
+<p>如果这样写了的话会报错 TypeError: argument 1 has unexpected type ‘NoneType’ ，原理大概是这个响应并不期待有返回值？之前写作业的时候忙着解决问题就没有仔细看原理了，这里有StackOverFlow的讨论的<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45793966/clicked-connect-error">链接</a>，感兴趣的可以看看。</p>
+<h2 id="保存长高比的情况下的最大缩放"><a href="#保存长高比的情况下的最大缩放" class="headerlink" title="保存长高比的情况下的最大缩放"></a>保存长高比的情况下的最大缩放</h2><p>这个问题主要是读入的图像大小和宽高比都不同，但我们想要把它完整地显示出来，这个时候我们就得找到一个合适的缩放比例来把<br>原图像完整的放入目标窗口中。</p>
+<p>其实这个问题可以化简成给定目标窗口的宽和高，让你求按原图像放进去，最大能放多少。</p>
+<p>实际上我们可以很简单的推出来，要达到最大的时候，原图像的宽或者高必然有一个等于目标窗口的宽或高。因为没到的话就可以说明还没到最大的缩放。</p>
+<p>这里我们可以用极限法来试着看看</p>
+<p>定义原图像为 <code>srcImg</code> ，目标窗口为 <code>tarWindow</code></p>
+<h3 id="一种极限情况"><a href="#一种极限情况" class="headerlink" title="一种极限情况"></a>一种极限情况</h3><p>当满足下面的情况的时候<br><code>srcImg.h = 100000</code><br><code>srcImg.w = 1 </code><br><code>tarWindow.h = 1</code><br><code>tarWindow.w = 100000</code><br>原图像为一个竖着的图，目标窗口为一个横着的图。这个时候要把原图像按原比例放进目标窗口的话，必然有 </p>
+<p><code>srcImg.h = tarWindow.h </code></p>
+<p>同时还可以得到</p>
+<p><code>srcImg.w = srcImg.w * tarWindow.h/srcImg.h</code> (这里的<code>srcImg.h</code>的值是更新前的值，这样是通过缩放比例放大)</p>
+<p>这个时候原图像的高等于目标窗口的高，而原图像的宽可以通过缩放比例，或者原图像原本的比例来求得。</p>
+<h3 id="另外一种极限情况"><a href="#另外一种极限情况" class="headerlink" title="另外一种极限情况"></a>另外一种极限情况</h3><p>当满足下面的情况的时候<br><code>srcImg.h = 1</code><br><code>srcImg.w = 100000 </code><br><code>tarWindow.h = 100000</code><br><code>tarWindow.w = 1</code><br>原图像是一个横着的图，目标窗口是一个竖着的图，这个时候要把原图像按原比例放进目标窗口的话，必然有</p>
+<p><code>srcImg.w = tarWindow.w</code></p>
+<p>同时还可以得到</p>
+<p><code>srcImg.h = srcImg.h * tarWindow.w/srcImg.w</code> (这里的<code>srcImg.w</code>的值是更新前的值，这样是通过缩放比例来放大)</p>
+<p>这个时候原图像的宽等于目标窗口的宽，而原图像的高可以通过缩放比例，或者原图像原本的比例来求得。</p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>当然这个只是通过极限法推出来的。实际情况中应该怎么判断呢？我给个我的解决方案。</p>
+<ol>
+<li><code>p1 = tarWindow.w/srcImg.w</code></li>
+<li><code>p2 = tarWindow.h/srcImg.h</code></li>
+<li><code>p = p1 &lt; p2 ? p1 : p2</code></li>
+<li><code>newImg.h = srcImg.h * p</code> </li>
+<li><code>newImg.w = srcImg.w * p</code></li>
+</ol>
+<p>简单地说就是求出两种缩放比例的值，分别是根据高或者宽缩放，然后实际应用的值就是取两者之中小的那个。这样就可以在不超过目标窗口的大小的情况下获得最大的缩放。</p>
+<p>为什么要这样求呢？<br>我们先假设原图像的长宽都小于目标窗口的长宽，这个时候我们把原图像从小到大一点点的放大，当第一次接触到目标窗口的边的时候，<br>你就发现这个时候已经是最大缩放了，你再继续放大的话就会超出目标窗口的限制了。</p>
+<p>而当原图像的长宽都大于目标窗口的时候，这时我们将原图像一点点的缩小，当第一次接触到目标窗口的时候，目标窗口依然被你包裹着，<br>原图像并没有完全显示在目标窗口中。这个时候我们要达到最大缩放的话就得用小的那个情况了。</p>
+<p>综合以上的两种情况，很轻松的就可以得到与我的流程相同的结果。</p>
+<p>我推导的时候用了Geogebra来帮忙推导，可视化的推导对于没有空间想象力的人来说真是方便。这是<a href="%E5%9B%BE%E5%83%8F%E5%9C%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E7%BC%A9%E6%94%BE%E7%9A%84%E6%A8%A1%E5%9E%8B.ggb">文件</a></p>
+<h2 id="读入并显示图片"><a href="#读入并显示图片" class="headerlink" title="读入并显示图片"></a>读入并显示图片</h2><p>我这里的实现原理是通过 OpenCV 的 imread 读入图像，然后把OpenCV保存的Numpy格式的数据转换成QT的QImage的数据类型。<br>显示图像的时候是把图像先放入 QGraphicsScene() 中，然后把这个QGraphicsScene()设置为对应的QGraphicsView()的 Scene 。</p>
+<p>这里我转化三通道的图没问题，但单通道的灰度图就不知道怎么的就有错，具体的表现形式是灰度图会被转化成没有意义的黑色条纹。</p>
+<p>我各种搜索都没找到解决方法，最后看到有人提到了有<code>qimage2ndarray</code>这个包我才搞定了显示灰度图的问题。</p>
+<p>我的显示是这个样子的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 将OpenCV格式储存的图片转换为QT可处理的图片类型</span><br>qimg = self.cvPic2Qimg(tmpImg)<br><span class="hljs-comment"># 将图片放入图片显示窗口</span><br>scene = QGraphicsScene()<br>scene.addPixmap(QPixmap.fromImage(qimg))<br>self.picview_source.setScene(scene)<br>self.hasOpen = <span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="转换array数组到qiamge类"><a href="#转换array数组到qiamge类" class="headerlink" title="转换array数组到qiamge类"></a>转换array数组到qiamge类</h3><p>这里我直接把我的函数复制过来吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">cvPic2Qimg</span>(<span class="hljs-params">self, img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    将用 opencv 读入的图像转换成qt可以读取的图像</span><br><span class="hljs-string"></span><br><span class="hljs-string">    ========== =====================</span><br><span class="hljs-string">    序号       支持类型</span><br><span class="hljs-string">    ========== =================</span><br><span class="hljs-string">            1 灰度图 Gray</span><br><span class="hljs-string">            2 三通道的图 BGR顺序</span><br><span class="hljs-string">            3 四通道的图 BGRA顺序</span><br><span class="hljs-string">    ========= ===================</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">len</span>(img.shape)==<span class="hljs-number">2</span>):<br>        <span class="hljs-comment"># 读入灰度图的时候</span><br>        image = array2qimage(img)<br>    <span class="hljs-keyword">elif</span> (<span class="hljs-built_in">len</span>(img.shape)==<span class="hljs-number">3</span>):  <br>        <span class="hljs-comment"># 读入RGB或RGBA的时候</span><br>        <span class="hljs-keyword">if</span> (img.shape[<span class="hljs-number">2</span>] == <span class="hljs-number">3</span>):<br>            <span class="hljs-comment">#转换为RGB排列</span><br>            RGBImg = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)<br>            <span class="hljs-comment">#RGBImg.shape[1]*RGBImg.shape[2]这一句时用来解决扭曲的问题</span><br>            <span class="hljs-comment">#详情参考 https://blog.csdn.net/owen7500/article/details/50905659 这篇博客</span><br>            image = QtGui.QImage(RGBImg, RGBImg.shape[<span class="hljs-number">1</span>], RGBImg.shape[<span class="hljs-number">0</span>],<br>                                RGBImg.shape[<span class="hljs-number">1</span>]*RGBImg.shape[<span class="hljs-number">2</span>], QtGui.QImage.Format_RGB888)<br>        <span class="hljs-keyword">elif</span> (img.shape[<span class="hljs-number">2</span>] == <span class="hljs-number">4</span>):<br>            <span class="hljs-comment">#读入为RGBA的时候</span><br>            RGBAImg = cv2.cvtColor(img, cv2.COLOR_BGRA2RGBA)<br>            image = array2qimage(RGBAImg)<br>    <span class="hljs-keyword">return</span> image<br><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="解决-OpenCV-读取的图像转换成-QImage-时出现扭曲的现象"><a href="#解决-OpenCV-读取的图像转换成-QImage-时出现扭曲的现象" class="headerlink" title="解决 OpenCV 读取的图像转换成 QImage 时出现扭曲的现象"></a>解决 OpenCV 读取的图像转换成 QImage 时出现扭曲的现象</h3><p>最开始我是直接用的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">image = QtGui.QImage(RGBImg, RGBImg.shape[<span class="hljs-number">1</span>], RGBImg.shape[<span class="hljs-number">0</span>],<br>            QtGui.QImage.Format_RGB888)                      <br></code></pre></td></tr></table></figure>
+<p>这样在对于是四个字节一行的数据的图像的时候没有问题，但对于不是四个字节一行的图片的时候就会出现不能对齐的问题了。<br>错误的原理是图片数据没有按四个字节对齐，具体可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012342051/article/details/79728117">这篇博客</a></p>
+<p>具体表现出来的形式就是图像被左右颠倒，并且大幅度的从左到右的扭曲了。</p>
+<p>我的解决方法是参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/owen7500/article/details/50905659">这篇博客</a>的解决方案。</p>
+<p>这样修改后的转换函数就是下面这个样子的。我这里多了一个参数<code>RGBImg.shape[1]*RGBImg.shape[2]</code>，这个就是用来指明一行有多少个字节的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">image = QtGui.QImage(RGBImg, RGBImg.shape[<span class="hljs-number">1</span>], RGBImg.shape[<span class="hljs-number">0</span>],<br>                    RGBImg.shape[<span class="hljs-number">1</span>]*RGBImg.shape[<span class="hljs-number">2</span>], QtGui.QImage.Format_RGB888)<br></code></pre></td></tr></table></figure>
+
+<h3 id="解决-OpenCV-读取的灰度图像转换成-QImage-时出现变成黑白条纹的现象"><a href="#解决-OpenCV-读取的灰度图像转换成-QImage-时出现变成黑白条纹的现象" class="headerlink" title="解决 OpenCV 读取的灰度图像转换成 QImage 时出现变成黑白条纹的现象"></a>解决 OpenCV 读取的灰度图像转换成 QImage 时出现变成黑白条纹的现象</h3><p>其实这个不算是解决了，只是调用了别人的库，不过我看了别人的源码也没看懂这个到底是怎么做到转换的。大概的实现方式就是下面这样，调用别人的包就完事了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> (<span class="hljs-built_in">len</span>(img.shape)==<span class="hljs-number">2</span>):<br>        <span class="hljs-comment"># 读入灰度图的时候</span><br>        image = array2qimage(img)<br></code></pre></td></tr></table></figure>
+
+<h2 id="保存图像"><a href="#保存图像" class="headerlink" title="保存图像"></a>保存图像</h2><p>具体的实现方式是通过调用QFileDialog.getSaveFileName()来获取要保存的文件的类型和地址，然后利用OpenCV的imwrite()来实现保存图片的功能。</p>
+<p>保存方面参考的<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42105426/article/details/89446716">这篇博客</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 利用OpenCV保存图片</span><br><span class="hljs-comment"># 按不同的格式区分，分别对应不同的参数</span><br><span class="hljs-keyword">if</span> imgType == <span class="hljs-string">&quot;*.jpg&quot;</span>:<br>    cv2.imwrite(imgName, self.destImg, [cv2.IMWRITE_JPEG_QUALITY, <span class="hljs-number">50</span>])<br><span class="hljs-keyword">elif</span> imgType == <span class="hljs-string">&quot;*.png&quot;</span>:<br>    cv2.imwrite(imgName, self.destImg, [cv2.IMWRITE_PNG_COMPRESSION, <span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
+
+<p>说完了业务逻辑的设计，接下来就是我的各种算法的实现啦。</p>
+<h2 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h2><p>其实这几种都大同小异，都是利用模板然后进行卷积。为了方便看可以把结果二值化处理</p>
+<h3 id="利用-sobel-算子进行边缘检测"><a href="#利用-sobel-算子进行边缘检测" class="headerlink" title="利用 sobel 算子进行边缘检测"></a>利用 sobel 算子进行边缘检测</h3><p>简单地说就是定义x,y两个方向的sobel算子，然后利用两个算子分别对原图像卷积，最后对两个方向上的结果进行求和。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">sobel</span>(<span class="hljs-params">img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    利用 sobel 算子 进行边缘检测</span><br><span class="hljs-string">    读入 OpenCV格式的BGR图像，返回OpenCV格式的灰度图像</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><br>    <span class="hljs-comment"># 定义sobel算子</span><br>    sobel_x = [[-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>],<br>               [-<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>],<br>               [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]]<br>    sobel_y = [[-<span class="hljs-number">1</span>, -<span class="hljs-number">2</span>, <span class="hljs-number">1</span>],<br>               [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>               [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, -<span class="hljs-number">1</span>]]<br>    <span class="hljs-comment"># 定义阈值</span><br>    valve = <span class="hljs-number">188</span><br>    <span class="hljs-comment"># 转换为灰度图</span><br>    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 获取长宽</span><br>    row, col = img_gray.shape<br>    result = np.zeros((row, col))<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, row-<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, col-<span class="hljs-number">1</span>):<br>            <span class="hljs-comment"># 不管四个边进行边缘检测</span><br>            sub = img_gray[x-<span class="hljs-number">1</span>:x+<span class="hljs-number">2</span>, y-<span class="hljs-number">1</span>:y+<span class="hljs-number">2</span>]<br>            var_x = np.<span class="hljs-built_in">sum</span>(np.matmul(sub, sobel_x))<br>            var_y = np.<span class="hljs-built_in">sum</span>(np.matmul(sub, sobel_y))<br>            var = <span class="hljs-built_in">abs</span>(var_x) + <span class="hljs-built_in">abs</span>(var_y)<br>            <span class="hljs-keyword">if</span>(var &gt; valve):<br>                var = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span>:<br>                var = <span class="hljs-number">255</span><br>            result[x, y] = var<br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="利用-prewitt-算子进行边缘检测"><a href="#利用-prewitt-算子进行边缘检测" class="headerlink" title="利用 prewitt 算子进行边缘检测"></a>利用 prewitt 算子进行边缘检测</h3><p>和 sobel 算子大同小异，定义x,y方向上的算子，然后分别进行卷积，最后求和。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">prewitt</span>(<span class="hljs-params">img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    利用 prewitt 算子进行边缘检测</span><br><span class="hljs-string">    读入 OpenCV格式的BGR图像，返回OpenCV格式的灰度图像</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 定义prewitt算子</span><br>    prewittx = [[-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>],<br>                [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>],<br>                [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]]<br>    prewitty = [[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>],<br>                [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>                [-<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>]]<br>    prewittx = np.array(prewittx)<br>    prewitty = np.array(prewitty)<br>    <span class="hljs-comment"># 定义阈值</span><br>    valve = <span class="hljs-number">188</span><br>    <span class="hljs-comment"># 转换为灰度图</span><br>    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 获取长宽</span><br>    row, col = img_gray.shape<br>    result = np.zeros((row, col))<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, row-<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, col-<span class="hljs-number">1</span>):<br>            <span class="hljs-comment"># 不管四个边进行边缘检测</span><br>            sub = img_gray[x-<span class="hljs-number">1</span>:x+<span class="hljs-number">2</span>, y-<span class="hljs-number">1</span>:y+<span class="hljs-number">2</span>]<br>            var_x = np.<span class="hljs-built_in">sum</span>(np.matmul(sub, prewittx))<br>            var_y = np.<span class="hljs-built_in">sum</span>(np.matmul(sub, prewitty))<br>            var = sqrt(var_x*var_x+var_y*var_y)<br>            <span class="hljs-keyword">if</span>(var &gt; valve):<br>                var = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span>:<br>                var = <span class="hljs-number">255</span><br>            result[x, y] = var<br><br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+
+<h3 id="利用-laplace-算子进行边缘检测"><a href="#利用-laplace-算子进行边缘检测" class="headerlink" title="利用 laplace 算子进行边缘检测"></a>利用 laplace 算子进行边缘检测</h3><p>这个有点不一样的就是只有一个算子，但这个算子兼顾了x,y方向上的结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">laplace</span>(<span class="hljs-params">img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    利用拉普拉斯算子进行边缘检测</span><br><span class="hljs-string">    读入 OpenCV格式的BGR图像，返回OpenCV格式的灰度图像</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 定义 laplace 算子</span><br>    laplaceop = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],<br>                 [<span class="hljs-number">1</span>, -<span class="hljs-number">4</span>, <span class="hljs-number">1</span>],<br>                 [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]]<br>    laplaceop = np.array(laplaceop)<br>    <span class="hljs-comment"># 定义阈值</span><br>    valve = <span class="hljs-number">81</span><br>    <span class="hljs-comment"># 转换为灰度图</span><br>    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 获取长宽</span><br>    row, col = img_gray.shape<br>    result = np.zeros((row, col))<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, row-<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, col-<span class="hljs-number">1</span>):<br>            <span class="hljs-comment"># 不管四个边进行边缘检测</span><br>            sub = img_gray[x-<span class="hljs-number">1</span>:x+<span class="hljs-number">2</span>, y-<span class="hljs-number">1</span>:y+<span class="hljs-number">2</span>]<br>            var = np.<span class="hljs-built_in">sum</span>(np.matmul(sub, laplaceop))<br>            <span class="hljs-keyword">if</span>(var &gt; valve):<br>                var = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span>:<br>                var = <span class="hljs-number">255</span><br>            result[x, y] = var<br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h2><p>我试了下，基本就是找到一个大概的阈值。然后通过这个阈值我就可以将图像从原图中分离出来。可以是背景也可以前景主体。</p>
+<h3 id="利用-迭代阈值法-进行阈值分割"><a href="#利用-迭代阈值法-进行阈值分割" class="headerlink" title="利用 迭代阈值法 进行阈值分割"></a>利用 迭代阈值法 进行阈值分割</h3><p><img src="/%E8%BF%AD%E4%BB%A3%E9%98%88%E5%80%BC%E6%B3%95%E5%8E%9F%E7%90%86.jpg" srcset="/img/loading.gif" lazyload alt="迭代阈值法原理"><br>迭代阈值法主要思想就是</p>
+<ol>
+<li>先假定一个阈值</li>
+<li>然后不停的计算低于阈值的像素的平均值T1和高于阈值的像素的平均值T2。</li>
+<li>最后将这两个平均值求平均T&#x3D;(T1+T2)&#x2F;2</li>
+<li>把这个T和当前的阈值相比较，如果没变动，或者进入一个循环了就退出迭代。如果有变动就到步骤2继续循环</li>
+</ol>
+<p>我这里为了判断退出循环的条件引入了一个变量计算每次的阈值变化的差值。如果上次变化的差值和当前变化的差值相同，或者更小，那我就退出循环。</p>
+<p>因为随着迭代，每一步的变动必然是也来越小的，如果出现了差值反而变大的情况，那就直接退出。</p>
+<p>下面是我的代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">genrate</span>(<span class="hljs-params">img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    迭代阈值法</span><br><span class="hljs-string">    输入OpenCV格式的BGR图，输出OpenCV格式的灰度图</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 转换为灰度图</span><br>    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 获取长宽</span><br>    row, col = img_gray.shape<br>    result = np.zeros((row, col))<br>    <span class="hljs-comment"># 求第一代阈值</span><br>    value = <span class="hljs-built_in">int</span>((<span class="hljs-built_in">int</span>(img_gray.<span class="hljs-built_in">max</span>()) + <span class="hljs-built_in">int</span>(img_gray.<span class="hljs-built_in">min</span>()))/<span class="hljs-number">2</span>)<br>    <span class="hljs-comment"># 生成直方图便于计算</span><br>    F = np.zeros(<span class="hljs-number">256</span>)<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row) :<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col) :<br>            F[img_gray[x][y]] = F[img_gray[x][y]] + <span class="hljs-number">1</span><br>    <span class="hljs-comment"># 获得前景色的数量</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getFrontColorNum</span>(<span class="hljs-params">median</span>):<br>        nFrontColor = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span> (median,<span class="hljs-number">256</span>):<br>            nFrontColor = nFrontColor + F[i]<br>        <span class="hljs-keyword">return</span> nFrontColor<br>    <br>    <span class="hljs-comment"># 获得背景色的数量</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getBackColorNum</span>(<span class="hljs-params">median</span>):<br>        nBackColor = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(median):    <br>            nBackColor = nBackColor + F[i]<br>        <span class="hljs-keyword">return</span> nBackColor<br><br>    <span class="hljs-comment"># 计算下一代阈值</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getNextValue</span>(<span class="hljs-params">median</span>):<br>        tmp1 = <span class="hljs-number">0</span><br>        tmp2 = <span class="hljs-number">0</span><br>        sum1 = <span class="hljs-number">0</span><br>        sum2 = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(median,<span class="hljs-number">256</span>):<br>            tmp1 = tmp1 + F[i] * i<br>        sum1 = tmp1/getFrontColorNum(median)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(median):<br>            tmp2 = tmp2 + F[i] * i<br>        sum2 = tmp2/getBackColorNum(median)<br>        <span class="hljs-keyword">return</span> (sum1+sum2)/<span class="hljs-number">2</span><br>    <br>    nextValue = <span class="hljs-built_in">int</span>(getNextValue(value))<br>    difference = <span class="hljs-built_in">abs</span>(nextValue - value)<br>    <span class="hljs-comment"># 迭代阈值</span><br>    <span class="hljs-keyword">while</span> (nextValue!=value):<br>        value = nextValue<br>        nextValue = <span class="hljs-built_in">int</span>(getNextValue(value))<br>        <span class="hljs-comment"># 当差值不再减小时说明就找到了合适的阈值</span><br>        <span class="hljs-keyword">if</span> difference &lt;= <span class="hljs-built_in">abs</span>(nextValue - value):<br>            <span class="hljs-keyword">break</span><br>    value = <span class="hljs-built_in">int</span>(value)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;迭代阈值法的结果为&quot;</span>,value)<br>    <span class="hljs-comment"># 二值化</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row):<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col):<br>            <span class="hljs-keyword">if</span> value &gt; img_gray[x][y]:<br>                result[x][y] = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span> :<br>                result[x][y] = <span class="hljs-number">255</span><br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="利用-LOG-算子-进行阈值分割"><a href="#利用-LOG-算子-进行阈值分割" class="headerlink" title="利用 LOG 算子 进行阈值分割"></a>利用 LOG 算子 进行阈值分割</h3><p>其实我觉得这个应该算是边缘检测的，但是老师把这个归入了阈值分割那我就跟着她做吧。</p>
+<p>简单地说就是定义一个5x5的模板，然后和原图卷积。其实最好还要求零交叉，不过我还没搞定这个，等搞定再说。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">log</span>(<span class="hljs-params">img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    log算法 阈值分割</span><br><span class="hljs-string">    输入OpenCV格式的BGR图片，输出OpenCV格式的灰度图</span><br><span class="hljs-string">    threshold</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 定义 LOG 算子</span><br>    logop = [[-<span class="hljs-number">2</span>,-<span class="hljs-number">4</span>,-<span class="hljs-number">4</span>,-<span class="hljs-number">4</span>,-<span class="hljs-number">2</span>],<br>            [-<span class="hljs-number">4</span>,<span class="hljs-number">0</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">4</span>],<br>            [-<span class="hljs-number">4</span>,<span class="hljs-number">8</span>,<span class="hljs-number">24</span>,<span class="hljs-number">8</span>,-<span class="hljs-number">4</span>],<br>            [-<span class="hljs-number">4</span>,<span class="hljs-number">0</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">4</span>],<br>            [-<span class="hljs-number">2</span>,-<span class="hljs-number">4</span>,-<span class="hljs-number">4</span>,-<span class="hljs-number">4</span>,-<span class="hljs-number">2</span>]]<br>    logop =np.array(logop)<br>    <span class="hljs-comment"># 定义阈值</span><br>    valve = <span class="hljs-number">368</span><br>    <span class="hljs-comment"># 转换为灰度图</span><br>    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 获取长宽</span><br>    row, col = img_gray.shape<br>    result = np.zeros((row, col))<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, row-<span class="hljs-number">2</span>):<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, col-<span class="hljs-number">2</span>):<br>            <span class="hljs-comment"># 不管四个边进行边缘检测</span><br>            sub = img_gray[x-<span class="hljs-number">2</span>:x+<span class="hljs-number">3</span>, y-<span class="hljs-number">2</span>:y+<span class="hljs-number">3</span>]<br>            var = np.<span class="hljs-built_in">sum</span>(np.matmul(sub, logop))<br>            <span class="hljs-keyword">if</span>(var &gt; valve):<br>                var = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span>:<br>                var = <span class="hljs-number">255</span><br>            result[x, y] = var<br>    <span class="hljs-keyword">return</span> result   <br></code></pre></td></tr></table></figure>
+
+<h3 id="利用-一维最大熵-进行阈值分割"><a href="#利用-一维最大熵-进行阈值分割" class="headerlink" title="利用 一维最大熵 进行阈值分割"></a>利用 一维最大熵 进行阈值分割</h3><p>简单地说就是通过信息熵的公式求出前景熵和背景熵，通过循环来取不同的值来遍历整个颜色的深度，使得前景熵和背景熵之和最大。这就是一维最大熵的原理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">maximus</span>(<span class="hljs-params">img</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    一维最大熵</span><br><span class="hljs-string">    输入OpenCV格式的BGR图片，输出OpenCV格式的灰度图</span><br><span class="hljs-string">    Threshold 阈值</span><br><span class="hljs-string">    参考 https://blog.csdn.net/Robin__Chou/article/details/53931442</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 转换为灰度图</span><br>    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)<br>    <span class="hljs-comment"># 获取长宽</span><br>    row, col = img_gray.shape<br>    <span class="hljs-comment"># 生成结果图像矩阵</span><br>    result = np.zeros((row, col))<br>    <span class="hljs-comment"># 生成直方图便于计算</span><br>    F = np.zeros(<span class="hljs-number">256</span>)<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row) :<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col) :<br>            F[img_gray[x][y]] = F[img_gray[x][y]] + <span class="hljs-number">1</span><br>    <br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getFrontColorNum</span>(<span class="hljs-params">median</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;获得前景色的数量，输入 median 为阈值的大小&quot;&quot;&quot;</span><br>        nFrontColor = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span> (median,<span class="hljs-number">256</span>):<br>            nFrontColor = nFrontColor + F[i]<br>        <span class="hljs-keyword">return</span> nFrontColor<br>     <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getBackColorNum</span>(<span class="hljs-params">median</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;获得背景色的数量，输入 median 为阈值的大小&quot;&quot;&quot;</span><br>        nBackColor = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(median):    <br>            nBackColor = nBackColor + F[i]<br>        <span class="hljs-keyword">return</span> nBackColor<br><br>    maxEntropy = -<span class="hljs-number">10</span><br>    threshold = <span class="hljs-number">0</span><br>    <span class="hljs-comment"># 求出最大熵</span><br>    <span class="hljs-keyword">for</span> tmpThreshold <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>) :<br>        nFrontColor = getFrontColorNum(tmpThreshold)<br>        nBackColor = getBackColorNum(tmpThreshold)<br>        <span class="hljs-comment"># 计算背景熵</span><br>        backEntropy = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(tmpThreshold):<br>            <span class="hljs-keyword">if</span> F[i]!=<span class="hljs-number">0</span> :<br>                Property = F[i]/nBackColor<br>                backEntropy = -Property*log10(<span class="hljs-built_in">float</span>(Property)) + backEntropy<br>        <span class="hljs-comment"># 计算前景熵</span><br>        frontEntropy = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(tmpThreshold,<span class="hljs-number">256</span>):<br>            <span class="hljs-keyword">if</span> F[i] != <span class="hljs-number">0</span> :<br>                Property = F[i]/nFrontColor<br>                frontEntropy = -Property*log10(<span class="hljs-built_in">float</span>(Property)) + frontEntropy<br>        <span class="hljs-comment"># 求最大熵</span><br>        <span class="hljs-keyword">if</span> (frontEntropy + backEntropy &gt;= maxEntropy) :<br>            maxEntropy = frontEntropy + backEntropy<br>            threshold = tmpThreshold<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;一维最大熵的阈值为：&quot;</span>,threshold)<br>    <span class="hljs-comment"># 二值化结果</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row):<br>        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col):<br>            <span class="hljs-keyword">if</span> threshold &gt; img_gray[x][y]:<br>                result[x][y] = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span> :<br>                result[x][y] = <span class="hljs-number">255</span><br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32973061/article/details/81139689">pyqt5 从本地选择图片 并显示在label上</a><br><a target="_blank" rel="noopener" href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QGraphicsView.html">QT官方文档：QGraphicsView</a><br><a target="_blank" rel="noopener" href="https://amin-ahmadi.com/2015/12/16/how-to-display-a-mat-image-in-qt/">How to display a Mat image in Qt</a><br><a target="_blank" rel="noopener" href="https://www.programcreek.com/python/example/108103/PyQt5.QtWidgets.QGraphicsScene">Python PyQt5.QtWidgets.QGraphicsScene() Examples</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/owen7500/article/details/50905659">解决QLabel显示图片扭曲的问题</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42105426/article/details/89446716">Opencv 随笔１－－－－－－　图片的读写（png jpg）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36441393/article/details/104766967">opencv 报错’depth’ is 6 (CV_64F)全因numpy 默认float类型是float64位</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Robin__Chou/article/details/53931442">OpenCV - 最大熵分割</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5b063c5745d0">PyQT5速成教程-2 Qt Designer介绍与入门</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="category-chain-item">数字图像处理</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/PyQt5/">#PyQt5</a>
+      
+        <a href="/tags/OpenCV/">#OpenCV</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#数字图像处理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数字图像处理大作业记录-边缘检测与阈值分割的Python实现及利用PyQt5的GUI开发</div>
+      <div>https://www.yikakia.com/数字图像处理大作业记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年5月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/PyQt5%E7%9A%84%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="PyQt5的安装指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PyQt5的安装指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/pyqt5%E7%9A%84%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/" title="pyqt5的报错处理">
+                        <span class="hidden-mobile">pyqt5的报错处理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

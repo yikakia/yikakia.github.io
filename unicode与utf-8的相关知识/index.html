@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="unicode是字符集，utf-8是字符集的编码方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unicode与utf-8的相关知识">
+<meta property="og:url" content="https://www.yikakia.com/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="unicode是字符集，utf-8是字符集的编码方式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yikakia.com/img/banner/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86.png">
+<meta property="article:published_time" content="2020-11-22T09:13:37.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.889Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="golang">
+<meta property="article:tag" content="unicode">
+<meta property="article:tag" content="utf-8">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.yikakia.com/img/banner/unicode%E4%B8%8Eutf-8%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86.png">
+  
+  
+  
+  <title>unicode与utf-8的相关知识 - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="unicode与utf-8的相关知识"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-11-22 17:13" pubdate>
+          2020年11月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">unicode与utf-8的相关知识</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><code>unicode</code>是字符集，<code>utf-8</code>是字符集的编码方式。</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>折腾<a target="_blank" rel="noopener" href="https://github.com/yikakia/cheru">切噜语转换器</a>的时候踩了不少坑，不过也学到了不少的知识，于是记录一下。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="什么是-unicode"><a href="#什么是-unicode" class="headerlink" title="什么是 unicode"></a>什么是 unicode</h2><p>简单来说 <code>unicode</code>是一种字符和数字的映射方式。因为计算机传输文本的时候不可能给你传输字形（图片），所以就约定了传输一个数字来表示一个字符。而怎么显示和处理这个字符就是这个平台自己的事情了。</p>
+<p>比如<code>我</code>这个字符，对于 <code>unicode</code> 而言就是<code>25105</code>，也就是说计算机 A 要给计算机 B 发一个字符 <code>我</code> 的时候，就给他发送<code>25105</code>，转换成二进制的话就是<code>110001000010001</code>，那么发送这一串0,1就可以了。</p>
+<p>但是这只是一个字符而已，对于多个字符而言该怎么办呢？比如<code>你好</code>，分别是 <code>20320</code> 和 <code>22909</code>。转换成二进制的话就是<code>100111101100000</code>和<code>101100101111101</code>，为了方便起见，就用十六进制来表示，分别是<code>4f60</code>和<code>597d</code>，这个数字在<code>unicode</code>被称为<code>码位</code>(<code>code point</code>,即<code>编码位置</code>)。</p>
+<p>那么假如一个字符是<code>a</code>，假如它的<code>unicode</code>码转换成二进制的话是<code>01100000</code>(实际上是<code>1100001</code>，这里只是为了演示)，那么用十六进制表示的话就是<code>60</code>，发现没有，和<code>你</code>的后面一半是一样的。</p>
+<p>我们再假设另一个字符是<code>b</code>，假如它的 <code>unicode</code> 码转换成二进制的话是<code>1011001</code>，那么用十六进制表示就是<code>59</code>，这和<code>好</code>的前半部分是一样的。这个时候假如我们舍弃掉<code>你</code>的前半部分，而是去读后半部分，同时再读取<code>好</code>的前半部分，那么读到的数字是<code>6159</code>（十六进制下），事实上这个数字在 <code>unicode</code> 中表示的字符是<code>恙</code>。</p>
+<p>这就是问题所在了，事实上在计算机通信的时候，发出的信息是0,1组成的串，我们的 <code>unicode</code> 只是实现了字符与码位的映射关系，而对于解码的时候，不可避免地会遇到类似与在上面举的例子的情况，即不知道怎么才算读完了一个字符，这样就可能出现读到一半后文本的理解就出现了偏差的情况。</p>
+<p>因此我们应该有一个用于表示 <code>unicode</code> 的方法，这个方法能够有效地表示<code>unicode</code> 字符集。这就是 <code>utf-8</code></p>
+<h2 id="什么是-utf-8"><a href="#什么是-utf-8" class="headerlink" title="什么是 utf-8"></a>什么是 utf-8</h2><p>承接上文，我们可以发现表示 <code>unicode</code> 的时候需要有一个编码方式来让传输后的字符串能够没有歧义地解码，<code>utf-8</code>就是其中一种方式。</p>
+<h3 id="utf-8是怎么编码的"><a href="#utf-8是怎么编码的" class="headerlink" title="utf-8是怎么编码的"></a>utf-8是怎么编码的</h3><p><code>utf-8</code>是这样定义的，对于一个<code>码位</code>而言如果范围在</p>
+<ul>
+<li><code>0~7f</code>之间的，就用第一种编码方式，第一位置零，后面七位原样计入</li>
+<li><code>80~7ff</code>之间的，就用第二种编码方式，用两个字节来表示，其中<code>码位</code>的高五位，置入第一个字节的低五位，置第一个字节的高三位为<code>110</code>，而<code>码位</code>的低六位，置入第二个字节的低六位，置第二个字节的高二位为<code>10</code></li>
+<li><code>800~ffff</code>之间的参照下面的表格</li>
+<li><code>10000~10ffff</code>之间的参照下面的表格</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Unicode符号范围(码位)</th>
+<th>UTF-8编码方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(十六进制)</td>
+<td>（二进制）</td>
+</tr>
+<tr>
+<td>0000 0000-0000 007F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>0000 0080-0000 07FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>0000 0800-0000 FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>0001 0000-0010 FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody></table>
+<p>简单来说，<code>utf-8</code>的编码方式是将第一个字节从开头开始的连续<code>1</code>的个数记为这个字符一共需要几个字节来表示。比如说<code>110xxxxx</code>就表示这个字符需要<code>两</code>个字节来表示，因为开头的连续1是<code>11</code>，一共有两个<code>1</code>。那么<code>1110xxxx</code>就是表示这个字符需要<code>三</code>个字节来表示，而<code>11110xxx</code>就表示这个字符需要<code>四</code>个字节来表示。但是特殊的，我们会发现当首位为<code>0</code>的时候，它表示这个字符只需要<code>1</code>个字节来表示。事实上这正是<code>ASCII</code>码的编码方式（指只有一个字节时表示的<code>unicode</code>码的码位和 <code>ASCII</code>的同码位所代表的字符是同一个）。</p>
+<p>说完了第一个，接下来就是后面的部分了。和表中的一样,我们会发现凡是用多个字节来表示的字符，它们的第二个及以后的字节的开头都是<code>10</code>。这就是第二个规则，第二个及以后的字节的开头都是<code>10</code>。</p>
+<p>这样我们就可以没有歧义地传输代表<code>unicode</code>的码位的0,1序列了。</p>
+<h3 id="解码举例"><a href="#解码举例" class="headerlink" title="解码举例"></a>解码举例</h3><p>比如我们如果读到一个字节开头是<code>10</code>的话，就说明这是这个字符的后面部分，并不完整。要读取完整的字符的话就得考虑向前走几个字节，直到找到高几位是连续1的字节。而对于字节开头是<code>0</code>的话，就说明它的低七位就是要代表的字符。</p>
+<p>比如说我们读到这样的序列<code>11100100</code> <code>10111101</code> <code>10100000</code> <code>11100101</code> <code>10100101</code> <code>10111101</code>的时候，我们先读第一个字节<code>11100100</code>，这个时候首位不是<code>0</code>，那么就找连续的1的个数，发现是<code>1110</code>，这说明这个字符需要由三个字节表示，那么先存入的第一个字节开头的后半部分<code>0100</code>，接着继续往后走，读取到了第二个字节，开头是<code>10</code>，符合<code>utf-8</code>的编码规则，取出第二个字节的后半部分<code>111101</code>并将其放入之前取出的部分的后面，拼装起来就是<code>0100 111101</code>（空格只是为了方便观察是哪一部分），之前是说这个字符要三个字节表示对吧，那么就继续往后面走，发现下一个字节的开头是<code>10</code>，符合<code>utf-8</code>的编码规则，于是取出第三个字节的后面六位<code>100000</code>,把它拼在之前拼装的结果的后面，拼装后的结果为<code>0100 111101 100000</code>，把它转成十进制表示的话正好是<code>20320</code>，查询<code>unicode</code>的定义发现代表的是<code>你</code>。</p>
+<p>后面的三个字节如法炮制即可，我们可以发现后面三个字节得到的数字 <code>0101 100101 111101</code> 转换成十进制是 <code>22909</code>，查询<code>unicode</code>的定义发现是<code>好</code>这个字符。因此，我们之前传输的这六个字节表示<code>你好</code>这个字符串。</p>
+<h3 id="如果格式不匹配呢"><a href="#如果格式不匹配呢" class="headerlink" title="如果格式不匹配呢"></a>如果格式不匹配呢</h3><p>这个时候我们就有问题了，当我们读这个0,1序列的时候，如果发现部分满足<code>utf-8</code>格式，部分不满足的时候该怎么办呢？这个时候出现的情形就是乱码。即程序会把能够匹配<code>utf-8</code>规则的字符显示出来，而不能成功解码的则会显示为󴚌或者�这种符号。这时候我们就可以考虑是文档损坏了，还是这个文档的编码方式有问题，可能不是<code>utf-8</code>格式而是其他的格式，比如说<code>gbk</code>。</p>
+<h2 id="golang-对-unicode-的支持"><a href="#golang-对-unicode-的支持" class="headerlink" title="golang 对 unicode 的支持"></a>golang 对 unicode 的支持</h2><p>golang 默认采取的是<code>utf-8</code>编码（顺便插一句，Go语言的发明者之一Ken Thompson正是UTF-8的发明人，而他也同时是C,Unix,Plan9等的创始人），不同于 c 语言中的<code>char</code>作为字符的基本单位，golang中是用<code>rune</code>作为基本单位，其对应的是用<code>utf-8</code>编码后的<code>byte</code>数组(<code>byte</code>可以认为是<code>uint8</code>)。这里用别人的一张图可能更加直观</p>
+<p><img src="/./bgbiao.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><code>人</code>的码位是<code>4eba</code>，将其转换成<code>utf-8</code>后就是<code>e4 ba ba</code>。所以我们平时对 <code>string</code> 数组进行遍历的时候，如果按照下标进行遍历，其实是遍历<code>4e</code>和<code>ba</code>，而不是将其作为整体<code>4eba</code>，这个时候就会出现错误。因此我们可以知道<code>rune</code>储存的是码点<code>4eba</code>，而将<code>string(&#39;人&#39;)</code>,转换为<code>byte</code>数组<code>[]byte(string(&#39;人&#39;))</code>则为<code>e4 ba ba</code>，这正是<code>utf-8</code>的编码方式，也就是实际进行储存和传输时的格式。</p>
+<p>于是我们可以知道，平时遍历的时候取到的值只是<code>unicdoe</code>而已，对于需要修改储存方式或者是加密字符串的时候，就要对实际储存的数值进行修改了，这里再用我做的一个图来看看就知道了。<br><img src="/%E6%88%91.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里 <code>rune</code> 表示的是 <code>a:=rune(&quot;我&quot;)</code>中的 <code>a</code> 用二进制表示的时候值。</p>
+<p>而<code>byte1,2,3</code>则是则是转换成<code>utf-8</code>编码之后的表现形式。也就是实际储存和传输的值。<code>b:=[]byte(&quot;我&quot;)</code></p>
+<p>这里为了方便看到对齐的效果，我将<code>rune</code>位上的值为 1 的部分表现为绿色，值为<code>0</code>的部分表现为红色，而<code>byte</code>数组中用于标注的部分表现为蓝色，这样我们就可以清楚地看到这个是怎么对齐的了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://www.qianxingzhem.com/post-1499.html">网页编码就是那点事</a><br><a target="_blank" rel="noopener" href="https://studygolang.com/articles/28962">Golang下的Unicode和字符串</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/golang/">#golang</a>
+      
+        <a href="/tags/unicode/">#unicode</a>
+      
+        <a href="/tags/utf-8/">#utf-8</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>unicode与utf-8的相关知识</div>
+      <div>https://www.yikakia.com/unicode与utf-8的相关知识/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年11月22日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E4%B8%BA-Windows10-%E5%BF%98%E8%AE%B0%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C/" title="为&#34;Windows 10&#34;忘记有线网络">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">为&#34;Windows 10&#34;忘记有线网络</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E5%B0%86python2%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BApython3%E7%9A%84%E4%BB%A3%E7%A0%81/" title="利用官方工具将python2的代码转换为python3的代码">
+                        <span class="hidden-mobile">利用官方工具将python2的代码转换为python3的代码</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

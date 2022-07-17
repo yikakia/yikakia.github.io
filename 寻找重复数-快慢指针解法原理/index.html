@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="是龟兔赛跑。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="寻找重复数-快慢指针解法原理">
+<meta property="og:url" content="https://www.yikakia.com/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E8%A7%A3%E6%B3%95%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="是龟兔赛跑。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yikakia.com/%E5%9B%BE1.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%9B%BE2.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%9B%BE3.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%9B%BE4.png">
+<meta property="og:image" content="https://www.yikakia.com/%E5%9B%BE5.png">
+<meta property="article:published_time" content="2020-08-16T07:22:33.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.946Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="博客,后端,it,golang">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.yikakia.com/%E5%9B%BE1.png">
+  
+  
+  
+  <title>寻找重复数-快慢指针解法原理 - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="寻找重复数-快慢指针解法原理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-08-16 15:22" pubdate>
+          2020年8月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">寻找重复数-快慢指针解法原理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>是龟兔赛跑。</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>突然刷到了一个视频<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=pKO9UjSeLew">If Programming Was An Anime</a></p>
+<p>里面的快慢指针很有趣，刚好有兴趣，那就写一下吧。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>要用快慢指针解决寻找重复数的话要证明两个部分。一个部分是这个题一定会构造出一个环，一个是快慢指针用来寻找环的入口的证明。</p>
+<h2 id="证明根据题意一定会构造出一个环"><a href="#证明根据题意一定会构造出一个环" class="headerlink" title="证明根据题意一定会构造出一个环"></a>证明根据题意一定会构造出一个环</h2><p>我们可以先想象出一个由1到n+1的数列，将它们打乱放置在下标从0到n的数组nums[]中。假设有个函数可以根据值返回它在数组中的下标 getIndex()</p>
+<p>我们可以知道nums[0]的入度为0，而值为n+1的nums[getIndex(n+1)]的出度为0，数组中的其他的入度和出度都是1。这个时候可能会生成很多的环，但是如果将nums[0]作为入口的话，是不可能出现环的，因为nums[0]的入度为0，没有指向nums[0]的值。</p>
+<p>现在我们将由nums[0]为起点的这个链表找到，假设值为n+1的数字在这个链表中，那么把它改为1~n中的任意一个数，记为p，此时我们可以知道nums[p]的入度为2，因为有两个指向它的指针。同时原本值为n+1的这个数的有了出边，指向了nums[p]</p>
+<p>当值为p的nums[getIndex(p)]在以nums[0]开头的这个链表中时，我们可以很轻易的想象出来这个这条链表形成了一个环，包括了nums[p]到nums[x]的这一系列节点。</p>
+<p>那么当这个值为p的nums[getIndex(p)]不在以nums[0]开头的这个链表中时，它在另外的一个链表中。举个例子[1,4,3,2,5]。此时nums[2]和nums[3]形成了一个环，我们将nums[4]的值改为3,即 nums &#x3D;&#x3D; [1,4,3,2,3] 我们可以看到从nums[0]开始的链表最后还是会进入到一个环中。</p>
+<p>那么值为n+1的数字不在这个链表中呢？其实这并不可能，因为它没有出边，那么它不可能在一个环中，因为所有的节点出度都是1，所以必然不存在一个环中的节点既能指向环中的节点，又能指向环外的节点。因此这个nums[getIndex(n+1)]必然在以nums[0]开头的链表中。</p>
+<h2 id="证明使用快慢指针来寻找环的入口"><a href="#证明使用快慢指针来寻找环的入口" class="headerlink" title="证明使用快慢指针来寻找环的入口"></a>证明使用快慢指针来寻找环的入口</h2><p>通过上面的证明我们知道了根据题意我们会构造出一个环，而环的入口就是那个重复的数。</p>
+<p>那么我们应该怎么找到这个重复的数呢？简单地说定义两个指针，一个慢指针(slow)每次走一步，一个快指针(fast)每次走两步。当快慢指针指向的数组下标相等时就将快指针放回数组的头部，然后继续走，当快慢指针指向的数组下标相等时，这个值就是要找的环的入口。</p>
+<p>那么问题是，怎么证明呢？</p>
+<p>如下图，令A点为起始点，B点为环的入口，C点为慢指针首次到达B点时快指针的位置，D点为快慢指针首次在环中相遇的地点。记AB的距离为a，BC的距离为b,环的周长为R。</p>
+<p><img src="/%E5%9B%BE1.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
+<p>我们让慢指针的速度为 $v_{1}$ ，快指针的速度为 $v_{2}$ 。令$v_{2} &#x3D; 2 * v_{1}$，即慢指针每次走一步，快指针每次走两步</p>
+<p><img src="/%E5%9B%BE2.png" srcset="/img/loading.gif" lazyload alt="快慢指针"></p>
+<p>那么当慢指针到达B点时，快指针已经走了 $S_{1} &#x3D; a+b+n*R$ 其中 n 为快指针在环里已经绕过的圈数。又知道快指针的速度为慢指针的两倍，所以快指针走过的路程 $S_{1} &#x3D; 2 * a$ 即慢指针走过的路程的两倍。我们将其整理可以得到 $a &#x3D; n * R + b$</p>
+<p><img src="/%E5%9B%BE3.png" srcset="/img/loading.gif" lazyload alt="慢指针到B点"><br>因为快指针每次走两步，慢指针每次走一步。所以快指针每次比慢指针多走一步。在慢指针到达B点时，快指针和慢指针的距离是 $S_{2} &#x3D; S_{cb} &#x3D; R - b$ 。也就是说从现在开始，到两者首次相遇在D点，慢指针要走$S_{3}$ &#x3D; $S_{2} &#x3D; R-b$ 这么多步。那么这个时候因为 $v_{2} &#x3D; 2 * v_{1}$ 所以快指针走的距离为 $S_{4} &#x3D; 2 * S_{2} &#x3D; 2 * (R - b)$。</p>
+<p>因为在慢指针刚到达B点时，快指针在C点，所以当两者在D点相遇时，快指针相对于B点的距离为 $S_{5} &#x3D; S_{4} + b &#x3D; 2 * R - b$ 。因为R为环的周长所以可以约去，因此此时快指针相对于B点的距离为 $|-b| &#x3D; b$ 即D点与C点刚好形成一个对称关系。</p>
+<p><img src="/%E5%9B%BE4.png" srcset="/img/loading.gif" lazyload alt="快慢指针D点相遇"><br>此时我们将快指针移回原点A，并且让它的速度为 $v_{3} &#x3D; v_{1}$ 如果让快指针从A点走到B点那么可以知道此时快慢指针走过的路程相同 $S_{6} &#x3D; a &#x3D; n * R + b$ 。因为R为环的周长所以对于在环里的慢指针而言可以约去，此时我们会发现当快指针到达B点的时候，慢指针也到达了B点，此时的B点正好是环的入口。<br><img src="/%E5%9B%BE5.png" srcset="/img/loading.gif" lazyload alt="快指针移回原点"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/donghuaan/article/details/78988987">【链表】【证明】快慢指针判断链表有环、寻找环入口、计算环大小的原理</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>寻找重复数-快慢指针解法原理</div>
+      <div>https://www.yikakia.com/寻找重复数-快慢指针解法原理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年8月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Lets-Encrypt-%E6%9B%B4%E6%96%B0%E6%8A%A5%E9%94%99/" title="Lets-Encrypt-更新报错">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Lets-Encrypt-更新报错</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/hexo-%E6%9B%B4%E6%96%B0tag%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%8E%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/" title="hexo-更新tag的大小写后标签页出现错误">
+                        <span class="hidden-mobile">hexo-更新tag的大小写后标签页出现错误</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

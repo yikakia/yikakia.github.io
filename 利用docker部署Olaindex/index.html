@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="吹爆docker!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用docker部署Olaindex">
+<meta property="og:url" content="https://www.yikakia.com/%E5%88%A9%E7%94%A8docker%E9%83%A8%E7%BD%B2Olaindex/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="吹爆docker!">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2018/10/27/5bd46f7f160a6.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/27/5bd47070cd1b0.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/27/5bd470721f1a3.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/27/5bd470719602a.png">
+<meta property="article:published_time" content="2020-04-11T10:20:28.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.915Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="olaindex">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2018/10/27/5bd46f7f160a6.png">
+  
+  
+  
+  <title>利用docker部署Olaindex - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="利用docker部署Olaindex"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-04-11 18:20" pubdate>
+          2020年4月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">利用docker部署Olaindex</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>吹爆<code>docker</code>!</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>利用Aria2和Rclone成功地让我的小鸡实现了远程下载，下载完成后自动上传到OneDrive的功能。想知道的话可以看我的这篇博客<a href=""></a>。</p>
+<p>这个功能搞定后我又想整一个方便直接显示想分享的文件的列表。于是找了找，发现了Oneindex。不过看别人说这个不好用，那就算了吧。于是尝试了Olaindex。</p>
+<p>但是官网要求的php环境我不会搭啊，用了官网介绍的Oneinstack也没有用。在安装的过程中会报错，我怀疑是我的内存不够大造成的。而且报错就算了，报错之后它还把我的环境给搞坏了，导致我想自己手动安装配置 php 环境都失败了。所以只好无奈的回滚了。</p>
+<p>回滚之后我还是不甘心，又突然想到了docker。因为我搜Oneindex的时候找到了Oneindex的docker，又因为经常听说docker是方便部署的，所有的环境需求都被封装了，所以是即开即用。真的这么神奇么？于是我就试了下，没想到真的就有**这 么 神 奇!**。直接从下载安装，配置Nginx的转发就搞定了！</p>
+<h1 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h1><ul>
+<li>debian10 </li>
+<li>amd64架构的CPU</li>
+<li>512M内存</li>
+</ul>
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p>安装过程可以参考我的这篇博客<a href="https://www.yikakia.com/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker.html">利用官方脚本一键安装 docker</a></p>
+<p>安装过程真的很简单。</p>
+<h1 id="下载docker镜像"><a href="#下载docker镜像" class="headerlink" title="下载docker镜像"></a>下载docker镜像</h1><p>在安装好docker，并且确定正确配置了之后，输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d \<br>--name=olaindex \<br>--restart always \<br>-p 8085:80 \<br>-p 8443:443 \<br>--mount <span class="hljs-built_in">type</span>=tmpfs,destination=/tmp \<br>-v /home/hacklog/.config/olaindex/conf:/vol/conf \<br>-v /home/hacklog/.config/olaindex/storage:/vol/storage \<br>-v /home/hacklog/.config/olaindex/ssl:/vol/ssl \<br>-e PHP_TZ=Asia/Shanghai \<br>-e PHP_MAX_EXECUTION_TIME=600 \<br>-e APP_DEBUG=<span class="hljs-literal">false</span> \<br>80x86/olaindex:latest<br></code></pre></td></tr></table></figure>
+<h1 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h1><p>新建一个olaindex.conf文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano /etc/nginx/conf.d/olaindex.conf<br></code></pre></td></tr></table></figure>
+<p>之后这样配置nginx，我这里默认使用<code>olaindex.yikakia.com</code>作为访问网站Olaindex服务的域名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>    listen       80;<br>    server_name  olaindex.yikakia.com; #这里改成你的用于访问olaindex的域名<br><br>    #charset koi8-r;<br>    access_log  /var/log/nginx/rom.nanodm.net.access.log;<br>    error_log  /var/log/nginx/rom.nanodm.net.error.log;<br><br>    location / &#123;<br><br>      proxy_set_header        Host $host;<br>      proxy_set_header        X-Real-IP $remote_addr;<br>      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;<br>      proxy_set_header        X-Forwarded-Proto $scheme;<br>      proxy_max_temp_file_size 0;<br><br>      #this is the maximum upload size<br>      client_max_body_size       100m;<br>      client_body_buffer_size    256k;<br><br>      proxy_connect_timeout      90;<br>      proxy_send_timeout         90;<br>      proxy_read_timeout         90;<br>      proxy_buffering            off;<br>      proxy_request_buffering    off;<br>      proxy_set_header Connection &quot;&quot;; # Clear for keepalive<br><br>      proxy_pass          http://127.0.0.1:8085;<br>    &#125;<br>&#125;<br><br><br>server &#123;<br><br>    listen 443;<br>    server_name  olaindex.yikakia.com; # 这里改成你用于访问Olaindex的域名<br><br>    ssl_certificate           /etc/nginx/ssl/ssl.crt; #这里写你的ssl证书公钥<br>    ssl_certificate_key       /etc/nginx/ssl/ssl.key; #这里写你的ssl证书私钥<br><br>    ssl on;<br>    ssl_session_cache  builtin:1000  shared:SSL:10m;<br>    ssl_protocols  TLSv1.1 TLSv1.2;<br>    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;<br>    ssl_prefer_server_ciphers on;<br><br>    access_log            /var/log/nginx/rom.nanodm.net_ssl.access.log;<br>    error_log             /var/log/nginx/rom.nanodm.net_ssl.error.log;<br><br>    location / &#123;<br><br>      proxy_set_header        Host $host;<br>      proxy_set_header        X-Real-IP $remote_addr;<br>      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;<br>      proxy_set_header        X-Forwarded-Proto $scheme;<br>      proxy_max_temp_file_size 0;<br><br>      #this is the maximum upload size<br>      client_max_body_size       100m;<br>      client_body_buffer_size    256k;<br><br>      proxy_connect_timeout      90;<br>      proxy_send_timeout         90;<br>      proxy_read_timeout         90;<br>      proxy_buffering            off;<br>      proxy_request_buffering    off;<br>      proxy_set_header Connection &quot;&quot;; # Clear for keepalive<br><br>      proxy_pass          https://127.0.0.1:8443;<br>    &#125;<br>  &#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>没有ssl证书的话可以参考我的这篇博客 <a href="https://www.yikakia.com/%E5%88%A9%E7%94%A8Let%60s%20Encrypt%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E5%B0%8F%E9%94%81.html">利用 Lets Encrypt 为你的网站加把小锁 
+</a></p>
+<p>现在重启nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">service nginx restart<br></code></pre></td></tr></table></figure>
+<p>再去访问你用于Olaindex的域名就可以了。这里最好专门另外申请一个二级域名。就是类似于这样的：<code>olaindex.yikakia.com</code>。</p>
+<h1 id="配置Olaindex，申请账号"><a href="#配置Olaindex，申请账号" class="headerlink" title="配置Olaindex，申请账号"></a>配置Olaindex，申请账号</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>做到了这一步，艰难的事情就做完了。<br>现在你可以在浏览器输入<code>olaindex.yikakia.com</code>(替换成你用于访问Olaindex服务的域名)来进行配置。<br>可以直接参考官网这个配置<br><img src="https://i.loli.net/2018/10/27/5bd46f7f160a6.png" srcset="/img/loading.gif" lazyload><br>在这里这么填写你的域名，把图片上的<code>http://localhost:8000/oauth</code>改成<code>https://olaindex.yikakia.com</code>，就是你自己设定的那个域名。</p>
+<p>然后点击申请。</p>
+<h2 id="获取密钥"><a href="#获取密钥" class="headerlink" title="获取密钥"></a>获取密钥</h2><p>打开一个记事本，把你获取的那个应用机密复制保存好。<br><img src="https://i.loli.net/2018/10/27/5bd47070cd1b0.png" srcset="/img/loading.gif" lazyload><br>然后点击继续。</p>
+<h2 id="获取id"><a href="#获取id" class="headerlink" title="获取id"></a>获取id</h2><p><img src="https://i.loli.net/2018/10/27/5bd470721f1a3.png" srcset="/img/loading.gif" lazyload></p>
+<p>把获得的那个client_id也复制到记事本里面。</p>
+<h2 id="保存提交"><a href="#保存提交" class="headerlink" title="保存提交"></a>保存提交</h2><p><img src="https://i.loli.net/2018/10/27/5bd470719602a.png" srcset="/img/loading.gif" lazyload><br>接下来就把之前获取的那两个输入进去。同时第一个回调地址就是你之前申请的那个。<br>如果没错的话，现在就配置完成了。你可以访问<code>olaindex.yikakia.com/admin</code>进入管理后台，默认的密码是<code>12345678</code>。一定要改！</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://wangningkai.github.io/OLAINDEX/#/">OLAINDEX官方文档</a><br><a target="_blank" rel="noopener" href="https://hub.docker.com/r/80x86/olaindex">80x86&#x2F;olaindex docker镜像提供者</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+        <a href="/tags/Docker/">#Docker</a>
+      
+        <a href="/tags/olaindex/">#olaindex</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>利用docker部署Olaindex</div>
+      <div>https://www.yikakia.com/利用docker部署Olaindex/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年4月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85ManjaroWin10/" title="双系统双硬盘安装Manjaro,Windows10">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">双系统双硬盘安装Manjaro,Windows10</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%88%A9%E7%94%A8%E5%AE%98%E6%96%B9%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85docker/" title="利用官方脚本一键安装Docker">
+                        <span class="hidden-mobile">利用官方脚本一键安装Docker</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

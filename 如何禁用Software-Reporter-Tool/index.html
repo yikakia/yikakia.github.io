@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="不作恶的谷歌扫硬盘搞毛。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何禁用Software-Reporter-Tool">
+<meta property="og:url" content="https://www.yikakia.com/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="不作恶的谷歌扫硬盘搞毛。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yikakia.com/img/banner/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png">
+<meta property="article:published_time" content="2020-04-16T13:48:48.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.935Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Chrome">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.yikakia.com/img/banner/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png">
+  
+  
+  
+  <title>如何禁用Software-Reporter-Tool - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何禁用Software-Reporter-Tool"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-04-16 21:48" pubdate>
+          2020年4月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何禁用Software-Reporter-Tool</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>不作恶的谷歌扫硬盘搞毛。</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天发现电脑CPU占用很高，风扇在狂转。想了想我好像后台没开什么应用啊？于是打开了任务管理器看了看，发现有个叫<code>software reporter tool</code>的进程在后台使劲跑。觉得纳闷就上网搜了下，发现原来是谷歌Chrome的后台程序。下面简单的说下这个软件是干嘛的吧。</p>
+<p>这个<code>software reporter tool</code>会扫描你电脑的硬盘，然后把扫描的结果报告给谷歌，让谷歌分析这些结果，看是什么软件影响了用户的网页浏览体验。然后推荐用户删除这些软件。<br>看起来好像没啥问题是不是？但是这里面有两个让人很不爽的点啊。</p>
+<ol>
+<li>当它扫描的时候，会让CPU的负载过高，而且持续时间还很久。而且还可能会在你工作的时候干这种事情。换句话说，谷歌为了解决可能影响到用户网页浏览体验的问题，而影响到了用户日常的体验！</li>
+<li>这个扫描结果会发给谷歌。虽然说这是匿名的，脱敏的。但谁有能信得过谷歌呢？这样的东西真的没问题么？棱镜计划虽然现在已经没多少人提了，但它所暴露出的问题是不容辩驳的。真的能放心的将隐私交给谷歌么？</li>
+</ol>
+<p>说是为了清除让Chrome崩溃的软件，但是你这个扫描硬盘是不是有点过了啊？<br>总之，让人心生疑虑了，就把它干掉吧。</p>
+<h1 id="通过修改权限禁用"><a href="#通过修改权限禁用" class="headerlink" title="通过修改权限禁用"></a>通过修改权限禁用</h1><p>查了之后发现这个文件是就算你删除了，谷歌也可能会给你装回来的。是不是有点眼熟这个全家桶操作？😀<br>所以我们要做的就是禁止谷歌启动这个程序。</p>
+<p>这个软件的位置大概是在这里:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">C:\Users\USERNAME\AppData\Local\Google\Chrome\<span class="hljs-keyword">User</span> <span class="hljs-title">Data</span>\SwReporter\<span class="hljs-keyword">VERSION</span><br></code></pre></td></tr></table></figure>
+<p>把这里面的<code>USERNAME</code>改成你的用户名,<code>VERSION</code>改成你的Chrome版本。然后就可以看到这个文件了。<br>这里我的版本是 <code>81.233.200</code><br><img src="/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Software-Reporter-Tool.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>在这里我们往上退两步，到<code>C:\Users\USERNAME\AppData\Local\Google\Chrome\User Data\</code>这一层，然后右键<code>SwReporter</code>这个文件夹,选择属性。<br><img src="/%E5%8F%B3%E9%94%AESwReporter.png" srcset="/img/loading.gif" lazyload></li>
+<li>选择<code>安全</code>选项卡</li>
+<li>点击<code>高级</code><br><img src="/%E7%82%B9%E5%87%BB%E9%AB%98%E7%BA%A7.png" srcset="/img/loading.gif" lazyload></li>
+<li>点击<code>禁用继承</code><br><img src="/%E7%82%B9%E5%87%BB%E7%A6%81%E7%94%A8%E7%BB%A7%E6%89%BF.png" srcset="/img/loading.gif" lazyload></li>
+<li>选择<code>从此对象中删除所有继承的权限</code>,之后一路确定。<br><img src="/%E9%98%BB%E6%AD%A2%E7%BB%A7%E6%89%BF.png" srcset="/img/loading.gif" lazyload><br>这样就没有人可以访问<code>SwReporter</code>文件夹并启动<code>software reporter tool</code>了。</li>
+</ol>
+<h1 id="通过修改注册表禁用"><a href="#通过修改注册表禁用" class="headerlink" title="通过修改注册表禁用"></a>通过修改注册表禁用</h1><p>不推荐，修改注册表前请做好备份工作。<br>这里先给一段原文</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs vbnet">Google introduced support <span class="hljs-keyword">for</span> policies that administrators may use <span class="hljs-keyword">to</span> configure certain Chrome features; one <span class="hljs-keyword">of</span> the available policies manages the Software Reporter Tool <span class="hljs-keyword">of</span> the browser.<br><br>Open the Registry Editor <span class="hljs-keyword">on</span> Windows, e.g. <span class="hljs-keyword">by</span> opening the Start Menu, typing regedit.exe, <span class="hljs-built_in">and</span> selecting the item <span class="hljs-keyword">from</span> the list <span class="hljs-keyword">of</span> results.<br>Go <span class="hljs-keyword">to</span> HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome.<br><span class="hljs-symbol">Note:</span> <span class="hljs-keyword">if</span> one <span class="hljs-keyword">of</span> the keys does <span class="hljs-built_in">not</span> exist create it <span class="hljs-keyword">with</span> a right-click <span class="hljs-keyword">on</span> the previous <span class="hljs-keyword">key</span> <span class="hljs-built_in">and</span> the selection <span class="hljs-keyword">of</span> <span class="hljs-built_in">New</span> &gt; <span class="hljs-keyword">Key</span>.<br>Right-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> <span class="hljs-built_in">and</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">New</span> &gt; Dword (<span class="hljs-number">32</span>-bit) Value.<br>Name the <span class="hljs-built_in">new</span> Dword ChromeCleanupEnabled.<br>Make sure its value <span class="hljs-built_in">is</span> <span class="hljs-number">0</span>.<br>Right-click <span class="hljs-keyword">on</span> the Chrome <span class="hljs-keyword">key</span> again <span class="hljs-built_in">and</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">New</span> &gt; Dword (<span class="hljs-number">32</span>-bit) Value.<br>Name it ChromeCleanupReportingEnabled.<br>Make sure its value <span class="hljs-built_in">is</span> <span class="hljs-number">0</span>.<br>ChromeCleanupEnabled<span class="hljs-comment">&#x27;s value determines whether the Software Reporter Tool may run on the system.</span><br><br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">0</span> means the tool <span class="hljs-built_in">is</span> disabled <span class="hljs-built_in">and</span> won<span class="hljs-comment">&#x27;t be run.</span><br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> means the Software Reporter <span class="hljs-built_in">is</span> enabled <span class="hljs-built_in">and</span> will be run <span class="hljs-keyword">by</span> Chrome.<br>ChromeCleanupReportingEnabled<span class="hljs-comment">&#x27;s value determines whether the results are reported to Google.</span><br><br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">0</span> means the reporting <span class="hljs-built_in">is</span> disabled.<br>A value <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> means the reporting <span class="hljs-built_in">is</span> enabled.<br></code></pre></td></tr></table></figure>
+<p>简单地说就是打开注册表，在<code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome</code>这项下面新建叫做<code>ChromeCleanupEnabled</code>和<code>ChromeCleanupReportingEnabled</code>的键，它们的类型都是<code>Dword</code>(32位)双字节数据类型，把它们都赋值为0。<br>下面是不同键值的作用</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ChromeCleanupEnabled</td>
+<td>这个工具将被禁用并且不会运行</td>
+<td>这个工具将被启用，并且会被Chrome运行</td>
+</tr>
+<tr>
+<td>ChromeCleanupReportingEnabled</td>
+<td>禁止将报告传回谷歌</td>
+<td>生成的报告将会传给谷歌</td>
+</tr>
+<tr>
+<td>然后没有<code>\Google\Chrome</code>这一项的话，就自己新建就行。不过，还是不建议不清楚自己这么做了有什么后果的人通过这一项来修改。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="通过Chrome浏览器来设置"><a href="#通过Chrome浏览器来设置" class="headerlink" title="通过Chrome浏览器来设置"></a>通过Chrome浏览器来设置</h1><p>这个我觉得是不行的，不过看到网上说有用的，那就也一并记录下来吧。</p>
+<ol>
+<li>进入Chrome的设置界面-&gt;高级-&gt;系统<br>在这个选项下的<code>关闭 Google Chrome 后继续运行后台应用</code>关闭掉。</li>
+<li>把<code>向Google报告在此次清理期间，在您计算机中发现的有害软件、系统设置和进程的相关详情</code>反选掉。<br><img src="/chrome%E8%AE%BE%E7%BD%AE1.png" srcset="/img/loading.gif" lazyload><br><img src="/chrome%E8%AE%BE%E7%BD%AE2.png" srcset="/img/loading.gif" lazyload><br>这样就好了。<br>不过我在这么搞的时候发现我的这个已经设置过了。看来谷歌这小子浓眉大眼的，结果还是不好好做事啊。</li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/">How to block the Chrome Software Reporter Tool (software_reporter_tool.exe)</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Windows/">#Windows</a>
+      
+        <a href="/tags/Chrome/">#Chrome</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何禁用Software-Reporter-Tool</div>
+      <div>https://www.yikakia.com/如何禁用Software-Reporter-Tool/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年4月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/First%E9%9B%86-Follow%E9%9B%86-Select%E9%9B%86%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89/" title="First集 Follow集 Select集分别有什么意义">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">First集 Follow集 Select集分别有什么意义</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%88%A0%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E4%B8%AD%E7%9A%84%E6%96%B0%E5%BB%BAoffice%E6%96%87%E4%BB%B6/" title="删除右键菜单中的新建office文件">
+                        <span class="hidden-mobile">删除右键菜单中的新建office文件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

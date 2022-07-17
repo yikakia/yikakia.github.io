@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="复制，粘贴，运行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动爬取 Leetcode 题目，并保存为 Markdown 格式">
+<meta property="og:url" content="https://www.yikakia.com/%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96-Leetcode-%E9%A2%98%E7%9B%AE%EF%BC%8C%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BA-Markdown-%E6%A0%BC%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="复制，粘贴，运行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-09T13:55:11.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.970Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>自动爬取 Leetcode 题目，并保存为 Markdown 格式 - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="自动爬取 Leetcode 题目，并保存为 Markdown 格式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-09 21:55" pubdate>
+          2021年1月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">自动爬取 Leetcode 题目，并保存为 Markdown 格式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>复制，粘贴，运行</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 <strong>leetcode</strong> 刷题的时候我习惯在本地写好题解，不过每题都复制就太麻烦了，而且也不是<strong>Markdown</strong>格式的。于是想能不能爬取内容，然后自动转换格式。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>自己来写的话因为对爬虫并不是很熟悉（主要是对于抓包并不熟），所以直接搜索，于是发现了一个<a target="_blank" rel="noopener" href="https://wanakiki.github.io/2020/leetcode-spider/">博客</a>写这个事情。看起来挺不错的，那我就直接用<strong>CV</strong>大法了。这里主要是用了转换格式和爬取内容的方法。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>leetcode</strong> 的请求都是用的 <strong>GraphQL</strong> 技术。相比起 <strong>RESTful</strong> 格式而言，它更加灵活，能够减少请求数（一次就能查询多个数据）。查询的时候可以只请求部分内容。</p>
+<p>对于本例而言，用 <strong>F12</strong> ，然后看 <strong>Network</strong>，搜索<strong>graphql</strong>的请求后，筛选一下就能得到合适的结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl <span class="hljs-string">&#x27;https://leetcode-cn.com/graphql/&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;authority: leetcode-cn.com&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;x-timezone: undefined&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;x-operation-name: questionData&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;accept-language: zh-CN&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;content-type: application/json&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;accept: */*&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;x-csrftoken: balabalabala&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;dnt: 1&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;x-definition-name: question&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;origin: https://leetcode-cn.com&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;sec-fetch-site: same-origin&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;sec-fetch-mode: cors&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;sec-fetch-dest: empty&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;referer: https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/&#x27;</span> \<br>  -H <span class="hljs-string">&#x27;cookie: gbalabalabala&#x27;</span> \<br>  --data-binary $<span class="hljs-string">&#x27;&#123;&quot;operationName&quot;:&quot;questionData&quot;,&quot;variables&quot;:&#123;&quot;titleSlug&quot;:&quot;best-time-to-buy-and-sell-stock-iii&quot;&#125;,&quot;query&quot;:&quot;query questionData($titleSlug: String\u0021) &#123;\\n  question(titleSlug: $titleSlug) &#123;\\n    questionId\\n    questionFrontendId\\n    boundTopicId\\n    title\\n    titleSlug\\n    content\\n    translatedTitle\\n    translatedContent\\n    isPaidOnly\\n    difficulty\\n    likes\\n    dislikes\\n    isLiked\\n    similarQuestions\\n    contributors &#123;\\n      username\\n      profileUrl\\n      avatarUrl\\n      __typename\\n    &#125;\\n    langToValidPlayground\\n    topicTags &#123;\\n      name\\n      slug\\n      translatedName\\n      __typename\\n    &#125;\\n    companyTagStats\\n    codeSnippets &#123;\\n      lang\\n      langSlug\\n      code\\n      __typename\\n    &#125;\\n    stats\\n    hints\\n    solution &#123;\\n      id\\n      canSeeDetail\\n      __typename\\n    &#125;\\n    status\\n    sampleTestCase\\n    metaData\\n    judgerAvailable\\n    judgeType\\n    mysqlSchemas\\n    enableRunCode\\n    envInfo\\n    book &#123;\\n      id\\n      bookName\\n      pressName\\n      source\\n      shortDescription\\n      fullDescription\\n      bookImgUrl\\n      pressImgUrl\\n      productUrl\\n      __typename\\n    &#125;\\n    isSubscribed\\n    isDailyQuestion\\n    dailyRecordStatus\\n    editorType\\n    ugcQuestionId\\n    style\\n    __typename\\n  &#125;\\n&#125;\\n&quot;&#125;&#x27;</span> \<br>  --compressed<br></code></pre></td></tr></table></figure>
+
+<p>可以看到还是蛮多的请求项的，不过这样太花眼了，转换一下格式吧。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">  operationName: &quot;questionData&quot;</span><br><span class="hljs-template-variable">  query: &quot;query questionData($titleSlug: String!) &#123;</span><br><span class="hljs-template-variable">  question(titleSlug: $titleSlug) &#123;</span><br><span class="hljs-template-variable">    questionId</span><br><span class="hljs-template-variable">    questionFrontendId</span><br><span class="hljs-template-variable">    boundTopicId</span><br><span class="hljs-template-variable">    title</span><br><span class="hljs-template-variable">    titleSlug</span><br><span class="hljs-template-variable">    content</span><br><span class="hljs-template-variable">    translatedTitle</span><br><span class="hljs-template-variable">    translatedContent</span><br><span class="hljs-template-variable">    isPaidOnly</span><br><span class="hljs-template-variable">    difficulty</span><br><span class="hljs-template-variable">    likes</span><br><span class="hljs-template-variable">    dislikes</span><br><span class="hljs-template-variable">    isLiked</span><br><span class="hljs-template-variable">    similarQuestions</span><br><span class="hljs-template-variable">    contributors &#123;</span><br><span class="hljs-template-variable">      username</span><br><span class="hljs-template-variable">      profileUrl</span><br><span class="hljs-template-variable">      avatarUrl</span><br><span class="hljs-template-variable">      __typename</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml">    langToValidPlayground</span><br><span class="language-xml">    topicTags </span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">      name</span><br><span class="hljs-template-variable">      slug</span><br><span class="hljs-template-variable">      translatedName</span><br><span class="hljs-template-variable">      __typename</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml">    companyTagStats</span><br><span class="language-xml">    codeSnippets </span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">      lang</span><br><span class="hljs-template-variable">      langSlug</span><br><span class="hljs-template-variable">      code</span><br><span class="hljs-template-variable">      __typename</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml">    stats</span><br><span class="language-xml">    hints</span><br><span class="language-xml">    solution </span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">      id</span><br><span class="hljs-template-variable">      canSeeDetail</span><br><span class="hljs-template-variable">      __typename</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml">    status</span><br><span class="language-xml">    sampleTestCase</span><br><span class="language-xml">    metaData</span><br><span class="language-xml">    judgerAvailable</span><br><span class="language-xml">    judgeType</span><br><span class="language-xml">    mysqlSchemas</span><br><span class="language-xml">    enableRunCode</span><br><span class="language-xml">    envInfo</span><br><span class="language-xml">    book </span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">      id</span><br><span class="hljs-template-variable">      bookName</span><br><span class="hljs-template-variable">      pressName</span><br><span class="hljs-template-variable">      source</span><br><span class="hljs-template-variable">      shortDescription</span><br><span class="hljs-template-variable">      fullDescription</span><br><span class="hljs-template-variable">      bookImgUrl</span><br><span class="hljs-template-variable">      pressImgUrl</span><br><span class="hljs-template-variable">      productUrl</span><br><span class="hljs-template-variable">      __typename</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml">    isSubscribed</span><br><span class="language-xml">    isDailyQuestion</span><br><span class="language-xml">    dailyRecordStatus</span><br><span class="language-xml">    editorType</span><br><span class="language-xml">    ugcQuestionId</span><br><span class="language-xml">    __typename</span><br><span class="language-xml">  &#125;</span><br><span class="language-xml">&#125;</span><br><span class="language-xml">&quot;</span><br><span class="language-xml">  variables: </span><span class="hljs-template-variable">&#123;titleSlug: &quot;merge-two-sorted-lists&quot;&#125;</span><span class="language-xml"></span><br><span class="language-xml">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>而转换成 Python 代码的就大概是这个样子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_all</span>(<span class="hljs-params">slug</span>):<br>    user_agent = <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36&quot;</span><br>    session = requests.Session()<br>    url = <span class="hljs-string">&quot;https://leetcode-cn.com/graphql&quot;</span><br>    params = &#123;<br>        <span class="hljs-string">&#x27;operationName&#x27;</span>:<br>        <span class="hljs-string">&quot;getQuestionDetail&quot;</span>,<br>        <span class="hljs-string">&#x27;variables&#x27;</span>: &#123;<br>            <span class="hljs-string">&#x27;titleSlug&#x27;</span>: slug<br>        &#125;,<br>        <span class="hljs-string">&#x27;query&#x27;</span>:<br>        <span class="hljs-string">&#x27;&#x27;&#x27;query getQuestionDetail($titleSlug: String!) &#123;</span><br><span class="hljs-string">            question(titleSlug: $titleSlug) &#123;</span><br><span class="hljs-string">                questionId</span><br><span class="hljs-string">                questionFrontendId</span><br><span class="hljs-string">                title</span><br><span class="hljs-string">                titleSlug</span><br><span class="hljs-string">                content</span><br><span class="hljs-string">                translatedTitle</span><br><span class="hljs-string">                translatedContent</span><br><span class="hljs-string">                difficulty</span><br><span class="hljs-string">                topicTags &#123;</span><br><span class="hljs-string">                    name</span><br><span class="hljs-string">                    slug</span><br><span class="hljs-string">                    translatedName</span><br><span class="hljs-string">                    __typename</span><br><span class="hljs-string">                &#125;</span><br><span class="hljs-string">                codeSnippets &#123;</span><br><span class="hljs-string">                    lang</span><br><span class="hljs-string">                    langSlug</span><br><span class="hljs-string">                    code</span><br><span class="hljs-string">                    __typename</span><br><span class="hljs-string">                &#125;</span><br><span class="hljs-string">                __typename</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">        &#125;&#x27;&#x27;&#x27;</span><br>    &#125;<br>    json_data = json.dumps(params).encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: user_agent,<br>        <span class="hljs-string">&#x27;Connection&#x27;</span>: <span class="hljs-string">&#x27;keep-alive&#x27;</span>,<br>        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>        <span class="hljs-string">&#x27;Referer&#x27;</span>: <span class="hljs-string">&#x27;https://leetcode-cn.com/problems/&#x27;</span> + slug<br>    &#125;<br>    resp = session.post(url, data=json_data, headers=headers, timeout=<span class="hljs-number">10</span>)<br>    resp.encoding = <span class="hljs-string">&#x27;utf8&#x27;</span><br>    content = resp.json()<br>    <span class="hljs-comment"># 题目详细信息</span><br>    <span class="hljs-comment"># print(content)</span><br>    question = content[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;question&#x27;</span>]<br>    <span class="hljs-keyword">return</span> question<br></code></pre></td></tr></table></figure>
+<p>把它们格式化成 <strong>json</strong> 格式的内容即可。而后把响应按<strong>json</strong>进行解析，直接获取<code>data:question:</code>里面的项即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>直接复制粘贴，然后运行就可以啦。哦对了，记得改一下 <strong>url</strong></p>
+<details>
+    <summary>给一个 <strong>GitHub Gist</strong></summary>
+    <script src="https://gist.github.com/yikakia/5b8112706c28570a63a1ec14866fa031.js"></script>
+</details>
+
+<details>
+    <summary>刷不出<strong>GitHub Gist</strong>的话看<strong>gitee</strong>的</summary>
+    <script src='https://gitee.com/yikakia/codes/tdav6w7m903i1s2cugzxk76/widget_preview?title=%E4%BF%AE%E6%94%B9+url+%E5%8D%B3%E5%8F%AF'></script>
+</details>
+
+
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://wanakiki.github.io/2020/leetcode-spider/">爬虫获取力扣题目信息并转为Markdown</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ZhaoxiCheung/p/9333476.html">爬取LeetCode题目——如何发送GraphQL Query获取数据</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Markdown/">#Markdown</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>自动爬取 Leetcode 题目，并保存为 Markdown 格式</div>
+      <div>https://www.yikakia.com/自动爬取-Leetcode-题目，并保存为-Markdown-格式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月9日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Arch-Linux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="Arch-Linux安装指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Arch-Linux安装指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/" title="单线复用 iptv">
+                        <span class="hidden-mobile">单线复用 iptv</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

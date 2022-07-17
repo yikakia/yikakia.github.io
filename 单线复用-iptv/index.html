@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/logo.png">
+  <link rel="icon" href="/static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yika">
+  <meta name="keywords" content="博客,后端,it,golang">
+  
+    <meta name="description" content="有两个支持 vlan 的设备就可以了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单线复用 iptv">
+<meta property="og:url" content="https://www.yikakia.com/%E5%8D%95%E7%BA%BF%E5%A4%8D%E7%94%A8-iptv/index.html">
+<meta property="og:site_name" content="Yika&#96;s Blog">
+<meta property="og:description" content="有两个支持 vlan 的设备就可以了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yikakia.com/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png">
+<meta property="og:image" content="https://www.yikakia.com/vlan1.png">
+<meta property="og:image" content="https://www.yikakia.com/pvid1.png">
+<meta property="og:image" content="https://www.yikakia.com/vlan2.png">
+<meta property="og:image" content="https://www.yikakia.com/pvid2.png">
+<meta property="og:image" content="https://www.yikakia.com/%E7%BD%91%E9%80%9F.png">
+<meta property="article:published_time" content="2021-01-01T13:28:25.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:16:39.919Z">
+<meta property="article:author" content="Yika">
+<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="iptv">
+<meta property="article:tag" content="vlan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.yikakia.com/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png">
+  
+  
+  
+  <title>单线复用 iptv - Yika`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yika`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/static/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="单线复用 iptv"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-01 21:28" pubdate>
+          2021年1月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">单线复用 iptv</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>有两个支持 <strong>vlan</strong> 的设备就可以了。</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>家里搬了新房，但是搞网络的时候遇到了问题，就是弱电箱在门口，而客厅只有两个接口。</p>
+<p>一般来说无线路由器放在房子中央比较好，因为这样每个房间都能够有较强的信号。但又想每个房间里面都能够用网口的话，就得在网络汇聚处（一般家里都是弱电箱）放置一个交换机，交换机再接路由器的 <strong>lan</strong> 口，这个样子来进行使用。</p>
+<p>但是问题来了，一般家里的弱电箱都是在入户处，并且往往只会有一个无线路由器来同时进行拨号上网以及路由的功能。这个时候如果把无线路由器放置在弱电箱的话，一般来说都会有一个房间信号特别差（要穿两到三堵墙）。</p>
+<p>那么有什么好办法来解决呢？就是把无线路由器放到客厅里面，光猫的网口连接到路由器的 <strong>wan</strong> 口，然后路由器的 <strong>lan</strong> 口再连回弱电箱中的交换机，各个房间的网线连到交换机上，这样就可以每个房间的网口都能上网了。但是又有一个问题了，客厅有两个网口，一个网口接到了路由器的 <strong>wan</strong> 口上，一个网口接到了路由器的 <strong>lan</strong> 口上，那么 <strong>iptv</strong> 的网口该怎么接呢？</p>
+<p>有一种解决方法是获取光猫的超级密码后，把光猫自带的无线功能绑定到<strong>iTV</strong>的端口上，这样机顶盒就可以通过无线连接来获取信息了。不过毕竟是对光猫进行操作，万一搞崩了呢？所以就另外想办法吧。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="vlan-的介绍"><a href="#vlan-的介绍" class="headerlink" title="vlan 的介绍"></a><strong>vlan</strong> 的介绍</h2><p>这个时候就是用到 <strong>vlan</strong> 的时候了。</p>
+<p>简单来说， <strong>vlan</strong> 就是虚拟的(<code>v</code>)局域网(<code>lan</code>)，它是一个工作在 <strong>OSI 模型</strong> 中的第二层数据链路层的广播域。这个主要是为了区分各个单位的广播。如果没有 <strong>vlan</strong> 的话，那么就会直接在整个局域网里进行广播，消耗的资源与局域网中的设备成正比。即使在三层网络层中划分了子网，但是也只是在三层中进行了丢弃，实际上对于数据链路而言，这个数据包还是会占用资源。</p>
+<p>因此就在第二层再划分一次<strong>子网</strong>，只在这个<strong>子网</strong>中进行广播。这样就减少了占用的资源。</p>
+<p>做一个不恰当的比方，比如说在你面前有个几条车道</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">|<span class="hljs-string"> 1 </span>|<span class="hljs-string"> 2 </span>|<span class="hljs-string"> 3 </span>|<span class="hljs-string"> 4 </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>[_______________]<br></code></pre></td></tr></table></figure>
+<p>不划分 <strong>vlan</strong> 的话，在局域网中遇到 <strong>BUM</strong> 流量</p>
+<ul>
+<li><strong>B</strong>(<strong>Broadcast</strong> 广播)</li>
+<li><strong>U</strong>(<strong>Unknown Unicast</strong> 未知的流量)</li>
+<li><strong>M</strong>(<strong>Multicast</strong> 组播)</li>
+</ul>
+<p>就会同时占用<code>1~4</code>四个车道进行货物的运输,即对四个端口都转发数据包。</p>
+<p>四个的负载可能不高，那么四十个，四百个呢？</p>
+<p>这个时候就要划分好 <strong>vlan</strong> 了。<strong>vlan</strong> 就相当于是把这几个车道做了物理隔离，不能转到别的车道了。</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">|<span class="hljs-string"> vlan 1</span>|<span class="hljs-string">  </span>|<span class="hljs-string"> vlan 2</span>|<br>|<span class="hljs-string"> 1 </span>|<span class="hljs-string"> 2 </span>|<span class="hljs-string">  </span>|<span class="hljs-string"> 3 </span>|<span class="hljs-string"> 4 </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<br>[_______|<span class="hljs-string">  </span>|<span class="hljs-string">_______]</span><br></code></pre></td></tr></table></figure>
+
+<p>这个时候就是划分了两个 <strong>vlan</strong> 了。1,2车道的货物可以互相传递，而不能和3,4车道进行互联互通。遇到了 <strong>BUM</strong>流量也只在自己的广播域 <strong>vlan1</strong>，<strong>vlan2</strong> 中进行广播。在端口收到了数据后，如果自己不属于这个数据的<strong>vlan</strong> 那么就会直接进行舍弃，相对与子网划分而言安全性更高，隔离性更好。</p>
+<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><p>下面我给一张我家的拓扑图<br><img src="/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="iptv 单线复用 家庭网络拓扑图.png"></p>
+<p>我这种拓扑图的需求是</p>
+<ol>
+<li>光猫桥接，路由器拨号</li>
+<li>需要观看 <strong>IPTV</strong></li>
+<li>路由器在客厅，和<strong>IPTV</strong>在一起</li>
+</ol>
+<p>其实要做的我在<a href="#%E5%89%8D%E8%A8%80">前言</a>里面写的差不多了，大致分为以下几步</p>
+<ol>
+<li><p>购买两个支持 <strong>vlan</strong> 的交换机，一般来说直接找网管交换机就可以了(路由器支持<strong>vlan</strong>的话只用购买一个网管交换机放在弱电箱里面就好了)。</p>
+</li>
+<li><p>在两个交换机中分别划分好 <strong>vlan</strong></p>
+<ul>
+<li>第一个交换机<br> <img src="/vlan1.png" srcset="/img/loading.gif" lazyload alt="vlan1"><br> <img src="/pvid1.png" srcset="/img/loading.gif" lazyload alt="pvid1"></li>
+<li>第二个交换机<br> <img src="/vlan2.png" srcset="/img/loading.gif" lazyload alt="vlan2"><br> <img src="/pvid2.png" srcset="/img/loading.gif" lazyload alt="pvid2"><br> 这里我是把第一个交换机的第五个端口作为汇聚端口，可以同时传输<strong>vlan2</strong>和<strong>vlan3</strong>的数据。<br> 然后第一个交换机的第一个端口作为iptv的端口 即 <strong>vlan2</strong> 而第二到第四端口作为网络的端口 即 <strong>vlan3</strong><br> 而第二个交换机的第八个端口作为汇聚端口，同时传输 <strong>vlan2</strong> 和 <strong>vlan3</strong> 的数据。<br> 然后第二个交换机的第七个端口作为iptv的端口 即 <strong>vlan2</strong> 而第一到第六端口作为网络的端口 即 <strong>vlan3</strong></li>
+</ul>
+<p> 下面简单说明一下tag和untag的作用</p>
+<ul>
+<li>普通终端设备网卡（itv，电脑，电视）只能接收到无<strong>vlan</strong>标识的数据包</li>
+<li>untag端口<ul>
+<li>接收到没有标识的数据包，会打上当前端口的<strong>pvid</strong>标识然后转发</li>
+<li>接收到带<strong>vlan</strong>标识的数据包<ul>
+<li><strong>vlan</strong>标识和端口对应的<strong>pvid</strong>相同，接收转发</li>
+<li><strong>vlan</strong>标识和端口对应的<strong>pvid</strong>不同，丢弃</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>tag端口接收到数据包，<ul>
+<li>接收到没有标识的数据包，会打上当前端口的<strong>pvid</strong>标识然后转发</li>
+<li>接收到带<strong>vlan</strong>标识的数据包<ul>
+<li>这个端口属于标识的<strong>vlan</strong>，接收转发</li>
+<li>这个端口不属于标识的<strong>vlan</strong>，丢弃</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p> 用个表格来表示的话如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Tagged 数据</th>
+<th align="center"></th>
+<th align="center">Untagged 数据</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">in</td>
+<td align="center">out</td>
+<td align="center">in</td>
+<td align="center">out</td>
+</tr>
+<tr>
+<td align="center">Tagged 端口</td>
+<td align="center">看情况接收</td>
+<td align="center">原样发送</td>
+<td align="center">接收</td>
+<td align="center">按照端口的 PVID 打 TAG 标记</td>
+</tr>
+<tr>
+<td align="center">Untagged 端口</td>
+<td align="center">看情况接收</td>
+<td align="center">去掉 TAG 标记</td>
+<td align="center">接收</td>
+<td align="center">按端口的 PVID 打 TAG 标记</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="最后跑一下网速"><a href="#最后跑一下网速" class="headerlink" title="最后跑一下网速"></a>最后跑一下网速</h2><p><img src="/%E7%BD%91%E9%80%9F.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/alpozp40/">不改光猫任何配置，水星SG105 Pro完美解决电信ITV、网络单线复用</a><br><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/alpzdxpo/">网络设备 篇一：家庭网络改造-单线复用实践总结</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+        <a href="/tags/iptv/">#iptv</a>
+      
+        <a href="/tags/vlan/">#vlan</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>单线复用 iptv</div>
+      <div>https://www.yikakia.com/单线复用-iptv/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yika</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96-Leetcode-%E9%A2%98%E7%9B%AE%EF%BC%8C%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BA-Markdown-%E6%A0%BC%E5%BC%8F/" title="自动爬取 Leetcode 题目，并保存为 Markdown 格式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">自动爬取 Leetcode 题目，并保存为 Markdown 格式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/golang-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" title="golang 交叉编译">
+                        <span class="hidden-mobile">golang 交叉编译</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
