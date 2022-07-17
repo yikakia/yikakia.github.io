@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.yikakia.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-159925556-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -89,6 +89,33 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-159925556-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
   
@@ -298,13 +325,13 @@
 <p>然后输入下面两行代码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;John Doe&quot;</span><br>git config --global user.email johndoe@example.com<br></code></pre></td></tr></table></figure>
 
-<p>注意，在这里的 John Doe 是你的名字，<a href="mailto:&#106;&#x6f;&#104;&#110;&#x64;&#111;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;">&#106;&#x6f;&#104;&#110;&#x64;&#111;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;</a> 是你的邮箱。</p>
-<p>这两行表示你新建了一个用户名叫 John Doe 邮箱是 <a href="mailto:&#x6a;&#111;&#104;&#110;&#100;&#111;&#101;&#x40;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#x2e;&#99;&#111;&#x6d;">&#x6a;&#111;&#104;&#110;&#100;&#111;&#101;&#x40;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#x2e;&#99;&#111;&#x6d;</a> 的git账户。输错了不要急，可以修改的，具体怎么修改可以自行搜索。</p>
+<p>注意，在这里的 John Doe 是你的名字，<a href="mailto:&#106;&#x6f;&#x68;&#110;&#x64;&#x6f;&#x65;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#106;&#x6f;&#x68;&#110;&#x64;&#x6f;&#x65;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;</a> 是你的邮箱。</p>
+<p>这两行表示你新建了一个用户名叫 John Doe 邮箱是 <a href="mailto:&#x6a;&#111;&#x68;&#110;&#x64;&#x6f;&#101;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#x6f;&#109;">&#x6a;&#111;&#x68;&#110;&#x64;&#x6f;&#101;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#x6f;&#109;</a> 的git账户。输错了不要急，可以修改的，具体怎么修改可以自行搜索。</p>
 <h4 id="生成ssh公钥和密钥"><a href="#生成ssh公钥和密钥" class="headerlink" title="生成ssh公钥和密钥"></a>生成ssh公钥和密钥</h4><p>输入</p>
 <pre><code class="hljs">ssh-keygen -t rsa -C &quot;johndoe@example.com&quot;
 </code></pre>
 <p>然后一路按回车生成你的公钥和密钥</p>
-<p>在这里的 <a href="mailto:&#106;&#x6f;&#104;&#x6e;&#100;&#111;&#x65;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#109;">&#106;&#x6f;&#104;&#x6e;&#100;&#111;&#x65;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#109;</a> 是你刚刚输入的邮箱，用了这条命令，你的<code>C:\Users\&lt;用户名&gt;\.ssh</code>文件夹中会生成两个文件<code>id_rsa</code>和<code>id_rsa.pub</code>。其中<code>id_rsa.pub</code>这个文件中就存放着我们的公钥。</p>
+<p>在这里的 <a href="mailto:&#x6a;&#x6f;&#x68;&#x6e;&#x64;&#x6f;&#x65;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#x6a;&#x6f;&#x68;&#x6e;&#x64;&#x6f;&#x65;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;</a> 是你刚刚输入的邮箱，用了这条命令，你的<code>C:\Users\&lt;用户名&gt;\.ssh</code>文件夹中会生成两个文件<code>id_rsa</code>和<code>id_rsa.pub</code>。其中<code>id_rsa.pub</code>这个文件中就存放着我们的公钥。</p>
 <p>现在 Windows 端的 git 基本配置好了。</p>
 <h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p>在<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/"><code>Node.js官网</code></a>下载最新版本并安装。一路 next 默认安装即可。</p>
 <h3 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h3><p>在任意位置新建文件夹，这个文件夹以后就是你的博客的根目录了。为方便说明，下面用 <code>D:\hexo</code> 这个文件夹做为演示。</p>
